@@ -2,6 +2,7 @@ System Log
 Player
 Club
 PlayerCollection
+PlayerImage
 Transfer
 Formation
 Match
