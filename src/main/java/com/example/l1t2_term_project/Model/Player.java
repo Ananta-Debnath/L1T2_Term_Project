@@ -32,12 +32,13 @@ public class Player
     private double weeklySalary;
     private double value;
     private String contractEnd; // Date
+    private boolean forSale;
 
 
     // Constructor
 
 
-    public Player(int id, String name, int age, float height, String position, String nationality, String team, int goals, int assists, int tackles, int interceptions, int saves, int matchPlayed, String form, double weeklySalary, double value, String contractEnd) {
+    public Player(int id, String name, int age, float height, String position, String nationality, String team, int goals, int assists, int tackles, int interceptions, int saves, int matchPlayed, String form, double weeklySalary, double value, String contractEnd, boolean forSale) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -55,6 +56,7 @@ public class Player
         this.weeklySalary = weeklySalary;
         this.value = value;
         this.contractEnd = contractEnd;
+        this.forSale = forSale;
 
         this.extraPositons = new ArrayList<>();
         this.attributes = new ArrayList<>();
@@ -213,7 +215,16 @@ public class Player
         this.attributes = attributes;
     }
 
+    public boolean isForSale() {
+        return forSale;
+    }
 
-    // Other methods
-    public static Player readFromFile();
+    public void setForSale(boolean forSale) {
+        this.forSale = forSale;
+    }
+
+    // Static methods
+    // public static Player readFromFile(---);
+
+    // public static --- getPlayerImage(int playerId);
 }
