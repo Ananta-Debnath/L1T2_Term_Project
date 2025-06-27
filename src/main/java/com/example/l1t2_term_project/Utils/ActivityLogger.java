@@ -38,5 +38,6 @@ public class ActivityLogger
     {
         logTime();
         logFile.println(message);
+        logFile.flush();
     }
 }
