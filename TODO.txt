@@ -1,5 +1,5 @@
-System Log
-Player
+System Log --- DONE
+Player --- DONE
 Club
 PlayerCollection
 PlayerImage
