@@ -4,9 +4,24 @@ public class PlayerFilter
 {
     private String name;
     private String position;
+    private String specificPosition;
     private String nationality;
     private String team;
     private boolean forSale;
+    private int startingValue;
+    private int endingValue;
+
+    public PlayerFilter()
+    {
+        name = null;
+        position = null;
+        specificPosition = null;
+        nationality = null;
+        team = null;
+        forSale = false;
+        startingValue = 0;
+        endingValue = 0;
+    }
 
     public String getName() {
         return name;
@@ -22,6 +37,14 @@ public class PlayerFilter
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public String getSpecificPosition() {
+        return specificPosition;
+    }
+
+    public void setSpecificPosition(String specificPosition) {
+        this.specificPosition = specificPosition;
     }
 
     public String getNationality() {
@@ -46,5 +69,21 @@ public class PlayerFilter
 
     public void setForSale(boolean forSale) {
         this.forSale = forSale;
+    }
+
+    public int getStartingValue() {
+        return startingValue;
+    }
+
+    public void setStartingValue(int startingValue) {
+        this.startingValue = startingValue;
+    }
+
+    public int getEndingValue() {
+        return endingValue;
+    }
+
+    public void setEndingValue(int endingValue) {
+        this.endingValue = endingValue;
     }
 }
