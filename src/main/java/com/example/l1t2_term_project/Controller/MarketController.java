@@ -53,6 +53,46 @@ public class MarketController
         // TODO: Set the items in the ComboBox
         // Need player collection class for this
         // NOTE: the first element has to indicate null value
+
+        positionField.getItems().add(null);
+        positionField.getItems().addAll(Position.values());
+
+        roleField.getItems().add(null);
+        roleField.getItems().addAll(Role.values());
+
+
+        // ComboBox logic
+        positionField.setButtonCell(new ListCell<>() {
+            @Override
+            protected void updateItem(Position position, boolean empty) {
+                super.updateItem(position, empty);
+                setText(position == null || empty ? "Select Position" : position.toString());
+            }
+        });
+
+        positionField.setCellFactory(listView -> new ListCell<>() {
+            @Override
+            protected void updateItem(Position position, boolean empty) {
+                super.updateItem(position, empty);
+                setText(position == null || empty ? "Select Position" : position.toString());
+            }
+        });
+
+        roleField.setButtonCell(new ListCell<>() {
+            @Override
+            protected void updateItem(Role role, boolean empty) {
+                super.updateItem(role, empty);
+                setText(role == null || empty ? "Select Role" : role.toString());
+            }
+        });
+
+        roleField.setCellFactory(listView -> new ListCell<>() {
+            @Override
+            protected void updateItem(Role role, boolean empty) {
+                super.updateItem(role, empty);
+                setText(role == null || empty ? "Select Role" : role.toString());
+            }
+        });
     }
 
     @FXML
@@ -60,7 +100,6 @@ public class MarketController
     {
         mainMenu.setDisable(true);
         filterBox.setVisible(true);
-        // System.out.println("Filter");
     }
 
     @FXML
@@ -92,7 +131,6 @@ public class MarketController
         filterBox.setVisible(false);
         mainMenu.setDisable(false);
         setFieldsInFilterBox(filter); // Rollback to initial value
-        // System.out.println("Cancel");
     }
 
     // Non-FXML methods
@@ -117,10 +155,10 @@ public class MarketController
 
     private void setFieldsInFilterBox(PlayerFilter filter)
     {
-        if (filter.getPosition() != null) positionField.setValue(filter.getPosition()); // TODO: Replace with enum
+        if (filter.getPosition() != null) positionField.setValue(filter.getPosition());
         else positionField.setValue(positionField.getItems().get(0));
 
-        if (filter.getRole() != null) roleField.setValue(filter.getRole()); // TODO: Change get method to role & Replace with enum
+        if (filter.getRole() != null) roleField.setValue(filter.getRole());
         else roleField.setValue(roleField.getItems().get(0));
 
         if (filter.getNationality() != null) nationField.setValue(filter.getNationality());
