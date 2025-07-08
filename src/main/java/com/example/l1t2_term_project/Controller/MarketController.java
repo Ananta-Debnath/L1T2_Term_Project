@@ -60,6 +60,12 @@ public class MarketController
         roleField.getItems().add(null);
         roleField.getItems().addAll(Role.values());
 
+        nationField.getItems().add(null);
+        // TODO: get nations
+
+        clubField.getItems().add(null);
+        // TODO: get clubs
+
 
         // ComboBox logic
         positionField.setButtonCell(new ListCell<>() {
@@ -91,6 +97,38 @@ public class MarketController
             protected void updateItem(Role role, boolean empty) {
                 super.updateItem(role, empty);
                 setText(role == null || empty ? "Select Role" : role.toString());
+            }
+        });
+
+        nationField.setButtonCell(new ListCell<>() {
+            @Override
+            protected void updateItem(String nation, boolean empty) {
+                super.updateItem(nation, empty);
+                setText(nation == null || empty ? "Select Nation" : nation);
+            }
+        });
+
+        nationField.setCellFactory(listView -> new ListCell<>() {
+            @Override
+            protected void updateItem(String nation, boolean empty) {
+                super.updateItem(nation, empty);
+                setText(nation == null || empty ? "Select Nation" : nation);
+            }
+        });
+
+        clubField.setButtonCell(new ListCell<>() {
+            @Override
+            protected void updateItem(String club, boolean empty) {
+                super.updateItem(club, empty);
+                setText(club == null || empty ? "Select Nation" : club);
+            }
+        });
+
+        clubField.setCellFactory(listView -> new ListCell<>() {
+            @Override
+            protected void updateItem(String club, boolean empty) {
+                super.updateItem(club, empty);
+                setText(club == null || empty ? "Select Nation" : club);
             }
         });
     }
@@ -168,10 +206,10 @@ public class MarketController
         else roleField.setValue(roleField.getItems().get(0));
 
         if (filter.getStartingValue() != 0) minValueField.setText(Integer.toString(filter.getStartingValue()));
-        else minValueField.setText(null);
+        else minValueField.setText("");
 
         if (filter.getEndingValue() != 0) maxValueField.setText(Integer.toString(filter.getEndingValue()));
-        else maxValueField.setText(null);
+        else maxValueField.setText("");
 
         availabilityField.setSelected(filter.isForSale());
     }
