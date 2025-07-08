@@ -15,27 +15,27 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.MarketController">
-    <AnchorPane fx:id="mainMenu" prefHeight="500.0" prefWidth="900.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <AnchorPane fx:id="mainMenu" prefHeight="500.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
-          <TextField fx:id="searchField" layoutX="306.0" layoutY="117.0" promptText="Search by Name">
+          <TextField fx:id="searchField" layoutX="299.0" layoutY="117.0" prefHeight="26.0" prefWidth="157.0" promptText="Search by Name">
               <effect>
                   <DropShadow />
               </effect>
           </TextField>
-          <Button fx:id="filterButton" layoutX="473.0" layoutY="117.0" mnemonicParsing="false" onAction="#onFilterClick" prefHeight="26.0" prefWidth="52.0" text="Filter" />
-         <Button fx:id="searchButton" layoutX="541.0" layoutY="117.0" mnemonicParsing="false" onAction="#onSearchClick" prefHeight="26.0" prefWidth="52.0" text="Search" />
+          <Button layoutX="473.0" layoutY="117.0" mnemonicParsing="false" onAction="#openFilter" prefHeight="26.0" prefWidth="52.0" text="Filter" />
+         <Button layoutX="541.0" layoutY="117.0" mnemonicParsing="false" onAction="#searchPlayers" prefHeight="26.0" prefWidth="52.0" text="Search" />
         </children>
     </AnchorPane>
-   <VBox fx:id="filterBox" layoutX="150.0" layoutY="125.0" prefWidth="600.0" spacing="20.0" style="-fx-border-color: black;">
+   <VBox fx:id="filterBox" layoutX="150.0" layoutY="125.0" prefWidth="600.0" spacing="20.0" style="-fx-border-color: black;" visible="false">
       <children>
          <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="182.0" spacing="20.0">
             <children>
-               <Label prefHeight="28.0" prefWidth="125.0" text="Positon">
+               <Label prefHeight="28.0" prefWidth="100.0" text="Positon">
                   <font>
                      <Font size="16.0" />
                   </font>
                </Label>
-               <ComboBox prefWidth="150.0" promptText="Position" visibleRowCount="4">
+               <ComboBox fx:id="positionField" prefWidth="150.0" promptText="Position" visibleRowCount="4">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="Attacker" />
@@ -45,7 +45,7 @@
                         </FXCollections>
                     </items>
                 </ComboBox>
-               <ComboBox prefWidth="150.0" promptText="Role" visibleRowCount="4">
+               <ComboBox fx:id="roleField" prefWidth="150.0" promptText="Role" visibleRowCount="4">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Attacker" />
@@ -57,62 +57,68 @@
             </ComboBox>
             </children>
             <padding>
-               <Insets left="50.0" />
+               <Insets left="65.0" />
             </padding>
          </HBox>
          <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="558.0" spacing="20.0">
             <children>
-               <Label prefHeight="26.0" prefWidth="125.0" text="Nationality">
+               <Label prefHeight="26.0" prefWidth="100.0" text="Nationality">
                   <font>
                      <Font size="16.0" />
                   </font>
                </Label>
-               <ComboBox prefWidth="150.0" promptText="Select a nation" />
+               <ComboBox fx:id="nationField" prefWidth="150.0" promptText="Select a nation" />
             </children>
             <padding>
-               <Insets left="50.0" />
+               <Insets left="65.0" />
             </padding>
          </HBox>
          <HBox alignment="CENTER_LEFT" layoutX="31.0" layoutY="81.0" prefHeight="30.0" prefWidth="558.0" spacing="20.0">
             <children>
-               <Label prefHeight="26.0" prefWidth="125.0" text="Club">
+               <Label prefHeight="26.0" prefWidth="100.0" text="Club">
                   <font>
                      <Font size="16.0" />
                   </font>
                </Label>
-               <ComboBox prefWidth="150.0" promptText="Select club" />
-                <Button fx:id="cancelButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onCancelClick" prefHeight="26.0" prefWidth="70.0" text="Cancel" />
+               <ComboBox fx:id="clubField" prefWidth="150.0" promptText="Select club" />
             </children>
             <padding>
-               <Insets left="50.0" />
+               <Insets left="65.0" />
             </padding>
          </HBox>
          <HBox alignment="CENTER_LEFT" layoutX="31.0" layoutY="132.0" prefHeight="30.0" prefWidth="558.0" spacing="20.0">
             <children>
-               <Label prefHeight="26.0" prefWidth="125.0" text="Value">
+               <Label prefHeight="26.0" prefWidth="100.0" text="Value">
                   <font>
                      <Font size="16.0" />
                   </font>
                </Label>
-               <TextField prefWidth="140.0" promptText="Minimum Value" />
+               <TextField fx:id="minValueField" prefWidth="140.0" promptText="Minimum Value" />
                <Label text="-" />
-               <TextField prefWidth="140.0" promptText="Maximum Value" />
+               <TextField fx:id="maxValueField" prefWidth="140.0" promptText="Maximum Value" />
             </children>
             <padding>
-               <Insets left="50.0" />
+               <Insets left="65.0" />
             </padding>
          </HBox>
          <HBox alignment="CENTER_LEFT" layoutX="31.0" layoutY="182.0" prefHeight="30.0" prefWidth="558.0" spacing="20.0">
             <padding>
-               <Insets left="50.0" />
+               <Insets left="65.0" />
             </padding>
             <children>
-               <Label prefHeight="26.0" prefWidth="125.0" text="Availability">
+               <Label prefHeight="26.0" prefWidth="100.0" text="Available">
                   <font>
                      <Font size="16.0" />
                   </font>
                </Label>
-               <CheckBox mnemonicParsing="false" />
+               <CheckBox fx:id="availabilityField" mnemonicParsing="false" selected="true" />
+            </children>
+         </HBox>
+         <HBox alignment="CENTER" layoutX="31.0" layoutY="132.0" prefHeight="30.0" prefWidth="577.0" spacing="30.0">
+            <children>
+               <Button alignment="CENTER" cancelButton="true" contentDisplay="CENTER" layoutX="352.0" layoutY="12.0" mnemonicParsing="false" onAction="#setFilter" prefHeight="25.0" prefWidth="70.0" text="Save" />
+               <Button alignment="CENTER" cancelButton="true" contentDisplay="CENTER" layoutX="306.0" layoutY="12.0" mnemonicParsing="false" onAction="#resetFilter" prefHeight="25.0" prefWidth="70.0" text="Reset" />
+                <Button alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cancelFilter" prefHeight="25.0" prefWidth="70.0" text="Cancel" />
             </children>
          </HBox>
       </children>
