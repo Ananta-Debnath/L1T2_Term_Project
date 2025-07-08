@@ -1,4 +1,4 @@
-package com.example.l1t2_term_project.Model;
+package com.example.l1t2_term_project.Model.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ public class Player
     private String name;
     private int age;
     private float height; // meter
-    private String position;
-    private List<String> extraPositons;
+    private Role role;
+    private List<Role> extraRoles;
     private String nationality;
     private String team;
     // private int teamID;
@@ -35,15 +35,18 @@ public class Player
     private boolean forSale;
 
 
+    // Instance Block
+    {
+        this.extraRoles = new ArrayList<>();
+        this.attributes = new ArrayList<>();
+    }
     // Constructor
-
-
-    public Player(int id, String name, int age, float height, String position, String nationality, String team, int goals, int assists, int tackles, int interceptions, int saves, int matchPlayed, String form, double weeklySalary, double value, String contractEnd, boolean forSale) {
+    public Player(int id, String name, int age, float height, Role role, String nationality, String team, int goals, int assists, int tackles, int interceptions, int saves, int matchPlayed, String form, double weeklySalary, double value, String contractEnd, boolean forSale) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.height = height;
-        this.position = position;
+        this.role = role;
         this.nationality = nationality;
         this.team = team;
         this.goals = goals;
@@ -58,8 +61,7 @@ public class Player
         this.contractEnd = contractEnd;
         this.forSale = forSale;
 
-        this.extraPositons = new ArrayList<>();
-        this.attributes = new ArrayList<>();
+
     }
 
     // Getter-Setters
@@ -95,12 +97,12 @@ public class Player
         this.height = height;
     }
 
-    public String getPosition() {
-        return position;
+    public Role getRole() {
+        return role;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getNationality() {
@@ -199,12 +201,12 @@ public class Player
         this.contractEnd = contractEnd;
     }
 
-    public List<String> getExtraPositons() {
-        return extraPositons;
+    public List<Role> getExtraRoles() {
+        return extraRoles;
     }
 
-    public void setExtraPositons(List<String> extraPositons) {
-        this.extraPositons = extraPositons;
+    public void setExtraRoles(List<Role> extraRoles) {
+        this.extraRoles = extraRoles;
     }
 
     public List<String> getAttributes() {
