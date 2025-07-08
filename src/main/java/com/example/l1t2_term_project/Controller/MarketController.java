@@ -1,7 +1,10 @@
 package com.example.l1t2_term_project.Controller;
 
-import com.example.l1t2_term_project.Model.Player;
-import com.example.l1t2_term_project.Model.PlayerFilter;
+import com.example.l1t2_term_project.Model.Player.Player;
+import com.example.l1t2_term_project.Model.Player.PlayerFilter;
+import com.example.l1t2_term_project.Model.Player.Position;
+import com.example.l1t2_term_project.Model.Player.Role;
+import com.example.l1t2_term_project.Model.Player.Position;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -29,9 +32,9 @@ public class MarketController
     @FXML
     public VBox filterBox;
     @FXML
-    public ComboBox<String> positionField; // TODO: Replace with enum
+    public ComboBox<Position> positionField;
     @FXML
-    public ComboBox<String> roleField; // TODO: Replace with enum
+    public ComboBox<Role> roleField;
     @FXML
     public ComboBox<String> nationField;
     @FXML
@@ -98,7 +101,7 @@ public class MarketController
         PlayerFilter filter = new PlayerFilter();
 
         filter.setPosition(positionField.getValue());
-        filter.setSpecificPosition(roleField.getValue()); // TODO: Change to role
+        filter.setRole(roleField.getValue());
         filter.setNationality(nationField.getValue());
         filter.setTeam(clubField.getValue());
 
@@ -117,13 +120,13 @@ public class MarketController
         if (filter.getPosition() != null) positionField.setValue(filter.getPosition()); // TODO: Replace with enum
         else positionField.setValue(positionField.getItems().get(0));
 
-        if (filter.getSpecificPosition() != null) roleField.setValue(filter.getSpecificPosition()); // TODO: Change get method to role & Replace with enum
+        if (filter.getRole() != null) roleField.setValue(filter.getRole()); // TODO: Change get method to role & Replace with enum
         else roleField.setValue(roleField.getItems().get(0));
 
         if (filter.getNationality() != null) nationField.setValue(filter.getNationality());
         else nationField.setValue(nationField.getItems().get(0));
 
-        if (filter.getSpecificPosition() != null) clubField.setValue(filter.getTeam());
+        if (filter.getTeam() != null) clubField.setValue(filter.getTeam());
         else roleField.setValue(roleField.getItems().get(0));
 
         if (filter.getStartingValue() != 0) minValueField.setText(Integer.toString(filter.getStartingValue()));
