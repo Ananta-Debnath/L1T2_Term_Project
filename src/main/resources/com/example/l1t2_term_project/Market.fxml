@@ -33,7 +33,7 @@
                      <Font size="16.0" />
                   </font>
                </Label>
-               <ComboBox fx:id="positionField" prefWidth="150.0" visibleRowCount="5" />
+               <ComboBox fx:id="positionField" onAction="#setRoleField" prefWidth="150.0" visibleRowCount="5" />
                <ComboBox fx:id="roleField" prefWidth="150.0" visibleRowCount="5" />
             </children>
             <padding>
