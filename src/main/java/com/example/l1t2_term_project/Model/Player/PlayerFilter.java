@@ -7,8 +7,8 @@ public class PlayerFilter {
     private String nationality;
     private String team;
     private boolean forSale;
-    private int startingValue;
-    private int endingValue;
+    private double startingValue;
+    private double endingValue;
 
     public PlayerFilter() {
         name = null;
@@ -26,7 +26,7 @@ public class PlayerFilter {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.toLowerCase();
     }
 
     public Position getPosition() {
@@ -69,19 +69,19 @@ public class PlayerFilter {
         this.forSale = forSale;
     }
 
-    public int getStartingValue() {
+    public double getStartingValue() {
         return startingValue;
     }
 
-    public void setStartingValue(int startingValue) {
+    public void setStartingValue(double startingValue) {
         this.startingValue = startingValue;
     }
 
-    public int getEndingValue() {
+    public double getEndingValue() {
         return endingValue;
     }
 
-    public void setEndingValue(int endingValue) {
+    public void setEndingValue(double endingValue) {
         this.endingValue = endingValue;
     }
 

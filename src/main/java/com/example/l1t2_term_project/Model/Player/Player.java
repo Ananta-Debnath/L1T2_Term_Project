@@ -109,6 +109,10 @@ public class Player
         this.role = role;
     }
 
+    public Position getPosition() {
+        return role.getPosition();
+    }
+
     public String getNationality() {
         return nationality;
     }

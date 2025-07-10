@@ -5,6 +5,8 @@ import com.example.l1t2_term_project.Utils.ActivityLogger;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class PlayerCollection
 {
@@ -78,7 +80,24 @@ public class PlayerCollection
 
     public static List<Player> getFilteredPlayers(PlayerFilter filter)
     {
-        return new ArrayList<>();
+        Stream<Player> filteredPlayers = players.stream();
+
+        filteredPlayers = filteredPlayers.filter(p -> {
+                    String[] nameParts = p.getName().toLowerCase().split(" ");
+                    for (String part : nameParts) {
+                        if (part.startsWith(filter.getName())) return true;
+                    }
+                    return false;
+                });
+
+        if (filter.getPosition() != null) filteredPlayers = filteredPlayers.filter(p -> p.getPosition() == filter.getPosition());
+        if (filter.getRole() != null) filteredPlayers = filteredPlayers.filter(p -> p.getRole() == filter.getRole());
+        if (filter.getNationality() != null) filteredPlayers = filteredPlayers.filter(p -> p.getNationality().equalsIgnoreCase(filter.getNationality()));
+        if (filter.getTeam() != null) filteredPlayers = filteredPlayers.filter(p -> p.getTeam().equalsIgnoreCase(filter.getTeam()));
+        filteredPlayers = filteredPlayers.filter(p -> p.isForSale() == filter.isForSale());
+        if (filter.getEndingValue() != 0) filteredPlayers = filteredPlayers.filter(p -> p.getValue() >= filter.getStartingValue() && p.getValue() <= filter.getStartingValue());
+
+        return filteredPlayers.collect(Collectors.toList());
     }
 
 
