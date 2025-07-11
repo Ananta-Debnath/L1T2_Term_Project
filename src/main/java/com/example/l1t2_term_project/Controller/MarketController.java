@@ -1,7 +1,6 @@
 package com.example.l1t2_term_project.Controller;
 
 import com.example.l1t2_term_project.Model.Player.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -61,10 +60,10 @@ public class MarketController
         setRoleField();
 
         nationField.getItems().add(null);
-        // TODO: get nations
+        nationField.getItems().addAll(PlayerCollection.getAllNationalities()); // TODO: Use networking
 
         clubField.getItems().add(null);
-        // TODO: get clubs
+        clubField.getItems().addAll(PlayerCollection.getAllTeams()); // TODO: use networking
 
 
         // ComboBox logic
@@ -120,7 +119,7 @@ public class MarketController
             @Override
             protected void updateItem(String club, boolean empty) {
                 super.updateItem(club, empty);
-                setText(club == null || empty ? "Select Nation" : club);
+                setText(club == null || empty ? "Select Club" : club);
             }
         });
 
@@ -128,7 +127,7 @@ public class MarketController
             @Override
             protected void updateItem(String club, boolean empty) {
                 super.updateItem(club, empty);
-                setText(club == null || empty ? "Select Nation" : club);
+                setText(club == null || empty ? "Select Club" : club);
             }
         });
 
@@ -139,11 +138,11 @@ public class MarketController
         maxValueField.setTextFormatter(new TextFormatter<>(filter));
 
         minValueField.textProperty().addListener((obs, oldText, newText) -> {
-            onStartingValueChange();
+            onMinValueChange();
         });
 
         maxValueField.textProperty().addListener((obs, oldText, newText) -> {
-            onEndingValueChange();
+            onMaxValueChange();
         });
     }
 
@@ -157,7 +156,7 @@ public class MarketController
     @FXML
     public void searchPlayers()
     {
-        // TODO: get Players from Player Collection
+        // TODO: get Players from server
         filter.setName(searchField.getText());
         System.out.println(filter);
         players = PlayerCollection.getFilteredPlayers(filter);
@@ -197,14 +196,14 @@ public class MarketController
         else roleField.getItems().addAll(positionField.getValue().getRoles());
     }
 
-    public void onStartingValueChange() {
-        if (!minValueField.getText().isEmpty() && (maxValueField.getText().isEmpty() || Double.parseDouble(minValueField.getText()) > Double.parseDouble(maxValueField.getText())))
+    public void onMinValueChange() {
+        if (!minValueField.getText().isEmpty() && !maxValueField.getText().isEmpty() && Double.parseDouble(minValueField.getText()) > Double.parseDouble(maxValueField.getText()))
         {
             maxValueField.setText(minValueField.getText());
         }
     }
 
-    public void onEndingValueChange() {
+    public void onMaxValueChange() {
         if (maxValueField.getText().isEmpty() || (!minValueField.getText().isEmpty() && Double.parseDouble(minValueField.getText()) > Double.parseDouble(maxValueField.getText())))
         {
             minValueField.setText(maxValueField.getText());
@@ -222,11 +221,11 @@ public class MarketController
         filter.setNationality(nationField.getValue());
         filter.setTeam(clubField.getValue());
 
-        if (!minValueField.getText().isEmpty()) filter.setStartingValue(Double.parseDouble(minValueField.getText()));
-        else filter.setStartingValue(0);
+        if (!minValueField.getText().isEmpty()) filter.setMinValue(Double.parseDouble(minValueField.getText()));
+        else filter.setMinValue(0);
 
-        if (!maxValueField.getText().isEmpty()) filter.setEndingValue(Double.parseDouble(maxValueField.getText()));
-        else filter.setEndingValue(0);
+        if (!maxValueField.getText().isEmpty()) filter.setMaxValue(Double.parseDouble(maxValueField.getText()));
+        else filter.setMaxValue(0);
 
         filter.setForSale(availabilityField.isSelected());
         return filter;
@@ -239,10 +238,10 @@ public class MarketController
         nationField.setValue(filter.getNationality());
         clubField.setValue(filter.getTeam());
 
-        if (filter.getStartingValue() != 0) minValueField.setText(Double.toString(filter.getStartingValue()));
+        if (filter.getMinValue() != 0) minValueField.setText(Double.toString(filter.getMinValue()));
         else minValueField.setText("");
 
-        if (filter.getEndingValue() != 0) maxValueField.setText(Double.toString(filter.getEndingValue()));
+        if (filter.getMaxValue() != 0) maxValueField.setText(Double.toString(filter.getMaxValue()));
         else maxValueField.setText("");
 
         availabilityField.setSelected(filter.isForSale());

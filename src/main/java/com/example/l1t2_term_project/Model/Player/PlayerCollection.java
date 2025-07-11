@@ -5,6 +5,8 @@ import com.example.l1t2_term_project.Utils.ActivityLogger;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -95,9 +97,24 @@ public class PlayerCollection
         if (filter.getNationality() != null) filteredPlayers = filteredPlayers.filter(p -> p.getNationality().equalsIgnoreCase(filter.getNationality()));
         if (filter.getTeam() != null) filteredPlayers = filteredPlayers.filter(p -> p.getTeam().equalsIgnoreCase(filter.getTeam()));
         if (filter.isForSale()) filteredPlayers = filteredPlayers.filter(p -> p.isForSale() == filter.isForSale());
-        if (filter.getEndingValue() != 0) filteredPlayers = filteredPlayers.filter(p -> p.getValue() >= filter.getStartingValue() && p.getValue() <= filter.getStartingValue());
+        if (filter.getMinValue() != 0) filteredPlayers = filteredPlayers.filter(p -> p.getValue() >= filter.getMinValue());
+        if (filter.getMaxValue() != 0) filteredPlayers = filteredPlayers.filter(p -> p.getValue() <= filter.getMaxValue());
 
         return filteredPlayers.collect(Collectors.toList());
+    }
+
+    public static List<String> getAllNationalities()
+    {
+        Set<String> nations = new TreeSet<>();
+        for (Player player : players) nations.add(player.getNationality());
+        return new ArrayList<>(nations);
+    }
+
+    public static List<String> getAllTeams()
+    {
+        Set<String> teams = new TreeSet<>();
+        for (Player player : players) teams.add(player.getTeam());
+        return new ArrayList<>(teams);
     }
 
 
