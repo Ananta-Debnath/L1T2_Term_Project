@@ -1,10 +1,9 @@
 package com.example.l1t2_term_project.Main;
 
-import com.example.l1t2_term_project.Model.Player.Player;
-import com.example.l1t2_term_project.Model.Player.PlayerCollection;
+import com.example.l1t2_term_project.Model.Player.*;
 import com.example.l1t2_term_project.Utils.ActivityLogger;
 
-import java.io.IOException;
+import java.util.List;
 
 public class Main
 {
@@ -18,6 +17,7 @@ public class Main
         {
             System.out.println(player);
         }
+        System.out.println();
 
 //        PlayerCollection.getPlayers().get(0).setName("Changed");
         PlayerCollection.writeToFile();

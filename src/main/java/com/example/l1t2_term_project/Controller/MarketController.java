@@ -1,15 +1,13 @@
 package com.example.l1t2_term_project.Controller;
 
-import com.example.l1t2_term_project.Model.Player.Player;
-import com.example.l1t2_term_project.Model.Player.PlayerFilter;
-import com.example.l1t2_term_project.Model.Player.Position;
-import com.example.l1t2_term_project.Model.Player.Role;
+import com.example.l1t2_term_project.Model.Player.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
+import java.util.List;
 import java.util.function.UnaryOperator;
 
 
@@ -25,6 +23,7 @@ public class MarketController
 {
     // Non-FXML variables
     PlayerFilter filter = new PlayerFilter();
+    List<Player> players;
 
     @FXML
     public AnchorPane mainMenu;
@@ -161,6 +160,9 @@ public class MarketController
         // TODO: get Players from Player Collection
         filter.setName(searchField.getText());
         System.out.println(filter);
+        players = PlayerCollection.getFilteredPlayers(filter);
+        for (Player player : players) System.out.println(player);
+        System.out.println();
     }
 
     @FXML
