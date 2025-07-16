@@ -127,7 +127,7 @@ public class Club {
     private List<Club> clubs;
 
     public void transferPlayer(int playerId, Club fromClub, Club toClub, double fee) {
-        if (fromClub.canAffordTransfer(fee)) {
+        if (fromClub.canBuy(fee)) {
             fromClub.removePlayer(playerId);
             toClub.addPlayer(playerId);
             fromClub.setBudget(fromClub.getBudget() - fee);
