@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="900.0" style="-fx-background-radius: 15;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.ClubDetailsController">
+   <children>
+      <BorderPane layoutX="9.0" layoutY="9.0" prefHeight="697.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      
+          <center>
+              <VBox spacing="20" style="-fx-padding: 30;" styleClass="new-vbox" stylesheets="@../../../Style/Club_detail.css">
+                  <!-- Club Header -->
+                  <HBox alignment="CENTER_LEFT" spacing="20">
+                      <ImageView fx:id="clubLogo" fitHeight="80" fitWidth="80" />
+                      <Label fx:id="clubNameLabel" style="-fx-font-size: 24; -fx-font-weight: bold;" />
+                  </HBox>
+      
+                  <!-- Club Details -->
+                  <GridPane hgap="10" vgap="15">
+                      <Label style="-fx-font-weight: bold;" text="Manager:" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                     <font>
+                        <Font name="AmdtSymbols" size="12.0" />
+                     </font>
+                  </Label>
+                      <Label fx:id="managerLabel" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+      
+                      <Label style="-fx-font-weight: bold;" text="Stadium:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                      <Label fx:id="stadiumLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      
+                      <Label style="-fx-font-weight: bold;" text="Budget:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                      <Label fx:id="budgetLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      
+                      <Label style="-fx-font-weight: bold;" text="History:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                      <TextArea fx:id="historyText" editable="false" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <columnConstraints>
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+                  </GridPane>
+      
+                  <!-- Password Change Section -->
+                  <VBox spacing="10" style="-fx-padding: 20; -fx-background-color: #f5f5f5; -fx-background-radius: 10;" styleClass="new-vbox" stylesheets="@../../../Style/Club_detail.css">
+                      <Label style="-fx-font-weight: bold;" text="Change Password" />
+                      <PasswordField fx:id="currentPasswordField" promptText="Current Password" />
+                      <PasswordField fx:id="newPasswordField" promptText="New Password" />
+                      <PasswordField fx:id="confirmPasswordField" promptText="Confirm New Password" />
+                      <Button onAction="#handlePasswordChange" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Update Password" />
+                  </VBox>
+              </VBox>
+          </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
