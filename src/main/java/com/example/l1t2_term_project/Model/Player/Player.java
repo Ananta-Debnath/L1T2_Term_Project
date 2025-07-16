@@ -1,8 +1,10 @@
 package com.example.l1t2_term_project.Model.Player;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
+// NOTE: Change double to long
 public class Player
 {
     // Info
@@ -15,7 +17,7 @@ public class Player
     private String nationality;
     private String team;
     // private int teamID;
-    // private int jerseyNumber;
+    private int jerseyNumber;
 
     // Stats
     private int goals;
@@ -41,6 +43,8 @@ public class Player
         this.attributes = new ArrayList<>();
     }
     // Constructor
+    public Player(){};
+
     public Player(int id, String name, int age, float height, Role role, String nationality, String team, int goals, int assists, int tackles, int interceptions, int saves, int matchPlayed, String form, double weeklySalary, double value, String contractEnd, boolean forSale) {
         this.id = id;
         this.name = name;
@@ -105,6 +109,10 @@ public class Player
         this.role = role;
     }
 
+    public Position getPosition() {
+        return role.getPosition();
+    }
+
     public String getNationality() {
         return nationality;
     }
@@ -119,6 +127,14 @@ public class Player
 
     public void setTeam(String team) {
         this.team = team;
+    }
+
+    public int getJerseyNumber() {
+        return jerseyNumber;
+    }
+
+    public void setJerseyNumber(int jerseyNumber) {
+        this.jerseyNumber = jerseyNumber;
     }
 
     public int getGoals() {
@@ -209,6 +225,22 @@ public class Player
         this.extraRoles = extraRoles;
     }
 
+    public void setExtraRoles(String roles) throws IOException {
+        roles = roles.trim();
+        if (roles.isEmpty()) return;
+        String[] tokens = roles.split("-");
+
+        for (String role : tokens)
+        {
+            try
+            {
+                extraRoles.add(Role.valueOf(role));
+            } catch (IllegalArgumentException e) {
+                throw new IOException(e);
+            }
+        }
+    }
+
     public List<String> getAttributes() {
         return attributes;
     }
@@ -217,12 +249,89 @@ public class Player
         this.attributes = attributes;
     }
 
+    public void setAttributes(String str) {
+        str = str.trim();
+        if (str.isEmpty()) return;
+
+        String[] tokens = str.split("-");
+        attributes.addAll(List.of(tokens));
+    }
+
     public boolean isForSale() {
         return forSale;
     }
 
     public void setForSale(boolean forSale) {
         this.forSale = forSale;
+    }
+
+    public String toCSVLine() {
+        StringBuilder str = new StringBuilder();
+
+        str.append(id).append(",");
+        str.append(name).append(",");
+        str.append(age).append(",");
+        str.append(height).append(",");
+        str.append(role.name()).append(",");
+
+        // Join extra positions with "-"
+        for (int i = 0; i < extraRoles.size(); i++) {
+            str.append(extraRoles.get(i).name());
+            if (i < extraRoles.size() - 1) str.append("-");
+        }
+        str.append(",");
+
+        str.append(nationality).append(",");
+        str.append(team).append(",");
+        str.append(jerseyNumber).append(",");
+        str.append(goals).append(",");
+        str.append(assists).append(",");
+        str.append(tackles).append(",");
+        str.append(interceptions).append(",");
+        str.append(saves).append(",");
+        str.append(matchPlayed).append(",");
+
+        // Join attributes with "-"
+        for (int i = 0; i < attributes.size(); i++) {
+            str.append(attributes.get(i).trim());
+            if (i < attributes.size() - 1) str.append("-");
+        }
+        str.append(",");
+
+        str.append(form).append(",");
+        str.append(weeklySalary).append(",");
+        str.append(value).append(",");
+        str.append(contractEnd).append(",");
+        str.append(forSale);
+
+        return str.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", height=" + height +
+                ", role=" + role +
+                ", extraRoles=" + extraRoles +
+                ", nationality='" + nationality + '\'' +
+                ", team='" + team + '\'' +
+                ", jerseyNumber=" + jerseyNumber +
+                ", goals=" + goals +
+                ", assists=" + assists +
+                ", tackles=" + tackles +
+                ", interceptions=" + interceptions +
+                ", saves=" + saves +
+                ", matchPlayed=" + matchPlayed +
+                ", attributes=" + attributes +
+                ", form='" + form + '\'' +
+                ", weeklySalary=" + weeklySalary +
+                ", value=" + value +
+                ", contractEnd='" + contractEnd + '\'' +
+                ", forSale=" + forSale +
+                '}';
     }
 
     // Static methods

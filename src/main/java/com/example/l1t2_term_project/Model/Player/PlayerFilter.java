@@ -7,8 +7,8 @@ public class PlayerFilter {
     private String nationality;
     private String team;
     private boolean forSale;
-    private int startingValue;
-    private int endingValue;
+    private double minValue;
+    private double maxValue;
 
     public PlayerFilter() {
         name = null;
@@ -17,8 +17,8 @@ public class PlayerFilter {
         nationality = null;
         team = null;
         forSale = true;
-        startingValue = 0;
-        endingValue = 0;
+        minValue = 0;
+        maxValue = 0;
     }
 
     public String getName() {
@@ -26,7 +26,7 @@ public class PlayerFilter {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.toLowerCase();
     }
 
     public Position getPosition() {
@@ -69,20 +69,20 @@ public class PlayerFilter {
         this.forSale = forSale;
     }
 
-    public int getStartingValue() {
-        return startingValue;
+    public double getMinValue() {
+        return minValue;
     }
 
-    public void setStartingValue(int startingValue) {
-        this.startingValue = startingValue;
+    public void setMinValue(double minValue) {
+        this.minValue = minValue;
     }
 
-    public int getEndingValue() {
-        return endingValue;
+    public double getMaxValue() {
+        return maxValue;
     }
 
-    public void setEndingValue(int endingValue) {
-        this.endingValue = endingValue;
+    public void setMaxValue(double maxValue) {
+        this.maxValue = maxValue;
     }
 
     @Override
@@ -94,8 +94,8 @@ public class PlayerFilter {
                 ", nationality='" + nationality + '\'' +
                 ", team='" + team + '\'' +
                 ", forSale=" + forSale +
-                ", startingValue=" + startingValue +
-                ", endingValue=" + endingValue +
+                ", minValue=" + minValue +
+                ", maxValue=" + maxValue +
                 '}';
     }
 }

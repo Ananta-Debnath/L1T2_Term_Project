@@ -8,9 +8,9 @@ public enum Role {
 
     public Position getPosition() {
         switch (this) {
-            case ST: case LW: case RW: case CF: case CAM:
+            case ST: case LW: case RW: case CF:
                 return Position.ATTACKER;
-            case CM: case CDM: case LM: case RM:
+            case CM: case CAM: case CDM: case LM: case RM:
                 return Position.MIDFIELDER;
             case CB: case LB: case RB:
                 return Position.DEFENDER;

@@ -1,0 +1,7 @@
+id,name,age,height,role,extraPositions,nationality,team,jerseyNumber,goals,assists,tackles,interceptions,saves,matchPlayed,attributes,form,salary,value,contractEnd,forSale
+1,Lionel Messi,36,1.7,RW,CF-LW,Argentina,Inter Miami,10,25,30,0,0,0,25,Dribbling-Speed-Vision,Good,500000.0,1.0E8,2025-06-30,true
+2,Virgil van Dijk,32,1.93,CB,,Netherlands,Liverpool,4,5,1,85,70,0,30,Strength-Aerial-Passing,Excellent,200000.0,7.0E7,2026-06-30,false
+3,Thibaut Courtois,31,2.0,GK,,Belgium,Real Madrid,1,0,1,2,1,120,28,Reflexes-Height-Handling,Injured,300000.0,6.0E7,2027-12-31,true
+4,Kevin De Bruyne,32,1.81,CAM,CM,Belgium,Man City,17,12,18,8,3,0,22,Vision-Passing-LongShots,Fair,400000.0,8.5E7,2026-05-30,false
+5,Young Prospect,18,1.76,ST,,USA,Youth FC,99,0,0,0,0,0,0,,,0.0,0.0,2030-01-01,false
+6,Random Bench,25,1.85,CM,RB-CB,England,United FC,27,1,0,1,1,0,5,,Okay,8000.0,25000.0,2024-12-31,true
