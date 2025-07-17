@@ -21,7 +21,7 @@ public class Server {
     {
         ActivityLogger.log("Server Started");
         clientMap = new HashMap<>();
-        try (ServerSocket serverSocket = new ServerSocket(44444)) {
+        try (ServerSocket serverSocket = new ServerSocket(12913)) {
             while (true) { // Will be running forever
                 Socket clientSocket = serverSocket.accept();
                 serve(clientSocket);
