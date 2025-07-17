@@ -8,26 +8,9 @@ import java.time.format.DateTimeFormatter;
 
 public class ActivityLogger
 {
-    private static PrintWriter logFile;
+    private static final String logFilePath = "SystemLog.log";
 
-    public static void start()
-    {
-        try
-        {
-            logFile = new PrintWriter(new FileWriter("SystemLog.log", true));
-        }
-        catch (IOException e)
-        {
-            System.err.println("Failed to open SystemLog.log: " + e.getMessage());
-        }
-    }
-
-    public static void close()
-    {
-        if (logFile != null) logFile.close();
-    }
-
-    private static void logTime()
+    private static void logTime(PrintWriter logFile)
     {
         LocalDateTime timestamp = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -36,8 +19,15 @@ public class ActivityLogger
 
     public static void log(String message)
     {
-        logTime();
-        logFile.println(message);
-        logFile.flush();
+        try (PrintWriter logFile = new PrintWriter(new FileWriter(logFilePath, true)))
+        {
+            logTime(logFile);
+            logFile.println(message);
+            logFile.flush();
+        }
+        catch (IOException e)
+        {
+            System.err.println("Failed to open SystemLog.log: " + e.getMessage());
+        }
     }
 }
