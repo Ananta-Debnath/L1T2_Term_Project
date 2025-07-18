@@ -55,9 +55,14 @@ public class Server {
         new ServerThread(socketWrapper, this).start();
     }
 
-    public void addClient(String name, SocketWrapper socketWrapper)
+    public synchronized void addClient(String name, SocketWrapper socketWrapper)
     {
         clientMap.put(name, socketWrapper);
+    }
+
+    public synchronized void removeClient(String name)
+    {
+        clientMap.remove(name);
     }
 
     public void readClubs()
@@ -101,7 +106,7 @@ public class Server {
                 String[] tokens = line.split(",");
                 if (tokens.length != 2) throw new IOException("Invalid info length");
 
-                credentials.add(new LoginDTO(tokens[0].trim(), tokens[1].trim()));
+                credentials.add(new LoginDTO(tokens[0].trim(), tokens[1].trim(), false));
             }
         }
         catch (IOException e)

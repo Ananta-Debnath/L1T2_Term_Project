@@ -5,10 +5,12 @@ import java.io.Serializable;
 public class LoginDTO implements Serializable {
     private String username;
     private String password;
+    private boolean logInReq;
 
-    public LoginDTO(String username, String password) {
+    public LoginDTO(String username, String password, boolean logInReq) {
         this.username = username;
         this.password = password;
+        this.logInReq = logInReq;
     }
 
     public String getUsername() {
@@ -25,6 +27,14 @@ public class LoginDTO implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isLogInReq() {
+        return logInReq;
+    }
+
+    public void setLogInReq(boolean logInReq) {
+        this.logInReq = logInReq;
     }
 
     @Override

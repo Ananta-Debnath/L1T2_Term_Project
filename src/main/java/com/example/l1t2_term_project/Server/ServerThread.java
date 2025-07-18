@@ -26,7 +26,10 @@ public class ServerThread extends Thread {
                 Object obj = socketWrapper.read();
                 if (obj instanceof LoginDTO)
                 {
-                    validateLogin((LoginDTO) obj);
+                    LoginDTO loginDTO = (LoginDTO) obj;
+                    if (loginDTO.isLogInReq()) validateLogin(loginDTO);
+
+                    else handleSignOut(loginDTO);
                 }
                 else if (obj instanceof Player) {
 
@@ -64,23 +67,34 @@ public class ServerThread extends Thread {
     {
         if (server.validateCredentials(loginDTO))
         {
-            ActivityLogger.log("\"" + loginDTO.getUsername() + "\" logged in");
-            server.addClient(loginDTO.getUsername(), socketWrapper);
-            write(true);
+            synchronized (server) {
+                String username = loginDTO.getUsername();
+                if (username.equals("a")) username = "Liverpool"; // TODO: REMOVE THIS LATER
+                ActivityLogger.log("\"" + username + "\" logged in");
+                server.addClient(username, socketWrapper);
+                write(true);
 
-            write(server.getClub(loginDTO.getUsername()));
-            PlayerFilter filter = new PlayerFilter();
-            filter.setTeam(loginDTO.getUsername());
-            filter.setForSale(false);
-            System.out.println(filter);
-            List<Player> players = PlayerCollection.getFilteredPlayers(filter);
-            for (Player player : players) System.out.println(player);
-            write(players);
+                write(server.getClub(username));
+                PlayerFilter filter = new PlayerFilter();
+                filter.setTeam(username);
+                filter.setForSale(false);
+                System.out.println(filter);
+                List<Player> players = PlayerCollection.getFilteredPlayers(filter);
+                for (Player player : players) System.out.println(player);
+                write(players);
+            }
         }
         else
         {
             ActivityLogger.log("Failed login attempted - " + loginDTO);
             write(false);
         }
+    }
+
+    public void handleSignOut(LoginDTO loginDTO)
+    {
+        String username = loginDTO.getUsername();
+        server.removeClient(username);
+        ActivityLogger.log("\"" + username + "\" logged out");
     }
 }

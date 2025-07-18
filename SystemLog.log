@@ -28,3 +28,30 @@
 [2025-07-18 17:16:21] Client connected: Socket[addr=/127.0.0.1,port=52507,localport=12913]
 [2025-07-18 17:16:30] Failed login attempted - [username='Real Madrid', password='reta']
 [2025-07-18 17:16:35] "Real Madrid" logged in
+[2025-07-18 17:20:05] Server Started
+[2025-07-18 17:20:16] Client connected: Socket[addr=/127.0.0.1,port=52677,localport=12913]
+[2025-07-18 17:20:21] Failed login attempted - [username='Lifasa', password='afasf']
+[2025-07-18 17:20:31] "Liverpool" logged in
+[2025-07-18 17:23:05] Server Started
+[2025-07-18 17:23:13] Client connected: Socket[addr=/127.0.0.1,port=52800,localport=12913]
+[2025-07-18 17:23:21] "Liverpool" logged in
+[2025-07-18 17:23:57] In readCredentials method - java.io.IOException: Invalid info length
+[2025-07-18 17:23:57] Server Started
+[2025-07-18 17:24:25] Server Started
+[2025-07-18 17:24:38] Client connected: Socket[addr=/127.0.0.1,port=52858,localport=12913]
+[2025-07-18 17:24:41] "" logged in
+[2025-07-18 17:24:41] In getClub method - Club not found
+[2025-07-18 17:25:04] Server Started
+[2025-07-18 17:25:11] Client connected: Socket[addr=/127.0.0.1,port=52896,localport=12913]
+[2025-07-18 17:25:14] "a" logged in
+[2025-07-18 17:25:14] In getClub method - Club not found
+[2025-07-18 17:29:12] Server Started
+[2025-07-18 17:29:19] Client connected: Socket[addr=/127.0.0.1,port=53057,localport=12913]
+[2025-07-18 17:29:23] "Liverpool" logged in
+[2025-07-18 17:29:56] "Real Madrid" logged in
+[2025-07-18 17:40:36] Server Started
+[2025-07-18 17:40:47] Client connected: Socket[addr=/127.0.0.1,port=53449,localport=12913]
+[2025-07-18 17:41:09] "Liverpool" logged in
+[2025-07-18 17:41:13] "Liverpool" logged out
+[2025-07-18 17:41:22] "Real Madrid" logged in
+[2025-07-18 17:41:24] "Real Madrid" logged out

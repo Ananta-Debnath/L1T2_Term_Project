@@ -27,7 +27,7 @@ public class SignInController {
 
     @FXML
     public void switchToClub(ActionEvent actionEvent) {
-        LoginDTO loginDTO = new LoginDTO(clubNameTextField.getText(), passwordTextField.getText());
+        LoginDTO loginDTO = new LoginDTO(clubNameTextField.getText(), passwordTextField.getText(), true);
         client.write(loginDTO);
 
         Object obj = client.read();

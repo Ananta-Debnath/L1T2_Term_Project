@@ -1,6 +1,7 @@
 package com.example.l1t2_term_project.Controller;
 
 import com.example.l1t2_term_project.Client;
+import com.example.l1t2_term_project.DTO.LoginDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
 import com.example.l1t2_term_project.Model.Player.Player;
 import javafx.event.ActionEvent;
@@ -210,9 +211,18 @@ public class ClubController {
            // Platform.exit();
 
             //TODO:Log-out and load sign-in FXML
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/SignIn.fxml"));
+                Parent clubView = loader.load();
+                ((SignInController) loader.getController()).setClient(client);
+                clubSignOutButton.getScene().setRoot(clubView);
+                client.write(new LoginDTO(club.getName(), null, false));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
             // For immediate termination (optional)
-            System.exit(0);
+            // System.exit(0);
         }
     }
 
