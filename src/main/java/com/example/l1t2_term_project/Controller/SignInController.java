@@ -11,6 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.util.List;
 
 public class SignInController {
     private Client client;
@@ -36,6 +37,26 @@ public class SignInController {
             boolean valid = (boolean) obj;
             if (valid)
             {
+                // Get all nations
+                obj = client.read();
+                if (obj instanceof List<?> && ((List<?>) obj).get(0) instanceof String)
+                {
+                    @SuppressWarnings("unchecked")
+                    List<String> list = (List<String>) obj;
+                    client.setNationList(list);
+                }
+                else System.err.println("Wrong object type - " + obj.getClass());
+                // Get All clubs
+                obj = client.read();
+                if (obj instanceof List<?> && ((List<?>) obj).get(0) instanceof String)
+                {
+                    @SuppressWarnings("unchecked")
+                    List<String> list = (List<String>) obj;
+                    client.setClubList(list);
+                }
+                else System.err.println("Wrong object type - " + obj.getClass());
+
+                // Change scene
                 try{
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/Club.fxml"));
                     Parent clubView = loader.load();

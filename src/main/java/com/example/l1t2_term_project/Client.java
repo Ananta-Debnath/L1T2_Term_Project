@@ -10,9 +10,28 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Client extends Application {
     private SocketWrapper socketWrapper;
+    private List<String> nationList;
+    private List<String> clubList;
+
+    public List<String> getNationList() {
+        return nationList;
+    }
+
+    public void setNationList(List<String> nationList) {
+        this.nationList = nationList;
+    }
+
+    public List<String> getClubList() {
+        return clubList;
+    }
+
+    public void setClubList(List<String> clubList) {
+        this.clubList = clubList;
+    }
 
     @Override
     public void start(Stage stage) throws IOException {
