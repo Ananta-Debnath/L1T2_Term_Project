@@ -3,10 +3,7 @@ package com.example.l1t2_term_project.Model.Player;
 import com.example.l1t2_term_project.Utils.ActivityLogger;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -17,6 +14,24 @@ public class PlayerCollection
 
     public static List<Player> getPlayers() {
         return players;
+    }
+
+    public static Player getPlayer(int id)
+    {
+        for (Player p : players)
+        {
+            if (p.getId() == id) return p;
+
+            else if (p.getId() > id) break;
+        }
+        return null;
+    }
+
+    public static void addPlayer(Player player)
+    {
+        player.setId(players.get(players.size() - 1).getId() + 1);
+        players.add(player);
+        writeToFile();
     }
 
     public static void readFromFile() {
@@ -51,13 +66,15 @@ public class PlayerCollection
                 player.setAttributes(tokens[15]);
                 player.setForm(tokens[16]);
 
-                player.setWeeklySalary(Double.parseDouble(tokens[17]));
-                player.setValue(Double.parseDouble(tokens[18]));
+                player.setWeeklySalary(Long.parseLong(tokens[17]));
+                player.setValue(Long.parseLong(tokens[18]));
                 player.setContractEnd(tokens[19]);
                 player.setForSale(Boolean.parseBoolean(tokens[20]));
 
                 players.add(player);
             }
+
+            players.sort(Comparator.comparingInt(Player::getId));
         }
         catch (IOException e)
         {

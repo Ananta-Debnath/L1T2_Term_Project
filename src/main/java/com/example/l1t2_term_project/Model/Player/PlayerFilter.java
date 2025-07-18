@@ -9,8 +9,8 @@ public class PlayerFilter implements Serializable {
     private String nationality;
     private String team;
     private boolean forSale;
-    private double minValue;
-    private double maxValue;
+    private long minValue;
+    private long maxValue;
 
     public PlayerFilter() {
         name = null;
@@ -71,19 +71,19 @@ public class PlayerFilter implements Serializable {
         this.forSale = forSale;
     }
 
-    public double getMinValue() {
+    public long getMinValue() {
         return minValue;
     }
 
-    public void setMinValue(double minValue) {
+    public void setMinValue(long minValue) {
         this.minValue = minValue;
     }
 
-    public double getMaxValue() {
+    public long getMaxValue() {
         return maxValue;
     }
 
-    public void setMaxValue(double maxValue) {
+    public void setMaxValue(long maxValue) {
         this.maxValue = maxValue;
     }
 

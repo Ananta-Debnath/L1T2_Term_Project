@@ -255,10 +255,10 @@ public class MarketController
         filter.setNationality(nationField.getValue());
         filter.setTeam(clubField.getValue());
 
-        if (!minValueField.getText().isEmpty()) filter.setMinValue(Double.parseDouble(minValueField.getText()));
+        if (!minValueField.getText().isEmpty()) filter.setMinValue(Long.parseLong(minValueField.getText()));
         else filter.setMinValue(0);
 
-        if (!maxValueField.getText().isEmpty()) filter.setMaxValue(Double.parseDouble(maxValueField.getText()));
+        if (!maxValueField.getText().isEmpty()) filter.setMaxValue(Long.parseLong(maxValueField.getText()));
         else filter.setMaxValue(0);
 
         filter.setForSale(availabilityField.isSelected());

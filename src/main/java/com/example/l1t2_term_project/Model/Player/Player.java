@@ -32,8 +32,8 @@ public class Player implements Serializable
     private String form;
 
     // Other
-    private double weeklySalary;
-    private double value;
+    private long weeklySalary;
+    private long value;
     private String contractEnd; // Date
     private boolean forSale;
 
@@ -46,7 +46,7 @@ public class Player implements Serializable
     // Constructor
     public Player(){};
 
-    public Player(int id, String name, int age, float height, Role role, String nationality, String team, int goals, int assists, int tackles, int interceptions, int saves, int matchPlayed, String form, double weeklySalary, double value, String contractEnd, boolean forSale) {
+    public Player(int id, String name, int age, float height, Role role, String nationality, String team, int goals, int assists, int tackles, int interceptions, int saves, int matchPlayed, String form, long weeklySalary, long value, String contractEnd, boolean forSale) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -194,19 +194,19 @@ public class Player implements Serializable
         this.form = form;
     }
 
-    public double getWeeklySalary() {
+    public long getWeeklySalary() {
         return weeklySalary;
     }
 
-    public void setWeeklySalary(double weeklySalary) {
+    public void setWeeklySalary(long weeklySalary) {
         this.weeklySalary = weeklySalary;
     }
 
-    public double getValue() {
+    public long getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(long value) {
         this.value = value;
     }
 
