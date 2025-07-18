@@ -1,5 +1,8 @@
 package com.example.l1t2_term_project.Controller;
 
+import com.example.l1t2_term_project.Client;
+import com.example.l1t2_term_project.Model.Club.Club;
+import com.example.l1t2_term_project.Model.Player.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,10 +14,15 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
 public class ClubController {
+    private Client client;
+
+    private Club club;
+
     @FXML
     public AnchorPane clubMenu;
 
@@ -58,11 +66,53 @@ public class ClubController {
     public StackPane contentPane;
 
 
+    public void initializeValues(Client client)
+    {
+        this.client = client;
+
+        Object obj = client.read();
+        if (obj instanceof Club) club = (Club) obj;
+        else System.err.println("Wrong object type - " + obj.getClass());
+
+        System.out.println(club.getManagerName());
+
+        obj = client.read();
+        if (obj instanceof List<?>)
+        {
+            List<?> list = (List<?>) obj;
+            if (!list.isEmpty() && list.get(0) instanceof Player)
+            {
+                @SuppressWarnings("unchecked")
+                List<Player> players = (List<Player>) list;
+                for (Player player : players) club.addPlayer(player);
+            }
+            else
+            {
+                System.err.println("No Player or Wrong object");
+            }
+        }
+    }
+
     public void OpenPlayers(ActionEvent actionEvent) {
 
-        clubMenu.setVisible(false);
-        clubBorderPane.setVisible(true);
-        transferButton.setVisible(false);
+        try {
+            contentPane.getChildren().clear();
+            FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/PlayersList.fxml"));
+            Parent PlayersListView =loader.load();
+
+            PlayersListController playerslistController=loader.getController();
+            playerslistController.setClub(club);
+
+            contentPane.getChildren().setAll(PlayersListView);
+
+            clubMenu.setVisible(false);
+            clubBorderPane.setVisible(true);
+            transferButton.setVisible(false);
+
+        } catch(IOException e){
+            e.printStackTrace();
+
+        }
     }
 
     public void OpenClub(ActionEvent actionEvent) {

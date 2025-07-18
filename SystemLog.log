@@ -3,3 +3,28 @@
 [2025-07-18 02:59:18] Server Started
 [2025-07-18 03:28:35] Server Started
 [2025-07-18 03:28:43] Client connected: Socket[addr=/127.0.0.1,port=58663,localport=12913]
+[2025-07-18 14:45:31] In readCredentials method - java.io.FileNotFoundException: com\example\l1t2_term_project\Database\Credentials.csv (The system cannot find the path specified)
+[2025-07-18 14:45:31] Server Started
+[2025-07-18 14:48:18] Server Started
+[2025-07-18 16:06:01] Server Started
+[2025-07-18 16:56:46] Server Started
+[2025-07-18 17:01:29] Server Started
+[2025-07-18 17:01:38] Client connected: Socket[addr=/127.0.0.1,port=51763,localport=12913]
+[2025-07-18 17:01:53] "Liverpool" logged in
+[2025-07-18 17:07:18] Server Started
+[2025-07-18 17:07:25] Client connected: Socket[addr=/127.0.0.1,port=52098,localport=12913]
+[2025-07-18 17:07:50] Failed login attempted - [username=Liv, password=]
+[2025-07-18 17:08:00] "Liverpool" logged in
+[2025-07-18 17:10:26] Server Started
+[2025-07-18 17:10:33] Client connected: Socket[addr=/127.0.0.1,port=52236,localport=12913]
+[2025-07-18 17:10:57] "Liverpool" logged in
+[2025-07-18 17:11:53] Server Started
+[2025-07-18 17:11:58] Client connected: Socket[addr=/127.0.0.1,port=52325,localport=12913]
+[2025-07-18 17:12:07] Failed login attempted - [username=Liver, password=]
+[2025-07-18 17:12:19] "Liverpool" logged in
+[2025-07-18 17:14:51] Server Started
+[2025-07-18 17:15:02] Client connected: Socket[addr=/127.0.0.1,port=52457,localport=12913]
+[2025-07-18 17:15:12] "Real Madrid" logged in
+[2025-07-18 17:16:21] Client connected: Socket[addr=/127.0.0.1,port=52507,localport=12913]
+[2025-07-18 17:16:30] Failed login attempted - [username='Real Madrid', password='reta']
+[2025-07-18 17:16:35] "Real Madrid" logged in
