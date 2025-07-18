@@ -13,6 +13,7 @@ import java.util.List;
 public class ServerThread extends Thread {
     private final SocketWrapper socketWrapper;
     private final Server server;
+    private String clubName;
 
     public ServerThread(SocketWrapper socketWrapper, Server server) {
         ActivityLogger.log("Client connected: " + socketWrapper.getSocket());
@@ -30,6 +31,11 @@ public class ServerThread extends Thread {
                     if (loginDTO.isLogInReq()) validateLogin(loginDTO);
 
                     else handleSignOut(loginDTO);
+                }
+                else if (obj instanceof PlayerFilter)
+                {
+                    List<Player> players = PlayerCollection.getFilteredPlayers((PlayerFilter) obj, clubName);
+                    write(players); // Export filtered players
                 }
                 else if (obj instanceof Player) {
 
@@ -68,20 +74,21 @@ public class ServerThread extends Thread {
         if (server.validateCredentials(loginDTO))
         {
             synchronized (server) {
-                String username = loginDTO.getUsername();
-                if (username.equals("a")) username = "Liverpool"; // TODO: REMOVE THIS LATER
-                ActivityLogger.log("\"" + username + "\" logged in");
-                server.addClient(username, socketWrapper);
-                write(true);
+                clubName = loginDTO.getUsername();
+                if (clubName.equals("a")) clubName = "Liverpool"; // TODO: REMOVE THIS LATER
+                ActivityLogger.log("\"" + clubName + "\" logged in");
+                server.addClient(clubName, socketWrapper);
+                write(true); // Confirm
 
-                write(server.getClub(username));
+                write(PlayerCollection.getAllNationalities()); // Export nations
+                write(PlayerCollection.getAllTeams()); // Export clubs
+
+                write(server.getClub(clubName)); // Export logged in clubName
                 PlayerFilter filter = new PlayerFilter();
-                filter.setTeam(username);
+                filter.setTeam(clubName);
                 filter.setForSale(false);
-                System.out.println(filter);
-                List<Player> players = PlayerCollection.getFilteredPlayers(filter);
-                for (Player player : players) System.out.println(player);
-                write(players);
+                List<Player> players = PlayerCollection.getFilteredPlayers(filter, null);
+                write(players); // Export clubName players
             }
         }
         else

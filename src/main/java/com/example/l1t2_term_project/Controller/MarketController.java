@@ -1,15 +1,17 @@
 package com.example.l1t2_term_project.Controller;
 
+import com.example.l1t2_term_project.Client;
 import com.example.l1t2_term_project.Model.Player.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
 
 /*
@@ -24,6 +26,7 @@ TODO: quality improvements - mute, ...
 public class MarketController
 {
     // Non-FXML variables
+    private Client client;
     PlayerFilter filter = new PlayerFilter();
     List<Player> players;
 
@@ -68,14 +71,6 @@ public class MarketController
         positionField.getItems().addAll(Position.values());
 
         setRoleField();
-
-        nationField.getItems().add(null);
-        nationField.getItems().addAll(PlayerCollection.getAllNationalities()); // TODO: Use networking
-
-        clubField.getItems().add(null);
-        clubField.getItems().addAll(PlayerCollection.getAllTeams()); // TODO: use networking
-
-        playerTable.getItems().addAll(PlayerCollection.getFilteredPlayers(filter)); // TODO: use networking
 
 
         // TableView logic
@@ -172,6 +167,18 @@ public class MarketController
         });
     }
 
+    public void initializeValues(Client client)
+    {
+        this.client = client;
+        searchPlayers();
+
+        nationField.getItems().add(null);
+        nationField.getItems().addAll(client.getNationList());
+
+        clubField.getItems().add(null);
+        clubField.getItems().addAll(client.getClubList());
+    }
+
     @FXML
     public void openFilter() // Filter Button
     {
@@ -182,9 +189,17 @@ public class MarketController
     @FXML
     public void searchPlayers()
     {
-        // TODO: get Players from server
         filter.setName(searchField.getText());
-        players = PlayerCollection.getFilteredPlayers(filter);
+
+        client.write(filter);
+        Object obj = client.read();
+        if (obj instanceof List<?>)
+        {
+            List<?> list = (List<?>) obj;
+            players = list.stream().filter(Player.class::isInstance).map(Player.class::cast).collect(Collectors.toList());
+        }
+        else System.err.println("Wrong object");
+
         playerTable.getItems().clear();
         playerTable.getItems().addAll(players);
     }
@@ -230,6 +245,7 @@ public class MarketController
 
 
     // Non-FXML methods
+
     private PlayerFilter getFilterFromFields()
     {
         PlayerFilter filter = new PlayerFilter();

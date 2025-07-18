@@ -80,9 +80,10 @@ public class PlayerCollection
         }
     }
 
-    public static List<Player> getFilteredPlayers(PlayerFilter filter)
+    public static List<Player> getFilteredPlayers(PlayerFilter filter, String currentClub)
     {
         Stream<Player> filteredPlayers = players.stream();
+        if (currentClub != null) filteredPlayers = filteredPlayers.filter(p -> !p.getTeam().equalsIgnoreCase(currentClub)); // Ignore players of current club
 
         if (filter.getName() != null) filteredPlayers = filteredPlayers.filter(p -> {
                     String[] nameParts = p.getName().toLowerCase().split(" ");

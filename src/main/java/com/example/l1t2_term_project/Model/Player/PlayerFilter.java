@@ -1,6 +1,8 @@
 package com.example.l1t2_term_project.Model.Player;
 
-public class PlayerFilter {
+import java.io.Serializable;
+
+public class PlayerFilter implements Serializable {
     private String name;
     private Position position;
     private Role role;
