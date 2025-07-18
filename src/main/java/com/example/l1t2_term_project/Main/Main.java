@@ -9,7 +9,6 @@ public class Main
 {
     public static void main(String[] args)
     {
-        ActivityLogger.start();
 //        ActivityLogger.log("Success");
 
         PlayerCollection.readFromFile();
@@ -21,7 +20,5 @@ public class Main
 
 //        PlayerCollection.getPlayers().get(0).setName("Changed");
         PlayerCollection.writeToFile();
-
-        ActivityLogger.close();
     }
 }

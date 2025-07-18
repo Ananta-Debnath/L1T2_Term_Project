@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
 
-public class Club {
+public class Club implements Serializable{
 
     private String name;
     private String leagueName;
     private String country;
-    private double budget;
+    private long budget;
     private String stadiumName;
     private String managerName;
     private List<Integer> playerIDs;
@@ -20,19 +20,20 @@ public class Club {
     //private String password;
 
 
-    public Club(String name, String leagueName, String country, double budget, String stadiumName, String managerName) {
+    {
+        playerIDs=new ArrayList<>();
+        PlayersList=new ArrayList<>();
+    }
+
+    public Club(){ }
+
+    public Club(String name, String leagueName, String country, long budget, String stadiumName, String managerName) {
         this.name = name;
         this.leagueName = leagueName;
         this.country = country;
         this.budget = budget;
         this.stadiumName = stadiumName;
         this.managerName = managerName;
-        playerIDs=new ArrayList<>();
-        PlayersList=new ArrayList<>();
-    }
-
-    public Club(){
-       PlayersList =new ArrayList<>();
     }
 
     public String getName() {
@@ -59,11 +60,11 @@ public class Club {
         this.country = country;
     }
 
-    public double getBudget() {
+    public long getBudget() {
         return budget;
     }
 
-    public void setBudget(double budget) {
+    public void setBudget(long budget) {
         this.budget = budget;
     }
 
@@ -89,6 +90,14 @@ public class Club {
 
     public void setPlayerIDs(List<Integer> playerIDs) {
         this.playerIDs = playerIDs;
+    }
+
+    public List<Player> getPlayersList() {
+        return PlayersList;
+    }
+
+    public void setPlayersList(List<Player> playersList) {
+        PlayersList = playersList;
     }
 
     public void addPlayer(int playerID){

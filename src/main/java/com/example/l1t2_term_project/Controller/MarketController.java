@@ -282,8 +282,8 @@ public class MarketController
     private void showPlayerDetails(Player player)
     {
         // TODO: include more details
+        nameLabel.setText(player.getName());
         playerShowBox.setVisible(true);
         mainMenu.setDisable(true);
-        nameLabel.setText(player.getName());
     }
 }

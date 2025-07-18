@@ -1,11 +1,12 @@
 package com.example.l1t2_term_project.Model.Player;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 // NOTE: Change double to long
-public class Player
+public class Player implements Serializable
 {
     // Info
     private int id;
