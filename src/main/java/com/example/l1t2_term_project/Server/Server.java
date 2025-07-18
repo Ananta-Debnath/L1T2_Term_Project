@@ -3,21 +3,16 @@ package com.example.l1t2_term_project.Server;
 
 import com.example.l1t2_term_project.DTO.LoginDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
-import com.example.l1t2_term_project.Model.Player.Player;
 import com.example.l1t2_term_project.Model.Player.PlayerCollection;
-import com.example.l1t2_term_project.Model.Player.Role;
 import com.example.l1t2_term_project.Utils.ActivityLogger;
 import com.example.l1t2_term_project.Utils.SocketWrapper;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Server {
 
@@ -89,7 +84,19 @@ public class Server {
             }
         } catch (IOException e) {
             ActivityLogger.log("In readClubs method - " + e);
-            e.printStackTrace();
+        }
+    }
+
+    public void writeClubsToFile()
+    {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(CLUBS_PATH, false)))
+        {
+            writer.println("name,leagueName,country,budget,stadiumName,managerName");
+            for (Club club : clubs) writer.println(club.toCSVLine());
+        }
+        catch (IOException e)
+        {
+            ActivityLogger.log("In writeClubToFile method - " + e);
         }
     }
 
@@ -112,7 +119,6 @@ public class Server {
         catch (IOException e)
         {
             ActivityLogger.log("In readCredentials method - " + e);
-            e.printStackTrace();
         }
     }
 

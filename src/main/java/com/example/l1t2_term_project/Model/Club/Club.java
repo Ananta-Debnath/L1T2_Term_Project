@@ -125,9 +125,26 @@ public class Club implements Serializable{
         PlayersList.remove(p);
     }
 
-    public boolean canBuy(double value){
+    public boolean canBuy(long value){
 
         return budget>=value;
+    }
+
+    public void changeBudget(long amount)
+    {
+        budget += amount;
+    }
+
+    public String toCSVLine()
+    {
+        return String.join(",",
+                String.valueOf(name),
+                leagueName,
+                country,
+                String.valueOf(budget),
+                stadiumName,
+                managerName
+        );
     }
 
 
