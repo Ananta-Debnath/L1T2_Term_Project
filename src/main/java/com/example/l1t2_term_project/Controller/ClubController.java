@@ -71,12 +71,12 @@ public class ClubController {
     {
         this.client = client;
 
+        // Load club details
         Object obj = client.read();
         if (obj instanceof Club) club = (Club) obj;
         else System.err.println("Wrong object type - " + obj.getClass());
 
-        System.out.println(club.getManagerName());
-
+        // Load club player list
         obj = client.read();
         if (obj instanceof List<?>)
         {
@@ -168,6 +168,7 @@ public class ClubController {
             contentPane.getChildren().clear();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/Market.fxml"));
             Parent marketView = loader.load();
+            ((MarketController) loader.getController()).initializeValues(client);
             contentPane.getChildren().setAll(marketView); // Load into StackPane
 
             // Clear other visible elements
