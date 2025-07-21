@@ -3,10 +3,10 @@ package com.example.l1t2_term_project.DTO;
 public class BuyPlayerDTO {
     private int playerId;
     private String newClub;
-    private int newSalary;
+    private long newSalary;
     private String currentClub; // For verification
 
-    public BuyPlayerDTO(int playerId, String newClub, int newSalary, String currentClub) {
+    public BuyPlayerDTO(int playerId, String newClub, long newSalary, String currentClub) {
         this.playerId = playerId;
         this.newClub = newClub;
         this.newSalary = newSalary;
@@ -29,11 +29,11 @@ public class BuyPlayerDTO {
         this.newClub = newClub;
     }
 
-    public int getNewSalary() {
+    public long getNewSalary() {
         return newSalary;
     }
 
-    public void setNewSalary(int newSalary) {
+    public void setNewSalary(long newSalary) {
         this.newSalary = newSalary;
     }
 

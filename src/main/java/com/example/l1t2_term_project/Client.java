@@ -14,8 +14,17 @@ import java.util.List;
 
 public class Client extends Application {
     private SocketWrapper socketWrapper;
+    private String currentClub;
     private List<String> nationList;
     private List<String> clubList;
+
+    public String getCurrentClub() {
+        return currentClub;
+    }
+
+    public void setCurrentClub(String currentClub) {
+        this.currentClub = currentClub;
+    }
 
     public List<String> getNationList() {
         return nationList;

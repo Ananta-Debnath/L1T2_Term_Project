@@ -91,7 +91,6 @@ public class ServerThread extends Thread {
         {
             synchronized (server) {
                 clubName = loginDTO.getUsername();
-                if (clubName.equals("a")) clubName = "Liverpool"; // TODO: REMOVE THIS LATER
                 ActivityLogger.log("\"" + clubName + "\" logged in");
                 server.addClient(clubName, socketWrapper);
                 write(true); // Confirm
@@ -126,7 +125,7 @@ public class ServerThread extends Thread {
     {
         Player player = PlayerCollection.getPlayer(buyPlayerDTO.getPlayerId());
         assert player != null;
-        if (player.getTeam().equalsIgnoreCase(buyPlayerDTO.getCurrentClub()))
+        if (!player.getTeam().equalsIgnoreCase(buyPlayerDTO.getCurrentClub()) || !player.isForSale())
         {
             ActivityLogger.log("Player (ID: " + player.getId() + ") information mismatch");
             write(false);
@@ -139,6 +138,7 @@ public class ServerThread extends Thread {
             server.getClub(player.getTeam()).changeBudget(player.getValue());
 
             player.setForSale(false);
+            player.setWeeklySalary(buyPlayerDTO.getNewSalary());
             player.setTeam(buyer.getName());
 
             PlayerCollection.writeToFile();

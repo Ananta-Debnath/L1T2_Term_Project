@@ -82,3 +82,7 @@
 [2025-07-19 04:19:18] "Liverpool" logged in
 [2025-07-19 04:19:29] Server - Client connection disrupted
 [2025-07-21 22:07:01] Server Started
+[2025-07-22 00:20:33] Server Started
+[2025-07-22 00:20:41] Client connected: Socket[addr=/127.0.0.1,port=51256,localport=12913]
+[2025-07-22 00:20:49] "Liverpool" logged in
+[2025-07-22 00:21:07] Server - Client connection disrupted

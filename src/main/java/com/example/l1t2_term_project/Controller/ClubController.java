@@ -221,6 +221,7 @@ public class ClubController {
                 Parent clubView = loader.load();
                 ((SignInController) loader.getController()).setClient(client);
                 clubSignOutButton.getScene().setRoot(clubView);
+                client.setCurrentClub(null);
                 client.write(new LoginDTO(club.getName(), null, false));
             } catch (IOException e) {
                 throw new RuntimeException(e);

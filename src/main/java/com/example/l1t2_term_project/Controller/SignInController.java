@@ -37,6 +37,7 @@ public class SignInController {
             boolean valid = (boolean) obj;
             if (valid)
             {
+                client.setCurrentClub(loginDTO.getUsername());
                 // Get all nations
                 obj = client.read();
                 if (obj instanceof List<?> && ((List<?>) obj).get(0) instanceof String)
@@ -46,6 +47,7 @@ public class SignInController {
                     client.setNationList(list);
                 }
                 else System.err.println("Wrong object type - " + obj.getClass());
+
                 // Get All clubs
                 obj = client.read();
                 if (obj instanceof List<?> && ((List<?>) obj).get(0) instanceof String)
