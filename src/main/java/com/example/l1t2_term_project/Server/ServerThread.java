@@ -1,6 +1,8 @@
 package com.example.l1t2_term_project.Server;
 
+import com.example.l1t2_term_project.DTO.BuyPlayerDTO;
 import com.example.l1t2_term_project.DTO.LoginDTO;
+import com.example.l1t2_term_project.DTO.SellPlayerDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
 import com.example.l1t2_term_project.Model.Player.Player;
 import com.example.l1t2_term_project.Model.Player.PlayerCollection;
@@ -38,8 +40,16 @@ public class ServerThread extends Thread {
                     List<Player> players = PlayerCollection.getFilteredPlayers((PlayerFilter) obj, clubName);
                     write(players); // Export filtered players
                 }
+                else if (obj instanceof BuyPlayerDTO)
+                {
+                    handleTransfer((BuyPlayerDTO) obj);
+                }
+                else if (obj instanceof SellPlayerDTO)
+                {
+                    listForSale((SellPlayerDTO) obj);
+                }
                 else if (obj instanceof Player) {
-                    handlePlayerTransfer((Player) obj);
+                    addNewPlayer((Player) obj);
                 }
                 else {
                     break;
@@ -112,49 +122,79 @@ public class ServerThread extends Thread {
     }
 
     // TODO: Method not tested yet
-    public void handlePlayerTransfer(Player player)
+    public void handleTransfer(BuyPlayerDTO buyPlayerDTO)
     {
-        synchronized (server) {
-            Player original = PlayerCollection.getPlayer(player.getId());
-            boolean updated = false;
-            if (original == null) // New player
-            {
-                PlayerCollection.addPlayer(player);
-                updated = true;
-                ActivityLogger.log("New player added with ID - " + player.getId());
-            }
-            else if (original.getJerseyNumber() != player.getJerseyNumber()) // Change jersey number
-            {
-                original.setJerseyNumber(player.getJerseyNumber());
-                updated = true;
-                ActivityLogger.log("Player (ID: " + original.getId() + ") jersey number changed");
-            }
-            else if (player.isForSale()) // Listing for sale
-            {
-                original.setForSale(true);
-                original.setValue(player.getValue());
-                updated = true;
-                ActivityLogger.log("Player (ID: " + original.getId() + ") listed for sale");
-            }
-            else if (original.isForSale() && !player.isForSale()) // Buy
-            {
-                Club buyer = server.getClub(player.getTeam());
-                if (buyer.canBuy(original.getValue())) {
-                    buyer.changeBudget(-original.getValue());
-                    server.getClub(original.getTeam()).changeBudget(original.getValue());
-                    original.setForSale(false);
-                    original.setTeam(buyer.getName());
-                    server.writeClubsToFile();
-                    updated = true;
-                    ActivityLogger.log("Player (ID: " + original.getId() + ") transferd to '" + buyer.getName() + "'");
-                }
-                else {
-                    ActivityLogger.log("Transfer failed: '" + buyer.getName() + "' cannot afford Player (ID: " + original.getId() + ")");
-                }
-            }
+        Player player = PlayerCollection.getPlayer(buyPlayerDTO.getPlayerId());
+        assert player != null;
+        if (player.getTeam().equalsIgnoreCase(buyPlayerDTO.getCurrentClub()))
+        {
+            ActivityLogger.log("Player (ID: " + player.getId() + ") information mismatch");
+            write(false);
+            return;
+        }
 
-            if (updated) PlayerCollection.writeToFile();
-            write(updated);
+        Club buyer = server.getClub(buyPlayerDTO.getNewClub());
+        if (buyer.canBuy(player.getValue())) {
+            buyer.changeBudget(-player.getValue());
+            server.getClub(player.getTeam()).changeBudget(player.getValue());
+
+            player.setForSale(false);
+            player.setTeam(buyer.getName());
+
+            PlayerCollection.writeToFile();
+            server.writeClubsToFile();
+            ActivityLogger.log("Player (ID: " + player.getId() + ") transferd to '" + buyer.getName() + "'");
+            write(true);
+        }
+        else {
+            ActivityLogger.log("Transfer failed: '" + buyer.getName() + "' cannot afford Player (ID: " + player.getId() + ")");
+            write(false);
         }
     }
+
+    // TODO: Method not tested yet
+    public void listForSale(SellPlayerDTO sellPlayerDTO)
+    {
+        Player player = PlayerCollection.getPlayer(sellPlayerDTO.getPlayerId());
+        assert player != null;
+        if (player.getTeam().equalsIgnoreCase(sellPlayerDTO.getCurrentClub()))
+        {
+            ActivityLogger.log("Player (ID: " + player.getId() + ") information mismatch");
+            write(false);
+        }
+        else
+        {
+            player.setForSale(true);
+            player.setValue(player.getValue());
+
+            PlayerCollection.writeToFile();
+            ActivityLogger.log("Player (ID: " + player.getId() + ") listed for sale");
+            write(true);
+        }
+    }
+
+    // TODO: Method not tested yet
+    public void addNewPlayer(Player player)
+    {
+        Player original = PlayerCollection.getPlayer(player.getId());
+        if (original == null)
+        {
+            PlayerCollection.addPlayer(player);
+            ActivityLogger.log("New player added with ID - " + player.getId());
+            write(true);
+        }
+        else if (original.getJerseyNumber() != player.getJerseyNumber())
+        {
+            original.setJerseyNumber(player.getJerseyNumber());
+            PlayerCollection.writeToFile();
+            ActivityLogger.log("Player (ID: " + original.getId() + ") jersey number changed");
+            write(true);
+        }
+        else
+        {
+            ActivityLogger.log("Player (ID: " + player.getId() + ") information mismatch");
+            write(false);
+        }
+    }
+
 }
