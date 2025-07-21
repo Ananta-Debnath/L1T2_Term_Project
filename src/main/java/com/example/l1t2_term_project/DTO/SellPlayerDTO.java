@@ -1,6 +1,8 @@
 package com.example.l1t2_term_project.DTO;
 
-public class SellPlayerDTO {
+import java.io.Serializable;
+
+public class SellPlayerDTO implements Serializable {
     private int playerId;
     private int newValue;
     private String currentClub; // For verification

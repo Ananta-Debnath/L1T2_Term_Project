@@ -9,7 +9,7 @@ public class LoginDTO implements Serializable {
 
     public LoginDTO(String username, String password, boolean logInReq) {
         if (username.equalsIgnoreCase("a")) username = "Liverpool"; // TODO: remove later
-        if (password.equalsIgnoreCase("a")) password = "liver"; // TODO: remove later
+        if (password != null && password.equalsIgnoreCase("a")) password = "liver"; // TODO: remove later
         this.username = username;
         this.password = password;
         this.logInReq = logInReq;

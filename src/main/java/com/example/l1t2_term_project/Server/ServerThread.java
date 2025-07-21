@@ -71,7 +71,7 @@ public class ServerThread extends Thread {
         try{
             return socketWrapper.read();
         } catch (IOException | ClassNotFoundException e) {
-            ActivityLogger.log("Server - Client connection disrupted");
+            ActivityLogger.log("Server unable to read");
             return null;
         }
     }
@@ -81,7 +81,7 @@ public class ServerThread extends Thread {
         try{
             socketWrapper.write(obj);
         } catch (IOException e) {
-            ActivityLogger.log("Server - Client connection disrupted");
+            ActivityLogger.log("Server unable to write");
         }
     }
 

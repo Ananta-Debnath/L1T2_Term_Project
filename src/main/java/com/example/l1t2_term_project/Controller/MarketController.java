@@ -1,7 +1,9 @@
 package com.example.l1t2_term_project.Controller;
 
 import com.example.l1t2_term_project.Client;
+import com.example.l1t2_term_project.DTO.BuyPlayerDTO;
 import com.example.l1t2_term_project.Model.Player.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -58,12 +60,13 @@ public class MarketController
     public HBox playerShowBox;
     @FXML
     public Label nameLabel;
+    @FXML
+    public Button buyButton; // TODO: name the button for buying to this
 
 
     @FXML
     private void initialize()
     {
-        // TODO: Set the items in the ComboBox
         // Need player collection class for this
         // NOTE: the first element has to indicate null value
 
@@ -243,9 +246,34 @@ public class MarketController
         mainMenu.setDisable(false);
     }
 
+    @FXML
+    public void buyPlayer(ActionEvent actionEvent) // TODO: assign this method to the buy button
+    {
+        Player player = (Player) (((Button) actionEvent.getSource()).getUserData());
+        // TODO: show alert
+        client.write(new BuyPlayerDTO(player.getId(), client.getCurrentClub(), player.getWeeklySalary(), player.getTeam()));
+        Object obj = client.read();
+        if (obj instanceof Boolean)
+        {
+            if ((boolean) obj)
+            {
+                // TODO: show success message
+            }
+            else
+            {
+                // TODO: show failed message
+            }
+
+
+            playerShowBox.setVisible(false);
+            mainMenu.setDisable(false);
+            searchPlayers();
+        }
+        else System.err.println("Wrong object");
+    }
+
 
     // Non-FXML methods
-
     private PlayerFilter getFilterFromFields()
     {
         PlayerFilter filter = new PlayerFilter();
@@ -299,6 +327,7 @@ public class MarketController
     {
         // TODO: include more details
         nameLabel.setText(player.getName());
+        buyButton.setUserData(player);
         playerShowBox.setVisible(true);
         mainMenu.setDisable(true);
     }

@@ -65,7 +65,7 @@ public class Client extends Application {
         try{
             return socketWrapper.read();
         } catch (IOException | ClassNotFoundException e) {
-            ActivityLogger.log("Server - Client connection disrupted");
+            System.err.println("Client read error");
             return null;
         }
     }
@@ -75,7 +75,7 @@ public class Client extends Application {
         try{
             socketWrapper.write(obj);
         } catch (IOException e) {
-            ActivityLogger.log("Server - Client connection disrupted");
+            System.err.println("Client write error");
         }
     }
 }

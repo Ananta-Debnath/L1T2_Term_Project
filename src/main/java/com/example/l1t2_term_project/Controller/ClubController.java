@@ -15,10 +15,12 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+// TODO: add alert to close and use sign out then
 public class ClubController {
     private Client client;
 
@@ -77,7 +79,13 @@ public class ClubController {
         else System.err.println("Wrong object type - " + obj.getClass());
 
         // Load club player list
-        obj = client.read();
+        loadPlayers();
+    }
+
+    public void loadPlayers()
+    {
+        club.setPlayersList(new ArrayList<>()); // Clear list
+        Object obj = client.read();
         if (obj instanceof List<?>)
         {
             List<?> list = (List<?>) obj;
@@ -95,7 +103,7 @@ public class ClubController {
     }
 
     public void OpenPlayers(ActionEvent actionEvent) {
-
+    // TODO: potential error at players refreshing after buy
         try {
             contentPane.getChildren().clear();
             FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/PlayersList.fxml"));

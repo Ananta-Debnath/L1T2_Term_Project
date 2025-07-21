@@ -86,3 +86,48 @@
 [2025-07-22 00:20:41] Client connected: Socket[addr=/127.0.0.1,port=51256,localport=12913]
 [2025-07-22 00:20:49] "Liverpool" logged in
 [2025-07-22 00:21:07] Server - Client connection disrupted
+[2025-07-22 00:34:23] Server Started
+[2025-07-22 00:34:30] Client connected: Socket[addr=/127.0.0.1,port=52205,localport=12913]
+[2025-07-22 00:34:33] "Liverpool" logged in
+[2025-07-22 00:34:51] Server - Client connection disrupted
+[2025-07-22 00:34:51] Server - Client connection disrupted
+[2025-07-22 00:34:51] Server - Client connection disrupted
+[2025-07-22 00:34:56] Server - Client connection disrupted
+[2025-07-22 00:34:56] Server - Client connection disrupted
+[2025-07-22 00:37:54] Server Started
+[2025-07-22 00:37:59] Client connected: Socket[addr=/127.0.0.1,port=52442,localport=12913]
+[2025-07-22 00:38:02] "Liverpool" logged in
+[2025-07-22 00:38:15] Server - Client connection disrupted
+[2025-07-22 00:38:15] Server - Client connection disrupted
+[2025-07-22 00:38:15] Server - Client connection disrupted
+[2025-07-22 00:43:09] Server Started
+[2025-07-22 00:43:15] Client connected: Socket[addr=/127.0.0.1,port=52871,localport=12913]
+[2025-07-22 00:43:18] "Liverpool" logged in
+[2025-07-22 00:43:23] Server - Client connection disrupted
+[2025-07-22 00:43:23] Server - Client connection disrupted
+[2025-07-22 00:43:23] Server - Client connection disrupted
+[2025-07-22 00:45:17] Server Started
+[2025-07-22 00:45:23] Client connected: Socket[addr=/127.0.0.1,port=53090,localport=12913]
+[2025-07-22 00:45:26] "Liverpool" logged in
+[2025-07-22 00:45:33] Player (ID: 3) transferd to 'Liverpool'
+[2025-07-22 00:46:04] "Liverpool" logged in
+[2025-07-22 00:46:07] Server - Client connection disrupted
+[2025-07-22 00:47:45] Client connected: Socket[addr=/127.0.0.1,port=53327,localport=12913]
+[2025-07-22 00:47:53] "Real Madrid" logged in
+[2025-07-22 00:48:03] Server - Client connection disrupted
+[2025-07-22 00:48:34] Server Started
+[2025-07-22 00:48:42] Client connected: Socket[addr=/127.0.0.1,port=53432,localport=12913]
+[2025-07-22 00:48:50] "Real Madrid" logged in
+[2025-07-22 00:48:55] Player (ID: 3) transferd to 'Real Madrid'
+[2025-07-22 00:49:03] Server - Client connection disrupted
+[2025-07-22 00:50:08] Server Started
+[2025-07-22 00:50:12] Client connected: Socket[addr=/127.0.0.1,port=53563,localport=12913]
+[2025-07-22 00:50:15] "Liverpool" logged in
+[2025-07-22 00:50:21] Player (ID: 3) transferd to 'Liverpool'
+[2025-07-22 00:50:27] Server - Client connection disrupted
+[2025-07-22 00:50:39] Server Started
+[2025-07-22 00:50:44] Client connected: Socket[addr=/127.0.0.1,port=53645,localport=12913]
+[2025-07-22 00:50:52] "Real madrid" logged in
+[2025-07-22 00:50:57] Player (ID: 3) transferd to 'Real Madrid'
+[2025-07-22 00:51:02] "Real Madrid" logged out
+[2025-07-22 00:51:05] Server - Client connection disrupted
