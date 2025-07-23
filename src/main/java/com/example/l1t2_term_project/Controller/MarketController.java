@@ -29,7 +29,7 @@ public class MarketController
 {
     // Non-FXML variables
     private Client client;
-    PlayerFilter filter = new PlayerFilter();
+    PlayerFilter filter;
     List<Player> players;
 
     @FXML
@@ -173,6 +173,7 @@ public class MarketController
     public void initializeValues(Client client)
     {
         this.client = client;
+        filter = new PlayerFilter(client.getCurrentClub());
         searchPlayers();
 
         nationField.getItems().add(null);
@@ -219,7 +220,7 @@ public class MarketController
     @FXML
     public void resetFilter()
     {
-        setFieldsInFilterBox(new PlayerFilter());
+        setFieldsInFilterBox(new PlayerFilter(client.getCurrentClub()));
     }
 
     @FXML
@@ -276,7 +277,7 @@ public class MarketController
     // Non-FXML methods
     private PlayerFilter getFilterFromFields()
     {
-        PlayerFilter filter = new PlayerFilter();
+        PlayerFilter filter = new PlayerFilter(client.getCurrentClub());
 
         filter.setPosition(positionField.getValue());
         filter.setRole(roleField.getValue());

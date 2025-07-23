@@ -79,27 +79,7 @@ public class ClubController {
         else System.err.println("Wrong object type - " + obj.getClass());
 
         // Load club player list
-        loadPlayers();
-    }
-
-    public void loadPlayers()
-    {
-        club.setPlayersList(new ArrayList<>()); // Clear list
-        Object obj = client.read();
-        if (obj instanceof List<?>)
-        {
-            List<?> list = (List<?>) obj;
-            if (!list.isEmpty() && list.get(0) instanceof Player)
-            {
-                @SuppressWarnings("unchecked")
-                List<Player> players = (List<Player>) list;
-                for (Player player : players) club.addPlayer(player);
-            }
-            else
-            {
-                System.err.println("No Player or Wrong object");
-            }
-        }
+        club.loadPlayers(client);
     }
 
     public void OpenPlayers(ActionEvent actionEvent) {
@@ -107,8 +87,9 @@ public class ClubController {
         try {
             contentPane.getChildren().clear();
             FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/PlayersList.fxml"));
-            Parent PlayersListView =loader.load();
+            Parent PlayersListView = loader.load();
 
+            club.loadPlayers(client);
             PlayersListController playerslistController=loader.getController();
             playerslistController.setClub(club);
 
@@ -120,7 +101,6 @@ public class ClubController {
 
         } catch(IOException e){
             e.printStackTrace();
-
         }
     }
 
