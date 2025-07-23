@@ -32,6 +32,7 @@ public class SocketWrapper
     }
 
     public void write(Object o) throws IOException {
+        oos.reset();
         oos.writeObject(o);
     }
 

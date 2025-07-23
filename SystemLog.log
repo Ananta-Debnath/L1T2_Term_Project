@@ -184,3 +184,90 @@
 [2025-07-24 00:16:50] Client connected: Socket[addr=/127.0.0.1,port=52950,localport=12913]
 [2025-07-24 00:16:58] 'Liverpool' logged in
 [2025-07-24 00:18:09] Server - Client connection disrupted
+[2025-07-24 02:39:41] Server Started
+[2025-07-24 02:39:51] Client connected: Socket[addr=/127.0.0.1,port=59781,localport=12913]
+[2025-07-24 02:39:58] Client connected: Socket[addr=/127.0.0.1,port=59792,localport=12913]
+[2025-07-24 02:40:02] 'Liverpool' logged in
+[2025-07-24 02:40:09] 'real madrid' logged in
+[2025-07-24 02:40:25] In getClub method - Club not found
+[2025-07-24 02:40:25] Player (ID: 6) transferd to 'Liverpool'
+[2025-07-24 02:40:31] Player (ID: 6) information mismatch
+[2025-07-24 02:42:35] 'Real Madrid' logged out
+[2025-07-24 02:42:42] 'real madrid' logged in
+[2025-07-24 02:43:22] Server - Client connection disrupted
+[2025-07-24 02:43:24] Server - Client connection disrupted
+[2025-07-24 02:43:59] Client connected: Socket[addr=/127.0.0.1,port=59997,localport=12913]
+[2025-07-24 02:44:07] 'real madrid' logged in
+[2025-07-24 02:44:48] Server - Client connection disrupted
+[2025-07-24 02:46:48] Server Started
+[2025-07-24 02:46:58] Client connected: Socket[addr=/127.0.0.1,port=60118,localport=12913]
+[2025-07-24 02:47:06] Client connected: Socket[addr=/127.0.0.1,port=60129,localport=12913]
+[2025-07-24 02:47:17] 'Liverpool' logged in
+[2025-07-24 02:47:32] 'real madrid' logged in
+[2025-07-24 02:48:16] In getClub method - Club not found
+[2025-07-24 02:48:16] Player (ID: 6) transferd to 'Liverpool'
+[2025-07-24 02:48:24] Player (ID: 6) information mismatch
+[2025-07-24 02:50:54] Server - Client connection disrupted
+[2025-07-24 02:50:56] Server - Client connection disrupted
+[2025-07-24 02:53:15] Server Started
+[2025-07-24 02:54:10] Server Started
+[2025-07-24 02:54:17] Client connected: Socket[addr=/127.0.0.1,port=60391,localport=12913]
+[2025-07-24 02:54:26] Client connected: Socket[addr=/127.0.0.1,port=60405,localport=12913]
+[2025-07-24 02:54:41] 'Liverpool' logged in
+[2025-07-24 02:54:48] 'real madrid' logged in
+[2025-07-24 02:56:29] Server unable to read
+[2025-07-24 02:57:11] Server Started
+[2025-07-24 02:57:30] Client connected: Socket[addr=/127.0.0.1,port=60551,localport=12913]
+[2025-07-24 02:57:36] Client connected: Socket[addr=/127.0.0.1,port=60563,localport=12913]
+[2025-07-24 02:57:46] 'Liverpool' logged in
+[2025-07-24 02:57:52] 'real madrid' logged in
+[2025-07-24 02:58:16] In getClub method - Club not found
+[2025-07-24 02:58:16] Player (ID: 6) transferred to 'Real Madrid'
+[2025-07-24 02:58:20] Player (ID: 6) information mismatch
+[2025-07-24 03:02:24] Server Started
+[2025-07-24 03:02:30] Client connected: Socket[addr=/127.0.0.1,port=60763,localport=12913]
+[2025-07-24 03:02:36] 'Liverpool' logged in
+[2025-07-24 03:02:42] Server unable to read
+[2025-07-24 03:03:00] Client connected: Socket[addr=/127.0.0.1,port=60785,localport=12913]
+[2025-07-24 03:03:15] 'Liverpool' logged in
+[2025-07-24 03:03:33] Server unable to read
+[2025-07-24 03:08:59] Server Started
+[2025-07-24 03:09:06] Client connected: Socket[addr=/127.0.0.1,port=61018,localport=12913]
+[2025-07-24 03:09:11] Client connected: Socket[addr=/127.0.0.1,port=61028,localport=12913]
+[2025-07-24 03:09:14] 'real madrid' logged in
+[2025-07-24 03:09:21] In getClub method - Club not found
+[2025-07-24 03:09:21] Player (ID: 6) transferred to 'Real Madrid'
+[2025-07-24 03:09:28] 'Liverpool' logged in
+[2025-07-24 03:10:10] In getClub method - Club not found
+[2025-07-24 03:10:10] Player (ID: 1) transferred to 'Liverpool'
+[2025-07-24 03:14:42] Server Started
+[2025-07-24 03:14:50] Client connected: Socket[addr=/127.0.0.1,port=61303,localport=12913]
+[2025-07-24 03:14:55] 'Liverpool' logged in
+[2025-07-24 03:14:56] Client connected: Socket[addr=/127.0.0.1,port=61312,localport=12913]
+[2025-07-24 03:15:15] Server unable to read
+[2025-07-24 03:15:23] Client connected: Socket[addr=/127.0.0.1,port=61340,localport=12913]
+[2025-07-24 03:15:28] 'real madrid' logged in
+[2025-07-24 03:15:34] In getClub method - Club not found
+[2025-07-24 03:15:34] Player (ID: 1) transferred to 'Real Madrid'
+[2025-07-24 03:19:04] Server Started
+[2025-07-24 03:19:09] Client connected: Socket[addr=/127.0.0.1,port=61499,localport=12913]
+[2025-07-24 03:19:14] Client connected: Socket[addr=/127.0.0.1,port=61507,localport=12913]
+[2025-07-24 03:19:20] 'Liverpool' logged in
+[2025-07-24 03:19:27] 'real madrid' logged in
+[2025-07-24 03:19:37] In getClub method - Club not found
+[2025-07-24 03:19:37] Player (ID: 6) transferred to 'Real Madrid'
+[2025-07-24 03:20:09] Server unable to read
+[2025-07-24 03:20:10] Server unable to read
+[2025-07-24 03:23:10] Server Started
+[2025-07-24 03:23:16] Client connected: Socket[addr=/127.0.0.1,port=61679,localport=12913]
+[2025-07-24 03:23:20] 'Liverpool' logged in
+[2025-07-24 03:23:24] Client connected: Socket[addr=/127.0.0.1,port=61691,localport=12913]
+[2025-07-24 03:23:47] Server Started
+[2025-07-24 03:23:54] Client connected: Socket[addr=/127.0.0.1,port=61718,localport=12913]
+[2025-07-24 03:23:59] 'Liverpool' logged in
+[2025-07-24 03:24:01] Client connected: Socket[addr=/127.0.0.1,port=61728,localport=12913]
+[2025-07-24 03:24:10] 'real madrid' logged in
+[2025-07-24 03:24:16] In getClub method - Club not found
+[2025-07-24 03:24:16] Player (ID: 6) transferred to 'Real Madrid'
+[2025-07-24 03:24:30] Server unable to read
+[2025-07-24 03:24:32] Server unable to read

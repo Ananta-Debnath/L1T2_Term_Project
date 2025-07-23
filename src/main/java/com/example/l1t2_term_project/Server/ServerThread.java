@@ -56,7 +56,7 @@ public class ServerThread extends Thread {
                 }
             }
         } catch (IOException | ClassNotFoundException e) {
-            ActivityLogger.log("Server - Client connection disrupted");
+            ActivityLogger.log("Server unable to read");
         } finally {
             try {
                 socketWrapper.closeConnection();
@@ -139,7 +139,7 @@ public class ServerThread extends Thread {
 
                 PlayerCollection.writeToFile();
                 server.writeClubsToFile();
-                ActivityLogger.log("Player (ID: " + player.getId() + ") transferd to '" + buyer.getName() + "'");
+                ActivityLogger.log("Player (ID: " + player.getId() + ") transferred to '" + buyer.getName() + "'");
                 write(true);
             } else {
                 ActivityLogger.log("Transfer failed: '" + buyer.getName() + "' cannot afford Player (ID: " + player.getId() + ")");
