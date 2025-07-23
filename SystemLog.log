@@ -180,3 +180,7 @@
 [2025-07-23 23:43:18] Server - Client connection disrupted
 [2025-07-23 23:43:21] 'Real Madrid' logged out
 [2025-07-23 23:43:23] Server - Client connection disrupted
+[2025-07-24 00:16:46] Server Started
+[2025-07-24 00:16:50] Client connected: Socket[addr=/127.0.0.1,port=52950,localport=12913]
+[2025-07-24 00:16:58] 'Liverpool' logged in
+[2025-07-24 00:18:09] Server - Client connection disrupted

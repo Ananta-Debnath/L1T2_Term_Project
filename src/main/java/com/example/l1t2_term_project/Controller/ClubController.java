@@ -83,7 +83,6 @@ public class ClubController {
     }
 
     public void OpenPlayers(ActionEvent actionEvent) {
-    // TODO: potential error at players refreshing after buy
         try {
             contentPane.getChildren().clear();
             FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/PlayersList.fxml"));

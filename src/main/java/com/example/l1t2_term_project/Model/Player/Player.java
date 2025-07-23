@@ -5,7 +5,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-// NOTE: Change double to long
 public class Player implements Serializable
 {
     // Info

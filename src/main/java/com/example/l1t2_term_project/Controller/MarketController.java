@@ -161,12 +161,16 @@ public class MarketController
         minValueField.setTextFormatter(new TextFormatter<>(filter));
         maxValueField.setTextFormatter(new TextFormatter<>(filter));
         // NOTE: change listener to focus change??
-        minValueField.textProperty().addListener((obs, oldText, newText) -> {
-            onMinValueChange();
+        minValueField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) { // Focus lost
+                onMinValueChange();
+            }
         });
 
-        maxValueField.textProperty().addListener((obs, oldText, newText) -> {
-            onMaxValueChange();
+        maxValueField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) { // Focus lost
+                onMaxValueChange();
+            }
         });
     }
 
