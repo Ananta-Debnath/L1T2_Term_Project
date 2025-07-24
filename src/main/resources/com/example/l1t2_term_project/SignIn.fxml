@@ -25,7 +25,7 @@
                         <Label alignment="CENTER" style="-fx-font-size: 25; -fx-text-fill: #676127;" text="Sign-in to continue" />
                         <TextField fx:id="clubNameTextField" promptText="Enter Club Name" />
                         <PasswordField fx:id="passwordTextField" promptText="Password" />
-                        <Button fx:id="signInButton" mnemonicParsing="false" onAction="#switchToClub" style="-fx-background-color: #4CAF50; -fx-text-fill: #ffffff;" text="Sign In" />
+                        <Button fx:id="signInButton" defaultButton="true" mnemonicParsing="false" onAction="#switchToClub" style="-fx-background-color: #4CAF50; -fx-text-fill: #ffffff;" text="Sign In" />
                      </children>
                   </VBox>
                </children>

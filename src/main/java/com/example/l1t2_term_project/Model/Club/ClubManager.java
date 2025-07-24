@@ -51,7 +51,7 @@ private static Club clubInfo(String clubName)throws IOException{
 
             if(tokens[0].equalsIgnoreCase(clubName)){
 
-                return new Club(tokens[0],tokens[1],tokens[2],Double.parseDouble(tokens[3]),tokens[4],tokens[5]);
+                return new Club(tokens[0],tokens[1],tokens[2],Long.parseLong(tokens[3]),tokens[4],tokens[5]);
             }
 
         }
@@ -119,8 +119,8 @@ private static Club clubInfo(String clubName)throws IOException{
         player.setAttributes(tokens[15]);
         player.setForm(tokens[16]);
 
-        player.setWeeklySalary(Double.parseDouble(tokens[17]));
-        player.setValue(Double.parseDouble(tokens[18]));
+        player.setWeeklySalary(Long.parseLong(tokens[17]));
+        player.setValue(Long.parseLong(tokens[18]));
         player.setContractEnd(tokens[19]);
         player.setForSale(Boolean.parseBoolean(tokens[20]));
 
