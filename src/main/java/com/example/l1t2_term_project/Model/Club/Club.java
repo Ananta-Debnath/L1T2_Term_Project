@@ -36,6 +36,14 @@ public class Club implements Serializable{
         this.managerName = managerName;
     }
 
+    public void setPlayersList(List<Player> playersList) {
+        PlayersList = playersList;
+    }
+
+    public List<Player> getPlayersList() {
+        return PlayersList;
+    }
+
     public String getName() {
         return name;
     }
@@ -92,13 +100,7 @@ public class Club implements Serializable{
         this.playerIDs = playerIDs;
     }
 
-    public List<Player> getPlayersList() {
-        return PlayersList;
-    }
-
-    public void setPlayersList(List<Player> playersList) {
-        PlayersList = playersList;
-    }
+   
 
     public void addPlayer(int playerID){
 
@@ -135,19 +137,26 @@ public class Club implements Serializable{
         budget += amount;
     }
 
-    public String toCSVLine()
-    {
-        return String.join(",",
-                String.valueOf(name),
-                leagueName,
-                country,
-                String.valueOf(budget),
-                stadiumName,
-                managerName
-        );
+
+
+
+
+    public String toCSVLine(){
+
+        StringBuilder str=new StringBuilder();
+
+        str.append(name).append(",");
+        str.append(leagueName).append(",");
+        str.append(country).append(",");
+        str.append(budget).append(",");
+        str.append(stadiumName).append(",");
+        str.append(managerName);
+
+        return str.toString();
+
     }
 
-
+    
     /*
     public class ClubManager {
     private List<Club> clubs;

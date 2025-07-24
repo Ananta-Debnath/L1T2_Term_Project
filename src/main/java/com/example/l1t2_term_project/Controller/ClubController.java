@@ -124,7 +124,11 @@ public class ClubController {
             Parent clubDetailView = loader.load();
             contentPane.getChildren().setAll(clubDetailView); // Load into StackPane
 
+            //TODO:read from network
+            ClubDetailsController controller = loader.getController();
 
+            controller.setClub(this.club);
+            
             clubMenu.setVisible(false);
             clubBorderPane.setVisible(true);
             transferButton.setVisible(false);
@@ -228,4 +232,24 @@ public class ClubController {
     }
 
 
+    public void switchToPlayerOffers(ActionEvent actionEvent) {
+
+        try {
+            contentPane.getChildren().clear();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/Offers.fxml"));
+            Parent offerView = loader.load();
+            //((OffersController) loader.getController()).initializeValues(client);
+            contentPane.getChildren().setAll(offerView); // Load into StackPane
+
+            // Clear other visible elements
+            clubMenu.setVisible(false);
+            clubBorderPane.setVisible(true);
+            transferButton.setVisible(false);
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+
+
+    }
 }

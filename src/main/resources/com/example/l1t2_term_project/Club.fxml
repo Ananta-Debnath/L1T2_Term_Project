@@ -55,7 +55,7 @@
                   <VBox fx:id="transferButton" alignment="CENTER" prefHeight="500.0" prefWidth="692.0" spacing="100.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <Button fx:id="transferBuy" mnemonicParsing="false" onAction="#OpenMarket" prefHeight="55.0" prefWidth="104.0" text="BUY" />
-                        <Button fx:id="transferSell" layoutX="134.0" layoutY="147.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="104.0" text="SELL" />
+                        <Button fx:id="transferSell" layoutX="134.0" layoutY="147.0" mnemonicParsing="false" onAction="#switchToPlayerOffers" prefHeight="55.0" prefWidth="104.0" text="OFFERS" />
                      </children>
                   </VBox>
                </children>

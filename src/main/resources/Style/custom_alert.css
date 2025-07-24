@@ -35,18 +35,22 @@
 
 .custom-alert .button:hover {
     -fx-background-color: #4d4d4d;
+    -fx-cursor: hand;
 }
 
 .custom-alert .button:pressed {
     -fx-background-color: #2c2c2c;
+    -fx-cursor: hand;
 }
 
 .custom-alert .button:default {
     -fx-background-color: #0078d7;
+    -fx-cursor: hand;
 }
 
 .custom-alert .button:default:hover {
     -fx-background-color: #0010f0;
+    -fx-cursor: hand;
 }
 
 .custom-alert .graphic-container {

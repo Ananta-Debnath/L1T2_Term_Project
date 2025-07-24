@@ -47,6 +47,7 @@ public class Client extends Application {
     }
 
     public static void main(String[] args) {
+       // Main.main(args);
         launch();
     }
 

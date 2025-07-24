@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.l1t2_term_project.Controller.OffersController">
+    <top>
+        <Label text="Transfer Offers" style="-fx-font-size: 24; -fx-font-weight: bold;"
+               BorderPane.alignment="CENTER"/>
+    </top>
+
+    <center>
+        <TabPane>
+            <tabs>
+                <Tab text="Incoming Offers">
+                    <VBox spacing="10" style="-fx-padding: 15;">
+                        <TableView fx:id="incomingOffersTable">
+                            <columns>
+                                <TableColumn text="Player" prefWidth="150">
+                                    <cellValueFactory><PropertyValueFactory property="playerName"/></cellValueFactory>
+                                </TableColumn>
+                                <TableColumn text="From Club" prefWidth="150">
+                                    <cellValueFactory><PropertyValueFactory property="fromClub"/></cellValueFactory>
+                                </TableColumn>
+                                <TableColumn text="Offer Amount" prefWidth="100">
+                                    <cellValueFactory><PropertyValueFactory property="amount"/></cellValueFactory>
+                                </TableColumn>
+                            </columns>
+                        </TableView>
+
+                        <VBox fx:id="offerActions" spacing="10" style="-fx-padding: 10; -fx-background-color: #f5f5f5;"
+                              visible="false">
+                            <Label fx:id="selectedOfferLabel" style="-fx-font-weight: bold;"/>
+                            <HBox spacing="10">
+                                <Button text="Accept" onAction="#acceptOffer" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                                <Button text="Reject" onAction="#rejectOffer" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+                                <Button text="Counter" onAction="#counterOffer" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                            </HBox>
+                            <VBox fx:id="counterOfferBox" spacing="5" visible="false">
+                                <Label text="Your Counter Offer:"/>
+                                <TextField fx:id="counterAmountField" promptText="Amount"/>
+                                <Button text="Submit Counter" onAction="#submitCounter" style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+                            </VBox>
+                        </VBox>
+                    </VBox>
+                </Tab>
+
+                <Tab text="Outgoing Offers">
+                    <TableView fx:id="outgoingOffersTable" style="-fx-padding: 15;">
+                        <columns>
+                            <TableColumn text="Player" prefWidth="150">
+                                <cellValueFactory><PropertyValueFactory property="playerName"/></cellValueFactory>
+                            </TableColumn>
+                            <TableColumn text="To Club" prefWidth="150">
+                                <cellValueFactory><PropertyValueFactory property="toClub"/></cellValueFactory>
+                            </TableColumn>
+                            <TableColumn text="Offer Amount" prefWidth="100">
+                                <cellValueFactory><PropertyValueFactory property="amount"/></cellValueFactory>
+                            </TableColumn>
+                            <TableColumn text="Status" prefWidth="100">
+                                <cellValueFactory><PropertyValueFactory property="status"/></cellValueFactory>
+                            </TableColumn>
+                        </columns>
+                    </TableView>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>

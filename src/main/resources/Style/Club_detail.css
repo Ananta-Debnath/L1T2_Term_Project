@@ -37,7 +37,7 @@
     -fx-background-color: #4e351e;
     
     -fx-background-radius: 15;
-    -fx-border-color: #FFD700;
+
     -fx-border-width: 1;
     -fx-border-radius: 15;
     -fx-padding: 20;
@@ -79,7 +79,7 @@
 
 .new-vbox .button:hover{
 
-    background-color: #FFEE58;
+
     -fx-background-color: #FFEE58;
     -fx-scale-x: 1.03;
     -fx-scale-y: 1.03;
