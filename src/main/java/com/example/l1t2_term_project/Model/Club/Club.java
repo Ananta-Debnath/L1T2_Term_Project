@@ -1,6 +1,8 @@
 package com.example.l1t2_term_project.Model.Club;
 
+import com.example.l1t2_term_project.Client;
 import com.example.l1t2_term_project.Model.Player.Player;
+import com.example.l1t2_term_project.Model.Player.PlayerFilter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,7 +102,7 @@ public class Club implements Serializable{
         this.playerIDs = playerIDs;
     }
 
-   
+
 
     public void addPlayer(int playerID){
 
@@ -156,7 +158,49 @@ public class Club implements Serializable{
 
     }
 
-    
+    public static Club readFromServer(Client client)
+    {
+        client.write(client.getCurrentClub());
+        Object obj = client.read();
+        if (obj instanceof Club) return (Club) obj;
+        else
+        {
+            System.err.println("Wrong object type - " + obj.getClass());
+            return new Club();
+        }
+    }
+
+    public void loadPlayers(Client client)
+    {
+        PlayersList.clear(); // Clear list
+
+        PlayerFilter filter = new PlayerFilter(null);
+        filter.setForSale(false);
+        filter.setTeam(this.name);
+        client.write(filter);
+
+        Object obj = client.read();
+        if (obj instanceof List<?>)
+        {
+            List<?> list = (List<?>) obj;
+            if (list.isEmpty())
+            {
+                System.out.println("No players found");
+            }
+            else if (list.get(0) instanceof Player)
+            {
+                @SuppressWarnings("unchecked")
+                List<Player> players = (List<Player>) list;
+                for (Player player : players) addPlayer(player);
+            }
+            else
+            {
+                System.err.println("Wrong object");
+            }
+        }
+    }
+
+
     /*
     public class ClubManager {
     private List<Club> clubs;

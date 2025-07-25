@@ -12,7 +12,9 @@ public class PlayerFilter implements Serializable {
     private long minValue;
     private long maxValue;
 
-    public PlayerFilter() {
+    private String currentClub;
+
+    public PlayerFilter(String currentClub) {
         name = null;
         position = null;
         role = null;
@@ -21,6 +23,8 @@ public class PlayerFilter implements Serializable {
         forSale = true;
         minValue = 0;
         maxValue = 0;
+
+        this.currentClub = currentClub;
     }
 
     public String getName() {
@@ -85,6 +89,14 @@ public class PlayerFilter implements Serializable {
 
     public void setMaxValue(long maxValue) {
         this.maxValue = maxValue;
+    }
+
+    public String getCurrentClub() {
+        return currentClub;
+    }
+
+    public void setCurrentClub(String currentClub) {
+        this.currentClub = currentClub;
     }
 
     @Override

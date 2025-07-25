@@ -1,7 +1,7 @@
 System Log --- DONE
 Player --- DONE
-Club
-PlayerCollection
+Club --- DONE
+PlayerCollection --- DONE
 PlayerImage
 Transfer
 Formation

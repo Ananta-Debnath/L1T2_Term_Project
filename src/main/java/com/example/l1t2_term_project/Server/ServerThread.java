@@ -1,6 +1,8 @@
 package com.example.l1t2_term_project.Server;
 
+import com.example.l1t2_term_project.DTO.BuyPlayerDTO;
 import com.example.l1t2_term_project.DTO.LoginDTO;
+import com.example.l1t2_term_project.DTO.SellPlayerDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
 import com.example.l1t2_term_project.Model.Player.Player;
 import com.example.l1t2_term_project.Model.Player.PlayerCollection;
@@ -23,6 +25,9 @@ public class ServerThread extends Thread {
     }
 
     public void run() {
+        write(PlayerCollection.getAllNationalities()); // Export nations
+        write(PlayerCollection.getAllTeams()); // Export clubs
+
         try {
             while (true) {
                 Object obj = socketWrapper.read();
@@ -33,20 +38,32 @@ public class ServerThread extends Thread {
 
                     else handleSignOut(loginDTO);
                 }
+                else if (obj instanceof String)
+                {
+                    write(server.getClub(clubName)); // Export logged in club
+                }
                 else if (obj instanceof PlayerFilter)
                 {
-                    List<Player> players = PlayerCollection.getFilteredPlayers((PlayerFilter) obj, clubName);
+                    List<Player> players = PlayerCollection.getFilteredPlayers((PlayerFilter) obj);
                     write(players); // Export filtered players
                 }
+                else if (obj instanceof BuyPlayerDTO)
+                {
+                    handleTransfer((BuyPlayerDTO) obj);
+                }
+                else if (obj instanceof SellPlayerDTO)
+                {
+                    listForSale((SellPlayerDTO) obj);
+                }
                 else if (obj instanceof Player) {
-                    handlePlayerTransfer((Player) obj);
+                    addNewPlayer((Player) obj);
                 }
                 else {
                     break;
                 }
             }
         } catch (IOException | ClassNotFoundException e) {
-            ActivityLogger.log("Server - Client connection disrupted");
+            ActivityLogger.log("Server unable to read");
         } finally {
             try {
                 socketWrapper.closeConnection();
@@ -61,7 +78,7 @@ public class ServerThread extends Thread {
         try{
             return socketWrapper.read();
         } catch (IOException | ClassNotFoundException e) {
-            ActivityLogger.log("Server - Client connection disrupted");
+            ActivityLogger.log("Server unable to read");
             return null;
         }
     }
@@ -71,7 +88,7 @@ public class ServerThread extends Thread {
         try{
             socketWrapper.write(obj);
         } catch (IOException e) {
-            ActivityLogger.log("Server - Client connection disrupted");
+            ActivityLogger.log("Server unable to write");
         }
     }
 
@@ -81,20 +98,11 @@ public class ServerThread extends Thread {
         {
             synchronized (server) {
                 clubName = loginDTO.getUsername();
-                if (clubName.equals("a")) clubName = "Liverpool"; // TODO: REMOVE THIS LATER
-                ActivityLogger.log("\"" + clubName + "\" logged in");
+                ActivityLogger.log("'" + clubName + "' logged in");
                 server.addClient(clubName, socketWrapper);
                 write(true); // Confirm
 
-                write(PlayerCollection.getAllNationalities()); // Export nations
-                write(PlayerCollection.getAllTeams()); // Export clubs
-
-                write(server.getClub(clubName)); // Export logged in clubName
-                PlayerFilter filter = new PlayerFilter();
-                filter.setTeam(clubName);
-                filter.setForSale(false);
-                List<Player> players = PlayerCollection.getFilteredPlayers(filter, null);
-                write(players); // Export clubName players
+                // NOTE: players info is asked by client separately
             }
         }
         else
@@ -108,53 +116,79 @@ public class ServerThread extends Thread {
     {
         String username = loginDTO.getUsername();
         server.removeClient(username);
-        ActivityLogger.log("\"" + username + "\" logged out");
+        ActivityLogger.log("'" + username + "' logged out");
+    }
+
+    public void handleTransfer(BuyPlayerDTO buyPlayerDTO)
+    {
+        synchronized (server) {
+            Player player = PlayerCollection.getPlayer(buyPlayerDTO.getPlayerId());
+            assert player != null;
+            if (!player.getTeam().equalsIgnoreCase(buyPlayerDTO.getCurrentClub()) || !player.isForSale()) {
+                ActivityLogger.log("Player (ID: " + player.getId() + ") information mismatch");
+                write(false);
+                return;
+            }
+
+            Club buyer = server.getClub(buyPlayerDTO.getNewClub());
+            Club seller = server.getClub(player.getTeam());
+            if (buyer.canBuy(player.getValue())) {
+                buyer.changeBudget(-player.getValue());
+                if (seller != null) seller.changeBudget(player.getValue());
+
+                player.setForSale(false);
+                player.setWeeklySalary(buyPlayerDTO.getNewSalary());
+                player.setTeam(buyer.getName());
+
+                PlayerCollection.writeToFile();
+                server.writeClubsToFile();
+                ActivityLogger.log("Player (ID: " + player.getId() + ") transferred to '" + buyer.getName() + "'");
+                write(true);
+            } else {
+                ActivityLogger.log("Transfer failed: '" + buyer.getName() + "' cannot afford Player (ID: " + player.getId() + ")");
+                write(false);
+            }
+        }
+    }
+
+    public void listForSale(SellPlayerDTO sellPlayerDTO)
+    {
+        synchronized (server) {
+            Player player = PlayerCollection.getPlayer(sellPlayerDTO.getPlayerId());
+            assert player != null;
+            if (player.getTeam().equalsIgnoreCase(sellPlayerDTO.getCurrentClub())) {
+                player.setForSale(true);
+                player.setValue(sellPlayerDTO.getNewValue());
+
+                PlayerCollection.writeToFile();
+                ActivityLogger.log("Player (ID: " + player.getId() + ") listed for sale");
+                write(true);
+            } else {
+                ActivityLogger.log("Player (ID: " + player.getId() + ") information mismatch");
+                write(false);
+            }
+        }
     }
 
     // TODO: Method not tested yet
-    public void handlePlayerTransfer(Player player)
+    public void addNewPlayer(Player player)
     {
         synchronized (server) {
             Player original = PlayerCollection.getPlayer(player.getId());
-            boolean updated = false;
-            if (original == null) // New player
-            {
+            if (original == null) {
                 PlayerCollection.addPlayer(player);
-                updated = true;
                 ActivityLogger.log("New player added with ID - " + player.getId());
-            }
-            else if (original.getJerseyNumber() != player.getJerseyNumber()) // Change jersey number
-            {
+                write(true);
+            } else if (original.getJerseyNumber() != player.getJerseyNumber()) {
                 original.setJerseyNumber(player.getJerseyNumber());
-                updated = true;
+                PlayerCollection.writeToFile();
                 ActivityLogger.log("Player (ID: " + original.getId() + ") jersey number changed");
+                write(true);
+            } else {
+                ActivityLogger.log("Player (ID: " + player.getId() + ") information mismatch");
+                write(false);
             }
-            else if (player.isForSale()) // Listing for sale
-            {
-                original.setForSale(true);
-                original.setValue(player.getValue());
-                updated = true;
-                ActivityLogger.log("Player (ID: " + original.getId() + ") listed for sale");
-            }
-            else if (original.isForSale() && !player.isForSale()) // Buy
-            {
-                Club buyer = server.getClub(player.getTeam());
-                if (buyer.canBuy(original.getValue())) {
-                    buyer.changeBudget(-original.getValue());
-                    server.getClub(original.getTeam()).changeBudget(original.getValue());
-                    original.setForSale(false);
-                    original.setTeam(buyer.getName());
-                    server.writeClubsToFile();
-                    updated = true;
-                    ActivityLogger.log("Player (ID: " + original.getId() + ") transferd to '" + buyer.getName() + "'");
-                }
-                else {
-                    ActivityLogger.log("Transfer failed: '" + buyer.getName() + "' cannot afford Player (ID: " + original.getId() + ")");
-                }
-            }
-
-            if (updated) PlayerCollection.writeToFile();
-            write(updated);
         }
     }
+
 }

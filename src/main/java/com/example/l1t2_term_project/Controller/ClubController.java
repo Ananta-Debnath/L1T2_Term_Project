@@ -15,10 +15,12 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+// TODO: add alert to close and use sign out then
 public class ClubController {
     private Client client;
 
@@ -72,37 +74,21 @@ public class ClubController {
         this.client = client;
 
         // Load club details
-        Object obj = client.read();
-        if (obj instanceof Club) club = (Club) obj;
-        else System.err.println("Wrong object type - " + obj.getClass());
+        club = Club.readFromServer(client);
 
         // Load club player list
-        obj = client.read();
-        if (obj instanceof List<?>)
-        {
-            List<?> list = (List<?>) obj;
-            if (!list.isEmpty() && list.get(0) instanceof Player)
-            {
-                @SuppressWarnings("unchecked")
-                List<Player> players = (List<Player>) list;
-                for (Player player : players) club.addPlayer(player);
-            }
-            else
-            {
-                System.err.println("No Player or Wrong object");
-            }
-        }
+        club.loadPlayers(client);
     }
 
     public void OpenPlayers(ActionEvent actionEvent) {
-
         try {
             contentPane.getChildren().clear();
             FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/PlayersList.fxml"));
-            Parent PlayersListView =loader.load();
+            Parent PlayersListView = loader.load();
 
+            club.loadPlayers(client);
             PlayersListController playerslistController=loader.getController();
-            playerslistController.setClub(club);
+            playerslistController.initializeValues(client, club);
 
             contentPane.getChildren().setAll(PlayersListView);
 
@@ -112,7 +98,6 @@ public class ClubController {
 
         } catch(IOException e){
             e.printStackTrace();
-
         }
     }
 
@@ -124,7 +109,7 @@ public class ClubController {
             Parent clubDetailView = loader.load();
             contentPane.getChildren().setAll(clubDetailView); // Load into StackPane
 
-            //TODO:read from network
+            club = Club.readFromServer(client);
             ClubDetailsController controller = loader.getController();
 
             controller.setClub(this.club);
@@ -134,7 +119,6 @@ public class ClubController {
             transferButton.setVisible(false);
         } catch (IOException e) {
             e.printStackTrace();
-
         }
 
     }
@@ -221,6 +205,7 @@ public class ClubController {
                 Parent clubView = loader.load();
                 ((SignInController) loader.getController()).setClient(client);
                 clubSignOutButton.getScene().setRoot(clubView);
+                client.setCurrentClub(null);
                 client.write(new LoginDTO(club.getName(), null, false));
             } catch (IOException e) {
                 throw new RuntimeException(e);
