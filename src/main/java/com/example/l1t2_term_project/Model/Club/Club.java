@@ -38,6 +38,14 @@ public class Club implements Serializable{
         this.managerName = managerName;
     }
 
+    public void setPlayersList(List<Player> playersList) {
+        PlayersList = playersList;
+    }
+
+    public List<Player> getPlayersList() {
+        return PlayersList;
+    }
+
     public String getName() {
         return name;
     }
@@ -148,6 +156,18 @@ public class Club implements Serializable{
 
         return str.toString();
 
+    }
+
+    public static Club readFromServer(Client client)
+    {
+        client.write(client.getCurrentClub());
+        Object obj = client.read();
+        if (obj instanceof Club) return (Club) obj;
+        else
+        {
+            System.err.println("Wrong object type - " + obj.getClass());
+            return new Club();
+        }
     }
 
     public void loadPlayers(Client client)

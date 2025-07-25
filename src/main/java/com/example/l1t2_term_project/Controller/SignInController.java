@@ -18,13 +18,11 @@ public class SignInController {
     
     @FXML
     public TextField clubNameTextField;
-    
-
     @FXML
     public PasswordField passwordTextField;
-
     @FXML
     public Button signInButton;
+
 
     @FXML
     public void switchToClub(ActionEvent actionEvent) {
@@ -38,25 +36,6 @@ public class SignInController {
             if (valid)
             {
                 client.setCurrentClub(loginDTO.getUsername());
-                // Get all nations
-                obj = client.read();
-                if (obj instanceof List<?> && ((List<?>) obj).get(0) instanceof String)
-                {
-                    @SuppressWarnings("unchecked")
-                    List<String> list = (List<String>) obj;
-                    client.setNationList(list);
-                }
-                else System.err.println("Wrong object type - " + obj.getClass());
-
-                // Get All clubs
-                obj = client.read();
-                if (obj instanceof List<?> && ((List<?>) obj).get(0) instanceof String)
-                {
-                    @SuppressWarnings("unchecked")
-                    List<String> list = (List<String>) obj;
-                    client.setClubList(list);
-                }
-                else System.err.println("Wrong object type - " + obj.getClass());
 
                 // Change scene
                 try{

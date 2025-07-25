@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 public class SellPlayerDTO implements Serializable {
     private int playerId;
-    private int newValue;
+    private long newValue;
     private String currentClub; // For verification
 
-    public SellPlayerDTO(int playerId, int newValue, String currentClub) {
+    public SellPlayerDTO(int playerId, long newValue, String currentClub) {
         this.playerId = playerId;
         this.newValue = newValue;
         this.currentClub = currentClub;
@@ -21,11 +21,11 @@ public class SellPlayerDTO implements Serializable {
         this.playerId = playerId;
     }
 
-    public int getNewValue() {
+    public long getNewValue() {
         return newValue;
     }
 
-    public void setNewValue(int newValue) {
+    public void setNewValue(long newValue) {
         this.newValue = newValue;
     }
 

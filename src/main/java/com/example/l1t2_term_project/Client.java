@@ -53,6 +53,25 @@ public class Client extends Application {
 
         // Connect to Server
         socketWrapper = new SocketWrapper("127.0.0.1", 12913);
+        // Get all nations
+        Object obj = read();
+        if (obj instanceof List<?> && ((List<?>) obj).get(0) instanceof String)
+        {
+            @SuppressWarnings("unchecked")
+            List<String> list = (List<String>) obj;
+            setNationList(list);
+        }
+        else System.err.println("Wrong object type - " + obj.getClass());
+
+        // Get All clubs
+        obj = read();
+        if (obj instanceof List<?> && ((List<?>) obj).get(0) instanceof String)
+        {
+            @SuppressWarnings("unchecked")
+            List<String> list = (List<String>) obj;
+            setClubList(list);
+        }
+        else System.err.println("Wrong object type - " + obj.getClass());
     }
 
     public static void main(String[] args) {

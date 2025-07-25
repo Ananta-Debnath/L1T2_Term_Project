@@ -74,9 +74,7 @@ public class ClubController {
         this.client = client;
 
         // Load club details
-        Object obj = client.read();
-        if (obj instanceof Club) club = (Club) obj;
-        else System.err.println("Wrong object type - " + obj.getClass());
+        club = Club.readFromServer(client);
 
         // Load club player list
         club.loadPlayers(client);
@@ -111,7 +109,7 @@ public class ClubController {
             Parent clubDetailView = loader.load();
             contentPane.getChildren().setAll(clubDetailView); // Load into StackPane
 
-            //TODO:read from network
+            club = Club.readFromServer(client);
             ClubDetailsController controller = loader.getController();
 
             controller.setClub(this.club);
@@ -121,7 +119,6 @@ public class ClubController {
             transferButton.setVisible(false);
         } catch (IOException e) {
             e.printStackTrace();
-
         }
 
     }

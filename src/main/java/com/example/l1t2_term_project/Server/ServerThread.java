@@ -25,6 +25,9 @@ public class ServerThread extends Thread {
     }
 
     public void run() {
+        write(PlayerCollection.getAllNationalities()); // Export nations
+        write(PlayerCollection.getAllTeams()); // Export clubs
+
         try {
             while (true) {
                 Object obj = socketWrapper.read();
@@ -34,6 +37,10 @@ public class ServerThread extends Thread {
                     if (loginDTO.isLogInReq()) validateLogin(loginDTO);
 
                     else handleSignOut(loginDTO);
+                }
+                else if (obj instanceof String)
+                {
+                    write(server.getClub(clubName)); // Export logged in club
                 }
                 else if (obj instanceof PlayerFilter)
                 {
@@ -95,10 +102,6 @@ public class ServerThread extends Thread {
                 server.addClient(clubName, socketWrapper);
                 write(true); // Confirm
 
-                write(PlayerCollection.getAllNationalities()); // Export nations
-                write(PlayerCollection.getAllTeams()); // Export clubs
-
-                write(server.getClub(clubName)); // Export logged in club
                 // NOTE: players info is asked by client separately
             }
         }
@@ -155,15 +158,15 @@ public class ServerThread extends Thread {
             Player player = PlayerCollection.getPlayer(sellPlayerDTO.getPlayerId());
             assert player != null;
             if (player.getTeam().equalsIgnoreCase(sellPlayerDTO.getCurrentClub())) {
-                ActivityLogger.log("Player (ID: " + player.getId() + ") information mismatch");
-                write(false);
-            } else {
                 player.setForSale(true);
                 player.setValue(player.getValue());
 
                 PlayerCollection.writeToFile();
                 ActivityLogger.log("Player (ID: " + player.getId() + ") listed for sale");
                 write(true);
+            } else {
+                ActivityLogger.log("Player (ID: " + player.getId() + ") information mismatch");
+                write(false);
             }
         }
     }
