@@ -157,6 +157,7 @@
          </VBox>
          <VBox alignment="CENTER" layoutX="310.0" layoutY="10.0" prefHeight="200.0" prefWidth="150.0">
             <children>
+                <Button fx:id="buyButton" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="148.0" mnemonicParsing="false" onAction="#buyPlayer" prefHeight="25.0" prefWidth="70.0" text="Buy" />
                <Button alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cancelPlayerShow" prefHeight="25.0" prefWidth="70.0" text="Cancel" />
             </children>
          </VBox>

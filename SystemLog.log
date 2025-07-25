@@ -271,3 +271,76 @@
 [2025-07-24 03:24:16] Player (ID: 6) transferred to 'Real Madrid'
 [2025-07-24 03:24:30] Server unable to read
 [2025-07-24 03:24:32] Server unable to read
+[2025-07-25 00:19:31] Server Started
+[2025-07-25 00:19:37] Client connected: Socket[addr=/127.0.0.1,port=59260,localport=12913]
+[2025-07-25 00:19:44] 'Liverpool' logged in
+[2025-07-25 00:20:36] Server unable to read
+[2025-07-25 00:25:01] Server Started
+[2025-07-25 00:25:09] Client connected: Socket[addr=/127.0.0.1,port=59594,localport=12913]
+[2025-07-25 00:25:13] 'Liverpool' logged in
+[2025-07-25 00:26:07] Player (ID: 13) transferred to 'Liverpool'
+[2025-07-25 00:26:34] Server unable to read
+[2025-07-25 00:27:22] Server Started
+[2025-07-25 00:27:30] Client connected: Socket[addr=/127.0.0.1,port=59722,localport=12913]
+[2025-07-25 00:27:33] 'Liverpool' logged in
+[2025-07-25 00:27:39] Server unable to read
+[2025-07-25 14:36:07] Server Started
+[2025-07-25 14:36:12] Client connected: Socket[addr=/127.0.0.1,port=56043,localport=12913]
+[2025-07-25 14:36:16] 'Liverpool' logged in
+[2025-07-25 14:36:36] Server unable to read
+[2025-07-25 15:29:20] Server Started
+[2025-07-25 15:29:28] Client connected: Socket[addr=/127.0.0.1,port=58280,localport=12913]
+[2025-07-25 15:29:30] 'Liverpool' logged in
+[2025-07-25 15:30:51] Player (ID: 13) transferred to 'Liverpool'
+[2025-07-25 15:31:01] Server unable to read
+[2025-07-25 16:11:25] Server Started
+[2025-07-25 16:11:32] Client connected: Socket[addr=/127.0.0.1,port=60610,localport=12913]
+[2025-07-25 16:11:36] Client connected: Socket[addr=/127.0.0.1,port=60632,localport=12913]
+[2025-07-25 16:11:43] 'Liverpool' logged in
+[2025-07-25 16:11:50] 'real madrid' logged in
+[2025-07-25 16:13:02] Server unable to read
+[2025-07-25 16:13:04] Server unable to read
+[2025-07-25 16:14:02] Client connected: Socket[addr=/127.0.0.1,port=60758,localport=12913]
+[2025-07-25 16:14:06] Client connected: Socket[addr=/127.0.0.1,port=60768,localport=12913]
+[2025-07-25 16:14:14] 'Liverpool' logged in
+[2025-07-25 16:14:29] 'real madrid' logged in
+[2025-07-25 16:14:57] Player (ID: 9) listed for sale
+[2025-07-25 16:15:27] Player (ID: 8) listed for sale
+[2025-07-25 16:16:08] Player (ID: 8) listed for sale
+[2025-07-25 16:18:05] Server Started
+[2025-07-25 16:18:13] Client connected: Socket[addr=/127.0.0.1,port=61102,localport=12913]
+[2025-07-25 16:18:18] Client connected: Socket[addr=/127.0.0.1,port=61123,localport=12913]
+[2025-07-25 16:18:19] 'Liverpool' logged in
+[2025-07-25 16:18:29] 'real madrid' logged in
+[2025-07-25 16:18:49] Player (ID: 8) listed for sale
+[2025-07-25 16:19:19] Server unable to read
+[2025-07-25 16:19:20] Server unable to read
+[2025-07-25 16:21:18] Server Started
+[2025-07-25 16:21:24] Client connected: Socket[addr=/127.0.0.1,port=61318,localport=12913]
+[2025-07-25 16:21:28] Client connected: Socket[addr=/127.0.0.1,port=61359,localport=12913]
+[2025-07-25 16:21:30] 'Liverpool' logged in
+[2025-07-25 16:21:40] 'real madrid' logged in
+[2025-07-25 16:22:18] Player (ID: 8) listed for sale
+[2025-07-25 16:23:15] Player (ID: 8) transferred to 'Real Madrid'
+[2025-07-25 16:23:42] Player (ID: 8) information mismatch
+[2025-07-25 16:23:49] Server unable to read
+[2025-07-25 16:23:51] Server unable to read
+[2025-07-25 16:23:57] Client connected: Socket[addr=/127.0.0.1,port=61518,localport=12913]
+[2025-07-25 16:24:00] 'Liverpool' logged in
+[2025-07-25 16:24:06] Server unable to read
+[2025-07-25 16:35:31] Client connected: Socket[addr=/127.0.0.1,port=62027,localport=12913]
+[2025-07-25 16:35:37] 'real madrid' logged in
+[2025-07-25 16:35:50] Player (ID: 8) listed for sale
+[2025-07-25 16:35:54] 'Real Madrid' logged out
+[2025-07-25 16:35:56] 'Liverpool' logged in
+[2025-07-25 16:36:01] Player (ID: 8) transferred to 'Liverpool'
+[2025-07-25 16:36:10] Server unable to read
+[2025-07-25 16:45:14] Server Started
+[2025-07-25 16:46:22] Client connected: Socket[addr=/127.0.0.1,port=62773,localport=12913]
+[2025-07-25 16:46:25] 'Liverpool' logged in
+[2025-07-25 16:46:34] Player (ID: 13) transferred to 'Liverpool'
+[2025-07-25 16:46:49] Server unable to read
+[2025-07-25 16:52:49] Client connected: Socket[addr=/127.0.0.1,port=63130,localport=12913]
+[2025-07-25 16:52:52] 'Liverpool' logged in
+[2025-07-25 16:53:21] Player (ID: 16) transferred to 'Liverpool'
+[2025-07-25 16:53:42] Server unable to read

@@ -19,8 +19,6 @@ import java.util.stream.Collectors;
 /*
 TODO list
 TODO: enhance show player with details and buttons
-TODO: implement networking
-TODO: add return button to club home page
 TODO: quality improvements - mute, ...
  */
 
@@ -61,7 +59,7 @@ public class MarketController
     @FXML
     public Label nameLabel;
     @FXML
-    public Button buyButton; // TODO: name the button for buying to this
+    public Button buyButton;
 
 
     @FXML
@@ -160,7 +158,6 @@ public class MarketController
         };
         minValueField.setTextFormatter(new TextFormatter<>(filter));
         maxValueField.setTextFormatter(new TextFormatter<>(filter));
-        // NOTE: change listener to focus change??
         minValueField.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) { // Focus lost
                 onMinValueChange();
@@ -252,32 +249,58 @@ public class MarketController
     }
 
     @FXML
-    public void buyPlayer(ActionEvent actionEvent) // TODO: assign this method to the buy button
+    public void buyPlayer(ActionEvent actionEvent)
     {
         Player player = (Player) (((Button) actionEvent.getSource()).getUserData());
-        // TODO: show alert
-        client.write(new BuyPlayerDTO(player.getId(), client.getCurrentClub(), player.getWeeklySalary(), player.getTeam()));
-        Object obj = client.read();
-        if (obj instanceof Boolean)
-        {
-            if ((boolean) obj)
-            {
-                // TODO: show success message
-            }
-            else
-            {
-                // TODO: show failed message
-            }
-        }
-        else System.err.println("Object not Boolean");
+        Alert confirmation=new Alert(Alert.AlertType.CONFIRMATION);
+        confirmation.setTitle("Confirm Sale");
+        confirmation.setHeaderText("Confirm Player Sale");
+        confirmation.setContentText(String.format("Do you want to buy %s for €%s?", player.getName(), player.getValue()));
 
-        playerShowBox.setVisible(false);
-        mainMenu.setDisable(false);
-        searchPlayers();
+        ButtonType yesButton=new ButtonType("YES", ButtonBar.ButtonData.YES);
+        ButtonType noButton=new ButtonType("No", ButtonBar.ButtonData.NO);
+        confirmation.getButtonTypes().setAll(yesButton,noButton);
+
+        confirmation.showAndWait().ifPresent(response->{
+
+            if(response==yesButton)
+            {
+                client.write(new BuyPlayerDTO(player.getId(), client.getCurrentClub(), player.getWeeklySalary(), player.getTeam()));
+                Object obj = client.read();
+                if (obj instanceof Boolean)
+                {
+                    if ((boolean) obj)
+                    {
+                        showAlert("Purchase Successful!", String.format("%s has been bought for €%s", player.getName(), player.getValue()));
+                    }
+                    else
+                    {
+                        showAlert("Purchase Failure!", String.format("%s could not be bought", player.getName()));
+                    }
+                }
+                else System.err.println("Object not Boolean");
+
+                playerShowBox.setVisible(false);
+                mainMenu.setDisable(false);
+                searchPlayers();
+            }else{
+                showAlert("Cancelled","Buy process terminated");
+            }
+        });
+
+
     }
 
 
     // Non-FXML methods
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
     private PlayerFilter getFilterFromFields()
     {
         PlayerFilter filter = new PlayerFilter(client.getCurrentClub());

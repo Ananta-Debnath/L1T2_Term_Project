@@ -13,9 +13,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.util.function.UnaryOperator;
 
-
-// TODO:
 
 public class PlayersListController {
 
@@ -56,6 +55,11 @@ public class PlayersListController {
                     updatePlayerDetails(newSelection);
                 }
             });
+
+        UnaryOperator<TextFormatter.Change> filter = change -> {
+            return change.getControlNewText().matches("\\d*") ? change : null;
+        };
+        sellAmountField.setTextFormatter(new TextFormatter<>(filter));
     }
     
     public void initializeValues(Client client, Club c){
