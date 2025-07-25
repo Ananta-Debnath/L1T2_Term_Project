@@ -148,6 +148,8 @@ public class PlayersListController {
     public void setSellMoney(ActionEvent actionEvent) {
         fullListDetails.setVisible(false);
         finalSellBox.setVisible(true);
+        sellAmountField.setPromptText(String.valueOf(playersTable.getSelectionModel().getSelectedItem().getValue()));
+        finalSellButton.requestFocus();
     }
 
     @FXML

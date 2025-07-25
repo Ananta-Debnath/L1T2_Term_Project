@@ -344,3 +344,22 @@
 [2025-07-25 16:52:52] 'Liverpool' logged in
 [2025-07-25 16:53:21] Player (ID: 16) transferred to 'Liverpool'
 [2025-07-25 16:53:42] Server unable to read
+[2025-07-25 16:57:23] Server Started
+[2025-07-25 16:57:42] Client connected: Socket[addr=/127.0.0.1,port=63531,localport=12913]
+[2025-07-25 16:57:44] 'Liverpool' logged in
+[2025-07-25 16:57:49] In getClub method - Club not found
+[2025-07-25 16:57:49] Player (ID: 73) transferred to 'Liverpool'
+[2025-07-25 16:58:30] Player (ID: 73) listed for sale
+[2025-07-25 16:59:57] Server unable to read
+[2025-07-25 17:04:59] Client connected: Socket[addr=/127.0.0.1,port=64122,localport=12913]
+[2025-07-25 17:05:02] 'Liverpool' logged in
+[2025-07-25 17:05:14] Server unable to read
+[2025-07-25 17:05:38] Client connected: Socket[addr=/127.0.0.1,port=64231,localport=12913]
+[2025-07-25 17:05:41] 'Liverpool' logged in
+[2025-07-25 17:05:50] Server unable to read
+[2025-07-25 17:07:26] Client connected: Socket[addr=/127.0.0.1,port=64389,localport=12913]
+[2025-07-25 17:07:29] 'Liverpool' logged in
+[2025-07-25 17:07:34] Server unable to read
+[2025-07-25 17:09:03] Client connected: Socket[addr=/127.0.0.1,port=64490,localport=12913]
+[2025-07-25 17:09:05] 'Liverpool' logged in
+[2025-07-25 17:09:13] Server unable to read
