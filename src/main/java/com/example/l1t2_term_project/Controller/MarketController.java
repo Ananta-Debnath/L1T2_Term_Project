@@ -268,13 +268,12 @@ public class MarketController
             {
                 // TODO: show failed message
             }
-
-
-            playerShowBox.setVisible(false);
-            mainMenu.setDisable(false);
-            searchPlayers();
         }
-        else System.err.println("Wrong object");
+        else System.err.println("Object not Boolean");
+
+        playerShowBox.setVisible(false);
+        mainMenu.setDisable(false);
+        searchPlayers();
     }
 
 

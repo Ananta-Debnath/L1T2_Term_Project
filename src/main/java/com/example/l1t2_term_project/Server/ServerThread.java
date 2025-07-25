@@ -151,7 +151,6 @@ public class ServerThread extends Thread {
         }
     }
 
-    // TODO: Method not tested yet
     public void listForSale(SellPlayerDTO sellPlayerDTO)
     {
         synchronized (server) {
@@ -159,7 +158,7 @@ public class ServerThread extends Thread {
             assert player != null;
             if (player.getTeam().equalsIgnoreCase(sellPlayerDTO.getCurrentClub())) {
                 player.setForSale(true);
-                player.setValue(player.getValue());
+                player.setValue(sellPlayerDTO.getNewValue());
 
                 PlayerCollection.writeToFile();
                 ActivityLogger.log("Player (ID: " + player.getId() + ") listed for sale");

@@ -88,7 +88,7 @@ public class ClubController {
 
             club.loadPlayers(client);
             PlayersListController playerslistController=loader.getController();
-            playerslistController.setClub(club);
+            playerslistController.initializeValues(client, club);
 
             contentPane.getChildren().setAll(PlayersListView);
 
