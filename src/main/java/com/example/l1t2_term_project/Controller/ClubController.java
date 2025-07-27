@@ -112,7 +112,7 @@ public class ClubController {
             club = Club.readFromServer(client);
             ClubDetailsController controller = loader.getController();
 
-            controller.setClub(this.club);
+            controller.initializeValues(client, this.club);
             
             clubMenu.setVisible(false);
             clubBorderPane.setVisible(true);
@@ -206,7 +206,7 @@ public class ClubController {
                 ((SignInController) loader.getController()).setClient(client);
                 clubSignOutButton.getScene().setRoot(clubView);
                 client.setCurrentClub(null);
-                client.write(new LoginDTO(club.getName(), null, false));
+                client.write(new LoginDTO(club.getName(), null, LoginDTO.Type.SignOut));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

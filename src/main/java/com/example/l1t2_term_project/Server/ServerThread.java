@@ -34,9 +34,11 @@ public class ServerThread extends Thread {
                 if (obj instanceof LoginDTO)
                 {
                     LoginDTO loginDTO = (LoginDTO) obj;
-                    if (loginDTO.isLogInReq()) validateLogin(loginDTO);
+                    if (loginDTO.getType() == LoginDTO.Type.SignIn) validateLogin(loginDTO);
 
-                    else handleSignOut(loginDTO);
+                    else if (loginDTO.getType() == LoginDTO.Type.SignOut) handleSignOut(loginDTO);
+
+                    else if (loginDTO.getType() == LoginDTO.Type.ChangePass) write(server.changePass(loginDTO));
                 }
                 else if (obj instanceof String)
                 {
@@ -101,8 +103,6 @@ public class ServerThread extends Thread {
                 ActivityLogger.log("'" + clubName + "' logged in");
                 server.addClient(clubName, socketWrapper);
                 write(true); // Confirm
-
-                // NOTE: players info is asked by client separately
             }
         }
         else
