@@ -140,24 +140,6 @@ public class Club implements Serializable{
     }
 
 
-
-
-
-    public String toCSVLine(){
-
-        StringBuilder str=new StringBuilder();
-
-        str.append(name).append(",");
-        str.append(leagueName).append(",");
-        str.append(country).append(",");
-        str.append(budget).append(",");
-        str.append(stadiumName).append(",");
-        str.append(managerName);
-
-        return str.toString();
-
-    }
-
     public static Club readFromServer(Client client)
     {
         client.write(client.getCurrentClub());
@@ -201,6 +183,23 @@ public class Club implements Serializable{
     }
 
 
+
+    public String toCSVLine(){
+
+        StringBuilder str=new StringBuilder();
+
+        str.append(name).append(",");
+        str.append(leagueName).append(",");
+        str.append(country).append(",");
+        str.append(budget).append(",");
+        str.append(stadiumName).append(",");
+        str.append(managerName);
+
+        return str.toString();
+
+    }
+
+    
     /*
     public class ClubManager {
     private List<Club> clubs;
