@@ -187,7 +187,7 @@ public class ClubController {
         dialogPane.getStyleClass().add("custom-alert");
         try {
             dialogPane.getStylesheets().add(
-                    Objects.requireNonNull(getClass().getResource("/Style/custom_alert.css")).toExternalForm()
+                    Objects.requireNonNull(getClass().getResource("/styles/custom_alert.css")).toExternalForm()
             );
         } catch (NullPointerException e) {
             System.err.println("Failed to load alert stylesheet");

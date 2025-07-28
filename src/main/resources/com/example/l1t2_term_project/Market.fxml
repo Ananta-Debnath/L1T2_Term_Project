@@ -16,12 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.MarketController">
-<!--    <stylesheets>-->
-<!--        <URL value="@/styles/market.css" />-->
-<!--    </stylesheets>-->
+<AnchorPane fx:id="root" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.MarketController">
 
-    <AnchorPane fx:id="mainMenu" style="-fx-background-color: #f5f5f5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <AnchorPane fx:id="mainMenu" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #f5f5f5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
             <Label layoutX="20.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Player Market">
                 <font>
@@ -41,7 +38,7 @@
                 </children>
             </HBox>
 
-            <TableView fx:id="playerTable" layoutX="50.0" layoutY="140.0" prefHeight="400.0" prefWidth="800.0" style="-fx-font-size: 14px;">
+            <TableView fx:id="playerTable" layoutX="50.0" layoutY="140.0" prefHeight="350.0" prefWidth="800.0" style="-fx-font-size: 14px;">
                 <columns>
                     <TableColumn editable="false" prefWidth="180.0" resizable="false" style="-fx-font-weight: bold;" text="Name">
                         <cellValueFactory>
@@ -73,7 +70,7 @@
         </children>
     </AnchorPane>
 
-    <VBox fx:id="filterBox" alignment="CENTER" layoutX="150.0" layoutY="100.0" prefHeight="400.0" prefWidth="600.0" spacing="20.0" style="-fx-border-color: #cccccc; -fx-border-radius: 5; -fx-background-color: white; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);" visible="false">
+    <VBox fx:id="filterBox" alignment="CENTER" layoutX="151.0" layoutY="58.0" prefHeight="400.0" prefWidth="600.0" spacing="20.0" style="-fx-border-color: #cccccc; -fx-border-radius: 5; -fx-background-color: white; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);" visible="false">
         <children>
             <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Filter Players" />
 
@@ -148,11 +145,27 @@
         </padding>
     </VBox>
 
-    <VBox fx:id="playerShowBox" alignment="CENTER" layoutX="200.0" layoutY="100.0" prefHeight="400.0" prefWidth="500.0" spacing="20.0" style="-fx-background-color: white; -fx-border-color: #cccccc; -fx-border-radius: 5; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);" visible="false">
+    <VBox fx:id="playerShowBox" alignment="CENTER" layoutX="196.0" layoutY="33.0" prefHeight="427.0" prefWidth="509.0" spacing="20.0" style="-fx-background-color: white; -fx-border-color: #cccccc; -fx-border-radius: 5; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);" visible="false">
         <children>
-            <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="nameLabel" alignment="CENTER" prefHeight="26.0" prefWidth="300.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Name" />
-            <Button alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cancelPlayerShow" prefHeight="35.0" prefWidth="100.0" style="-fx-font-size: 14px; -fx-background-color: #cccccc; -fx-text-fill: black;" text="Close" />
+            <ImageView fx:id="transferImage" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+         <VBox alignment="CENTER_LEFT" spacing="10.0">
+            <children>
+                  <Label fx:id="nameLabel" prefHeight="25.0" prefWidth="200.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Name" />
+               <Label fx:id="positionLabel" prefHeight="25.0" prefWidth="200.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Position" />
+               <Label fx:id="valueLabel" layoutX="10.0" layoutY="50.0" prefHeight="25.0" prefWidth="200.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="value" />
+               <Label fx:id="clubLabel" layoutX="10.0" layoutY="90.0" prefHeight="25.0" prefWidth="200.0" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="club" />
+            </children>
+            <padding>
+               <Insets left="10.0" />
+            </padding>
+         </VBox>
+         <HBox spacing="75.0" stylesheets="@../../../styles/button.css">
+            <children>
+               <Button fx:id="buyButton" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" style="-fx-font-size: 14px; -fx-text-fill: black;" text="Buy" />
+                  <Button fx:id="offerButton" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" onAction="#showOfferScene" prefHeight="35.0" prefWidth="100.0" style="-fx-font-size: 14px; -fx-text-fill: black;" text="Offer" />
+               <Button fx:id="closeButton" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancelPlayerShow" prefHeight="35.0" prefWidth="100.0" style="-fx-font-size: 14px; -fx-text-fill: black;" text="Close" />
+            </children>
+         </HBox>
         </children>
         <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

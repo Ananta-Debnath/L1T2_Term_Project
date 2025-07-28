@@ -6,6 +6,8 @@ import com.example.l1t2_term_project.Model.Player.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -25,6 +27,9 @@ TODO: quality improvements - mute, ...
 
 public class MarketController
 {
+
+
+
     // Non-FXML variables
     private Client client;
     PlayerFilter filter;
@@ -60,7 +65,14 @@ public class MarketController
     public Label nameLabel;
     @FXML
     public Button buyButton;
-
+    @FXML
+    public Label positionLabel;
+    @FXML
+    public Label valueLabel;
+    @FXML
+    public Label clubLabel;
+    @FXML
+    public ImageView transferImage;
 
     @FXML
     private void initialize()
@@ -356,8 +368,35 @@ public class MarketController
     {
         // TODO: include more details
         nameLabel.setText(player.getName());
+        clubLabel.setText("Club: "+player.getTeam());
+        valueLabel.setText("Value: "+String.valueOf(player.getValue()));
+        positionLabel.setText("Position: "+ player.getPosition()+ "\n");
+
+        try {
+
+            String imagePath= "/Images/Players/" + player.getName().toLowerCase().replace(" ", "_")+ ".jpeg";
+
+
+            System.out.println(getClass().getResource(imagePath));
+            Image image = new Image(getClass().getResource(imagePath).toExternalForm());
+
+
+            transferImage.setImage(image);
+
+        }catch(Exception e){
+
+            System.out.println("Player image not found");
+
+            String defaultImagePath="/Images/Players/default.jpeg";
+
+            transferImage.setImage(new Image(getClass().getResource(defaultImagePath).toExternalForm()));
+        }
+
         buyButton.setUserData(player);
         playerShowBox.setVisible(true);
         mainMenu.setDisable(true);
+    }
+
+    public void showOfferScene(ActionEvent actionEvent) {
     }
 }

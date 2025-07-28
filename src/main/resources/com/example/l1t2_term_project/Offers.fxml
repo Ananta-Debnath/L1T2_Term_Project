@@ -1,74 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
-<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.l1t2_term_project.Controller.OffersController">
-    <top>
-        <Label text="Transfer Offers" style="-fx-font-size: 24; -fx-font-weight: bold;"
-               BorderPane.alignment="CENTER"/>
-    </top>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-    <center>
-        <TabPane>
+
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.OffersController">
+   <children>
+        <TabPane layoutY="35.0" prefHeight="500.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <tabs>
                 <Tab text="Incoming Offers">
                     <VBox spacing="10" style="-fx-padding: 15;">
-                        <TableView fx:id="incomingOffersTable">
+                        <TableView fx:id="incomingOffersTable" prefHeight="265.0" prefWidth="870.0">
                             <columns>
-                                <TableColumn text="Player" prefWidth="150">
-                                    <cellValueFactory><PropertyValueFactory property="playerName"/></cellValueFactory>
+                                <TableColumn prefWidth="150" text="Player">
+                                    <cellValueFactory>
+                              <PropertyValueFactory property="playerName" />
+                           </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn text="From Club" prefWidth="150">
-                                    <cellValueFactory><PropertyValueFactory property="fromClub"/></cellValueFactory>
+                                <TableColumn prefWidth="150" text="From Club">
+                                    <cellValueFactory>
+                              <PropertyValueFactory property="fromClub" />
+                           </cellValueFactory>
                                 </TableColumn>
-                                <TableColumn text="Offer Amount" prefWidth="100">
-                                    <cellValueFactory><PropertyValueFactory property="amount"/></cellValueFactory>
+                                <TableColumn prefWidth="100" text="Offer Amount">
+                                    <cellValueFactory>
+                              <PropertyValueFactory property="amount" />
+                           </cellValueFactory>
                                 </TableColumn>
                             </columns>
                         </TableView>
 
-                        <VBox fx:id="offerActions" spacing="10" style="-fx-padding: 10; -fx-background-color: #f5f5f5;"
-                              visible="false">
-                            <Label fx:id="selectedOfferLabel" style="-fx-font-weight: bold;"/>
-                            <HBox spacing="10">
-                                <Button text="Accept" onAction="#acceptOffer" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
-                                <Button text="Reject" onAction="#rejectOffer" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
-                                <Button text="Counter" onAction="#counterOffer" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                                    <VBox fx:id="offerActions" prefHeight="152.0" prefWidth="870.0" spacing="10" style="-fx-padding: 10; -fx-background-color: #f5f5f5;" visible="false">
+                            <Label fx:id="selectedOfferLabel" style="-fx-font-weight: bold;" />
+                            <HBox prefHeight="66.0" prefWidth="850.0" spacing="50.0">
+                                <Button onAction="#acceptOffer" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Accept" />
+                                <Button onAction="#rejectOffer" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Reject" />
+                                <Button onAction="#counterOffer" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="Counter" />
                             </HBox>
-                            <VBox fx:id="counterOfferBox" spacing="5" visible="false">
-                                <Label text="Your Counter Offer:"/>
-                                <TextField fx:id="counterAmountField" promptText="Amount"/>
-                                <Button text="Submit Counter" onAction="#submitCounter" style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
-                            </VBox>
                         </VBox>
                     </VBox>
                 </Tab>
 
-                <Tab text="Outgoing Offers">
+                            <Tab text="Outgoing Offers">
                     <TableView fx:id="outgoingOffersTable" style="-fx-padding: 15;">
                         <columns>
-                            <TableColumn text="Player" prefWidth="150">
-                                <cellValueFactory><PropertyValueFactory property="playerName"/></cellValueFactory>
+                            <TableColumn prefWidth="150" text="Player">
+                                <cellValueFactory>
+                           <PropertyValueFactory property="playerName" />
+                        </cellValueFactory>
                             </TableColumn>
-                            <TableColumn text="To Club" prefWidth="150">
-                                <cellValueFactory><PropertyValueFactory property="toClub"/></cellValueFactory>
+                            <TableColumn prefWidth="150" text="To Club">
+                                <cellValueFactory>
+                           <PropertyValueFactory property="toClub" />
+                        </cellValueFactory>
                             </TableColumn>
-                            <TableColumn text="Offer Amount" prefWidth="100">
-                                <cellValueFactory><PropertyValueFactory property="amount"/></cellValueFactory>
+                            <TableColumn prefWidth="100" text="Offer Amount">
+                                <cellValueFactory>
+                           <PropertyValueFactory property="amount" />
+                        </cellValueFactory>
                             </TableColumn>
-                            <TableColumn text="Status" prefWidth="100">
-                                <cellValueFactory><PropertyValueFactory property="status"/></cellValueFactory>
+                            <TableColumn prefWidth="100" text="Status">
+                                <cellValueFactory>
+                           <PropertyValueFactory property="status" />
+                        </cellValueFactory>
                             </TableColumn>
                         </columns>
                     </TableView>
                 </Tab>
             </tabs>
         </TabPane>
-    </center>
-</BorderPane>
+   </children>
+</AnchorPane>
