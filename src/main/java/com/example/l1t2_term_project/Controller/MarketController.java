@@ -55,7 +55,7 @@ public class MarketController
     public CheckBox availabilityField;
 
     @FXML
-    public HBox playerShowBox;
+    public VBox playerShowBox;
     @FXML
     public Label nameLabel;
     @FXML
@@ -194,6 +194,8 @@ public class MarketController
     @FXML
     public void searchPlayers()
     {
+        System.out.println(searchField.getText());
+
         filter.setName(searchField.getText());
 
         client.write(filter);
@@ -249,7 +251,7 @@ public class MarketController
     }
 
     @FXML
-    public void buyPlayer(ActionEvent actionEvent)
+    public void buyPlayer(ActionEvent actionEvent) //TODO:trigger on action
     {
         Player player = (Player) (((Button) actionEvent.getSource()).getUserData());
         Alert confirmation=new Alert(Alert.AlertType.CONFIRMATION);

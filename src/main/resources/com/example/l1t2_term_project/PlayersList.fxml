@@ -43,7 +43,7 @@
                      <Label fx:id="playerDetails" style="-fx-font-size: 14;" />
                      <Label fx:id="playerStats" style="-fx-font-size: 14;" />
                   </VBox>
-                  <Button fx:id="playerSellButton" mnemonicParsing="false" onAction="#setSellMoney" stylesheets="@../../../Style/button.css" text="SELL">
+                  <Button fx:id="playerSellButton" mnemonicParsing="false" onAction="#setSellMoney" stylesheets="@../../../styles/button.css" text="SELL">
                      <cursor><Cursor fx:constant="HAND" /></cursor>
                   </Button>
                </VBox>
@@ -51,7 +51,7 @@
          </SplitPane>
 
 
-         <VBox fx:id="finalSellBox" alignment="CENTER" spacing="25" style="-fx-background-color: #ffffff;" styleClass="new-vbox" stylesheets="@../../../Style/Club_detail.css" visible="false">
+         <VBox fx:id="finalSellBox" alignment="CENTER" spacing="25" style="-fx-background-color: #ffffff;" styleClass="new-vbox" stylesheets="@../../../styles/Club_detail.css" visible="false">
             <Label style="-fx-font-size: 25; -fx-text-fill: #000000;" text="Enter your Amount:" />
             <TextField fx:id="sellAmountField" promptText="Amount" style="-fx-pref-width: 200;" />
             <Button fx:id="finalSellButton" mnemonicParsing="false" onAction="#handleFinalSell" styleClass="sell-button" text="Add to Transfer List" />
