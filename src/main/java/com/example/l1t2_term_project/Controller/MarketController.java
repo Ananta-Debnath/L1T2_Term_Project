@@ -36,7 +36,7 @@ public class MarketController
     List<Player> players;
 
     @FXML
-    public AnchorPane mainMenu;
+    public VBox mainMenu;
     @FXML
     public TextField searchField;
     @FXML
@@ -266,41 +266,32 @@ public class MarketController
     public void buyPlayer(ActionEvent actionEvent) //TODO:trigger on action
     {
         Player player = (Player) (((Button) actionEvent.getSource()).getUserData());
-        Alert confirmation=new Alert(Alert.AlertType.CONFIRMATION);
-        confirmation.setTitle("Confirm Sale");
-        confirmation.setHeaderText("Confirm Player Sale");
-        confirmation.setContentText(String.format("Do you want to buy %s for €%s?", player.getName(), player.getValue()));
 
-        ButtonType yesButton=new ButtonType("YES", ButtonBar.ButtonData.YES);
-        ButtonType noButton=new ButtonType("No", ButtonBar.ButtonData.NO);
-        confirmation.getButtonTypes().setAll(yesButton,noButton);
+        boolean valid = Utils.showConfirmationAlert("Confirm Buy", "Confirm Player Buy", String.format("Do you want to buy %s for €%s?", player.getName(), player.getValue()));
 
-        confirmation.showAndWait().ifPresent(response->{
-
-            if(response==yesButton)
+        if(valid)
+        {
+            client.write(new BuyPlayerDTO(player.getId(), client.getCurrentClub(), player.getWeeklySalary(), player.getTeam()));
+            Object obj = client.read();
+            if (obj instanceof Boolean)
             {
-                client.write(new BuyPlayerDTO(player.getId(), client.getCurrentClub(), player.getWeeklySalary(), player.getTeam()));
-                Object obj = client.read();
-                if (obj instanceof Boolean)
+                if ((boolean) obj)
                 {
-                    if ((boolean) obj)
-                    {
-                        Utils.showAlert("Purchase Successful!", String.format("%s has been bought for €%s", player.getName(), player.getValue()));
-                    }
-                    else
-                    {
-                        Utils.showAlert("Purchase Failure!", String.format("%s could not be bought", player.getName()));
-                    }
+                    Utils.showAlert("Purchase Successful!", String.format("%s has been bought for €%s", player.getName(), player.getValue()));
                 }
-                else System.err.println("Object not Boolean");
-
-                playerShowBox.setVisible(false);
-                mainMenu.setDisable(false);
-                searchPlayers();
-            }else{
-                Utils.showAlert("Cancelled","Buy process terminated");
+                else
+                {
+                    Utils.showAlert("Purchase Failure!", String.format("%s could not be bought", player.getName()));
+                }
             }
-        });
+            else System.err.println("Object not Boolean");
+
+            playerShowBox.setVisible(false);
+            mainMenu.setDisable(false);
+            searchPlayers();
+        }else{
+            Utils.showAlert("Cancelled","Buy process terminated");
+        }
 
 
     }
@@ -360,29 +351,10 @@ public class MarketController
     {
         // TODO: include more details
         nameLabel.setText(player.getName());
-        clubLabel.setText("Club: "+player.getTeam());
-        valueLabel.setText("Value: "+String.valueOf(player.getValue()));
-        positionLabel.setText("Position: "+ player.getPosition()+ "\n");
-
-        try {
-
-            String imagePath= "/Images/Players/" + player.getName().toLowerCase().replace(" ", "_")+ ".jpeg";
-
-
-            System.out.println(getClass().getResource(imagePath));
-            Image image = new Image(getClass().getResource(imagePath).toExternalForm());
-
-
-            transferImage.setImage(image);
-
-        }catch(Exception e){
-
-            System.out.println("Player image not found");
-
-            String defaultImagePath="/Images/Players/default.jpeg";
-
-            transferImage.setImage(new Image(getClass().getResource(defaultImagePath).toExternalForm()));
-        }
+        clubLabel.setText("Club: " +player.getTeam());
+        valueLabel.setText("Value: " + player.getValue());
+        positionLabel.setText("Position: " + player.getPosition()+ "\n");
+        transferImage.setImage(player.getImage());
 
         buyButton.setUserData(player);
         playerShowBox.setVisible(true);

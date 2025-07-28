@@ -1,9 +1,13 @@
 package com.example.l1t2_term_project.Model.Player;
 
+import javafx.scene.image.Image;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 public class Player implements Serializable
 {
     // Info
@@ -304,6 +308,20 @@ public class Player implements Serializable
         str.append(forSale);
 
         return str.toString();
+    }
+
+    public Image getImage()
+    {
+        try {
+            String imagePath= "/Images/Players/" + name.toLowerCase().replace(" ", "_")+ ".jpeg";
+            System.out.println(getClass().getResource(imagePath));
+            return new Image(Objects.requireNonNull(getClass().getResource(imagePath)).toExternalForm());
+
+        }catch(Exception e){
+            System.out.println("Player image not found");
+            String defaultImagePath="/Images/Players/default.jpeg";
+            return new Image(Objects.requireNonNull(getClass().getResource(defaultImagePath)).toExternalForm());
+        }
     }
 
     @Override

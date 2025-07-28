@@ -35,7 +35,7 @@ public final class Utils {
         dialogPane.getStyleClass().add("custom-alert");
         try {
             dialogPane.getStylesheets().add(
-                    Objects.requireNonNull(Utils.class.getResource("/Style/custom_alert.css")).toExternalForm()
+                    Objects.requireNonNull(Utils.class.getResource("/styles/custom_alert.css")).toExternalForm()
             );
         } catch (NullPointerException e) {
             System.err.println("Failed to load alert stylesheet");
