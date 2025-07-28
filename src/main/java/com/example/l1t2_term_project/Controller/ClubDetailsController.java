@@ -7,10 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -77,13 +74,21 @@ public class ClubDetailsController {
 
 
     public void handlePasswordChange(ActionEvent actionEvent) {
-        if (!newPasswordField.getText().equals(confirmPasswordField.getText()))
+        String currentPassword = currentPasswordField.getText();
+        String newPassword = newPasswordField.getText();
+        String confirmPassword = confirmPasswordField.getText();
+
+        currentPasswordField.clear();
+        newPasswordField.clear();
+        confirmPasswordField.clear();
+
+        if (newPassword.isEmpty() || !newPassword.equals(confirmPassword))
         {
-            showAlert("Password mismatch", "New Password and Confirm Password does not match");
+            showAlert("Failed", "Password change unsuccessful");
             return;
         }
 
-        LoginDTO loginDTO = new LoginDTO(currentClub.getName(), currentPasswordField.getText(), LoginDTO.Type.SignIn);
+        LoginDTO loginDTO = new LoginDTO(currentClub.getName(), currentPassword, LoginDTO.Type.SignIn);
         client.write(loginDTO);
         Object obj = client.read();
         if (obj instanceof Boolean)
@@ -91,7 +96,7 @@ public class ClubDetailsController {
             boolean valid = (boolean) obj;
             if (!valid)
             {
-                showAlert("Wrong Password", "The provided current password is wrong");
+                showAlert("Failed", "Password change unsuccessful");
                 return;
             }
         }
@@ -100,7 +105,7 @@ public class ClubDetailsController {
             return;
         }
 
-        loginDTO = new LoginDTO(currentClub.getName(), newPasswordField.getText(), LoginDTO.Type.ChangePass);
+        loginDTO = new LoginDTO(currentClub.getName(), newPassword, LoginDTO.Type.ChangePass);
         client.write(loginDTO);
         obj = client.read();
         if (obj instanceof Boolean)
@@ -108,7 +113,7 @@ public class ClubDetailsController {
             boolean valid = (boolean) obj;
             if (valid)
             {
-                showAlert("Password Changed", "New password set successfully");
+                showAlert("Password Changed", "Password Changed successfully");
             }
             else
             {

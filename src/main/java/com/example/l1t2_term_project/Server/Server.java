@@ -154,7 +154,7 @@ public class Server {
                 break;
             }
         }
-        if (credential != null)
+        if (credential != null && !loginDTO.getPassword().isEmpty())
         {
             credential.setPassword(loginDTO.getPassword());
             ActivityLogger.log("Changed password for '" + credential.getUsername() + "'");
