@@ -3,6 +3,7 @@ package com.example.l1t2_term_project.Controller;
 import com.example.l1t2_term_project.Client;
 import com.example.l1t2_term_project.DTO.LoginDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
+import com.example.l1t2_term_project.Utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -84,7 +85,7 @@ public class ClubDetailsController {
 
         if (newPassword.isEmpty() || !newPassword.equals(confirmPassword))
         {
-            showAlert("Failed", "Password change unsuccessful");
+            Utils.showAlert("Failed", "Password change unsuccessful");
             return;
         }
 
@@ -96,7 +97,7 @@ public class ClubDetailsController {
             boolean valid = (boolean) obj;
             if (!valid)
             {
-                showAlert("Failed", "Password change unsuccessful");
+                Utils.showAlert("Failed", "Password change unsuccessful");
                 return;
             }
         }
@@ -113,25 +114,16 @@ public class ClubDetailsController {
             boolean valid = (boolean) obj;
             if (valid)
             {
-                showAlert("Password Changed", "Password Changed successfully");
+                Utils.showAlert("Password Changed", "Password Changed successfully");
             }
             else
             {
-                showAlert("Failed!", "User not found");
+                Utils.showAlert("Failed!", "User not found");
             }
         }
         else {
             System.err.println("Wrong object type - " + obj.getClass());
         }
-    }
-
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
 }

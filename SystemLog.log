@@ -454,3 +454,16 @@
 [2025-07-28 15:36:35] 'Liverpool' logged in
 [2025-07-28 15:36:35] Changed password for 'Liverpool'
 [2025-07-28 15:36:39] Server unable to read
+[2025-07-28 17:27:48] Server Started
+[2025-07-28 17:27:56] Client connected: Socket[addr=/127.0.0.1,port=56375,localport=12913]
+[2025-07-28 17:28:02] 'Liverpool' logged in
+[2025-07-28 17:28:05] 'Liverpool' logged out
+[2025-07-28 17:28:10] Failed login attempted - [username='s', password='p']
+[2025-07-28 17:28:14] Server unable to read
+[2025-07-28 17:28:38] Client connected: Socket[addr=/127.0.0.1,port=56456,localport=12913]
+[2025-07-28 17:28:54] Failed login attempted - [username='s', password='fgfr']
+[2025-07-28 17:28:59] Server unable to read
+[2025-07-28 17:43:37] Client connected: Socket[addr=/127.0.0.1,port=57521,localport=12913]
+[2025-07-28 17:43:42] 'Liverpool' logged in
+[2025-07-28 17:43:46] 'Liverpool' logged out
+[2025-07-28 17:43:49] Server unable to read

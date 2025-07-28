@@ -10,6 +10,7 @@
 
 .custom-alert .header-panel {
     -fx-background-color: transparent;
+    -fx-font-size: 18px;
 }
 
 .custom-alert .content.label {

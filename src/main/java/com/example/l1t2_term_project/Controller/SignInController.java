@@ -2,6 +2,7 @@ package com.example.l1t2_term_project.Controller;
 
 import com.example.l1t2_term_project.Client;
 import com.example.l1t2_term_project.DTO.LoginDTO;
+import com.example.l1t2_term_project.Utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,7 +51,7 @@ public class SignInController {
                 }
             }
             else {
-                showAlert("Sign-In Failed", "Credentials do not match");
+                Utils.showAlert("Sign-In Failed", "Credentials do not match");
             }
         }
         else {
@@ -58,17 +59,8 @@ public class SignInController {
         }
     }
 
-
     public void setClient(Client client)
     {
         this.client = client;
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }
