@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -27,6 +28,7 @@ public class SignInController {
     @FXML
     public void switchToClub(ActionEvent actionEvent) {
         LoginDTO loginDTO = new LoginDTO(clubNameTextField.getText(), passwordTextField.getText(), LoginDTO.Type.SignIn);
+        passwordTextField.clear();
         client.write(loginDTO);
 
         Object obj = client.read();
@@ -48,7 +50,7 @@ public class SignInController {
                 }
             }
             else {
-                // TODO: show alert
+                showAlert("Sign-In Failed", "Credentials do not match");
             }
         }
         else {
@@ -60,5 +62,13 @@ public class SignInController {
     public void setClient(Client client)
     {
         this.client = client;
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
