@@ -23,12 +23,6 @@ public class ClubController {
     private Club club;
 
     @FXML
-    public AnchorPane clubMenu;
-
-    @FXML
-    public Button clubPlayersbutton;
-
-    @FXML
     public Button clubClubButton;
 
     @FXML
@@ -44,22 +38,10 @@ public class ClubController {
     public Button transferSell;
 
     @FXML
-    public VBox transferButton;
-
-    @FXML
-    public BorderPane clubBorderPane;
+    public VBox transferBox;
 
     @FXML
     public Button clubPlayersbutton2;
-
-    @FXML
-    public Button clubSignOutButton2;
-
-    @FXML
-    public Button clubTransferButton2;
-
-    @FXML
-    public Button clubClubButton2;
 
     @FXML
     public StackPane contentPane;
@@ -88,9 +70,7 @@ public class ClubController {
 
             contentPane.getChildren().setAll(PlayersListView);
 
-            clubMenu.setVisible(false);
-            clubBorderPane.setVisible(true);
-            transferButton.setVisible(false);
+            transferBox.setVisible(false);
 
         } catch(IOException e){
             e.printStackTrace();
@@ -109,10 +89,8 @@ public class ClubController {
             ClubDetailsController controller = loader.getController();
 
             controller.initializeValues(client, this.club);
-            
-            clubMenu.setVisible(false);
-            clubBorderPane.setVisible(true);
-            transferButton.setVisible(false);
+
+            transferBox.setVisible(false);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -121,9 +99,7 @@ public class ClubController {
 
     public void OpenTransfer(ActionEvent actionEvent) {
         contentPane.getChildren().clear();
-        clubMenu.setVisible(false);
-        clubBorderPane.setVisible(true);
-        transferButton.setVisible(true);
+        transferBox.setVisible(true);
 
     }
 
@@ -156,9 +132,7 @@ public class ClubController {
             contentPane.getChildren().setAll(marketView); // Load into StackPane
 
             // Clear other visible elements
-            clubMenu.setVisible(false);
-            clubBorderPane.setVisible(true);
-            transferButton.setVisible(false);
+            transferBox.setVisible(false);
         } catch (IOException e) {
             e.printStackTrace();
            
@@ -197,9 +171,7 @@ public class ClubController {
             contentPane.getChildren().setAll(offerView); // Load into StackPane
 
             // Clear other visible elements
-            clubMenu.setVisible(false);
-            clubBorderPane.setVisible(true);
-            transferButton.setVisible(false);
+            transferBox.setVisible(false);
         } catch (IOException e) {
             e.printStackTrace();
 
