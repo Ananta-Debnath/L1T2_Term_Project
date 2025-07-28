@@ -18,7 +18,7 @@
          <SplitPane fx:id="fullListDetails" dividerPositions="0.35" prefHeight="500.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
    
-               <TableView fx:id="playersTable" prefHeight="498.0" prefWidth="254.0" style="-fx-border-color: transparent;" stylesheets="@../../../styles/market.css">
+               <TableView fx:id="playersTable" prefHeight="498.0" prefWidth="254.0">
                <columns>
                   <TableColumn fx:id="jerseyNumberCol" prefWidth="60.0" resizable="false" text="Jersey">
                      <cellValueFactory>
