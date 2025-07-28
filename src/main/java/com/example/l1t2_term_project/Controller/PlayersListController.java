@@ -113,28 +113,8 @@ public class PlayersListController {
     }
 
 
-    private void updatePlayerDetails(Player player){
-
-        try {
-
-            String imagePath= "/Images/Players/" + player.getName().toLowerCase().replace(" ", "_")+ ".jpeg";
-
-
-            System.out.println(getClass().getResource(imagePath));
-            Image image = new Image(getClass().getResource(imagePath).toExternalForm());
-
-
-            playerImage.setImage(image);
-
-        }catch(Exception e){
-
-            System.out.println("Player image not found");
-
-            String defaultImagePath="/Images/Players/default.jpeg";
-
-            playerImage.setImage(new Image(getClass().getResource(defaultImagePath).toExternalForm()));
-        }
-
+    private void updatePlayerDetails(Player player) {
+        playerImage.setImage(player.getImage());
         playerName.setText(player.getName() + " #"+ player.getJerseyNumber());
 
 
