@@ -7,6 +7,7 @@ import com.example.l1t2_term_project.Model.Player.Player;
 import com.example.l1t2_term_project.Utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 
 import javafx.scene.image.Image;
@@ -20,6 +21,13 @@ public class PlayersListController {
 
     @FXML
     public TableView<Player> playersTable;
+    @FXML
+    public TableColumn<Player, Integer> jerseyNumberCol;
+    @FXML
+    public TableColumn<Player, String> nameCol;
+    @FXML
+    public TableColumn<Player, String> positionCol;
+
     @FXML
     public ImageView playerImage;
     @FXML
@@ -55,6 +63,20 @@ public class PlayersListController {
                     updatePlayerDetails(newSelection);
                 }
             });
+
+        jerseyNumberCol.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(String.valueOf(item));
+                    setAlignment(Pos.CENTER); // or CENTER, RIGHT, etc.
+                }
+            }
+        });
+
 
         UnaryOperator<TextFormatter.Change> filter = change -> {
             return change.getControlNewText().matches("\\d*") ? change : null;
@@ -117,7 +139,7 @@ public class PlayersListController {
 
 
         playerDetails.setText(
-            "Position: "+player.getPosition()+ "\n"+
+            "Position: "+player.getRole()+ "\n"+
             "Age: "+ player.getAge()+   " | Height: "+ String.format("%.2f", player.getHeight())+  "\n"+
             "Nationality: "+player.getNationality()+ "\n" +
             "Value: " +formatCurrency(player.getValue()) + "\n" +

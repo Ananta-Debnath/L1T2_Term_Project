@@ -12,26 +12,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane maxHeight="500.0" maxWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.PlayersListController">
    <children>
    
          <SplitPane fx:id="fullListDetails" dividerPositions="0.35" prefHeight="500.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
    
-               <TableView fx:id="playersTable" prefHeight="498.0" prefWidth="254.0">
+               <TableView fx:id="playersTable" prefHeight="498.0" prefWidth="254.0" style="-fx-border-color: transparent;" stylesheets="@../../../styles/market.css">
                <columns>
-                  <TableColumn prefWidth="60.0" resizable="false" text="Jersey">
+                  <TableColumn fx:id="jerseyNumberCol" prefWidth="60.0" resizable="false" text="Jersey">
                      <cellValueFactory>
                         <PropertyValueFactory property="jerseyNumber" />
                      </cellValueFactory>
                   </TableColumn>
-                  <TableColumn prefWidth="150.0" text="Name">
+                  <TableColumn fx:id="nameCol" prefWidth="150.0" text="Name">
                      <cellValueFactory>
                         <PropertyValueFactory property="name" />
                      </cellValueFactory>
                   </TableColumn>
-                  <TableColumn prefWidth="100" resizable="false" text="Position">
+                  <TableColumn fx:id="positionCol" prefWidth="100" resizable="false" text="Position">
                      <cellValueFactory>
                         <PropertyValueFactory property="position" />
                      </cellValueFactory>
@@ -40,7 +39,7 @@
             </TableView>
    
       
-               <VBox fx:id="fullPlayerDetails" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="601.0" spacing="20" style="-fx-background-color: #f5f5f5;">
+               <VBox fx:id="fullPlayerDetails" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="601.0" spacing="15.0" style="-fx-background-color: #f5f5f5;">
                <ImageView fx:id="playerImage" fitHeight="200" fitWidth="200" preserveRatio="true" />
                <VBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 0 20;">
                   <Label fx:id="playerName" style="-fx-font-size: 18; -fx-font-weight: bold;" />
