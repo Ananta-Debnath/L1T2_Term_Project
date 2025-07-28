@@ -36,7 +36,7 @@ public class MarketController
     List<Player> players;
 
     @FXML
-    public AnchorPane mainMenu;
+    public VBox mainMenu;
     @FXML
     public TextField searchField;
     @FXML

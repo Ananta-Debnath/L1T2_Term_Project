@@ -9,16 +9,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1100.0" style="-fx-background-radius: 15;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.SignInController">
+<AnchorPane prefHeight="500.0" prefWidth="900.0" style="-fx-background-radius: 15;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.SignInController">
    <children>
-      <VBox alignment="CENTER" fillWidth="false" prefHeight="500.0" prefWidth="1100.0" spacing="20" style="-fx-background-radius: 0; -fx-border-radius: 0;" styleClass="new-vbox" stylesheets="@../../../styles/Club_detail.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="500.0" prefWidth="900.0" spacing="20" style="-fx-background-radius: 0; -fx-border-radius: 0;" styleClass="new-vbox" stylesheets="@../../../styles/Club_detail.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" prefHeight="184.0" prefWidth="858.0">
                <children>
                   <Label alignment="CENTER_RIGHT" style="-fx-font-size: 35;" text="Welcome To Football League Management!" />
                </children>
             </HBox>
-            <VBox prefHeight="218.0" prefWidth="900.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 10; -fx-spacing: 20;">
+            <VBox prefHeight="218.0" prefWidth="750.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 10; -fx-spacing: 20;">
                <children>
                   <Label alignment="CENTER" style="-fx-font-size: 25; -fx-text-fill: #676127;" text="Sign-in to continue" />
                   <TextField fx:id="clubNameTextField" prefHeight="26.0" prefWidth="759.0" promptText="Enter Club Name" />

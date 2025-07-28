@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="500.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.ClubController">
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.ClubController">
    <children>
-      <VBox prefHeight="500.0" prefWidth="200.0" spacing="25.0" style="-fx-background-color: #2a2a2a;">
+      <VBox prefHeight="500.0" prefWidth="200.0" spacing="25.0" style="-fx-background-color: #2a2a2a;" AnchorPane.topAnchor="0.0">
          <children>
             <Button fx:id="clubPlayersbutton2" mnemonicParsing="false" onAction="#OpenPlayers" prefHeight="54.0" prefWidth="199.0" style="-fx-background-radius: 10;" text="Players" />
             <Button fx:id="clubClubButton" layoutX="30.0" layoutY="30.0" mnemonicParsing="false" onAction="#OpenClub" prefHeight="54.0" prefWidth="199.0" style="-fx-background-radius: 10;" text="Club" />
@@ -19,8 +19,8 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
-      <StackPane fx:id="contentPane" layoutX="200.0" maxHeight="500.0" maxWidth="900.0" prefHeight="500.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <VBox fx:id="transferBox" alignment="CENTER" layoutX="200.0" prefHeight="500.0" prefWidth="900.0" spacing="100.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane fx:id="contentPane" layoutX="200.0" maxHeight="500.0" maxWidth="900.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.topAnchor="0.0" />
+      <VBox fx:id="transferBox" alignment="CENTER" layoutX="200.0" prefHeight="500.0" prefWidth="700.0" spacing="100.0" visible="false" AnchorPane.topAnchor="0.0">
          <children>
             <Button fx:id="transferBuy" mnemonicParsing="false" onAction="#OpenMarket" prefHeight="55.0" prefWidth="104.0" text="BUY" />
             <Button fx:id="transferSell" layoutX="134.0" layoutY="147.0" mnemonicParsing="false" onAction="#switchToPlayerOffers" prefHeight="55.0" prefWidth="104.0" text="OFFERS" />
