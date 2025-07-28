@@ -1,11 +1,12 @@
 package com.example.l1t2_term_project.Controller;
 
+import com.example.l1t2_term_project.Client;
+import com.example.l1t2_term_project.DTO.LoginDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
+import com.example.l1t2_term_project.Utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -32,11 +33,13 @@ public class ClubDetailsController {
     @FXML
     public PasswordField currentPasswordField;
 
+    private Client client;
     private Club currentClub;
 
-    public void setClub(Club c){
-            this.currentClub=c;
-            updateClubDetails();
+    public void initializeValues(Client client, Club c){
+        this.client = client;
+        this.currentClub=c;
+        updateClubDetails();
     }
 
     private void updateClubDetails(){
@@ -68,5 +71,55 @@ public class ClubDetailsController {
 
 
     public void handlePasswordChange(ActionEvent actionEvent) {
+        String currentPassword = currentPasswordField.getText();
+        String newPassword = newPasswordField.getText();
+        String confirmPassword = confirmPasswordField.getText();
+
+        currentPasswordField.clear();
+        newPasswordField.clear();
+        confirmPasswordField.clear();
+
+        if (newPassword.isEmpty() || !newPassword.equals(confirmPassword))
+        {
+            Utils.showAlert("Failed", "Password change unsuccessful");
+            return;
+        }
+
+        LoginDTO loginDTO = new LoginDTO(currentClub.getName(), currentPassword, LoginDTO.Type.SignIn);
+        client.write(loginDTO);
+        Object obj = client.read();
+        if (obj instanceof Boolean)
+        {
+            boolean valid = (boolean) obj;
+            if (!valid)
+            {
+                Utils.showAlert("Failed", "Password change unsuccessful");
+                return;
+            }
+        }
+        else {
+            System.err.println("Wrong object type - " + obj.getClass());
+            return;
+        }
+
+        loginDTO = new LoginDTO(currentClub.getName(), newPassword, LoginDTO.Type.ChangePass);
+        client.write(loginDTO);
+        obj = client.read();
+        if (obj instanceof Boolean)
+        {
+            boolean valid = (boolean) obj;
+            if (valid)
+            {
+                Utils.showAlert("Password Changed", "Password Changed successfully");
+            }
+            else
+            {
+                Utils.showAlert("Failed!", "User not found");
+            }
+        }
+        else {
+            System.err.println("Wrong object type - " + obj.getClass());
+        }
     }
+
 }

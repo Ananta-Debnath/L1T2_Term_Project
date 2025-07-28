@@ -3,6 +3,7 @@ package com.example.l1t2_term_project.Controller;
 import com.example.l1t2_term_project.Client;
 import com.example.l1t2_term_project.DTO.BuyPlayerDTO;
 import com.example.l1t2_term_project.Model.Player.*;
+import com.example.l1t2_term_project.Utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -12,7 +13,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
@@ -285,11 +285,11 @@ public class MarketController
                 {
                     if ((boolean) obj)
                     {
-                        showAlert("Purchase Successful!", String.format("%s has been bought for €%s", player.getName(), player.getValue()));
+                        Utils.showAlert("Purchase Successful!", String.format("%s has been bought for €%s", player.getName(), player.getValue()));
                     }
                     else
                     {
-                        showAlert("Purchase Failure!", String.format("%s could not be bought", player.getName()));
+                        Utils.showAlert("Purchase Failure!", String.format("%s could not be bought", player.getName()));
                     }
                 }
                 else System.err.println("Object not Boolean");
@@ -298,7 +298,7 @@ public class MarketController
                 mainMenu.setDisable(false);
                 searchPlayers();
             }else{
-                showAlert("Cancelled","Buy process terminated");
+                Utils.showAlert("Cancelled","Buy process terminated");
             }
         });
 
@@ -307,14 +307,6 @@ public class MarketController
 
 
     // Non-FXML methods
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
     private PlayerFilter getFilterFromFields()
     {
         PlayerFilter filter = new PlayerFilter(client.getCurrentClub());

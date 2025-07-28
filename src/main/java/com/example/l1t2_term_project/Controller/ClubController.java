@@ -3,7 +3,7 @@ package com.example.l1t2_term_project.Controller;
 import com.example.l1t2_term_project.Client;
 import com.example.l1t2_term_project.DTO.LoginDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
-import com.example.l1t2_term_project.Model.Player.Player;
+import com.example.l1t2_term_project.Utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,10 +15,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 // TODO: add alert to close and use sign out then
 public class ClubController {
@@ -112,7 +108,7 @@ public class ClubController {
             club = Club.readFromServer(client);
             ClubDetailsController controller = loader.getController();
 
-            controller.setClub(this.club);
+            controller.initializeValues(client, this.club);
             
             clubMenu.setVisible(false);
             clubBorderPane.setVisible(true);
@@ -173,46 +169,20 @@ public class ClubController {
 
     @FXML
     private void handleSignOut(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Sign Out");
-        alert.setHeaderText("Confirm Exit");
-        alert.setContentText("Do you really want to sign out?");
+        boolean valid = Utils.showConfirmationAlert("Sign Out", "Confirm Sign Out", "Do you really want to sign out?");
 
-        // Customize buttons
-        ButtonType yesButton = new ButtonType("Yes", ButtonBar.ButtonData.YES);
-        ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
-        alert.getButtonTypes().setAll(yesButton, noButton);
+        if (valid) {
 
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStyleClass().add("custom-alert");
-        try {
-            dialogPane.getStylesheets().add(
-                    Objects.requireNonNull(getClass().getResource("/styles/custom_alert.css")).toExternalForm()
-            );
-        } catch (NullPointerException e) {
-            System.err.println("Failed to load alert stylesheet");
-        }
-    
-        Optional<ButtonType> result = alert.showAndWait();
-
-        if (result.isPresent() && result.get() == yesButton) {
-
-           // Platform.exit();
-
-            //TODO:Log-out and load sign-in FXML
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/SignIn.fxml"));
                 Parent clubView = loader.load();
                 ((SignInController) loader.getController()).setClient(client);
                 clubSignOutButton.getScene().setRoot(clubView);
                 client.setCurrentClub(null);
-                client.write(new LoginDTO(club.getName(), null, false));
+                client.write(new LoginDTO(club.getName(), null, LoginDTO.Type.SignOut));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-            // For immediate termination (optional)
-            // System.exit(0);
         }
     }
 

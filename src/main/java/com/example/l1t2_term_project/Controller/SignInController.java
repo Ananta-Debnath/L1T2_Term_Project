@@ -2,6 +2,7 @@ package com.example.l1t2_term_project.Controller;
 
 import com.example.l1t2_term_project.Client;
 import com.example.l1t2_term_project.DTO.LoginDTO;
+import com.example.l1t2_term_project.Utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +12,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
-import java.util.List;
 
 public class SignInController {
     private Client client;
@@ -26,7 +26,8 @@ public class SignInController {
 
     @FXML
     public void switchToClub(ActionEvent actionEvent) {
-        LoginDTO loginDTO = new LoginDTO(clubNameTextField.getText(), passwordTextField.getText(), true);
+        LoginDTO loginDTO = new LoginDTO(clubNameTextField.getText(), passwordTextField.getText(), LoginDTO.Type.SignIn);
+        passwordTextField.clear();
         client.write(loginDTO);
 
         Object obj = client.read();
@@ -48,14 +49,13 @@ public class SignInController {
                 }
             }
             else {
-                // TODO: show alert
+                Utils.showAlert("Sign-In Failed", "Credentials do not match");
             }
         }
         else {
             System.err.println("Wrong object type - " + obj.getClass());
         }
     }
-
 
     public void setClient(Client client)
     {

@@ -4,6 +4,7 @@ import com.example.l1t2_term_project.Client;
 import com.example.l1t2_term_project.DTO.SellPlayerDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
 import com.example.l1t2_term_project.Model.Player.Player;
+import com.example.l1t2_term_project.Utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -12,7 +13,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
-import java.net.URL;
 import java.util.function.UnaryOperator;
 
 
@@ -86,7 +86,7 @@ public class PlayersListController {
                 playersTable.getSelectionModel().selectFirst(); 
             }
         }else{
-            System.out.printf("NULL CLUB");
+            System.out.println("NULL CLUB");
         }
     }
 
@@ -191,11 +191,11 @@ public class PlayersListController {
                 {
                     if ((boolean) obj)
                     {
-                        showAlert("Success", String.format("%s has been listed for sale for €%s", selectedPlayer.getName(), finalAmount));
+                        Utils.showAlert("Success", String.format("%s has been listed for sale for €%s", selectedPlayer.getName(), finalAmount));
                     }
                     else
                     {
-                        showAlert("Failed", String.format("%s could not be listed for sale", selectedPlayer.getName()));
+                        Utils.showAlert("Failed", String.format("%s could not be listed for sale", selectedPlayer.getName()));
                     }
                 }
                 else System.err.println("Object not Boolean");
@@ -207,17 +207,9 @@ public class PlayersListController {
                 sellAmountField.clear();
 
             }else{
-                showAlert("Cancelled","Sell process terminated");
+                Utils.showAlert("Cancelled","Sell process terminated");
             }
         });
 
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }

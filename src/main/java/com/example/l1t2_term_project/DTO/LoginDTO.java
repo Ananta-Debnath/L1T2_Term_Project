@@ -3,16 +3,19 @@ package com.example.l1t2_term_project.DTO;
 import java.io.Serializable;
 
 public class LoginDTO implements Serializable {
+    public enum Type {
+        SignIn, SignOut, ChangePass
+    }
     private String username;
     private String password;
-    private boolean logInReq;
+    private Type type;
 
-    public LoginDTO(String username, String password, boolean logInReq) {
+    public LoginDTO(String username, String password, Type type) {
         if (username.equalsIgnoreCase("a")) username = "Liverpool"; // TODO: remove later
         if (password != null && password.equalsIgnoreCase("a")) password = "liver"; // TODO: remove later
         this.username = username;
         this.password = password;
-        this.logInReq = logInReq;
+        this.type = type;
     }
 
     public String getUsername() {
@@ -31,12 +34,12 @@ public class LoginDTO implements Serializable {
         this.password = password;
     }
 
-    public boolean isLogInReq() {
-        return logInReq;
+    public Type getType() {
+        return type;
     }
 
-    public void setLogInReq(boolean logInReq) {
-        this.logInReq = logInReq;
+    public void setType(Type type) {
+        this.type = type;
     }
 
     @Override

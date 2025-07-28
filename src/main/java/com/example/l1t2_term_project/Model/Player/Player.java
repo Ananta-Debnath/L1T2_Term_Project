@@ -3,7 +3,6 @@ package com.example.l1t2_term_project.Model.Player;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 public class Player implements Serializable
 {
@@ -43,7 +42,7 @@ public class Player implements Serializable
         this.attributes = new ArrayList<>();
     }
     // Constructor
-    public Player(){};
+    public Player(){}
 
     public Player(int id, String name, int age, float height, Role role, String nationality, String team, int goals, int assists, int tackles, int interceptions, int saves, int matchPlayed, String form, long weeklySalary, long value, String contractEnd, boolean forSale) {
         this.id = id;

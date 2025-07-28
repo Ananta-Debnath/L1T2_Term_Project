@@ -113,7 +113,7 @@ public class Server {
                 String[] tokens = line.split(",");
                 if (tokens.length != 2) throw new IOException("Invalid info length");
 
-                credentials.add(new LoginDTO(tokens[0].trim(), tokens[1].trim(), false));
+                credentials.add(new LoginDTO(tokens[0].trim(), tokens[1].trim(), null));
             }
         }
         catch (IOException e)
@@ -122,9 +122,51 @@ public class Server {
         }
     }
 
+    public void writeCredentialsToFile()
+    {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(CREDENTIALS_PATH, false)))
+        {
+            writer.println("username,password");
+            for (LoginDTO loginDTO : credentials)
+            {
+                writer.println(loginDTO.getUsername() + "," + loginDTO.getPassword());
+            }
+        }
+        catch (IOException e)
+        {
+            ActivityLogger.log("In writeClubToFile method - " + e);
+        }
+    }
+
     public boolean validateCredentials(LoginDTO loginDTO)
     {
         return credentials.contains(loginDTO);
+    }
+
+    public boolean changePass(LoginDTO loginDTO)
+    {
+        LoginDTO credential = null;
+        for (LoginDTO dto : credentials)
+        {
+            if (dto.getUsername().equalsIgnoreCase(loginDTO.getUsername()))
+            {
+                credential = dto;
+                break;
+            }
+        }
+        if (credential != null && !loginDTO.getPassword().isEmpty())
+        {
+            credential.setPassword(loginDTO.getPassword());
+            ActivityLogger.log("Changed password for '" + credential.getUsername() + "'");
+            writeCredentialsToFile();
+            return true;
+        }
+        else
+        {
+            ActivityLogger.log("Failed attempt for password change");
+            return false;
+        }
+
     }
 
     public Club getClub(String name)
