@@ -3,7 +3,6 @@ package com.example.l1t2_term_project.Controller;
 import com.example.l1t2_term_project.Client;
 import com.example.l1t2_term_project.DTO.LoginDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
-import com.example.l1t2_term_project.Model.Player.Player;
 import com.example.l1t2_term_project.Utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,10 +15,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 // TODO: add alert to close and use sign out then
 public class ClubController {

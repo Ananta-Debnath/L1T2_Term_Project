@@ -6,13 +6,9 @@ import com.example.l1t2_term_project.Model.Club.Club;
 import com.example.l1t2_term_project.Utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-import java.io.IOException;
 
 public class ClubDetailsController {
 

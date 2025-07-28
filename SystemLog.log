@@ -472,3 +472,6 @@
 [2025-07-28 17:59:19] 'Liverpool' logged in
 [2025-07-28 17:59:22] 'Liverpool' logged out
 [2025-07-28 17:59:23] Server unable to read
+[2025-07-28 19:40:48] Server Started
+[2025-07-28 19:41:53] Client connected: Socket[addr=/127.0.0.1,port=59866,localport=12913]
+[2025-07-28 19:42:09] Client disconnected: Socket[addr=/127.0.0.1,port=59866,localport=12913]

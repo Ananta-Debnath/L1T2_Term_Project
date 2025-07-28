@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class LoginDTO implements Serializable {
     public enum Type {
-        SignIn, SignOut, ChangePass;
+        SignIn, SignOut, ChangePass
     }
     private String username;
     private String password;

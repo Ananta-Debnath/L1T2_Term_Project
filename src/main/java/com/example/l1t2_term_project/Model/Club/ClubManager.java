@@ -7,7 +7,6 @@ import java.util.Objects;
 
 import com.example.l1t2_term_project.Model.Player.Player;
 import com.example.l1t2_term_project.Model.Player.Role;
-import com.example.l1t2_term_project.Utils.ActivityLogger;
 
 public class ClubManager {
 

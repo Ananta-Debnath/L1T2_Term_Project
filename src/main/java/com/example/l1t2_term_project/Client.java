@@ -2,8 +2,6 @@ package com.example.l1t2_term_project;
 
 import com.example.l1t2_term_project.Controller.SignInController;
 import com.example.l1t2_term_project.DTO.LoginDTO;
-import com.example.l1t2_term_project.Main.Main;
-import com.example.l1t2_term_project.Utils.ActivityLogger;
 import com.example.l1t2_term_project.Utils.SocketWrapper;
 import com.example.l1t2_term_project.Utils.Utils;
 import javafx.application.Application;
@@ -61,7 +59,7 @@ public class Client extends Application {
             }
             else if (currentClub != null)
             {
-                write(new LoginDTO(currentClub, null, LoginDTO.Type.SignOut));
+                write(new LoginDTO(currentClub, null, LoginDTO.Type.SignOut)); // Sign-Out
             }
             try {
                 socketWrapper.closeConnection();
