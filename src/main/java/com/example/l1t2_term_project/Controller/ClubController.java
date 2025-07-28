@@ -174,7 +174,7 @@ public class ClubController {
 
     @FXML
     private void handleSignOut(ActionEvent event) {
-        boolean valid = Utils.showConfirmationAlert("Sign Out", "Confirm Exit", "Do you really want to sign out?");
+        boolean valid = Utils.showConfirmationAlert("Sign Out", "Confirm Sign Out", "Do you really want to sign out?");
 
         if (valid) {
 

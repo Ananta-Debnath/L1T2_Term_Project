@@ -65,7 +65,7 @@ public class ServerThread extends Thread {
                 }
             }
         } catch (IOException | ClassNotFoundException e) {
-            ActivityLogger.log("Server unable to read");
+            ActivityLogger.log("Client disconnected: " + socketWrapper.getSocket());
         } finally {
             try {
                 socketWrapper.closeConnection();

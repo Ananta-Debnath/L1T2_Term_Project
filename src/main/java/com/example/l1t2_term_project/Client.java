@@ -1,9 +1,11 @@
 package com.example.l1t2_term_project;
 
 import com.example.l1t2_term_project.Controller.SignInController;
+import com.example.l1t2_term_project.DTO.LoginDTO;
 import com.example.l1t2_term_project.Main.Main;
 import com.example.l1t2_term_project.Utils.ActivityLogger;
 import com.example.l1t2_term_project.Utils.SocketWrapper;
+import com.example.l1t2_term_project.Utils.Utils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -49,7 +51,28 @@ public class Client extends Application {
         ((SignInController) fxmlLoader.getController()).setClient(this);
         //stage.setTitle("Hello!");
         stage.setScene(scene);
+
+        // Confirmation on close
+        stage.setOnCloseRequest(event -> {
+            boolean exit = Utils.showConfirmationAlert("Exit", "Confirm Exit", "Do you really want to exit?");
+            if (!exit)
+            {
+                event.consume();
+            }
+            else if (currentClub != null)
+            {
+                write(new LoginDTO(currentClub, null, LoginDTO.Type.SignOut));
+            }
+            try {
+                socketWrapper.closeConnection();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
         stage.show();
+
+
 
         // Connect to Server
         socketWrapper = new SocketWrapper("127.0.0.1", 12913);
