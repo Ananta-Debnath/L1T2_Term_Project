@@ -14,7 +14,6 @@ public class Offer implements Serializable {
     private String fromClub;
     private String fromClubPlayer;
 
-
     private String toClub;
     private String toClubPlayer;
 
@@ -82,6 +81,18 @@ public class Offer implements Serializable {
 
     public void setToClubPlayer(String toClubPlayer) {
         this.toClubPlayer = toClubPlayer;
+    }
+
+    public Offer counter()
+    {
+        Offer offer = new Offer(id, Status.Make);
+        offer.amount = -amount;
+        offer.fromClub = toClub;
+        offer.fromClubPlayer = toClubPlayer;
+        offer.toClub = fromClub;
+        offer.fromClubPlayer = toClubPlayer;
+
+        return offer;
     }
 
     public String toCSVLine()

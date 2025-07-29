@@ -17,6 +17,7 @@ public class MakeOfferController {
     private Client client;
     private Club fromClub;
     private Club toClub;
+    private Offer offer;
 
     @FXML
     public Label budgetLabel;
@@ -89,10 +90,11 @@ public class MakeOfferController {
         this.client = client;
         this.fromClub = from;
         this.toClub = to;
-        updateOfferDetails(offer);
+        this.offer = offer;
+        updateOfferDetails();
     }
 
-    public void updateOfferDetails(Offer offer) {
+    public void updateOfferDetails() {
         if (offer == null) offer = new Offer(0, Offer.Status.Make);
         fromClubNameLabel.setText(fromClub.getName());
         toClubNameLabel.setText(toClub.getName());
@@ -116,7 +118,6 @@ public class MakeOfferController {
 
     @FXML
     public void makeOffer() {
-        Offer offer = new Offer(0, Offer.Status.Make);
         offer.setFromClub(fromClub.getName());
         offer.setToClub(toClub.getName());
         offer.setFromClubPlayer(fromClubPlayerBox.getValue() == null ? null : fromClubPlayerBox.getValue());

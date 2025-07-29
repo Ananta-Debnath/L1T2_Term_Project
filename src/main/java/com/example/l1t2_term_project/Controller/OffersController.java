@@ -5,12 +5,26 @@ import com.example.l1t2_term_project.Model.Club.Club;
 import com.example.l1t2_term_project.Model.Offer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import com.example.l1t2_term_project.Client;
+import com.example.l1t2_term_project.Model.Club.Club;
+import com.example.l1t2_term_project.Model.Offer;
+import com.example.l1t2_term_project.Model.Player.Player;
+import com.example.l1t2_term_project.Utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+
+import java.io.IOException;
+import java.util.Arrays;
 
 public class OffersController {
 
@@ -48,6 +62,8 @@ public class OffersController {
         refreshOffersList();
     }
 
+    private Client client;
+    private Club club;
 
     private void setTable(){
 
@@ -135,18 +151,66 @@ public class OffersController {
 
 
     //public
+    @FXML
+    public AnchorPane tabAnchorPane;
+    @FXML
+    public StackPane makeOfferPane;
 
 
-
+    @FXML
     public void acceptOffer(ActionEvent actionEvent) {
+        Offer offer = new Offer(0, Offer.Status.Accept); // TODO: get it
+        boolean valid = Utils.showConfirmationAlert("Accept Offer", "Confirm", "Do you want to accept this offer?");
+        if (!valid) return;
+
+        offer.setStatus(Offer.Status.Accept);
+        client.write(offer);
+        valid = (boolean) client.read();
+
+        if (valid) Utils.showAlert("Successful", "Offer accepted");
+        else Utils.showAlert("Failure!", "Invalid Offer");
+
+        // TODO: refresh
     }
 
-
-
+    @FXML
     public void rejectOffer(ActionEvent actionEvent) {
+        Offer offer = new Offer(0, Offer.Status.Reject); // TODO: get it
+        boolean valid = Utils.showConfirmationAlert("Reject Offer", "Confirm", "Do you want to reject this offer?");
+        if (!valid) return;
+
+        offer.setStatus(Offer.Status.Reject);
+        client.write(offer);
+        valid = (boolean) client.read();
+
+        if (valid) Utils.showAlert("Successful", "Offer accepted");
+        else Utils.showAlert("Failure!", "Invalid Offer");
+
+        // TODO: refresh
     }
 
+    @FXML
+    public void showOfferScene(ActionEvent actionEvent) {
+        Offer offer = new Offer(0, Offer.Status.Make).counter(); // TODO: get it & reverse
+        try {
+            makeOfferPane.getChildren().clear();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/MakeOffer.fxml"));
+            Parent marketView = loader.load();
 
+            Club toClub = new Club();
+            toClub.setName(offer.getToClub());
+            MakeOfferController makeOfferController = loader.getController();
+
+            makeOfferController.initializeValues(client, club, toClub, offer);
+            makeOfferController.toClubPlayerBox.setDisable(false);
+            makeOfferController.cancelButton.setUserData(Arrays.asList(makeOfferPane, tabAnchorPane));
+            makeOfferPane.getChildren().setAll(marketView); // Load into StackPane
+            makeOfferPane.setVisible(true);
+            tabAnchorPane.setDisable(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void counterOffer(ActionEvent actionEvent) {
     }
