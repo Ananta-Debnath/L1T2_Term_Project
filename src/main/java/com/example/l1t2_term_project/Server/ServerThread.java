@@ -212,13 +212,15 @@ public class ServerThread extends Thread {
         valid = valid && (offer.getToClubPlayer() != null || offer.getAmount() < 0);
         valid = valid && server.getClub(offer.getFromClub()).getBudget() >= offer.getAmount();
 
-        if (offer.getFromClubPlayer() != null)
+        System.out.println(offer.getFromClubPlayer());
+        if (!offer.getFromClubPlayer().isEmpty())
         {
             Player player = PlayerCollection.getPlayerByName(offer.getFromClubPlayer());
+            System.out.println(player);
             assert player != null;
             valid = valid && player.getTeam().equalsIgnoreCase(offer.getFromClub());
         }
-        if (offer.getToClubPlayer() != null)
+        if (!offer.getToClubPlayer().isEmpty())
         {
             Player player = PlayerCollection.getPlayerByName(offer.getToClubPlayer());
             assert player != null;
@@ -255,14 +257,14 @@ public class ServerThread extends Thread {
                 server.getClub(offer.getFromClub()).changeBudget(-offer.getAmount());
                 server.getClub(offer.getToClub()).changeBudget(offer.getAmount());
 
-                if (offer.getFromClubPlayer() != null)
+                if (!offer.getFromClubPlayer().isEmpty())
                 {
                     Player player = PlayerCollection.getPlayerByName(offer.getFromClubPlayer());
                     assert player != null;
                     player.setTeam(offer.getToClub());
                     player.setForSale(false);
                 }
-                if (offer.getToClubPlayer() != null)
+                if (!offer.getToClubPlayer().isEmpty())
                 {
                     Player player = PlayerCollection.getPlayerByName(offer.getToClubPlayer());
                     assert player != null;

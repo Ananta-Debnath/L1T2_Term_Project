@@ -31,7 +31,7 @@ public class PlayerCollection
     {
         for (Player p : players)
         {
-            if (p.getName().equalsIgnoreCase(name.trim())) return p;
+            if (p.getName().equalsIgnoreCase(name)) return p;
         }
         return null;
     }

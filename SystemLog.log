@@ -982,6 +982,11 @@
 [2025-07-30 01:36:03] Liverpool made offer to Real Madrid
 [2025-07-30 01:36:09] 'Liverpool' logged out
 [2025-07-30 01:36:09] Client disconnected: Socket[addr=/127.0.0.1,port=59579,localport=12913]
+[2025-07-30 02:15:51] Server Started
+[2025-07-30 02:15:57] Client connected: Socket[addr=/127.0.0.1,port=61783,localport=12913]
+[2025-07-30 02:15:59] 'Liverpool' logged in
+[2025-07-30 02:16:10] 'Liverpool' logged out
+[2025-07-30 02:16:10] Client disconnected: Socket[addr=/127.0.0.1,port=61783,localport=12913]
 [2025-07-30 02:07:07] Server Started
 [2025-07-30 02:07:11] Client connected: Socket[addr=/127.0.0.1,port=57554,localport=12913]
 [2025-07-30 02:07:16] 'Liverpool' logged in
@@ -1033,3 +1038,79 @@
 [2025-07-30 02:50:34] 'Barcelona' logged in
 [2025-07-30 02:51:20] 'Barcelona' logged out
 [2025-07-30 02:51:20] Client disconnected: Socket[addr=/127.0.0.1,port=58714,localport=12913]
+[2025-07-30 02:59:08] Server Started
+[2025-07-30 03:01:07] Server Started
+[2025-07-30 03:01:12] Client connected: Socket[addr=/127.0.0.1,port=64237,localport=12913]
+[2025-07-30 03:01:16] 'Liverpool' logged in
+[2025-07-30 03:01:22] 'Liverpool' logged out
+[2025-07-30 03:01:22] Client disconnected: Socket[addr=/127.0.0.1,port=64237,localport=12913]
+[2025-07-30 03:02:32] Server Started
+[2025-07-30 03:02:40] Client connected: Socket[addr=/127.0.0.1,port=64374,localport=12913]
+[2025-07-30 03:02:42] 'Liverpool' logged in
+[2025-07-30 03:02:57] 'Liverpool' accepted offer from 'Barcelona'
+[2025-07-30 03:03:08] 'Liverpool' logged out
+[2025-07-30 03:03:11] 'barcelona' logged in
+[2025-07-30 03:04:08] 'Barcelona' rejected offer from 'Liverpool'
+[2025-07-30 03:04:17] 'Barcelona' accepted offer from 'Liverpool'
+[2025-07-30 03:04:26] 'Barcelona' logged out
+[2025-07-30 03:04:28] 'Liverpool' logged in
+[2025-07-30 03:04:43] 'Liverpool' logged out
+[2025-07-30 03:04:49] 'real madrid' logged in
+[2025-07-30 03:11:37] Server Started
+[2025-07-30 03:11:42] Client connected: Socket[addr=/127.0.0.1,port=64923,localport=12913]
+[2025-07-30 03:11:47] 'real madrid' logged in
+[2025-07-30 03:12:56] Client connected: Socket[addr=/127.0.0.1,port=65024,localport=12913]
+[2025-07-30 03:13:00] 'Liverpool' logged in
+[2025-07-30 03:13:04] 'Liverpool' logged out
+[2025-07-30 03:13:09] 'real madrid' logged in
+[2025-07-30 03:13:42] Server Started
+[2025-07-30 03:13:59] Client connected: Socket[addr=/127.0.0.1,port=65129,localport=12913]
+[2025-07-30 03:14:12] 'real madrid' logged in
+[2025-07-30 03:17:40] Server Started
+[2025-07-30 03:17:47] Client connected: Socket[addr=/127.0.0.1,port=65412,localport=12913]
+[2025-07-30 03:17:52] 'real madrid' logged in
+[2025-07-30 03:19:25] Server Started
+[2025-07-30 03:19:31] Client connected: Socket[addr=/127.0.0.1,port=49173,localport=12913]
+[2025-07-30 03:19:37] 'real madrid' logged in
+[2025-07-30 03:20:31] Server Started
+[2025-07-30 03:20:37] Client connected: Socket[addr=/127.0.0.1,port=49257,localport=12913]
+[2025-07-30 03:20:45] 'real madrid' logged in
+[2025-07-30 03:21:57] Server Started
+[2025-07-30 03:22:05] Client connected: Socket[addr=/127.0.0.1,port=49716,localport=12913]
+[2025-07-30 03:22:11] 'real madrid' logged in
+[2025-07-30 03:22:16] 'Real Madrid' accepted offer from 'Liverpool'
+[2025-07-30 03:23:01] 'Real Madrid' logged out
+[2025-07-30 03:23:03] 'Liverpool' logged in
+[2025-07-30 03:23:31] 'Liverpool' made offer to 'Real Madrid'
+[2025-07-30 03:26:06] Server Started
+[2025-07-30 03:26:12] Client connected: Socket[addr=/127.0.0.1,port=49963,localport=12913]
+[2025-07-30 03:26:17] 'Liverpool' logged in
+[2025-07-30 03:26:25] 'Liverpool' logged out
+[2025-07-30 03:26:30] 'real madrid' logged in
+[2025-07-30 03:26:55] 'Real Madrid' made offer to 'Liverpool'
+[2025-07-30 03:27:08] 'real madrid' logged out
+[2025-07-30 03:27:08] Client disconnected: Socket[addr=/127.0.0.1,port=49963,localport=12913]
+[2025-07-30 03:27:53] Client connected: Socket[addr=/127.0.0.1,port=50111,localport=12913]
+[2025-07-30 03:27:56] 'Liverpool' logged in
+[2025-07-30 03:28:18] 'Liverpool' logged out
+[2025-07-30 03:28:18] Client disconnected: Socket[addr=/127.0.0.1,port=50111,localport=12913]
+[2025-07-30 03:28:58] Client connected: Socket[addr=/127.0.0.1,port=50203,localport=12913]
+[2025-07-30 03:29:00] 'Liverpool' logged in
+[2025-07-30 03:29:12] 'Liverpool' logged out
+[2025-07-30 03:29:12] Client disconnected: Socket[addr=/127.0.0.1,port=50203,localport=12913]
+[2025-07-30 03:30:16] Client connected: Socket[addr=/127.0.0.1,port=50278,localport=12913]
+[2025-07-30 03:30:18] 'Liverpool' logged in
+[2025-07-30 03:30:29] 'Liverpool' logged out
+[2025-07-30 03:30:29] Client disconnected: Socket[addr=/127.0.0.1,port=50278,localport=12913]
+[2025-07-30 03:32:08] Client connected: Socket[addr=/127.0.0.1,port=50386,localport=12913]
+[2025-07-30 03:32:10] 'Liverpool' logged in
+[2025-07-30 03:32:14] 'Liverpool' accepted offer from 'Real Madrid'
+[2025-07-30 03:32:47] 'Liverpool' made offer to 'Barcelona'
+[2025-07-30 03:32:51] 'Liverpool' logged out
+[2025-07-30 03:32:55] 'Barcelona' logged in
+[2025-07-30 03:33:10] 'Barcelona' made offer to 'Liverpool'
+[2025-07-30 03:33:25] 'Barcelona' logged out
+[2025-07-30 03:33:27] 'Liverpool' logged in
+[2025-07-30 03:34:09] 'Liverpool' accepted offer from 'Barcelona'
+[2025-07-30 03:34:20] 'Liverpool' logged out
+[2025-07-30 03:34:25] Client disconnected: Socket[addr=/127.0.0.1,port=50386,localport=12913]

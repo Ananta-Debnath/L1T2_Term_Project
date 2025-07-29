@@ -90,7 +90,7 @@ public class Offer implements Serializable {
         offer.fromClub = toClub;
         offer.fromClubPlayer = toClubPlayer;
         offer.toClub = fromClub;
-        offer.fromClubPlayer = toClubPlayer;
+        offer.toClubPlayer = fromClubPlayer;
 
         return offer;
     }
@@ -101,9 +101,9 @@ public class Offer implements Serializable {
 
         str.append(id).append(",");
         str.append(fromClub).append(",");
-        str.append(fromClubPlayer).append(",");
+        if (fromClubPlayer != null) str.append(fromClubPlayer).append(",");
         str.append(toClub).append(",");
-        str.append(toClubPlayer).append(",");
+        if (toClubPlayer != null) str.append(toClubPlayer).append(",");
         str.append(amount);
 
         return str.toString();

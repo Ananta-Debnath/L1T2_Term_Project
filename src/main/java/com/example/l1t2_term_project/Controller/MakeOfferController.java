@@ -104,13 +104,13 @@ public class MakeOfferController {
         fromClubPlayerBox.getItems().clear();
         fromClubPlayerBox.getItems().add(null);
         fromClubPlayerBox.getItems().addAll(fromClub.getPlayersList().stream().map(Player::getName).collect(Collectors.toList()));
-        if (offer.getFromClubPlayer() != null) fromClubPlayerBox.setValue(offer.getFromClubPlayer());
+        if (!offer.getFromClubPlayer().isEmpty()) fromClubPlayerBox.setValue(offer.getFromClubPlayer());
 
         toClub.loadPlayers(client);
         toClubPlayerBox.getItems().clear();
         toClubPlayerBox.getItems().add(null);
         toClubPlayerBox.getItems().addAll(toClub.getPlayersList().stream().map(Player::getName).collect(Collectors.toList()));
-        if (offer.getToClubPlayer() != null) toClubPlayerBox.setValue(offer.getToClubPlayer());
+        toClubPlayerBox.setValue(offer.getToClubPlayer());
 
         if (offer.getAmount() > 0) fromClubAmountField.setText(String.valueOf(offer.getAmount()));
         else if (offer.getAmount() < 0) toClubAmountField.setText(String.valueOf(-offer.getAmount()));

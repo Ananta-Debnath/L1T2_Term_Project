@@ -5,10 +5,6 @@ import com.example.l1t2_term_project.Model.Club.Club;
 import com.example.l1t2_term_project.Model.Offer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import com.example.l1t2_term_project.Client;
-import com.example.l1t2_term_project.Model.Club.Club;
-import com.example.l1t2_term_project.Model.Offer;
-import com.example.l1t2_term_project.Model.Player.Player;
 import com.example.l1t2_term_project.Utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,10 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
@@ -36,12 +30,14 @@ public class OffersController {
     public VBox offerActions;
     @FXML
     public Label selectedOfferLabel;
+
     @FXML
-
-
+    public AnchorPane tabAnchorPane;
+    @FXML
+    public StackPane makeOfferPane;
 
     private ObservableList<Offer> incomingOffers = FXCollections.observableArrayList();
-    private  ObservableList<Offer> outgoingOffers=FXCollections.observableArrayList();
+    private  ObservableList<Offer> outgoingOffers = FXCollections.observableArrayList();
 
     private Club userClub;
     private Client client;
@@ -61,9 +57,6 @@ public class OffersController {
         this.userClub = club;
         refreshOffersList();
     }
-
-    private Client client;
-    private Club club;
 
     private void setTable(){
 
@@ -151,15 +144,11 @@ public class OffersController {
 
 
     //public
-    @FXML
-    public AnchorPane tabAnchorPane;
-    @FXML
-    public StackPane makeOfferPane;
 
 
     @FXML
     public void acceptOffer(ActionEvent actionEvent) {
-        Offer offer = new Offer(0, Offer.Status.Accept); // TODO: get it
+        Offer offer = incomingOffersTable.getSelectionModel().getSelectedItem();
         boolean valid = Utils.showConfirmationAlert("Accept Offer", "Confirm", "Do you want to accept this offer?");
         if (!valid) return;
 
@@ -170,12 +159,12 @@ public class OffersController {
         if (valid) Utils.showAlert("Successful", "Offer accepted");
         else Utils.showAlert("Failure!", "Invalid Offer");
 
-        // TODO: refresh
+        refreshOffersList();
     }
 
     @FXML
     public void rejectOffer(ActionEvent actionEvent) {
-        Offer offer = new Offer(0, Offer.Status.Reject); // TODO: get it
+        Offer offer = incomingOffersTable.getSelectionModel().getSelectedItem();
         boolean valid = Utils.showConfirmationAlert("Reject Offer", "Confirm", "Do you want to reject this offer?");
         if (!valid) return;
 
@@ -186,12 +175,13 @@ public class OffersController {
         if (valid) Utils.showAlert("Successful", "Offer accepted");
         else Utils.showAlert("Failure!", "Invalid Offer");
 
-        // TODO: refresh
+        refreshOffersList();
     }
 
     @FXML
     public void showOfferScene(ActionEvent actionEvent) {
-        Offer offer = new Offer(0, Offer.Status.Make).counter(); // TODO: get it & reverse
+        Offer offer = incomingOffersTable.getSelectionModel().getSelectedItem().counter();
+        System.out.println(offer.toCSVLine());
         try {
             makeOfferPane.getChildren().clear();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/MakeOffer.fxml"));
@@ -201,7 +191,7 @@ public class OffersController {
             toClub.setName(offer.getToClub());
             MakeOfferController makeOfferController = loader.getController();
 
-            makeOfferController.initializeValues(client, club, toClub, offer);
+            makeOfferController.initializeValues(client, userClub, toClub, offer);
             makeOfferController.toClubPlayerBox.setDisable(false);
             makeOfferController.cancelButton.setUserData(Arrays.asList(makeOfferPane, tabAnchorPane));
             makeOfferPane.getChildren().setAll(marketView); // Load into StackPane
@@ -210,14 +200,6 @@ public class OffersController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void counterOffer(ActionEvent actionEvent) {
-    }
-
-
-
-    public void submitCounter(ActionEvent actionEvent) {
     }
 
     public Client getClient() {
