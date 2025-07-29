@@ -2,17 +2,21 @@ package com.example.l1t2_term_project.Controller;
 
 import com.example.l1t2_term_project.Client;
 import com.example.l1t2_term_project.DTO.BuyPlayerDTO;
+import com.example.l1t2_term_project.Model.Club.Club;
+import com.example.l1t2_term_project.Model.Offer;
 import com.example.l1t2_term_project.Model.Player.*;
 import com.example.l1t2_term_project.Utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
@@ -32,6 +36,7 @@ public class MarketController
 
     // Non-FXML variables
     private Client client;
+    private Club club;
     PlayerFilter filter;
     List<Player> players;
 
@@ -66,6 +71,8 @@ public class MarketController
     @FXML
     public Button buyButton;
     @FXML
+    public Button offerButton;
+    @FXML
     public Label positionLabel;
     @FXML
     public Label valueLabel;
@@ -73,6 +80,9 @@ public class MarketController
     public Label clubLabel;
     @FXML
     public ImageView transferImage;
+
+    @FXML
+    public StackPane makeOfferPane;
 
     @FXML
     private void initialize()
@@ -183,9 +193,10 @@ public class MarketController
         });
     }
 
-    public void initializeValues(Client client)
+    public void initializeValues(Client client, Club club)
     {
         this.client = client;
+        this.club = club;
         filter = new PlayerFilter(client.getCurrentClub());
         searchPlayers();
 
@@ -292,8 +303,32 @@ public class MarketController
         }else{
             Utils.showAlert("Cancelled","Buy process terminated");
         }
+    }
 
+    @FXML
+    public void showOfferScene(ActionEvent actionEvent) {
+        Player player = (Player) (((Button) actionEvent.getSource()).getUserData());
+        try {
+            makeOfferPane.getChildren().clear();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/MakeOffer.fxml"));
+            Parent marketView = loader.load();
 
+            Club toClub = new Club();
+            toClub.setName(player.getTeam());
+            MakeOfferController makeOfferController = loader.getController();
+            Offer offer = new Offer(0, Offer.Status.Make);
+            offer.setToClubPlayerID(player.getId());
+
+            makeOfferController.initializeValues(client, club, toClub, offer);
+            makeOfferController.toClubPlayerBox.setDisable(true);
+            makeOfferController.cancelButton.setUserData(Arrays.asList(makeOfferPane, playerShowBox));
+            makeOfferPane.getChildren().setAll(marketView); // Load into StackPane
+            makeOfferPane.setVisible(true);
+            playerShowBox.setDisable(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
     }
 
 
@@ -357,10 +392,8 @@ public class MarketController
         transferImage.setImage(player.getImage());
 
         buyButton.setUserData(player);
+        offerButton.setUserData(player);
         playerShowBox.setVisible(true);
         mainMenu.setDisable(true);
-    }
-
-    public void showOfferScene(ActionEvent actionEvent) {
     }
 }
