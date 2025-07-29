@@ -313,13 +313,13 @@ public class Player implements Serializable
     public Image getImage()
     {
         try {
-            String imagePath= "/Images/Players/" + name.toLowerCase().replace(" ", "_")+ ".jpeg";
+            String imagePath= "/Images/Players/" + name.toLowerCase().replace(" ", "_")+ ".png";
             System.out.println(getClass().getResource(imagePath));
             return new Image(Objects.requireNonNull(getClass().getResource(imagePath)).toExternalForm());
 
         }catch(Exception e){
             System.out.println("Player image not found");
-            String defaultImagePath="/Images/Players/default.jpeg";
+            String defaultImagePath="/Images/Players/default.png";
             return new Image(Objects.requireNonNull(getClass().getResource(defaultImagePath)).toExternalForm());
         }
     }

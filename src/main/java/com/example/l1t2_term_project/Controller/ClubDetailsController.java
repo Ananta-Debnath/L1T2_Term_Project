@@ -59,7 +59,7 @@ public class ClubDetailsController {
 
             try{
 
-                String imagePath="/Images/Clubs/" + currentClub.getName().toLowerCase().replace(" ","_") + ".jpeg";
+                String imagePath="/Images/Clubs/" + currentClub.getName().toLowerCase().replace(" ","_") + ".png";
                 Image img=new Image(getClass().getResource(imagePath).toExternalForm());
                 clubLogo.setImage(img);
             }catch(Exception e){

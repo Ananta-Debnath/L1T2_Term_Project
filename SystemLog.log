@@ -475,6 +475,73 @@
 [2025-07-28 19:40:48] Server Started
 [2025-07-28 19:41:53] Client connected: Socket[addr=/127.0.0.1,port=59866,localport=12913]
 [2025-07-28 19:42:09] Client disconnected: Socket[addr=/127.0.0.1,port=59866,localport=12913]
+[2025-07-29 00:46:43] Server Started
+[2025-07-29 00:46:45] Client connected: Socket[addr=/127.0.0.1,port=63734,localport=12913]
+[2025-07-29 00:46:48] 'Liverpool' logged in
+[2025-07-29 00:47:19] 'Liverpool' logged in
+[2025-07-29 00:47:19] Changed password for 'Liverpool'
+[2025-07-29 00:47:28] 'Liverpool' logged out
+[2025-07-29 00:47:33] Failed login attempted - [username='Liverpool', password='abc']
+[2025-07-29 00:47:37] Failed login attempted - [username='Liverpool', password='abc']
+[2025-07-29 00:47:41] 'Liverpool' logged in
+[2025-07-29 00:48:02] 'Liverpool' logged out
+[2025-07-29 00:48:09] 'Liverpool' logged in
+[2025-07-29 00:48:19] 'Liverpool' logged out
+[2025-07-29 00:48:19] Client disconnected: Socket[addr=/127.0.0.1,port=63734,localport=12913]
+[2025-07-29 00:49:03] Client connected: Socket[addr=/127.0.0.1,port=63795,localport=12913]
+[2025-07-29 00:49:10] 'Liverpool' logged in
+[2025-07-29 00:49:53] 'Liverpool' logged out
+[2025-07-29 00:49:59] 'Liverpool' logged in
+[2025-07-29 00:51:43] 'Liverpool' logged out
+[2025-07-29 00:51:43] Client disconnected: Socket[addr=/127.0.0.1,port=63795,localport=12913]
+[2025-07-29 01:03:40] Client connected: Socket[addr=/127.0.0.1,port=64349,localport=12913]
+[2025-07-29 01:03:56] 'Liverpool' logged in
+[2025-07-29 01:04:27] 'Liverpool' logged out
+[2025-07-29 01:04:27] Client disconnected: Socket[addr=/127.0.0.1,port=64349,localport=12913]
+[2025-07-29 01:05:05] Client connected: Socket[addr=/127.0.0.1,port=64390,localport=12913]
+[2025-07-29 01:05:09] 'Liverpool' logged in
+[2025-07-29 01:05:29] 'Liverpool' logged out
+[2025-07-29 01:05:29] Client disconnected: Socket[addr=/127.0.0.1,port=64390,localport=12913]
+[2025-07-29 01:08:12] Client connected: Socket[addr=/127.0.0.1,port=64468,localport=12913]
+[2025-07-29 01:08:16] 'Liverpool' logged in
+[2025-07-29 01:08:26] 'Liverpool' logged out
+[2025-07-29 01:08:26] Client disconnected: Socket[addr=/127.0.0.1,port=64468,localport=12913]
+[2025-07-29 01:08:55] Client connected: Socket[addr=/127.0.0.1,port=64495,localport=12913]
+[2025-07-29 01:08:58] 'Liverpool' logged in
+[2025-07-29 01:09:43] 'Liverpool' logged out
+[2025-07-29 01:09:43] Client disconnected: Socket[addr=/127.0.0.1,port=64495,localport=12913]
+[2025-07-29 01:09:59] Client connected: Socket[addr=/127.0.0.1,port=64524,localport=12913]
+[2025-07-29 01:10:03] 'Liverpool' logged in
+[2025-07-29 01:10:22] 'Liverpool' logged out
+[2025-07-29 01:10:22] Client disconnected: Socket[addr=/127.0.0.1,port=64524,localport=12913]
+[2025-07-29 01:13:38] Client connected: Socket[addr=/127.0.0.1,port=64705,localport=12913]
+[2025-07-29 01:13:43] 'Liverpool' logged in
+[2025-07-29 01:13:53] 'Liverpool' logged out
+[2025-07-29 01:13:53] Client disconnected: Socket[addr=/127.0.0.1,port=64705,localport=12913]
+[2025-07-29 01:14:33] Client connected: Socket[addr=/127.0.0.1,port=64730,localport=12913]
+[2025-07-29 01:14:37] 'Liverpool' logged in
+[2025-07-29 01:18:45] 'Liverpool' logged out
+[2025-07-29 01:18:45] Client disconnected: Socket[addr=/127.0.0.1,port=64730,localport=12913]
+[2025-07-29 01:18:50] Client connected: Socket[addr=/127.0.0.1,port=64870,localport=12913]
+[2025-07-29 01:18:56] 'Liverpool' logged in
+[2025-07-29 01:19:17] 'Liverpool' logged out
+[2025-07-29 01:19:17] Client disconnected: Socket[addr=/127.0.0.1,port=64870,localport=12913]
+[2025-07-29 01:32:28] Client connected: Socket[addr=/127.0.0.1,port=65301,localport=12913]
+[2025-07-29 01:32:32] 'Liverpool' logged in
+[2025-07-29 01:32:44] 'Liverpool' logged out
+[2025-07-29 01:32:44] Client disconnected: Socket[addr=/127.0.0.1,port=65301,localport=12913]
+[2025-07-29 01:39:23] Client connected: Socket[addr=/127.0.0.1,port=56888,localport=12913]
+[2025-07-29 01:39:27] 'Liverpool' logged in
+[2025-07-29 01:39:38] 'Liverpool' logged out
+[2025-07-29 01:39:38] Client disconnected: Socket[addr=/127.0.0.1,port=56888,localport=12913]
+[2025-07-29 02:09:20] Client connected: Socket[addr=/127.0.0.1,port=63608,localport=12913]
+[2025-07-29 02:09:28] 'Liverpool' logged in
+[2025-07-29 02:09:53] 'Liverpool' logged out
+[2025-07-29 02:09:53] Client disconnected: Socket[addr=/127.0.0.1,port=63608,localport=12913]
+[2025-07-29 02:11:48] Client connected: Socket[addr=/127.0.0.1,port=59939,localport=12913]
+[2025-07-29 02:11:51] 'Liverpool' logged in
+[2025-07-29 02:12:25] 'Liverpool' logged out
+[2025-07-29 02:12:25] Client disconnected: Socket[addr=/127.0.0.1,port=59939,localport=12913]
 [2025-07-28 21:27:06] Server Started
 [2025-07-28 21:27:16] Client connected: Socket[addr=/127.0.0.1,port=65481,localport=12913]
 [2025-07-28 21:27:18] 'Liverpool' logged in
@@ -613,3 +680,246 @@
 [2025-07-29 02:28:18] 'Arsenal' logged in
 [2025-07-29 02:28:25] 'Arsenal' logged out
 [2025-07-29 02:28:28] Client disconnected: Socket[addr=/127.0.0.1,port=62048,localport=12913]
+[2025-07-29 02:50:14] Server Started
+[2025-07-29 02:50:19] Client connected: Socket[addr=/127.0.0.1,port=61395,localport=12913]
+[2025-07-29 02:50:23] Failed login attempted - [username='Liverpool', password='liver']
+[2025-07-29 02:50:29] 'Liverpool' logged in
+[2025-07-29 02:52:00] 'Liverpool' logged out
+[2025-07-29 02:52:00] Client disconnected: Socket[addr=/127.0.0.1,port=61395,localport=12913]
+[2025-07-29 03:19:19] Server Started
+[2025-07-29 03:19:22] Client connected: Socket[addr=/127.0.0.1,port=62711,localport=12913]
+[2025-07-29 03:19:37] 'arsenal' logged in
+[2025-07-29 03:21:02] 'Arsenal' logged out
+[2025-07-29 03:21:05] Client disconnected: Socket[addr=/127.0.0.1,port=62711,localport=12913]
+[2025-07-29 14:47:51] Server Started
+[2025-07-29 14:47:57] Client connected: Socket[addr=/127.0.0.1,port=61218,localport=12913]
+[2025-07-29 14:48:40] 'arsenal' logged in
+[2025-07-29 14:49:18] 'Arsenal' logged out
+[2025-07-29 14:49:31] Client disconnected: Socket[addr=/127.0.0.1,port=61218,localport=12913]
+[2025-07-29 14:58:08] Client connected: Socket[addr=/127.0.0.1,port=61338,localport=12913]
+[2025-07-29 14:58:19] 'Arsenal' logged in
+[2025-07-29 14:58:25] 'Arsenal' logged out
+[2025-07-29 14:58:25] Client disconnected: Socket[addr=/127.0.0.1,port=61338,localport=12913]
+[2025-07-29 15:00:41] Client connected: Socket[addr=/127.0.0.1,port=61354,localport=12913]
+[2025-07-29 15:00:52] 'Arsenal' logged in
+[2025-07-29 15:01:29] 'Arsenal' logged out
+[2025-07-29 15:01:29] Client disconnected: Socket[addr=/127.0.0.1,port=61354,localport=12913]
+[2025-07-29 15:01:34] Client connected: Socket[addr=/127.0.0.1,port=61363,localport=12913]
+[2025-07-29 15:01:39] 'Liverpool' logged in
+[2025-07-29 15:01:57] 'Liverpool' logged out
+[2025-07-29 15:01:57] Client disconnected: Socket[addr=/127.0.0.1,port=61363,localport=12913]
+[2025-07-29 15:03:05] Client connected: Socket[addr=/127.0.0.1,port=61374,localport=12913]
+[2025-07-29 15:03:17] 'Arsenal' logged in
+[2025-07-29 15:03:26] 'Arsenal' logged out
+[2025-07-29 15:03:26] Client disconnected: Socket[addr=/127.0.0.1,port=61374,localport=12913]
+[2025-07-29 15:04:04] Client connected: Socket[addr=/127.0.0.1,port=61384,localport=12913]
+[2025-07-29 15:04:12] 'arsenal' logged in
+[2025-07-29 15:04:27] 'arsenal' logged out
+[2025-07-29 15:04:27] Client disconnected: Socket[addr=/127.0.0.1,port=61384,localport=12913]
+[2025-07-29 15:06:01] Client connected: Socket[addr=/127.0.0.1,port=61394,localport=12913]
+[2025-07-29 15:06:11] 'arsenal' logged in
+[2025-07-29 15:06:21] 'arsenal' logged out
+[2025-07-29 15:06:21] Client disconnected: Socket[addr=/127.0.0.1,port=61394,localport=12913]
+[2025-07-29 15:31:55] Client connected: Socket[addr=/127.0.0.1,port=61565,localport=12913]
+[2025-07-29 15:31:57] Failed login attempted - [username='Liverpool', password='liver']
+[2025-07-29 15:32:02] 'Liverpool' logged in
+[2025-07-29 15:34:43] 'Liverpool' logged out
+[2025-07-29 15:34:43] Client disconnected: Socket[addr=/127.0.0.1,port=61565,localport=12913]
+[2025-07-29 15:49:45] Server Started
+[2025-07-29 15:49:50] Client connected: Socket[addr=/127.0.0.1,port=61705,localport=12913]
+[2025-07-29 15:49:54] 'Liverpool' logged in
+[2025-07-29 15:50:17] 'Liverpool' logged out
+[2025-07-29 15:50:17] Client disconnected: Socket[addr=/127.0.0.1,port=61705,localport=12913]
+[2025-07-29 15:50:35] Client connected: Socket[addr=/127.0.0.1,port=61711,localport=12913]
+[2025-07-29 15:50:38] 'Liverpool' logged in
+[2025-07-29 15:51:17] 'Liverpool' logged out
+[2025-07-29 15:51:17] Client disconnected: Socket[addr=/127.0.0.1,port=61711,localport=12913]
+[2025-07-29 15:51:55] Client connected: Socket[addr=/127.0.0.1,port=61730,localport=12913]
+[2025-07-29 15:51:58] 'Liverpool' logged in
+[2025-07-29 15:52:14] 'Liverpool' logged out
+[2025-07-29 15:52:14] Client disconnected: Socket[addr=/127.0.0.1,port=61730,localport=12913]
+[2025-07-29 15:53:01] Client connected: Socket[addr=/127.0.0.1,port=61738,localport=12913]
+[2025-07-29 15:53:05] 'Liverpool' logged in
+[2025-07-29 15:53:38] 'Liverpool' logged out
+[2025-07-29 15:53:38] Client disconnected: Socket[addr=/127.0.0.1,port=61738,localport=12913]
+[2025-07-29 15:54:51] Client connected: Socket[addr=/127.0.0.1,port=61748,localport=12913]
+[2025-07-29 15:54:57] Client disconnected: Socket[addr=/127.0.0.1,port=61748,localport=12913]
+[2025-07-29 16:00:52] Client connected: Socket[addr=/127.0.0.1,port=61810,localport=12913]
+[2025-07-29 16:00:57] 'Liverpool' logged in
+[2025-07-29 16:01:22] 'Liverpool' logged out
+[2025-07-29 16:01:22] Client disconnected: Socket[addr=/127.0.0.1,port=61810,localport=12913]
+[2025-07-29 16:01:42] Client connected: Socket[addr=/127.0.0.1,port=61822,localport=12913]
+[2025-07-29 16:01:47] Failed login attempted - [username='Liverpool', password='abc']
+[2025-07-29 16:01:52] 'Liverpool' logged in
+[2025-07-29 16:02:53] 'Liverpool' logged out
+[2025-07-29 16:02:53] Client disconnected: Socket[addr=/127.0.0.1,port=61822,localport=12913]
+[2025-07-29 17:41:40] Client connected: Socket[addr=/127.0.0.1,port=63063,localport=12913]
+[2025-07-29 17:41:48] 'Liverpool' logged in
+[2025-07-29 17:43:17] 'Liverpool' logged out
+[2025-07-29 17:43:17] Client disconnected: Socket[addr=/127.0.0.1,port=63063,localport=12913]
+[2025-07-29 17:43:27] Client connected: Socket[addr=/127.0.0.1,port=63107,localport=12913]
+[2025-07-29 17:43:31] 'Liverpool' logged in
+[2025-07-29 17:44:00] 'Liverpool' logged out
+[2025-07-29 17:44:00] Client disconnected: Socket[addr=/127.0.0.1,port=63107,localport=12913]
+[2025-07-29 18:40:22] Client connected: Socket[addr=/127.0.0.1,port=64076,localport=12913]
+[2025-07-29 18:40:26] 'Liverpool' logged in
+[2025-07-29 18:41:38] 'Liverpool' logged out
+[2025-07-29 18:41:41] Failed login attempted - [username='', password='']
+[2025-07-29 18:41:44] Client disconnected: Socket[addr=/127.0.0.1,port=64076,localport=12913]
+[2025-07-29 18:50:49] Client connected: Socket[addr=/127.0.0.1,port=64230,localport=12913]
+[2025-07-29 18:50:52] 'Liverpool' logged in
+[2025-07-29 18:51:00] 'Liverpool' logged out
+[2025-07-29 18:51:00] Client disconnected: Socket[addr=/127.0.0.1,port=64230,localport=12913]
+[2025-07-29 18:58:20] Client connected: Socket[addr=/127.0.0.1,port=64349,localport=12913]
+[2025-07-29 18:58:23] 'Liverpool' logged in
+[2025-07-29 18:59:13] Client disconnected: Socket[addr=/127.0.0.1,port=64349,localport=12913]
+[2025-07-29 19:00:32] Client connected: Socket[addr=/127.0.0.1,port=64481,localport=12913]
+[2025-07-29 19:00:36] 'Liverpool' logged in
+[2025-07-29 19:01:04] Client disconnected: Socket[addr=/127.0.0.1,port=64481,localport=12913]
+[2025-07-29 19:01:06] Client connected: Socket[addr=/127.0.0.1,port=64507,localport=12913]
+[2025-07-29 19:01:11] 'Liverpool' logged in
+[2025-07-29 19:01:19] 'Liverpool' logged out
+[2025-07-29 19:01:19] Client disconnected: Socket[addr=/127.0.0.1,port=64507,localport=12913]
+[2025-07-29 19:01:32] Server Started
+[2025-07-29 19:01:36] Client connected: Socket[addr=/127.0.0.1,port=64522,localport=12913]
+[2025-07-29 19:01:40] 'Liverpool' logged in
+[2025-07-29 19:01:57] 'Liverpool' logged out
+[2025-07-29 19:01:57] Client disconnected: Socket[addr=/127.0.0.1,port=64522,localport=12913]
+[2025-07-29 19:03:03] Client connected: Socket[addr=/127.0.0.1,port=64615,localport=12913]
+[2025-07-29 19:03:08] 'Liverpool' logged in
+[2025-07-29 19:03:20] 'Liverpool' logged out
+[2025-07-29 19:03:20] Client disconnected: Socket[addr=/127.0.0.1,port=64615,localport=12913]
+[2025-07-29 19:04:04] Client connected: Socket[addr=/127.0.0.1,port=64807,localport=12913]
+[2025-07-29 19:04:07] 'Liverpool' logged in
+[2025-07-29 19:04:43] Client disconnected: Socket[addr=/127.0.0.1,port=64807,localport=12913]
+[2025-07-29 19:04:52] Client connected: Socket[addr=/127.0.0.1,port=64842,localport=12913]
+[2025-07-29 19:05:03] 'Real Madrid' logged in
+[2025-07-29 19:05:18] Client disconnected: Socket[addr=/127.0.0.1,port=64842,localport=12913]
+[2025-07-29 19:12:02] Client connected: Socket[addr=/127.0.0.1,port=65121,localport=12913]
+[2025-07-29 19:12:11] 'Real Madrid' logged in
+[2025-07-29 19:12:39] 'Real Madrid' logged out
+[2025-07-29 19:12:39] Client disconnected: Socket[addr=/127.0.0.1,port=65121,localport=12913]
+[2025-07-29 19:14:48] Client connected: Socket[addr=/127.0.0.1,port=65187,localport=12913]
+[2025-07-29 19:14:55] 'Barcelona' logged in
+[2025-07-29 19:15:09] 'Barcelona' logged out
+[2025-07-29 19:15:09] Client disconnected: Socket[addr=/127.0.0.1,port=65187,localport=12913]
+[2025-07-29 19:15:46] Server Started
+[2025-07-29 19:15:50] Client connected: Socket[addr=/127.0.0.1,port=65219,localport=12913]
+[2025-07-29 19:15:59] 'Barcelona' logged in
+[2025-07-29 19:16:59] Client disconnected: Socket[addr=/127.0.0.1,port=65219,localport=12913]
+[2025-07-29 19:18:06] Client connected: Socket[addr=/127.0.0.1,port=65255,localport=12913]
+[2025-07-29 19:18:16] 'liverpool' logged in
+[2025-07-29 19:18:37] Client disconnected: Socket[addr=/127.0.0.1,port=65255,localport=12913]
+[2025-07-29 19:19:35] Client connected: Socket[addr=/127.0.0.1,port=65282,localport=12913]
+[2025-07-29 19:19:43] 'Liverpool' logged in
+[2025-07-29 19:31:11] 'Liverpool' logged out
+[2025-07-29 19:31:11] Client disconnected: Socket[addr=/127.0.0.1,port=65282,localport=12913]
+[2025-07-29 19:33:56] Client connected: Socket[addr=/127.0.0.1,port=65523,localport=12913]
+[2025-07-29 19:34:00] 'Liverpool' logged in
+[2025-07-29 19:34:05] 'Liverpool' logged out
+[2025-07-29 19:34:05] Client disconnected: Socket[addr=/127.0.0.1,port=65523,localport=12913]
+[2025-07-29 19:34:18] Client connected: Socket[addr=/127.0.0.1,port=65533,localport=12913]
+[2025-07-29 19:34:26] 'Real Madrid' logged in
+[2025-07-29 19:34:51] 'Real Madrid' logged out
+[2025-07-29 19:34:51] Client disconnected: Socket[addr=/127.0.0.1,port=65533,localport=12913]
+[2025-07-29 19:35:20] Client connected: Socket[addr=/127.0.0.1,port=49168,localport=12913]
+[2025-07-29 19:35:27] 'Liverpool' logged in
+[2025-07-29 19:36:16] 'Liverpool' logged out
+[2025-07-29 19:36:16] Client disconnected: Socket[addr=/127.0.0.1,port=49168,localport=12913]
+[2025-07-29 19:38:02] Client connected: Socket[addr=/127.0.0.1,port=49237,localport=12913]
+[2025-07-29 19:38:05] 'Liverpool' logged in
+[2025-07-29 19:38:52] 'Liverpool' logged out
+[2025-07-29 19:38:52] Client disconnected: Socket[addr=/127.0.0.1,port=49237,localport=12913]
+[2025-07-29 19:39:39] Client connected: Socket[addr=/127.0.0.1,port=49256,localport=12913]
+[2025-07-29 19:39:43] 'Liverpool' logged in
+[2025-07-29 19:40:05] 'Liverpool' logged out
+[2025-07-29 19:40:05] Client disconnected: Socket[addr=/127.0.0.1,port=49256,localport=12913]
+[2025-07-29 19:42:00] Client connected: Socket[addr=/127.0.0.1,port=49321,localport=12913]
+[2025-07-29 19:42:04] 'Liverpool' logged in
+[2025-07-29 19:42:45] 'Liverpool' logged out
+[2025-07-29 19:42:45] Client disconnected: Socket[addr=/127.0.0.1,port=49321,localport=12913]
+[2025-07-29 19:56:19] Client connected: Socket[addr=/127.0.0.1,port=49647,localport=12913]
+[2025-07-29 19:56:32] 'Barcelona' logged in
+[2025-07-29 19:56:38] Client disconnected: Socket[addr=/127.0.0.1,port=49647,localport=12913]
+[2025-07-29 19:56:55] Client connected: Socket[addr=/127.0.0.1,port=49658,localport=12913]
+[2025-07-29 19:57:03] 'Barcelona' logged in
+[2025-07-29 19:57:59] 'Barcelona' logged out
+[2025-07-29 19:57:59] Client disconnected: Socket[addr=/127.0.0.1,port=49658,localport=12913]
+[2025-07-29 19:58:34] Client connected: Socket[addr=/127.0.0.1,port=49702,localport=12913]
+[2025-07-29 19:58:41] 'Barcelona' logged in
+[2025-07-29 19:58:58] 'Barcelona' logged out
+[2025-07-29 19:59:13] 'Arsenal' logged in
+[2025-07-29 19:59:27] 'Arsenal' logged out
+[2025-07-29 19:59:27] Client disconnected: Socket[addr=/127.0.0.1,port=49702,localport=12913]
+[2025-07-29 20:05:02] Client connected: Socket[addr=/127.0.0.1,port=49867,localport=12913]
+[2025-07-29 20:05:08] 'Arsenal' logged in
+[2025-07-29 20:06:40] 'Arsenal' logged out
+[2025-07-29 20:06:40] Client disconnected: Socket[addr=/127.0.0.1,port=49867,localport=12913]
+[2025-07-29 20:12:36] Server Started
+[2025-07-29 20:12:39] Client connected: Socket[addr=/127.0.0.1,port=50080,localport=12913]
+[2025-07-29 20:12:50] 'Chelsea' logged in
+[2025-07-29 20:18:07] 'Chelsea' logged out
+[2025-07-29 20:18:07] Client disconnected: Socket[addr=/127.0.0.1,port=50080,localport=12913]
+[2025-07-29 20:48:32] In PlayerCollection readFromFile method - java.io.IOException: Invalid info length
+[2025-07-29 20:48:32] Server Started
+[2025-07-29 20:48:39] Client connected: Socket[addr=/127.0.0.1,port=50837,localport=12913]
+[2025-07-29 20:48:53] 'PSG' logged in
+[2025-07-29 20:49:02] 'PSG' logged out
+[2025-07-29 20:49:07] Client disconnected: Socket[addr=/127.0.0.1,port=50837,localport=12913]
+[2025-07-29 20:49:15] In PlayerCollection readFromFile method - java.io.IOException: Invalid info length
+[2025-07-29 20:49:15] Server Started
+[2025-07-29 21:00:16] Server Started
+[2025-07-29 21:00:21] Client connected: Socket[addr=/127.0.0.1,port=51014,localport=12913]
+[2025-07-29 21:00:27] Failed login attempted - [username='PSG', password='psg']
+[2025-07-29 21:00:37] 'PSG' logged in
+[2025-07-29 21:02:11] 'PSG' logged out
+[2025-07-29 21:02:19] 'Arsenal' logged in
+[2025-07-29 21:02:32] 'Arsenal' logged out
+[2025-07-29 21:02:40] 'Real Madrid' logged in
+[2025-07-29 21:03:04] 'Real Madrid' logged out
+[2025-07-29 21:03:07] Client disconnected: Socket[addr=/127.0.0.1,port=51014,localport=12913]
+[2025-07-29 21:03:43] Client connected: Socket[addr=/127.0.0.1,port=51074,localport=12913]
+[2025-07-29 21:03:48] 'Liverpool' logged in
+[2025-07-29 21:04:25] 'Liverpool' logged out
+[2025-07-29 21:04:29] Client disconnected: Socket[addr=/127.0.0.1,port=51074,localport=12913]
+[2025-07-29 23:48:50] Server Started
+[2025-07-29 23:48:57] Client connected: Socket[addr=/127.0.0.1,port=54772,localport=12913]
+[2025-07-29 23:49:06] 'aRSENAL' logged in
+[2025-07-29 23:49:29] 'aRSENAL' logged out
+[2025-07-29 23:49:29] Client disconnected: Socket[addr=/127.0.0.1,port=54772,localport=12913]
+[2025-07-29 23:50:50] Client connected: Socket[addr=/127.0.0.1,port=54793,localport=12913]
+[2025-07-29 23:51:03] 'arsenal' logged in
+[2025-07-29 23:51:15] 'arsenal' logged out
+[2025-07-29 23:51:15] Client disconnected: Socket[addr=/127.0.0.1,port=54793,localport=12913]
+[2025-07-29 23:57:42] Client connected: Socket[addr=/127.0.0.1,port=54871,localport=12913]
+[2025-07-29 23:57:47] 'Liverpool' logged in
+[2025-07-29 23:57:59] 'Liverpool' logged out
+[2025-07-29 23:58:00] Client disconnected: Socket[addr=/127.0.0.1,port=54871,localport=12913]
+[2025-07-30 00:00:27] Client connected: Socket[addr=/127.0.0.1,port=54900,localport=12913]
+[2025-07-30 00:00:31] 'Liverpool' logged in
+[2025-07-30 00:01:09] 'Liverpool' logged out
+[2025-07-30 00:01:09] Client disconnected: Socket[addr=/127.0.0.1,port=54900,localport=12913]
+[2025-07-30 00:05:01] Client connected: Socket[addr=/127.0.0.1,port=54932,localport=12913]
+[2025-07-30 00:05:04] 'Liverpool' logged in
+[2025-07-30 00:06:12] 'Liverpool' logged out
+[2025-07-30 00:06:12] Client disconnected: Socket[addr=/127.0.0.1,port=54932,localport=12913]
+[2025-07-30 00:09:16] Client connected: Socket[addr=/127.0.0.1,port=54968,localport=12913]
+[2025-07-30 00:09:19] 'Liverpool' logged in
+[2025-07-30 00:09:35] 'Liverpool' logged out
+[2025-07-30 00:09:35] Client disconnected: Socket[addr=/127.0.0.1,port=54968,localport=12913]
+[2025-07-30 00:13:18] Client connected: Socket[addr=/127.0.0.1,port=55006,localport=12913]
+[2025-07-30 00:13:23] 'Liverpool' logged in
+[2025-07-30 00:13:37] 'Liverpool' logged out
+[2025-07-30 00:13:37] Client disconnected: Socket[addr=/127.0.0.1,port=55006,localport=12913]
+[2025-07-30 00:14:22] Client connected: Socket[addr=/127.0.0.1,port=55023,localport=12913]
+[2025-07-30 00:14:27] 'Liverpool' logged in
+[2025-07-30 00:15:10] 'Liverpool' logged out
+[2025-07-30 00:15:10] Client disconnected: Socket[addr=/127.0.0.1,port=55023,localport=12913]
+[2025-07-30 00:16:17] Client connected: Socket[addr=/127.0.0.1,port=55037,localport=12913]
+[2025-07-30 00:16:20] 'Liverpool' logged in
+[2025-07-30 00:16:45] 'Liverpool' logged out
+[2025-07-30 00:16:45] Client disconnected: Socket[addr=/127.0.0.1,port=55037,localport=12913]
+[2025-07-30 00:17:03] Client connected: Socket[addr=/127.0.0.1,port=55050,localport=12913]
+[2025-07-30 00:17:09] 'Liverpool' logged in
+[2025-07-30 00:18:09] 'Liverpool' logged out
+[2025-07-30 00:18:09] Client disconnected: Socket[addr=/127.0.0.1,port=55050,localport=12913]
