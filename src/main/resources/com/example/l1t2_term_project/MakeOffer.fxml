@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="350.0" prefWidth="600.0" style="-fx-padding: 10; -fx-background-color: #142526;" stylesheets="@../../../styles/market.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.MakeOfferController">
+   <children>
+      <Label fx:id="budgetLabel" prefHeight="18.0" prefWidth="600.0" text="Your Budget: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="270.0" prefWidth="600.0">
+         <children>
+            <VBox alignment="CENTER" fillWidth="false" prefHeight="350.0" prefWidth="300.0" spacing="30.0">
+               <children>
+                  <Label fx:id="fromClubNameLabel" text="From Club Name">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="fromClubAmountField" prefWidth="170.0" promptText="Amount" />
+                  <ComboBox fx:id="fromClubPlayerBox" prefWidth="170.0" visibleRowCount="4" />
+               </children>
+               <padding>
+                  <Insets bottom="60.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="CENTER" fillWidth="false" layoutX="160.0" layoutY="10.0" prefHeight="350.0" prefWidth="300.0" spacing="30.0">
+               <children>
+                  <Label fx:id="toClubNameLabel" text="To Club Name">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="toClubAmountField" prefWidth="170.0" promptText="Amount" />
+                  <ComboBox fx:id="toClubPlayerBox" prefWidth="170.0" visibleRowCount="4" />
+               </children>
+               <padding>
+                  <Insets bottom="60.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefWidth="600.0" spacing="80.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#makeOffer" prefHeight="38.0" prefWidth="105.0" text="Confirm">
+               <stylesheets>
+                  <URL value="@../../../styles/market.css" />
+                  <URL value="@../../../styles/button.css" />
+               </stylesheets></Button>
+            <Button fx:id="cancelButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancelOffer" prefHeight="30.0" prefWidth="105.0" text="Cancel">
+               <stylesheets>
+                  <URL value="@../../../styles/market.css" />
+                  <URL value="@../../../styles/button.css" />
+               </stylesheets></Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>

@@ -13,6 +13,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -44,7 +45,7 @@
                             <PropertyValueFactory property="name" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn editable="false" prefWidth="110.0" resizable="false" style="-fx-font-weight: bold;" text="Role">
+                    <TableColumn editable="false" prefWidth="60.0" resizable="false" style="-fx-font-weight: bold;" text="Role">
                         <cellValueFactory>
                             <PropertyValueFactory property="role" />
                         </cellValueFactory>
@@ -54,7 +55,7 @@
                             <PropertyValueFactory property="nationality" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn editable="false" prefWidth="120.0" resizable="false" style="-fx-font-weight: bold;" text="Club">
+                    <TableColumn editable="false" prefWidth="100.0" resizable="false" style="-fx-font-weight: bold;" text="Club">
                         <cellValueFactory>
                             <PropertyValueFactory property="team" />
                         </cellValueFactory>
@@ -64,6 +65,7 @@
                             <PropertyValueFactory property="value" />
                         </cellValueFactory>
                     </TableColumn>
+               <TableColumn fx:id="forSaleCol" prefWidth="70.0" text="For Sale" />
                 </columns>
             </TableView>
       </children>
@@ -170,4 +172,5 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
         </padding>
     </VBox>
+   <StackPane fx:id="makeOfferPane" layoutX="53.0" layoutY="75.0" prefHeight="350.0" prefWidth="600.0" visible="false" />
 </AnchorPane>

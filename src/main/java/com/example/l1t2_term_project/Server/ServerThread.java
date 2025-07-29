@@ -4,6 +4,7 @@ import com.example.l1t2_term_project.DTO.BuyPlayerDTO;
 import com.example.l1t2_term_project.DTO.LoginDTO;
 import com.example.l1t2_term_project.DTO.SellPlayerDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
+import com.example.l1t2_term_project.Model.Offer;
 import com.example.l1t2_term_project.Model.Player.Player;
 import com.example.l1t2_term_project.Model.Player.PlayerCollection;
 import com.example.l1t2_term_project.Model.Player.PlayerFilter;
@@ -12,6 +13,7 @@ import com.example.l1t2_term_project.Utils.SocketWrapper;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ServerThread extends Thread {
     private final SocketWrapper socketWrapper;
@@ -56,6 +58,10 @@ public class ServerThread extends Thread {
                 else if (obj instanceof SellPlayerDTO)
                 {
                     listForSale((SellPlayerDTO) obj);
+                }
+                else if (obj instanceof Offer)
+                {
+                    handleOffer((Offer) obj);
                 }
                 else if (obj instanceof Player) {
                     addNewPlayer((Player) obj);
@@ -167,6 +173,120 @@ public class ServerThread extends Thread {
                 ActivityLogger.log("Player (ID: " + player.getId() + ") information mismatch");
                 write(false);
             }
+        }
+    }
+
+    public void handleOffer(Offer offer)
+    {
+        switch (offer.getStatus())
+        {
+            case Make:
+                makeOffer(offer);
+                break;
+            case Accept:
+                acceptOffer(offer);
+                break;
+            case Reject:
+                rejectOffer(offer);
+                break;
+            case GetList:
+                exportOffers();
+                break;
+        }
+    }
+
+    public void exportOffers()
+    {
+        List<Offer> offers = server.getOffers().stream().filter(o -> o.getToClub().equalsIgnoreCase(clubName.trim())).collect(Collectors.toList());
+        write(offers); // Incoming offers
+        offers = server.getOffers().stream().filter(o -> o.getFromClub().equalsIgnoreCase(clubName.trim())).collect(Collectors.toList());
+        write(offers); // Outgoing offers
+    }
+
+    // TODO: Method not tested yet
+    public boolean validateOffer(Offer offer)
+    {
+        boolean valid;
+        valid = (offer.getFromClubPlayerID() != null) || (offer.getToClubPlayerID() != null);
+        valid = valid && (offer.getFromClubPlayerID() != null || offer.getAmount() > 0);
+        valid = valid && (offer.getToClubPlayerID() != null || offer.getAmount() < 0);
+        valid = valid && server.getClub(offer.getFromClub()).getBudget() >= offer.getAmount();
+
+        if (offer.getFromClubPlayerID() != null)
+        {
+            Player player = PlayerCollection.getPlayer(offer.getFromClubPlayerID());
+            assert player != null;
+            valid = valid && player.getTeam().equalsIgnoreCase(offer.getFromClub());
+        }
+        if (offer.getToClubPlayerID() != null)
+        {
+            Player player = PlayerCollection.getPlayer(offer.getToClubPlayerID());
+            assert player != null;
+            valid = valid && (player.getTeam().equalsIgnoreCase(offer.getToClub()));
+        }
+
+        return valid;
+    }
+
+    public void makeOffer(Offer offer)
+    {
+        synchronized (server)
+        {
+            boolean valid = validateOffer(offer);
+            if (valid)
+            {
+                server.removeOffer(offer.getId());
+                server.addOffer(offer);
+            }
+            write(valid);
+        }
+    }
+
+    // TODO: Method not tested yet
+    public void acceptOffer(Offer offer)
+    {
+        synchronized (server)
+        {
+            boolean valid = server.getOffers().contains(offer) && validateOffer(offer);
+            valid = valid && server.getClub(offer.getToClub()).getBudget() >= (-offer.getAmount());
+            if (valid)
+            {
+                server.getClub(offer.getFromClub()).changeBudget(-offer.getAmount());
+                server.getClub(offer.getToClub()).changeBudget(offer.getAmount());
+
+                if (offer.getFromClubPlayerID() != null)
+                {
+                    Player player = PlayerCollection.getPlayer(offer.getFromClubPlayerID());
+                    assert player != null;
+                    player.setTeam(offer.getToClub());
+                    player.setForSale(false);
+                }
+                if (offer.getToClubPlayerID() != null)
+                {
+                    Player player = PlayerCollection.getPlayer(offer.getToClubPlayerID());
+                    assert player != null;
+                    player.setTeam(offer.getFromClub());
+                    player.setForSale(false);
+                }
+                server.removeOffer(offer.getId());
+                server.writeClubsToFile();
+                PlayerCollection.writeToFile();
+            }
+            write(valid);
+        }
+    }
+
+    // TODO: Method not tested yet
+    public void rejectOffer(Offer offer)
+    {
+        synchronized (server)
+        {
+            if (server.getOffers().contains(offer))
+            {
+                server.removeOffer(offer.getId());
+                write(true);
+            }
+            else write(false);
         }
     }
 

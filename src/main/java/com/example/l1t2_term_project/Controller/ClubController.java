@@ -131,7 +131,7 @@ public class ClubController {
             contentPane.getChildren().clear();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/Market.fxml"));
             Parent marketView = loader.load();
-            ((MarketController) loader.getController()).initializeValues(client);
+            ((MarketController) loader.getController()).initializeValues(client, club);
             contentPane.getChildren().setAll(marketView); // Load into StackPane
 
             // Clear other visible elements

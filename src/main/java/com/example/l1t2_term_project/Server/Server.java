@@ -3,6 +3,7 @@ package com.example.l1t2_term_project.Server;
 
 import com.example.l1t2_term_project.DTO.LoginDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
+import com.example.l1t2_term_project.Model.Offer;
 import com.example.l1t2_term_project.Model.Player.PlayerCollection;
 import com.example.l1t2_term_project.Utils.ActivityLogger;
 import com.example.l1t2_term_project.Utils.SocketWrapper;
@@ -21,11 +22,14 @@ public class Server {
     private static final String CLUBS_PATH = "src/main/java/com/example/l1t2_term_project/Database/Clubs.csv";
     private List<LoginDTO> credentials;
     private static final String CREDENTIALS_PATH = "src/main/java/com/example/l1t2_term_project/Database/Credentials.csv";
+    private List<Offer> offers;
+    private static final String OFFERS_PATH = "src/main/java/com/example/l1t2_term_project/Database/Offers.csv";
 
     Server() {
         PlayerCollection.readFromFile();
         readClubs();
         readCredentials();
+        readOffers();
 
         startServer();
     }
@@ -60,8 +64,7 @@ public class Server {
         clientMap.remove(name);
     }
 
-    public void readClubs()
-    {
+    public void readClubs() {
         clubs = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(CLUBS_PATH))) {
             reader.readLine(); // Ignoring header line
@@ -71,7 +74,7 @@ public class Server {
 
                 Club club = new Club();
                 String[] tokens = line.split(",");
-                if (tokens.length != 6) throw new IOException("Invalid info length");
+                if (tokens.length != 6) throw new IOException("Invalid club info length");
 
                 club.setName(tokens[0].trim());
                 club.setLeagueName(tokens[1].trim());
@@ -87,8 +90,7 @@ public class Server {
         }
     }
 
-    public void writeClubsToFile()
-    {
+    public void writeClubsToFile() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(CLUBS_PATH, false)))
         {
             writer.println("name,leagueName,country,budget,stadiumName,managerName");
@@ -100,8 +102,7 @@ public class Server {
         }
     }
 
-    public void readCredentials()
-    {
+    public void readCredentials() {
         credentials = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(CREDENTIALS_PATH)))
         {
@@ -122,8 +123,7 @@ public class Server {
         }
     }
 
-    public void writeCredentialsToFile()
-    {
+    public void writeCredentialsToFile() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(CREDENTIALS_PATH, false)))
         {
             writer.println("username,password");
@@ -134,7 +134,45 @@ public class Server {
         }
         catch (IOException e)
         {
-            ActivityLogger.log("In writeClubToFile method - " + e);
+            ActivityLogger.log("In writeCredentialsToFile method - " + e);
+        }
+    }
+
+    public void readOffers() {
+        offers = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(OFFERS_PATH))) {
+            reader.readLine(); // Ignoring header line
+            while (true) {
+                String line = reader.readLine();
+                if (line == null) break;
+
+                Offer offer = new Offer(0, Offer.Status.Make);
+                String[] tokens = line.split(",");
+                if (tokens.length != 6) throw new IOException("Invalid offer info length");
+
+                offer.setId(Integer.parseInt(tokens[0].trim()));
+                offer.setFromClub(tokens[1].trim());
+                offer.setFromClubPlayerID(Integer.parseInt(tokens[2].trim()));
+                offer.setToClub(tokens[3].trim());
+                offer.setToClubPlayerID(Integer.parseInt(tokens[4].trim()));
+                offer.setAmount(Long.parseLong(tokens[5].trim()));
+
+                offers.add(offer);
+            }
+        } catch (IOException e) {
+            ActivityLogger.log("In readClubs method - " + e);
+        }
+    }
+
+    public void writeOffersToFile() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(OFFERS_PATH, false)))
+        {
+            writer.println("id,fromClub,fromClubPlayerID,toClub,toClubPlayerID,amount");
+            for (Offer offer : offers) writer.println(offer.toCSVLine());
+        }
+        catch (IOException e)
+        {
+            ActivityLogger.log("In writeOffersToFile method - " + e);
         }
     }
 
@@ -143,8 +181,7 @@ public class Server {
         return credentials.contains(loginDTO);
     }
 
-    public boolean changePass(LoginDTO loginDTO)
-    {
+    public boolean changePass(LoginDTO loginDTO) {
         LoginDTO credential = null;
         for (LoginDTO dto : credentials)
         {
@@ -169,8 +206,7 @@ public class Server {
 
     }
 
-    public Club getClub(String name)
-    {
+    public Club getClub(String name) {
         for (Club club : clubs) {
             if (club.getName().equalsIgnoreCase(name.trim())) {
                 return club;
@@ -178,6 +214,32 @@ public class Server {
         }
         ActivityLogger.log("In getClub method - Club not found");
         return null;
+    }
+
+    public List<Offer> getOffers() {
+        return offers;
+    }
+
+    public Offer getOffer(int id) {
+        for (Offer offer : offers)
+        {
+            if (offer.getId() == id) return offer;
+        }
+        return null;
+    }
+
+    public void addOffer(Offer offer)
+    {
+        if (offers.isEmpty()) offer.setId(1);
+        else offer.setId(offers.get(offers.size() - 1).getId() + 1);
+        offers.add(offer);
+        writeOffersToFile();
+    }
+
+    public void removeOffer(int id)
+    {
+        offers.remove(getOffer(id));
+        writeOffersToFile();
     }
 
     public static void main(String[] args) {
