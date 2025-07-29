@@ -268,6 +268,8 @@ public class ServerThread extends Thread {
                     player.setForSale(false);
                 }
                 server.removeOffer(offer.getId());
+                server.writeClubsToFile();
+                PlayerCollection.writeToFile();
             }
             write(valid);
         }

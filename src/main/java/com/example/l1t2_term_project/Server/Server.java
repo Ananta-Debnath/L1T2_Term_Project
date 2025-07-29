@@ -199,7 +199,8 @@ public class Server {
 
     public void addOffer(Offer offer)
     {
-        offer.setId(offers.get(offers.size() - 1).getId() + 1);
+        if (offers.isEmpty()) offer.setId(1);
+        else offer.setId(offers.get(offers.size() - 1).getId() + 1);
         offers.add(offer);
         writeOffersToFile();
     }
