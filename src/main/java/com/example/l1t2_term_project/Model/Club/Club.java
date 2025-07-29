@@ -1,6 +1,7 @@
 package com.example.l1t2_term_project.Model.Club;
 
 import com.example.l1t2_term_project.Client;
+import com.example.l1t2_term_project.Model.Offer;
 import com.example.l1t2_term_project.Model.Player.Player;
 import com.example.l1t2_term_project.Model.Player.PlayerFilter;
 
@@ -17,14 +18,16 @@ public class Club implements Serializable{
     private String stadiumName;
     private String managerName;
     private List<Integer> playerIDs;
-    private List<Player> PlayersList;
+    private List<Player> playersList;
+    private List<Offer> offersList;
 
     //private String password;
 
 
     {
-        playerIDs=new ArrayList<>();
-        PlayersList=new ArrayList<>();
+        playerIDs= new ArrayList<>();
+        playersList = new ArrayList<>();
+        offersList = new ArrayList<>();
     }
 
     public Club(){ }
@@ -39,11 +42,11 @@ public class Club implements Serializable{
     }
 
     public void setPlayersList(List<Player> playersList) {
-        PlayersList = playersList;
+        this.playersList = playersList;
     }
 
     public List<Player> getPlayersList() {
-        return PlayersList;
+        return playersList;
     }
 
     public String getName() {
@@ -102,7 +105,13 @@ public class Club implements Serializable{
         this.playerIDs = playerIDs;
     }
 
+    public List<Offer> getOffersList() {
+        return offersList;
+    }
 
+    public void setOffersList(List<Offer> offersList) {
+        this.offersList = offersList;
+    }
 
     public void addPlayer(int playerID){
 
@@ -113,24 +122,20 @@ public class Club implements Serializable{
 
     public void addPlayer(Player p){
 
-        if(!PlayersList.contains(p)){
-            PlayersList.add(p);
+        if(!playersList.contains(p)){
+            playersList.add(p);
         }
     }
 
     public void removePlayer(int playerID){
-
             playerIDs.remove(Integer.valueOf(playerID));
-
     }
 
     public void removePlayer(Player p){
-
-        PlayersList.remove(p);
+        playersList.remove(p);
     }
 
     public boolean canBuy(long value){
-
         return budget>=value;
     }
 
@@ -154,7 +159,7 @@ public class Club implements Serializable{
 
     public void loadPlayers(Client client)
     {
-        PlayersList.clear(); // Clear list
+        playersList.clear(); // Clear list
 
         PlayerFilter filter = new PlayerFilter(null);
         filter.setForSale(false);
@@ -182,7 +187,31 @@ public class Club implements Serializable{
         }
     }
 
+    public void loadOffers(Client client)
+    {
+        offersList.clear(); // Clear list
+        client.write(new Offer(0, Offer.Status.GetList));
 
+        Object obj = client.read();
+        if (obj instanceof List<?>)
+        {
+            List<?> list = (List<?>) obj;
+            if (list.isEmpty())
+            {
+                System.out.println("No offers found");
+            }
+            else if (list.get(0) instanceof Offer)
+            {
+                @SuppressWarnings("unchecked")
+                List<Offer> offers = (List<Offer>) list;
+                offersList.addAll(offers);
+            }
+            else
+            {
+                System.err.println("Wrong object");
+            }
+        }
+    }
 
     public String toCSVLine(){
 
