@@ -956,3 +956,18 @@
 [2025-07-30 00:50:18] 'Liverpool' logged in
 [2025-07-30 00:51:15] 'Liverpool' logged out
 [2025-07-30 00:51:15] Client disconnected: Socket[addr=/127.0.0.1,port=55554,localport=12913]
+[2025-07-30 01:28:06] Server Started
+[2025-07-30 01:28:14] Client connected: Socket[addr=/127.0.0.1,port=58851,localport=12913]
+[2025-07-30 01:28:16] 'Liverpool' logged in
+[2025-07-30 01:28:31] 'Liverpool' logged out
+[2025-07-30 01:28:31] Client disconnected: Socket[addr=/127.0.0.1,port=58851,localport=12913]
+[2025-07-30 01:29:04] Server Started
+[2025-07-30 01:29:11] Client connected: Socket[addr=/127.0.0.1,port=58949,localport=12913]
+[2025-07-30 01:29:13] 'Liverpool' logged in
+[2025-07-30 01:30:12] 'Liverpool' logged out
+[2025-07-30 01:30:18] 'Barcelona' logged in
+[2025-07-30 01:30:45] 'Barcelona' logged out
+[2025-07-30 01:30:55] Failed login attempted - [username='PSG', password='psg']
+[2025-07-30 01:31:04] 'Real Madrid' logged in
+[2025-07-30 01:31:33] 'Real Madrid' logged out
+[2025-07-30 01:31:33] Client disconnected: Socket[addr=/127.0.0.1,port=58949,localport=12913]

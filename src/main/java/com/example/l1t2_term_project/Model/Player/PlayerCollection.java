@@ -27,6 +27,15 @@ public class PlayerCollection
         return null;
     }
 
+    public static Player getPlayerByName(String name)
+    {
+        for (Player p : players)
+        {
+            if (p.getName().equalsIgnoreCase(name.trim())) return p;
+        }
+        return null;
+    }
+
     public static void addPlayer(Player player)
     {
         player.setId(players.get(players.size() - 1).getId() + 1);

@@ -152,9 +152,9 @@ public class Server {
 
                 offer.setId(Integer.parseInt(tokens[0].trim()));
                 offer.setFromClub(tokens[1].trim());
-                offer.setFromClubPlayerID(Integer.parseInt(tokens[2].trim()));
+                offer.setFromClubPlayer(tokens[2].trim());
                 offer.setToClub(tokens[3].trim());
-                offer.setToClubPlayerID(Integer.parseInt(tokens[4].trim()));
+                offer.setToClubPlayer(tokens[4].trim());
                 offer.setAmount(Long.parseLong(tokens[5].trim()));
 
                 offers.add(offer);
@@ -167,7 +167,7 @@ public class Server {
     public void writeOffersToFile() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(OFFERS_PATH, false)))
         {
-            writer.println("id,fromClub,fromClubPlayerID,toClub,toClubPlayerID,amount");
+            writer.println("id,fromClub,fromClubPlayer,toClub,toClubPlayer,amount");
             for (Offer offer : offers) writer.println(offer.toCSVLine());
         }
         catch (IOException e)
