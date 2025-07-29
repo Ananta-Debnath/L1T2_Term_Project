@@ -2,24 +2,86 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.ClubController">
    <children>
-      <VBox prefHeight="500.0" prefWidth="200.0" spacing="25.0" style="-fx-background-color: #2a2a2a;" AnchorPane.topAnchor="0.0">
+      <VBox prefHeight="500.0" prefWidth="200.0" spacing="15.0" style="-fx-background-color: #45575B;" stylesheets="@../../../styles/market.css" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="clubPlayersbutton2" mnemonicParsing="false" onAction="#OpenPlayers" prefHeight="54.0" prefWidth="199.0" style="-fx-background-radius: 10;" text="Players" />
-            <Button fx:id="clubClubButton" layoutX="30.0" layoutY="30.0" mnemonicParsing="false" onAction="#OpenClub" prefHeight="54.0" prefWidth="199.0" style="-fx-background-radius: 10;" text="Club" />
-            <Button fx:id="clubTransferButton" layoutX="30.0" layoutY="84.0" mnemonicParsing="false" onAction="#OpenTransfer" prefHeight="54.0" prefWidth="199.0" style="-fx-background-radius: 10;" text="Transfer" />
-            <Button fx:id="clubSignOutButton" layoutX="30.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleSignOut" prefHeight="54.0" prefWidth="199.0" style="-fx-background-radius: 10;" text="Sign Out" />
+            <Button fx:id="clubPlayersbutton2" alignment="CENTER" mnemonicParsing="false" onAction="#OpenPlayers" prefHeight="50.0" prefWidth="180.0" style="-fx-background-radius: 10; -fx-padding: 5;" text="Players">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/jersey_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="clubClubButton" mnemonicParsing="false" onAction="#OpenClub" prefHeight="50.0" prefWidth="180.0" style="-fx-background-radius: 10;" text="Club">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/club_icon2.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <VBox>
+               <children>
+                  <Button fx:id="clubTransferButton" mnemonicParsing="false" onAction="#OpenTransferSubMenu" prefHeight="50.0" prefWidth="180.0" style="-fx-background-radius: 10;" text="Transfer">
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/transfer_icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <VBox fx:id="transferSubMenu" prefHeight="52.0" prefWidth="160.0">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#OpenMarket" prefHeight="37.0" prefWidth="145.0" style="-fx-font-size: 14;" text="Buy Players">
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../Images/buy_icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#switchToPlayerOffers" prefWidth="145.0" style="-fx-font-size: 14;" text="Make Offers">
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../Images/handshake_icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <Button fx:id="clubSignOutButton" layoutX="30.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleSignOut" prefHeight="50.0" prefWidth="180.0" style="-fx-background-radius: 10;" text="Sign Out">
+               <graphic>
+                  <ImageView fitHeight="42.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/signout_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
-      <StackPane fx:id="contentPane" layoutX="200.0" maxHeight="500.0" maxWidth="900.0" prefHeight="500.0" prefWidth="700.0" AnchorPane.topAnchor="0.0" />
+      <StackPane fx:id="contentPane" layoutX="200.0" maxHeight="500.0" maxWidth="900.0" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #273C41; -fx-effect: dropshadow(three-pass-box, rgba(230, 202, 179, 0.2), 10, 0, 0, 0);" AnchorPane.topAnchor="0.0" />
       <VBox fx:id="transferBox" alignment="CENTER" layoutX="200.0" prefHeight="500.0" prefWidth="700.0" spacing="100.0" visible="false" AnchorPane.topAnchor="0.0">
          <children>
             <Button fx:id="transferBuy" mnemonicParsing="false" onAction="#OpenMarket" prefHeight="55.0" prefWidth="104.0" text="BUY" />

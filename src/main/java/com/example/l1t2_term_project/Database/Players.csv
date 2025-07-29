@@ -3,7 +3,7 @@ id,name,age,height,role,extraPositions,nationality,team,jerseyNumber,goals,assis
 2,Virgil van Dijk,31,1.93,CB,,Netherlands,Liverpool,4,3,2,45,60,0,30,"Leader-Strong-Aerial",Good,280000,75000000,2025-06-30,false
 3,Alisson Becker,30,1.91,GK,,Brazil,Liverpool,1,0,0,0,0,85,28,,Excellent,250000,70000000,2027-06-30,false
 5,Andrew Robertson,29,1.78,LB,,Scotland,Liverpool,26,1,8,40,30,0,28,,Good,150000,50000000,2026-06-30,false
-6,Jeremy Frimpong,22,1.78,RB,,Netherlands,Liverpool,3,0,2,30,25,0,20,,Good,120000,30000000,2027-06-30,false
+6,Jeremie Frimpong,22,1.78,RB,,Netherlands,Liverpool,3,0,2,30,25,0,20,,Good,120000,30000000,2027-06-30,false
 7,Florian Wirtz,26,1.85,CM,CAM,Germany,Liverpool,12,4,5,20,15,0,22,,Good,150000,40000000,2027-06-30,false
 8,Darwin Nunez,23,1.87,ST,LW,Uruguay,Liverpool,27,15,4,10,5,0,25,,Good,200000,80000000,2028-06-30,true
 9,Luis Diaz,26,1.78,LW,RW,Colombia,Liverpool,23,8,6,12,8,0,22,,Good,180000,70000000,2027-06-30,false
@@ -22,7 +22,7 @@ id,name,age,height,role,extraPositions,nationality,team,jerseyNumber,goals,assis
 22,Pau Cubarsi,19,1.85,CB,,Spain,Barcelona,16,0,0,35,40,0,20,,Good,100000,20000000,2028-06-30,false
 23,Raphinha,26,1.76,RW,LW,Brazil,Barcelona,22,5,8,15,10,0,20,,Good,150000,50000000,2027-06-30,false
 24,Ferran Torres,23,1.8,RW,LW,Spain,Barcelona,7,4,3,10,5,0,18,,Good,120000,40000000,2026-06-30,false
-25,Arda Güler,18,1.75,CAM,RW,Türkiye,Barcelona,14,2,5,10,5,0,15,,Good,100000,30000000,2028-06-30,false
+25,Arda Güler,18,1.75,CAM,RW,Türkiye,Real Madrid,14,2,5,10,5,0,15,,Good,100000,30000000,2028-06-30,false
 26,Vinicius Junior,22,1.76,LW,RW,Brazil,Real Madrid,20,15,10,20,15,0,30,"Dribbling-Pace",Excellent,250000,120000000,2027-06-30,false
 27,Thibaut Courtois,30,1.99,GK,,Belgium,Real Madrid,1,0,0,0,0,85,30,,Excellent,300000,60000000,2026-06-30,false
 28,Jude Bellingham,20,1.86,CM,CAM,England,Real Madrid,13,8,6,20,15,0,25,"Leading",Excellent,200000,120000000,2029-06-30,false
@@ -54,7 +54,7 @@ id,name,age,height,role,extraPositions,nationality,team,jerseyNumber,goals,assis
 54,Marc Cucurella,25,1.78,LB,LW,Spain,Chelsea,3,0,2,30,25,0,20,,Good,120000,40000000,2027-06-30,false
 55,Axel Disasi,25,1.9,CB,,France,Chelsea,2,1,0,35,40,0,20,,Good,120000,30000000,2028-06-30,false
 56,Benoit Badiashile,21,1.94,CB,,France,Chelsea,4,1,0,20,25,0,10,,Good,100000,40000000,2030-06-30,false
-57,Nikolas Jackson,22,1.85,CF,LW,Senegal,Chelsea,9,8,3,5,2,0,15,,Good,150000,50000000,2028-06-30,false
+57,Nicolas Jackson,22,1.85,CF,LW,Senegal,Chelsea,9,8,3,5,2,0,15,,Good,150000,50000000,2028-06-30,false
 58,Robert Sanchez,25,1.93,GK,,Spain,Chelsea,1,0,0,0,0,75,20,,Good,150000,30000000,2026-06-30,false
 59,Romeo Lavia,19,1.8,CDM,CM,Belgium,Chelsea,14,1,2,15,10,0,18,,Good,100000,40000000,2028-06-30,false
 60,Christopher Nkunku,25,1.81,CF,LW-RW,France,Chelsea,11,10,5,10,5,0,20,,Good,200000,70000000,2026-06-30,false
@@ -70,5 +70,17 @@ id,name,age,height,role,extraPositions,nationality,team,jerseyNumber,goals,assis
 70,Serge Gnabry,27,1.75,RW,LW,Germany,Bayern Munich,7,10,6,15,10,0,25,,Good,200000,55000000,2026-06-30,false
 71,Jonathan Tah,27,1.9,CB,,Germany,Bayern Munich,5,1,0,40,45,0,20,,Good,150000,40000000,2026-06-30,false
 72,Kingsley Coman,27,1.81,LW,RW,France,Bayern Munich,11,8,5,10,5,0,22,,Good,200000,60000000,2026-06-30,false
-73,Lionel Messi,36,1.7,RW,CF-LW,Argentina,Inter Miami,10,25,30,0,0,0,25,Dribbling-Speed-Vision,Good,500000,100000000,2025-06-30,true
-74,Kevin De Bruyne,32,1.81,CAM,CM,Belgium,Man City,17,12,18,8,3,0,22,Vision-Passing-LongShots,Fair,400000,85000000,2026-05-30,false
+73,Lionel Messi,36,1.7,RW,CF-LW,Argentina,Inter Miami,10,25,30,0,0,0,25,"Dribbling-Speed-Vision",Good,500000,100000000,2025-06-30,true
+74,Kevin De Bruyne,32,1.81,CAM,CM,Belgium,Man City,17,12,18,8,3,0,22,"Vision-Passing-LongShots",Fair,400000,85000000,2026-05-30,false
+75,Ousmane Dembélé,26,1.78,RW,RW-LW,France,PSG,23,10,8,12,6,0,30,"speed-dribbling-vision",Good,300000,60000000,2027,FALSE
+76,Bradley Barcola,21,1.80,RW,RW-LW,France,PSG,31,5,4,10,5,0,20,"speed-dribbling-vision",Average,150000,40000000,2028,FALSE
+77,Warren Zaïre‑Emery,18,1.78,CM,CM,France,PSG,33,3,5,40,30,0,45,"passing-vision-stamina",Fair,120000,60000000,2029,FALSE
+78,Vitinha,25,1.80,CM,CM,Portugal,PSG,6,4,3,35,25,0,30,,Good,200000,50000000,2028,FALSE
+79,Khvicha Kvaratskhelia,24,1.80,LW,LW-RW,Georgia,PSG,11,10,6,12,8,0,30,"speed-dribbling-vision",Good,250000,70000000,2027,FALSE
+80,Gonçalo Ramos,23,1.85,ST,CF-ST,Portugal,PSG,7,15,5,10,5,0,25,"speed-finishing-vision",Fair,200000,60000000,2028,FALSE
+81,João Neves,19,1.75,CM,CM,Portugal,PSG,32,2,4,30,20,0,40,,Average,120000,50000000,2029,FALSE
+82,Marquinhos,31,1.83,CB,CB,Brazil,PSG,5,2,1,50,55,0,30,,Good,300000,70000000,2026,FALSE
+83,Milan Škriniar,30,1.88,CB,CB,Slovakia,PSG,37,1,0,40,45,0,25,,Good,250000,60000000,2026,FALSE
+84,Achraf Hakimi,25,1.81,RB,LB,Morocco,PSG,2,5,10,30,20,0,28,"speed-dribbling-vision",Good,300000,80000000,2026,FALSE
+85,Nuno Mendes,21,1.80,LB,LB,Portugal,PSG,25,1,2,20,15,0,22,"speed-dribbling-vision",Fair,150000,50000000,2027,FALSE
+86,Gianluigi Donnarumma,25,1.96,GK,,Italy,PSG,1,0,0,0,0,80,30,,Good,250000,60000000,2026,FALSE

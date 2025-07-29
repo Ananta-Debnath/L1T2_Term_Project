@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -20,10 +22,38 @@
             </HBox>
             <VBox prefHeight="218.0" prefWidth="750.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 10; -fx-spacing: 20;">
                <children>
-                  <Label alignment="CENTER" style="-fx-font-size: 25; -fx-text-fill: #676127;" text="Sign-in to continue" />
-                  <TextField fx:id="clubNameTextField" prefHeight="26.0" prefWidth="759.0" promptText="Enter Club Name" />
-                  <PasswordField fx:id="passwordTextField" prefHeight="26.0" prefWidth="100.0" promptText="Password" />
-                  <Button fx:id="signInButton" defaultButton="true" mnemonicParsing="false" onAction="#switchToClub" style="-fx-background-color: #4CAF50; -fx-text-fill: #ffffff;" text="Sign In" />
+                  <Label alignment="CENTER" prefHeight="73.0" prefWidth="272.0" style="-fx-font-size: 25; -fx-text-fill: #676127;" text="Sign-in to continue" />
+                  <HBox spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/club_icon.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="clubNameTextField" prefHeight="30.0" prefWidth="400.0" promptText="Enter Club Name" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="15.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/lock_icon.png" />
+                           </image>
+                        </ImageView>
+                        <PasswordField fx:id="passwordTextField" prefHeight="30.0" prefWidth="400.0" promptText="Password" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Button fx:id="signInButton" defaultButton="true" mnemonicParsing="false" onAction="#switchToClub" style="-fx-background-color: #4CAF50; -fx-text-fill: #ffffff;" text="Sign In">
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../Images/Login_icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
                <VBox.margin>
                   <Insets />

@@ -13,10 +13,10 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.ClubDetailsController">
-      <VBox prefHeight="500.0" prefWidth="700.0" spacing="20.0" style="-fx-padding: 30; -fx-spacing: 30;" styleClass="new-vbox" stylesheets="@../../../styles/Club_detail.css">
+      <VBox prefHeight="500.0" prefWidth="700.0" spacing="20.0" style="-fx-padding: 30; -fx-spacing: 30; -fx-background-color: #273C41;" styleClass="new-vbox" stylesheets="@../../../styles/Club_detail.css">
 
                 <HBox alignment="CENTER_LEFT" spacing="20">
-              <ImageView fx:id="clubLogo" fitHeight="80" fitWidth="80" />
+              <ImageView fx:id="clubLogo" fitHeight="94.0" fitWidth="100.0" />
               <Label fx:id="clubNameLabel" style="-fx-font-size: 24; -fx-font-weight: bold;" />
           </HBox>
 
@@ -47,7 +47,7 @@
 
                 <!-- Password Change Section -->
           <VBox prefHeight="198.0" prefWidth="840.0" spacing="5.0" style="-fx-padding: 10; -fx-background-color: #f5f5f5; -fx-background-radius: 10;" styleClass="new-vbox" stylesheets="@../../../styles/Club_detail.css">
-              <Label style="-fx-font-weight: bold;" text="Change Password" />
+              <Label style="-fx-text-fill: #676127; -fx-font-size: 18;" text="Change Password" />
               <PasswordField fx:id="currentPasswordField" promptText="Current Password" />
               <PasswordField fx:id="newPasswordField" promptText="New Password" />
               <PasswordField fx:id="confirmPasswordField" promptText="Confirm New Password" />

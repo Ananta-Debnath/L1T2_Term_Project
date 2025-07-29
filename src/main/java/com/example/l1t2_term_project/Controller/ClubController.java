@@ -18,6 +18,7 @@ import java.io.IOException;
 
 // TODO: add alert to close and use sign out then
 public class ClubController {
+
     private Client client;
 
     private Club club;
@@ -46,6 +47,8 @@ public class ClubController {
     @FXML
     public StackPane contentPane;
 
+    @FXML
+    public VBox transferSubMenu;
 
     public void initializeValues(Client client)
     {
@@ -178,5 +181,10 @@ public class ClubController {
         }
 
 
+    }
+
+
+    public void OpenTransferSubMenu(ActionEvent actionEvent) {
+        transferSubMenu.setVisible(true);
     }
 }

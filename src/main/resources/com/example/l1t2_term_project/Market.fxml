@@ -16,8 +16,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.MarketController">
-   <VBox fx:id="mainMenu" alignment="CENTER" fillWidth="false" prefHeight="500.0" prefWidth="700.0" spacing="30.0" style="-fx-padding: 20;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane fx:id="root" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #14252c;" stylesheets="@../../../styles/market.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.MarketController">
+   <VBox fx:id="mainMenu" alignment="CENTER" fillWidth="false" prefHeight="500.0" prefWidth="700.0" spacing="30.0" style="-fx-padding: 20; -fx-background-color: #14252C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
             <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Player Market">
                 <font>
@@ -32,8 +32,8 @@
                             <DropShadow radius="3" />
                         </effect>
                     </TextField>
-                    <Button mnemonicParsing="false" onAction="#openFilter" prefHeight="35.0" prefWidth="100.0" style="-fx-font-size: 14px; -fx-background-color: #4a90e2; -fx-text-fill: white;" stylesheets="@../../../styles/button.css" text="Filter" />
-                    <Button mnemonicParsing="false" onAction="#searchPlayers" prefHeight="35.0" prefWidth="100.0" style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;" stylesheets="@../../../styles/button.css" text="Search" />
+                    <Button mnemonicParsing="false" onAction="#openFilter" prefHeight="35.0" prefWidth="100.0" styleClass="filter" text="Filter" />
+                    <Button mnemonicParsing="false" onAction="#searchPlayers" prefHeight="35.0" prefWidth="100.0" styleClass="search" text="Search" />
                 </children>
             </HBox>
 
@@ -69,7 +69,7 @@
       </children>
    </VBox>
 
-          <VBox fx:id="filterBox" alignment="CENTER" layoutX="53.0" layoutY="50.0" prefHeight="400.0" prefWidth="600.0" spacing="20.0" style="-fx-border-color: #cccccc; -fx-border-radius: 5; -fx-background-color: white; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);" visible="false">
+          <VBox fx:id="filterBox" alignment="CENTER" layoutX="53.0" layoutY="50.0" prefHeight="400.0" prefWidth="600.0" spacing="20.0" style="-fx-border-color: #cccccc; -fx-border-radius: 5; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(230, 202, 179, 0.2), 10, 0, 0, 0); -fx-background-color: #273C41;" visible="false">
         <children>
             <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Filter Players" />
 
@@ -134,7 +134,7 @@
                   <HBox alignment="CENTER" prefHeight="30.0" prefWidth="500.0" spacing="30.0">
                 <children>
                     <Button alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" onAction="#setFilter" prefHeight="35.0" prefWidth="100.0" style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;" text="Apply" />
-                    <Button alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetFilter" prefHeight="35.0" prefWidth="100.0" style="-fx-font-size: 14px; -fx-background-color: #f44336; -fx-text-fill: white;" text="Reset" />
+                    <Button alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetFilter" prefHeight="35.0" prefWidth="100.0" style="-fx-font-size: 14px; -fx-background-color: #f44336; -fx-text-fill: #E6CAB3;" text="Reset" />
                     <Button alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" onAction="#cancelFilter" prefHeight="35.0" prefWidth="100.0" style="-fx-font-size: 14px; -fx-background-color: #cccccc; -fx-text-fill: black;" text="Cancel" />
                 </children>
             </HBox>
@@ -144,7 +144,7 @@
         </padding>
     </VBox>
 
-    <VBox fx:id="playerShowBox" alignment="CENTER" layoutX="98.0" layoutY="24.0" prefHeight="427.0" prefWidth="509.0" spacing="20.0" style="-fx-background-color: white; -fx-border-color: #cccccc; -fx-border-radius: 5; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);" visible="false">
+    <VBox fx:id="playerShowBox" alignment="CENTER" layoutX="98.0" layoutY="24.0" prefHeight="427.0" prefWidth="509.0" spacing="20.0" style="-fx-border-color: #cccccc; -fx-border-radius: 5; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0); -fx-background-color: #273C41;" visible="false">
         <children>
             <ImageView fx:id="transferImage" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
          <VBox alignment="CENTER_LEFT" spacing="10.0">

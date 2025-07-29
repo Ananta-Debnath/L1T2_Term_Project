@@ -12,19 +12,20 @@
 
 /* Table styling */
 .table-view {
-    -fx-background-color: #273C41;
-    -fx-border-color: #45575B;
-    -fx-border-width: 2px;
-    -fx-border-radius: 5px;
+    -fx-background-color:#45575B;
+    -fx-border-color: #273C41;
+    -fx-border-width: 1px;
+    -fx-border-radius: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(230, 202, 179, 0.4), 10, 0.5, 0, 2);
 }
 
 .table-view .column-header-background {
-    -fx-background-color: #45575B;
+    -fx-background-color: #273C41;
 }
 
 .table-view .column-header, .table-view .filler {
     -fx-background-color: transparent;
-    -fx-border-color: #45575B;
+    -fx-border-color: transparent;
     -fx-text-fill: #E6CAB3;
     -fx-font-weight: bold;
 }
@@ -35,7 +36,7 @@
 
 .table-view .table-cell {
     -fx-text-fill: #A3A39B;
-    -fx-border-color: #45575B;
+    -fx-border-color: transparent;
     -fx-padding: 5px;
 }
 
@@ -54,9 +55,9 @@
 
 /* Text fields */
 .text-field {
-    -fx-background-color: #273C41;
+    -fx-background-color: #45575B;
     -fx-text-fill: #E6CAB3;
-    -fx-border-color: #45575B;
+    -fx-border-color: #273C41;
     -fx-border-radius: 4px;
     -fx-prompt-text-fill: #A3A39B;
 }
@@ -72,6 +73,7 @@
     -fx-border-radius: 4px;
     -fx-background-radius: 4px;
     -fx-font-weight: bold;
+    -fx-font-size: 16px;
     -fx-cursor: hand;
 }
 
