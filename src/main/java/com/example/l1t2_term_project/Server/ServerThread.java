@@ -237,7 +237,7 @@ public class ServerThread extends Thread {
             {
                 server.removeOffer(offer.getId());
                 server.addOffer(offer);
-                ActivityLogger.log(offer.getFromClub() + " made offer to " + offer.getToClub());
+                ActivityLogger.log("'" + offer.getFromClub() + "' made offer to '" + offer.getToClub() + "'");
             }
             write(valid);
         }
@@ -272,7 +272,7 @@ public class ServerThread extends Thread {
                 server.removeOffer(offer.getId());
                 server.writeClubsToFile();
                 PlayerCollection.writeToFile();
-                ActivityLogger.log(offer.getToClub() + " accepted offer from " + offer.getFromClub());
+                ActivityLogger.log("'" + offer.getToClub() + "' accepted offer from '" + offer.getFromClub() + "'");
             }
             write(valid);
         }
@@ -286,7 +286,7 @@ public class ServerThread extends Thread {
             if (server.getOffers().contains(offer))
             {
                 server.removeOffer(offer.getId());
-                ActivityLogger.log(offer.getToClub() + " rejected offer from " + offer.getFromClub());
+                ActivityLogger.log("'" + offer.getToClub() + "' rejected offer from '" + offer.getFromClub() + "'");
                 write(true);
             }
             else write(false);

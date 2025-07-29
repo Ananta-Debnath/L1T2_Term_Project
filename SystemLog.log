@@ -971,3 +971,9 @@
 [2025-07-30 01:31:04] 'Real Madrid' logged in
 [2025-07-30 01:31:33] 'Real Madrid' logged out
 [2025-07-30 01:31:33] Client disconnected: Socket[addr=/127.0.0.1,port=58949,localport=12913]
+[2025-07-30 01:35:18] Server Started
+[2025-07-30 01:35:23] Client connected: Socket[addr=/127.0.0.1,port=59579,localport=12913]
+[2025-07-30 01:35:27] 'Liverpool' logged in
+[2025-07-30 01:36:03] Liverpool made offer to Real Madrid
+[2025-07-30 01:36:09] 'Liverpool' logged out
+[2025-07-30 01:36:09] Client disconnected: Socket[addr=/127.0.0.1,port=59579,localport=12913]

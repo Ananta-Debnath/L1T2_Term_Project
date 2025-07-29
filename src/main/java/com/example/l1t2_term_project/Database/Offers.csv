@@ -3,3 +3,4 @@ id,fromClub,fromClubPlayer,toClub,toClubPlayer,amount
 2,Liverpool,Mohamed Salah,Barcelona,Lamine Yamal,0
 3,Barcelona,Marc-Andre ter Stegen,Liverpool,Alisson Becker,0
 4,Real Madrid,Eder Militao,Liverpool,Jeremie Frimpong,0
+5,Liverpool,null,Real Madrid,Jude Bellingham,80000000
