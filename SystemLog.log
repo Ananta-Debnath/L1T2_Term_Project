@@ -956,6 +956,11 @@
 [2025-07-30 00:50:18] 'Liverpool' logged in
 [2025-07-30 00:51:15] 'Liverpool' logged out
 [2025-07-30 00:51:15] Client disconnected: Socket[addr=/127.0.0.1,port=55554,localport=12913]
+[2025-07-30 00:56:26] Server Started
+[2025-07-30 00:56:29] Client connected: Socket[addr=/127.0.0.1,port=55392,localport=12913]
+[2025-07-30 00:56:40] 'Liverpool' logged in
+[2025-07-30 00:57:28] 'Liverpool' logged out
+[2025-07-30 00:57:28] Client disconnected: Socket[addr=/127.0.0.1,port=55392,localport=12913]
 [2025-07-30 01:28:06] Server Started
 [2025-07-30 01:28:14] Client connected: Socket[addr=/127.0.0.1,port=58851,localport=12913]
 [2025-07-30 01:28:16] 'Liverpool' logged in
@@ -977,3 +982,54 @@
 [2025-07-30 01:36:03] Liverpool made offer to Real Madrid
 [2025-07-30 01:36:09] 'Liverpool' logged out
 [2025-07-30 01:36:09] Client disconnected: Socket[addr=/127.0.0.1,port=59579,localport=12913]
+[2025-07-30 02:07:07] Server Started
+[2025-07-30 02:07:11] Client connected: Socket[addr=/127.0.0.1,port=57554,localport=12913]
+[2025-07-30 02:07:16] 'Liverpool' logged in
+[2025-07-30 02:07:30] 'Liverpool' logged out
+[2025-07-30 02:07:30] Client disconnected: Socket[addr=/127.0.0.1,port=57554,localport=12913]
+[2025-07-30 02:08:24] Server Started
+[2025-07-30 02:08:27] Client connected: Socket[addr=/127.0.0.1,port=57623,localport=12913]
+[2025-07-30 02:08:35] Failed login attempted - [username='Barcelona', password='barcelona']
+[2025-07-30 02:08:39] 'Barcelona' logged in
+[2025-07-30 02:08:47] 'Barcelona' logged out
+[2025-07-30 02:08:47] Client disconnected: Socket[addr=/127.0.0.1,port=57623,localport=12913]
+[2025-07-30 02:23:17] Server Started
+[2025-07-30 02:23:22] Client connected: Socket[addr=/127.0.0.1,port=57956,localport=12913]
+[2025-07-30 02:23:28] 'Liverpool' logged in
+[2025-07-30 02:23:37] 'Liverpool' logged out
+[2025-07-30 02:23:37] Client disconnected: Socket[addr=/127.0.0.1,port=57956,localport=12913]
+[2025-07-30 02:24:43] Server Started
+[2025-07-30 02:24:46] Client connected: Socket[addr=/127.0.0.1,port=58005,localport=12913]
+[2025-07-30 02:24:53] 'Barcelona' logged in
+[2025-07-30 02:35:14] Server Started
+[2025-07-30 02:35:17] Client connected: Socket[addr=/127.0.0.1,port=58225,localport=12913]
+[2025-07-30 02:35:23] 'liverpool' logged in
+[2025-07-30 02:36:16] 'liverpool' logged out
+[2025-07-30 02:36:16] Client disconnected: Socket[addr=/127.0.0.1,port=58225,localport=12913]
+[2025-07-30 02:37:19] Server Started
+[2025-07-30 02:37:21] Client connected: Socket[addr=/127.0.0.1,port=58331,localport=12913]
+[2025-07-30 02:37:29] 'Liverpool' logged in
+[2025-07-30 02:37:52] 'Liverpool' logged out
+[2025-07-30 02:38:01] 'Barcelona' logged in
+[2025-07-30 02:38:30] 'Barcelona' logged out
+[2025-07-30 02:38:30] Client disconnected: Socket[addr=/127.0.0.1,port=58331,localport=12913]
+[2025-07-30 02:41:29] Server Started
+[2025-07-30 02:41:31] Client connected: Socket[addr=/127.0.0.1,port=58452,localport=12913]
+[2025-07-30 02:41:40] 'Barcelona' logged in
+[2025-07-30 02:44:42] 'Barcelona' logged out
+[2025-07-30 02:44:42] Client disconnected: Socket[addr=/127.0.0.1,port=58452,localport=12913]
+[2025-07-30 02:45:16] Server Started
+[2025-07-30 02:45:19] Client connected: Socket[addr=/127.0.0.1,port=58555,localport=12913]
+[2025-07-30 02:45:27] 'Liverpool' logged in
+[2025-07-30 02:46:00] 'Liverpool' logged out
+[2025-07-30 02:46:00] Client disconnected: Socket[addr=/127.0.0.1,port=58555,localport=12913]
+[2025-07-30 02:48:31] Server Started
+[2025-07-30 02:48:35] Client connected: Socket[addr=/127.0.0.1,port=58658,localport=12913]
+[2025-07-30 02:48:41] 'Liverpool' logged in
+[2025-07-30 02:49:14] 'Liverpool' logged out
+[2025-07-30 02:49:14] Client disconnected: Socket[addr=/127.0.0.1,port=58658,localport=12913]
+[2025-07-30 02:50:24] Server Started
+[2025-07-30 02:50:27] Client connected: Socket[addr=/127.0.0.1,port=58714,localport=12913]
+[2025-07-30 02:50:34] 'Barcelona' logged in
+[2025-07-30 02:51:20] 'Barcelona' logged out
+[2025-07-30 02:51:20] Client disconnected: Socket[addr=/127.0.0.1,port=58714,localport=12913]

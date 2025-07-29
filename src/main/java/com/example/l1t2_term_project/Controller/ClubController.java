@@ -170,7 +170,7 @@ public class ClubController {
             contentPane.getChildren().clear();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/Offers.fxml"));
             Parent offerView = loader.load();
-            //((OffersController) loader.getController()).initializeValues(client);
+            ((OffersController) loader.getController()).initializeValues(client,club);
             contentPane.getChildren().setAll(offerView); // Load into StackPane
 
             // Clear other visible elements

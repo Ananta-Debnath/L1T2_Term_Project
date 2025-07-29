@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.OffersController">
+<AnchorPane fx:id="tabAnchorPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.OffersController">
    <children>
         <TabPane layoutY="35.0" prefHeight="500.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <tabs>
@@ -34,6 +34,7 @@
                               <PropertyValueFactory property="amount" />
                            </cellValueFactory>
                                 </TableColumn>
+                        <TableColumn prefWidth="150.0" text="Swap Offer" />
                             </columns>
                         </TableView>
 
@@ -66,11 +67,7 @@
                            <PropertyValueFactory property="amount" />
                         </cellValueFactory>
                             </TableColumn>
-                            <TableColumn prefWidth="100" text="Status">
-                                <cellValueFactory>
-                           <PropertyValueFactory property="status" />
-                        </cellValueFactory>
-                            </TableColumn>
+                     <TableColumn prefWidth="150.0" text="Swap Offer" />
                         </columns>
                     </TableView>
                 </Tab>

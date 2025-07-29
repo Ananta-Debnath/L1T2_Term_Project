@@ -8,6 +8,7 @@ module com.example.l1t2_term_project {
     requires com.almasb.fxgl.all;
 
     opens com.example.l1t2_term_project.Model.Player to javafx.base;
+    opens com.example.l1t2_term_project.Model to javafx.base;
     opens com.example.l1t2_term_project.Controller to javafx.fxml;
     exports com.example.l1t2_term_project;
 }

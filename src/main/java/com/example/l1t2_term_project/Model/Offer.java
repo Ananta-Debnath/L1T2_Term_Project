@@ -61,7 +61,7 @@ public class Offer implements Serializable {
     }
 
     public String getFromClubPlayer() {
-        return fromClubPlayer;
+        return fromClubPlayer != null ? fromClubPlayer : "N/A";
     }
 
     public void setFromClubPlayer(String fromClubPlayer) {
@@ -77,7 +77,7 @@ public class Offer implements Serializable {
     }
 
     public String getToClubPlayer() {
-        return toClubPlayer;
+        return toClubPlayer != null ? toClubPlayer : "N/A";
     }
 
     public void setToClubPlayer(String toClubPlayer) {
