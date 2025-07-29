@@ -29,6 +29,7 @@ public class Server {
         PlayerCollection.readFromFile();
         readClubs();
         readCredentials();
+        readOffers();
 
         startServer();
     }
@@ -73,7 +74,7 @@ public class Server {
 
                 Club club = new Club();
                 String[] tokens = line.split(",");
-                if (tokens.length != 6) throw new IOException("Invalid info length");
+                if (tokens.length != 6) throw new IOException("Invalid club info length");
 
                 club.setName(tokens[0].trim());
                 club.setLeagueName(tokens[1].trim());
@@ -133,16 +134,46 @@ public class Server {
         }
         catch (IOException e)
         {
-            ActivityLogger.log("In writeClubToFile method - " + e);
+            ActivityLogger.log("In writeCredentialsToFile method - " + e);
         }
     }
 
     public void readOffers() {
-        // TODO: Implement
+        offers = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(OFFERS_PATH))) {
+            reader.readLine(); // Ignoring header line
+            while (true) {
+                String line = reader.readLine();
+                if (line == null) break;
+
+                Offer offer = new Offer(0, Offer.Status.Make);
+                String[] tokens = line.split(",");
+                if (tokens.length != 6) throw new IOException("Invalid offer info length");
+
+                offer.setId(Integer.parseInt(tokens[0].trim()));
+                offer.setFromClub(tokens[1].trim());
+                offer.setFromClubPlayerID(Integer.parseInt(tokens[2].trim()));
+                offer.setToClub(tokens[3].trim());
+                offer.setToClubPlayerID(Integer.parseInt(tokens[4].trim()));
+                offer.setAmount(Long.parseLong(tokens[5].trim()));
+
+                offers.add(offer);
+            }
+        } catch (IOException e) {
+            ActivityLogger.log("In readClubs method - " + e);
+        }
     }
 
     public void writeOffersToFile() {
-        // TODO: Implement
+        try (PrintWriter writer = new PrintWriter(new FileWriter(OFFERS_PATH, false)))
+        {
+            writer.println("id,fromClub,fromClubPlayerID,toClub,toClubPlayerID,amount");
+            for (Offer offer : offers) writer.println(offer.toCSVLine());
+        }
+        catch (IOException e)
+        {
+            ActivityLogger.log("In writeOffersToFile method - " + e);
+        }
     }
 
     public boolean validateCredentials(LoginDTO loginDTO)

@@ -78,6 +78,20 @@ public class Offer implements Serializable {
         this.toClubPlayerID = toClubPlayerID;
     }
 
+    public String toCSVLine()
+    {
+        StringBuilder str = new StringBuilder();
+
+        str.append(id).append(",");
+        str.append(fromClub).append(",");
+        str.append(fromClubPlayerID).append(",");
+        str.append(toClub).append(",");
+        str.append(toClubPlayerID).append(",");
+        str.append(amount);
+
+        return str.toString();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
