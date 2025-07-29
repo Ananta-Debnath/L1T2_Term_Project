@@ -13,6 +13,7 @@ import com.example.l1t2_term_project.Utils.SocketWrapper;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ServerThread extends Thread {
     private final SocketWrapper socketWrapper;
@@ -175,6 +176,33 @@ public class ServerThread extends Thread {
         }
     }
 
+    public void handleOffer(Offer offer)
+    {
+        switch (offer.getStatus())
+        {
+            case Make:
+                makeOffer(offer);
+                break;
+            case Accept:
+                acceptOffer(offer);
+                break;
+            case Reject:
+                rejectOffer(offer);
+                break;
+            case GetList:
+                exportOffers();
+                break;
+        }
+    }
+
+    public void exportOffers()
+    {
+        List<Offer> offers = server.getOffers().stream().filter(o -> o.getToClub().equalsIgnoreCase(clubName.trim())).collect(Collectors.toList());
+        write(offers); // Incoming offers
+        offers = server.getOffers().stream().filter(o -> o.getFromClub().equalsIgnoreCase(clubName.trim())).collect(Collectors.toList());
+        write(offers); // Outgoing offers
+    }
+
     // TODO: Method not tested yet
     public boolean validateOffer(Offer offer)
     {
@@ -205,7 +233,11 @@ public class ServerThread extends Thread {
         synchronized (server)
         {
             boolean valid = validateOffer(offer);
-            if (valid) server.addOffer(offer);
+            if (valid)
+            {
+                server.removeOffer(offer.getId());
+                server.addOffer(offer);
+            }
             write(valid);
         }
     }
@@ -238,6 +270,20 @@ public class ServerThread extends Thread {
                 server.removeOffer(offer.getId());
             }
             write(valid);
+        }
+    }
+
+    // TODO: Method not tested yet
+    public void rejectOffer(Offer offer)
+    {
+        synchronized (server)
+        {
+            if (server.getOffer(offer.getId()).equals(offer))
+            {
+                server.removeOffer(offer.getId());
+                write(true);
+            }
+            write(false);
         }
     }
 

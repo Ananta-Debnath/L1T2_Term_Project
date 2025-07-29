@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Offer implements Serializable {
     public enum Status {
-        Accept, Reject, Counter, Make
+        Accept, Reject, Make, GetList
     }
     private int id;
     private Status status;

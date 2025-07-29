@@ -185,6 +185,10 @@ public class Server {
         return null;
     }
 
+    public List<Offer> getOffers() {
+        return offers;
+    }
+
     public Offer getOffer(int id) {
         for (Offer offer : offers)
         {
