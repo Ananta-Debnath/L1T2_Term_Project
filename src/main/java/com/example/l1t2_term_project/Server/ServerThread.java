@@ -208,6 +208,8 @@ public class ServerThread extends Thread {
     {
         boolean valid;
         valid = (offer.getFromClubPlayerID() != null) || (offer.getToClubPlayerID() != null);
+        valid = valid && (offer.getFromClubPlayerID() != null || offer.getAmount() > 0);
+        valid = valid && (offer.getToClubPlayerID() != null || offer.getAmount() < 0);
         valid = valid && server.getClub(offer.getFromClub()).getBudget() >= offer.getAmount();
 
         if (offer.getFromClubPlayerID() != null)
@@ -226,7 +228,6 @@ public class ServerThread extends Thread {
         return valid;
     }
 
-    // TODO: Method not tested yet
     public void makeOffer(Offer offer)
     {
         synchronized (server)

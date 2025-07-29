@@ -4,12 +4,16 @@ import com.example.l1t2_term_project.Client;
 import com.example.l1t2_term_project.Model.Club.Club;
 import com.example.l1t2_term_project.Model.Offer;
 import com.example.l1t2_term_project.Model.Player.Player;
+import com.example.l1t2_term_project.Model.Player.Position;
+import com.example.l1t2_term_project.Model.Player.Role;
 import com.example.l1t2_term_project.Utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
+import java.util.List;
 import java.util.function.UnaryOperator;
 
 public class MakeOfferController {
@@ -33,6 +37,10 @@ public class MakeOfferController {
     @FXML
     public ComboBox<Player> toClubPlayerBox;
 
+    @FXML
+    public Button cancelButton;
+
+    @FXML
     private void initialize() {
         UnaryOperator<TextFormatter.Change> filter = change -> {
             return change.getControlNewText().matches("\\d*") ? change : null;
@@ -46,6 +54,38 @@ public class MakeOfferController {
                 if (!fromClub.canBuy(amount)) fromClubAmountField.setText(String.valueOf(fromClub.getBudget()));
             }
         });
+
+        fromClubPlayerBox.setButtonCell(new ListCell<>() {
+            @Override
+            protected void updateItem(Player player, boolean empty) {
+                super.updateItem(player, empty);
+                setText(player == null || empty ? "No Player" : player.getName());
+            }
+        });
+
+        fromClubPlayerBox.setCellFactory(listView -> new ListCell<>() {
+            @Override
+            protected void updateItem(Player player, boolean empty) {
+                super.updateItem(player, empty);
+                setText(player == null || empty ? "No Player" : player.getName());
+            }
+        });
+
+        toClubPlayerBox.setButtonCell(new ListCell<>() {
+            @Override
+            protected void updateItem(Player player, boolean empty) {
+                super.updateItem(player, empty);
+                setText(player == null || empty ? "No Player" : player.getName());
+            }
+        });
+
+        toClubPlayerBox.setCellFactory(listView -> new ListCell<>() {
+            @Override
+            protected void updateItem(Player player, boolean empty) {
+                super.updateItem(player, empty);
+                setText(player == null || empty ? "No Player" : player.getName());
+            }
+        });
     }
 
     public void initializeValues(Client client, Club from, Club to, Offer offer) {
@@ -57,8 +97,8 @@ public class MakeOfferController {
 
     public void updateOfferDetails(Offer offer) {
         if (offer == null) offer = new Offer(0, Offer.Status.Make);
-        fromClubAmountField.setText(fromClub.getName());
-        toClubAmountField.setText(toClub.getName());
+        fromClubNameLabel.setText(fromClub.getName());
+        toClubNameLabel.setText(toClub.getName());
 
         fromClub.loadPlayers(client);
         fromClubPlayerBox.getItems().clear();
@@ -70,7 +110,7 @@ public class MakeOfferController {
         toClubPlayerBox.getItems().clear();
         toClubPlayerBox.getItems().add(null);
         toClubPlayerBox.getItems().addAll(toClub.getPlayersList());
-        if (offer.getToClubPlayerID() != null) toClubPlayerBox.setValue(fromClub.getPlayer(offer.getToClubPlayerID()));
+        if (offer.getToClubPlayerID() != null) toClubPlayerBox.setValue(toClub.getPlayer(offer.getToClubPlayerID()));
 
         if (offer.getAmount() > 0) fromClubAmountField.setText(String.valueOf(offer.getAmount()));
         else if (offer.getAmount() < 0) toClubAmountField.setText(String.valueOf(-offer.getAmount()));
@@ -96,13 +136,20 @@ public class MakeOfferController {
 
         if (valid) Utils.showAlert("Successful", "Offer made successfully");
         else Utils.showAlert("Failure!", "Invalid Offer");
+
+        cancelOffer();
     }
 
     @FXML
-    public void cancelOffer(ActionEvent actionEvent) {
+    public void cancelOffer() {
         // TODO: the cancel button will have the stackPane assigned to it
-        StackPane stackPane = (StackPane) ((Button) actionEvent.getSource()).getUserData();
-        stackPane.getChildren().clear();
-        stackPane.setVisible(false);
+        @SuppressWarnings("unchecked")
+        List<Pane> panes = (List<Pane>) cancelButton.getUserData();
+
+        panes.get(0).getChildren().clear();
+        panes.get(0).setVisible(false);
+
+        panes.get(1).setVisible(true);
+        panes.get(1).setDisable(false);
     }
 }

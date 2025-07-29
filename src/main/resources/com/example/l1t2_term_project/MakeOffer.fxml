@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="350.0" prefWidth="600.0" style="-fx-padding: 10;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.MakeOfferController">
+<VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="350.0" prefWidth="600.0" style="-fx-padding: 10; -fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.MakeOfferController">
    <children>
       <Label fx:id="budgetLabel" prefHeight="18.0" prefWidth="600.0" text="Your Budget: ">
          <font>
@@ -52,7 +52,7 @@
       <HBox alignment="CENTER" prefWidth="600.0" spacing="80.0">
          <children>
             <Button mnemonicParsing="false" onAction="#makeOffer" prefHeight="30.0" prefWidth="70.0" text="Confirm" />
-            <Button fx:id="cancelOffer" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Cancel" />
+            <Button fx:id="cancelButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancelOffer" prefHeight="30.0" prefWidth="70.0" text="Cancel" />
          </children>
       </HBox>
    </children>
