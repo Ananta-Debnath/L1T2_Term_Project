@@ -61,7 +61,7 @@ public class ServerThread extends Thread {
                 }
                 else if (obj instanceof Offer)
                 {
-
+                    handleOffer((Offer) obj);
                 }
                 else if (obj instanceof Player) {
                     addNewPlayer((Player) obj);
@@ -209,7 +209,6 @@ public class ServerThread extends Thread {
         boolean valid;
         valid = (offer.getFromClubPlayerID() != null) || (offer.getToClubPlayerID() != null);
         valid = valid && server.getClub(offer.getFromClub()).getBudget() >= offer.getAmount();
-        valid = valid && server.getClub(offer.getToClub()).getBudget() >= (-offer.getAmount());
 
         if (offer.getFromClubPlayerID() != null)
         {
@@ -217,7 +216,7 @@ public class ServerThread extends Thread {
             assert player != null;
             valid = valid && player.getTeam().equalsIgnoreCase(offer.getFromClub());
         }
-        if (offer.getFromClubPlayerID() != null)
+        if (offer.getToClubPlayerID() != null)
         {
             Player player = PlayerCollection.getPlayer(offer.getToClubPlayerID());
             assert player != null;
@@ -247,7 +246,8 @@ public class ServerThread extends Thread {
     {
         synchronized (server)
         {
-            boolean valid = server.getOffer(offer.getId()).equals(offer) && validateOffer(offer);
+            boolean valid = server.getOffers().contains(offer) && validateOffer(offer);
+            valid = valid && server.getClub(offer.getToClub()).getBudget() >= (-offer.getAmount());
             if (valid)
             {
                 server.getClub(offer.getFromClub()).changeBudget(-offer.getAmount());
@@ -278,12 +278,12 @@ public class ServerThread extends Thread {
     {
         synchronized (server)
         {
-            if (server.getOffer(offer.getId()).equals(offer))
+            if (server.getOffers().contains(offer))
             {
                 server.removeOffer(offer.getId());
                 write(true);
             }
-            write(false);
+            else write(false);
         }
     }
 
