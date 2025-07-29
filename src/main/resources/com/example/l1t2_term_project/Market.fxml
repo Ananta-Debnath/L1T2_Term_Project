@@ -45,7 +45,7 @@
                             <PropertyValueFactory property="name" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn editable="false" prefWidth="110.0" resizable="false" style="-fx-font-weight: bold;" text="Role">
+                    <TableColumn editable="false" prefWidth="60.0" resizable="false" style="-fx-font-weight: bold;" text="Role">
                         <cellValueFactory>
                             <PropertyValueFactory property="role" />
                         </cellValueFactory>
@@ -55,7 +55,7 @@
                             <PropertyValueFactory property="nationality" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn editable="false" prefWidth="120.0" resizable="false" style="-fx-font-weight: bold;" text="Club">
+                    <TableColumn editable="false" prefWidth="100.0" resizable="false" style="-fx-font-weight: bold;" text="Club">
                         <cellValueFactory>
                             <PropertyValueFactory property="team" />
                         </cellValueFactory>
@@ -65,6 +65,7 @@
                             <PropertyValueFactory property="value" />
                         </cellValueFactory>
                     </TableColumn>
+               <TableColumn fx:id="forSaleCol" prefWidth="70.0" text="For Sale" />
                 </columns>
             </TableView>
       </children>

@@ -99,6 +99,7 @@ public class MakeOfferController {
         if (offer == null) offer = new Offer(0, Offer.Status.Make);
         fromClubNameLabel.setText(fromClub.getName());
         toClubNameLabel.setText(toClub.getName());
+        budgetLabel.setText("Your Budget: " + fromClub.getBudget());
 
         fromClub.loadPlayers(client);
         fromClubPlayerBox.getItems().clear();

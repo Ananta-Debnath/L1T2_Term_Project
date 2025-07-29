@@ -923,3 +923,36 @@
 [2025-07-30 00:17:09] 'Liverpool' logged in
 [2025-07-30 00:18:09] 'Liverpool' logged out
 [2025-07-30 00:18:09] Client disconnected: Socket[addr=/127.0.0.1,port=55050,localport=12913]
+[2025-07-30 00:25:40] Server Started
+[2025-07-30 00:25:47] Client connected: Socket[addr=/127.0.0.1,port=53723,localport=12913]
+[2025-07-30 00:25:50] Failed login attempted - [username='Liverpool', password='liver']
+[2025-07-30 00:25:53] Failed login attempted - [username='Liverpool', password='liver']
+[2025-07-30 00:26:11] Server Started
+[2025-07-30 00:26:18] Client connected: Socket[addr=/127.0.0.1,port=53814,localport=12913]
+[2025-07-30 00:26:21] 'Liverpool' logged in
+[2025-07-30 00:26:46] 'Liverpool' logged out
+[2025-07-30 00:26:46] Client disconnected: Socket[addr=/127.0.0.1,port=53814,localport=12913]
+[2025-07-30 00:27:50] Server Started
+[2025-07-30 00:27:55] Client connected: Socket[addr=/127.0.0.1,port=54010,localport=12913]
+[2025-07-30 00:27:58] 'Liverpool' logged in
+[2025-07-30 00:28:39] 'Liverpool' logged out
+[2025-07-30 00:28:39] Client disconnected: Socket[addr=/127.0.0.1,port=54010,localport=12913]
+[2025-07-30 00:33:55] Client connected: Socket[addr=/127.0.0.1,port=54433,localport=12913]
+[2025-07-30 00:33:57] 'Liverpool' logged in
+[2025-07-30 00:35:50] 'Liverpool' logged out
+[2025-07-30 00:35:50] Client disconnected: Socket[addr=/127.0.0.1,port=54433,localport=12913]
+[2025-07-30 00:40:18] Client connected: Socket[addr=/127.0.0.1,port=54819,localport=12913]
+[2025-07-30 00:40:20] 'Liverpool' logged in
+[2025-07-30 00:40:23] Failed login attempted - [username='Liverpool', password='']
+[2025-07-30 00:40:25] 'Liverpool' logged in
+[2025-07-30 00:40:28] 'Liverpool' logged out
+[2025-07-30 00:40:28] Client disconnected: Socket[addr=/127.0.0.1,port=54819,localport=12913]
+[2025-07-30 00:40:57] Server Started
+[2025-07-30 00:41:04] Client connected: Socket[addr=/127.0.0.1,port=54905,localport=12913]
+[2025-07-30 00:41:05] 'Liverpool' logged in
+[2025-07-30 00:42:09] 'Liverpool' logged out
+[2025-07-30 00:42:09] Client disconnected: Socket[addr=/127.0.0.1,port=54905,localport=12913]
+[2025-07-30 00:50:16] Client connected: Socket[addr=/127.0.0.1,port=55554,localport=12913]
+[2025-07-30 00:50:18] 'Liverpool' logged in
+[2025-07-30 00:51:15] 'Liverpool' logged out
+[2025-07-30 00:51:15] Client disconnected: Socket[addr=/127.0.0.1,port=55554,localport=12913]

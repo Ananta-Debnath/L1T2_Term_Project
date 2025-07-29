@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -32,8 +33,6 @@ TODO: quality improvements - mute, ...
 public class MarketController
 {
 
-
-
     // Non-FXML variables
     private Client client;
     private Club club;
@@ -46,6 +45,8 @@ public class MarketController
     public TextField searchField;
     @FXML
     public TableView<Player> playerTable;
+    @FXML
+    public TableColumn<Player, Boolean> forSaleCol;
 
     @FXML
     public VBox filterBox;
@@ -109,6 +110,18 @@ public class MarketController
             return row;
         });
 
+        forSaleCol.setCellValueFactory(new PropertyValueFactory<>("forSale"));
+        forSaleCol.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(Boolean forSale, boolean empty) {
+                super.updateItem(forSale, empty);
+                if (empty || forSale == null) {
+                    setText(null);
+                } else {
+                    setText(forSale ? "Yes" : "No");
+                }
+            }
+        });
 
         // ComboBox logic
         positionField.setButtonCell(new ListCell<>() {
@@ -384,12 +397,13 @@ public class MarketController
 
     private void showPlayerDetails(Player player)
     {
-        // TODO: include more details
         nameLabel.setText(player.getName());
         clubLabel.setText("Club: " +player.getTeam());
         valueLabel.setText("Value: " + player.getValue());
         positionLabel.setText("Position: " + player.getPosition()+ "\n");
         transferImage.setImage(player.getImage());
+
+        buyButton.setDisable(!player.isForSale());
 
         buyButton.setUserData(player);
         offerButton.setUserData(player);

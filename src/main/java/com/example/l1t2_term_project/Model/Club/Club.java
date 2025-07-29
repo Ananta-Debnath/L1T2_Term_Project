@@ -19,7 +19,8 @@ public class Club implements Serializable{
     private String managerName;
     private List<Integer> playerIDs;
     private List<Player> playersList;
-    private List<Offer> offersList;
+    private List<Offer> incomingOffersList;
+    private List<Offer> outgoingOffersList;
 
     //private String password;
 
@@ -27,7 +28,8 @@ public class Club implements Serializable{
     {
         playerIDs= new ArrayList<>();
         playersList = new ArrayList<>();
-        offersList = new ArrayList<>();
+        incomingOffersList = new ArrayList<>();
+        outgoingOffersList = new ArrayList<>();
     }
 
     public Club(){ }
@@ -105,12 +107,20 @@ public class Club implements Serializable{
         this.playerIDs = playerIDs;
     }
 
-    public List<Offer> getOffersList() {
-        return offersList;
+    public List<Offer> getIncomingOffersList() {
+        return incomingOffersList;
     }
 
-    public void setOffersList(List<Offer> offersList) {
-        this.offersList = offersList;
+    public void setIncomingOffersList(List<Offer> incomingOffersList) {
+        this.incomingOffersList = incomingOffersList;
+    }
+
+    public List<Offer> getOutgoingOffersList() {
+        return outgoingOffersList;
+    }
+
+    public void setOutgoingOffersList(List<Offer> outgoingOffersList) {
+        this.outgoingOffersList = outgoingOffersList;
     }
 
     public Player getPlayer(int id) {
@@ -197,7 +207,8 @@ public class Club implements Serializable{
 
     public void loadOffers(Client client)
     {
-        offersList.clear(); // Clear list
+        incomingOffersList.clear();
+        outgoingOffersList.clear();
         client.write(new Offer(0, Offer.Status.GetList));
 
         Object obj = client.read();
@@ -212,7 +223,27 @@ public class Club implements Serializable{
             {
                 @SuppressWarnings("unchecked")
                 List<Offer> offers = (List<Offer>) list;
-                offersList.addAll(offers);
+                incomingOffersList.addAll(offers);
+            }
+            else
+            {
+                System.err.println("Wrong object");
+            }
+        }
+
+        obj = client.read();
+        if (obj instanceof List<?>)
+        {
+            List<?> list = (List<?>) obj;
+            if (list.isEmpty())
+            {
+                System.out.println("No offers found");
+            }
+            else if (list.get(0) instanceof Offer)
+            {
+                @SuppressWarnings("unchecked")
+                List<Offer> offers = (List<Offer>) list;
+                outgoingOffersList.addAll(offers);
             }
             else
             {
