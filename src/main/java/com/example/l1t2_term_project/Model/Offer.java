@@ -20,6 +20,10 @@ public class Offer implements Serializable {
     public Offer(int id, Status status) {
         this.id = id;
         this.status = status;
+
+        amount = 0;
+        fromClubPlayerID = null;
+        toClubPlayerID = null;
     }
 
     public int getId() {

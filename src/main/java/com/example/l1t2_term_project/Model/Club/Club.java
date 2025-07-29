@@ -113,6 +113,14 @@ public class Club implements Serializable{
         this.offersList = offersList;
     }
 
+    public Player getPlayer(int id) {
+        for (Player p : playersList)
+        {
+            if (p.getId() == id) return p;
+        }
+        return null;
+    }
+
     public void addPlayer(int playerID){
 
         if(!playerIDs.contains(playerID)){
