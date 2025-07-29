@@ -1,6 +1,7 @@
 package com.example.l1t2_term_project.Model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Offer implements Serializable {
     public enum Status {
@@ -8,14 +9,13 @@ public class Offer implements Serializable {
     }
     private int id;
     private Status status;
+    private long amount; // fromClub to toClub - can be negative
 
     private String fromClub;
-    private int fromClubPlayerID;
-    private long fromClubAmount;
+    private Integer fromClubPlayerID;
 
     private String toClub;
-    private int toClubPlayerID;
-    private long toClubAmount;
+    private Integer toClubPlayerID;
 
     public Offer(int id, Status status) {
         this.id = id;
@@ -34,6 +34,14 @@ public class Offer implements Serializable {
         return status;
     }
 
+    public long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(long amount) {
+        this.amount = amount;
+    }
+
     public void setStatus(Status status) {
         this.status = status;
     }
@@ -46,20 +54,12 @@ public class Offer implements Serializable {
         this.fromClub = fromClub;
     }
 
-    public int getFromClubPlayerID() {
+    public Integer getFromClubPlayerID() {
         return fromClubPlayerID;
     }
 
-    public void setFromClubPlayerID(int fromClubPlayerID) {
+    public void setFromClubPlayerID(Integer fromClubPlayerID) {
         this.fromClubPlayerID = fromClubPlayerID;
-    }
-
-    public long getFromClubAmount() {
-        return fromClubAmount;
-    }
-
-    public void setFromClubAmount(long fromClubAmount) {
-        this.fromClubAmount = fromClubAmount;
     }
 
     public String getToClub() {
@@ -70,19 +70,23 @@ public class Offer implements Serializable {
         this.toClub = toClub;
     }
 
-    public int getToClubPlayerID() {
+    public Integer getToClubPlayerID() {
         return toClubPlayerID;
     }
 
-    public void setToClubPlayerID(int toClubPlayerID) {
+    public void setToClubPlayerID(Integer toClubPlayerID) {
         this.toClubPlayerID = toClubPlayerID;
     }
 
-    public long getToClubAmount() {
-        return toClubAmount;
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Offer offer = (Offer) o;
+        return id == offer.id && amount == offer.amount && Objects.equals(fromClub, offer.fromClub) && Objects.equals(fromClubPlayerID, offer.fromClubPlayerID) && Objects.equals(toClub, offer.toClub) && Objects.equals(toClubPlayerID, offer.toClubPlayerID);
     }
 
-    public void setToClubAmount(long toClubAmount) {
-        this.toClubAmount = toClubAmount;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, amount, fromClub, fromClubPlayerID, toClub, toClubPlayerID);
     }
 }

@@ -3,6 +3,7 @@ package com.example.l1t2_term_project.Server;
 
 import com.example.l1t2_term_project.DTO.LoginDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
+import com.example.l1t2_term_project.Model.Offer;
 import com.example.l1t2_term_project.Model.Player.PlayerCollection;
 import com.example.l1t2_term_project.Utils.ActivityLogger;
 import com.example.l1t2_term_project.Utils.SocketWrapper;
@@ -21,6 +22,8 @@ public class Server {
     private static final String CLUBS_PATH = "src/main/java/com/example/l1t2_term_project/Database/Clubs.csv";
     private List<LoginDTO> credentials;
     private static final String CREDENTIALS_PATH = "src/main/java/com/example/l1t2_term_project/Database/Credentials.csv";
+    private List<Offer> offers;
+    private static final String OFFERS_PATH = "src/main/java/com/example/l1t2_term_project/Database/Offers.csv";
 
     Server() {
         PlayerCollection.readFromFile();
@@ -60,8 +63,7 @@ public class Server {
         clientMap.remove(name);
     }
 
-    public void readClubs()
-    {
+    public void readClubs() {
         clubs = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(CLUBS_PATH))) {
             reader.readLine(); // Ignoring header line
@@ -87,8 +89,7 @@ public class Server {
         }
     }
 
-    public void writeClubsToFile()
-    {
+    public void writeClubsToFile() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(CLUBS_PATH, false)))
         {
             writer.println("name,leagueName,country,budget,stadiumName,managerName");
@@ -100,8 +101,7 @@ public class Server {
         }
     }
 
-    public void readCredentials()
-    {
+    public void readCredentials() {
         credentials = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(CREDENTIALS_PATH)))
         {
@@ -122,8 +122,7 @@ public class Server {
         }
     }
 
-    public void writeCredentialsToFile()
-    {
+    public void writeCredentialsToFile() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(CREDENTIALS_PATH, false)))
         {
             writer.println("username,password");
@@ -138,13 +137,20 @@ public class Server {
         }
     }
 
+    public void readOffers() {
+        // TODO: Implement
+    }
+
+    public void writeOffersToFile() {
+        // TODO: Implement
+    }
+
     public boolean validateCredentials(LoginDTO loginDTO)
     {
         return credentials.contains(loginDTO);
     }
 
-    public boolean changePass(LoginDTO loginDTO)
-    {
+    public boolean changePass(LoginDTO loginDTO) {
         LoginDTO credential = null;
         for (LoginDTO dto : credentials)
         {
@@ -169,8 +175,7 @@ public class Server {
 
     }
 
-    public Club getClub(String name)
-    {
+    public Club getClub(String name) {
         for (Club club : clubs) {
             if (club.getName().equalsIgnoreCase(name.trim())) {
                 return club;
@@ -178,6 +183,27 @@ public class Server {
         }
         ActivityLogger.log("In getClub method - Club not found");
         return null;
+    }
+
+    public Offer getOffer(int id) {
+        for (Offer offer : offers)
+        {
+            if (offer.getId() == id) return offer;
+        }
+        return null;
+    }
+
+    public void addOffer(Offer offer)
+    {
+        offer.setId(offers.get(offers.size() - 1).getId() + 1);
+        offers.add(offer);
+        writeOffersToFile();
+    }
+
+    public void removeOffer(int id)
+    {
+        offers.remove(getOffer(id));
+        writeOffersToFile();
     }
 
     public static void main(String[] args) {
