@@ -60,11 +60,11 @@ public class Offer implements Serializable {
         this.fromClub = fromClub;
     }
 
-    public String getFromClubPlayerID() {
+    public String getFromClubPlayer() {
         return fromClubPlayer;
     }
 
-    public void setFromClubPlayerID(String fromClubPlayer) {
+    public void setFromClubPlayer(String fromClubPlayer) {
         this.fromClubPlayer = fromClubPlayer;
     }
 
@@ -76,11 +76,11 @@ public class Offer implements Serializable {
         this.toClub = toClub;
     }
 
-    public String getToClubPlayerID() {
+    public String getToClubPlayer() {
         return toClubPlayer;
     }
 
-    public void setToClubPlayerID(String toClubPlayer) {
+    public void setToClubPlayer(String toClubPlayer) {
         this.toClubPlayer = toClubPlayer;
     }
 
