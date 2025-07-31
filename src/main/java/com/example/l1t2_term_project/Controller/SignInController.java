@@ -36,6 +36,7 @@ public class SignInController {
             boolean valid = (boolean) obj;
             if (valid)
             {
+                Utils.playSound("Success.wav");
                 client.setCurrentClub(loginDTO.getUsername());
 
                 // Change scene
@@ -49,7 +50,7 @@ public class SignInController {
                 }
             }
             else {
-                Utils.showAlert("Sign-In Failed", "Credentials do not match");
+                Utils.showErrorAlert("Sign-In Failed", "Credentials do not match");
             }
         }
         else {

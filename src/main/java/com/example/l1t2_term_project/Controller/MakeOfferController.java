@@ -118,6 +118,8 @@ public class MakeOfferController {
 
     @FXML
     public void makeOffer() {
+
+        Utils.playSound("Default_Click.wav");
         offer.setFromClub(fromClub.getName());
         offer.setToClub(toClub.getName());
         offer.setFromClubPlayer(fromClubPlayerBox.getValue() == null ? null : fromClubPlayerBox.getValue());
@@ -134,13 +136,14 @@ public class MakeOfferController {
         valid = (boolean) client.read();
 
         if (valid) Utils.showAlert("Successful", "Offer made successfully");
-        else Utils.showAlert("Failure!", "Invalid Offer");
+        else Utils.showErrorAlert("Failure!", "Invalid Offer");
 
         cancelOffer();
     }
 
     @FXML
     public void cancelOffer() {
+        Utils.playSound("Default_Click.wav");
         // TODO: the cancel button will have the stackPane assigned to it
         @SuppressWarnings("unchecked")
         List<Pane> panes = (List<Pane>) cancelButton.getUserData();

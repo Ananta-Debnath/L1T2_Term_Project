@@ -102,7 +102,9 @@ public class MarketController
             TableRow<Player> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty() && event.getClickCount() == 2) { // double click
+
                     Player clickedPlayer = row.getItem();
+                    Utils.playSound("Default_Click.wav");
                     showPlayerDetails(clickedPlayer);
                 }
             });
@@ -304,7 +306,7 @@ public class MarketController
                 }
                 else
                 {
-                    Utils.showAlert("Purchase Failure!", String.format("%s could not be bought", player.getName()));
+                    Utils.showErrorAlert("Purchase Failure!", String.format("%s could not be bought", player.getName()));
                 }
             }
             else System.err.println("Object not Boolean");
@@ -313,12 +315,13 @@ public class MarketController
             mainMenu.setDisable(false);
             searchPlayers();
         }else{
-            Utils.showAlert("Cancelled","Buy process terminated");
+            Utils.showCancelAlert("Cancelled","Buy process terminated");
         }
     }
 
     @FXML
     public void showOfferScene(ActionEvent actionEvent) {
+        Utils.playSound("Default_Click.wav");
         Player player = (Player) (((Button) actionEvent.getSource()).getUserData());
         try {
             makeOfferPane.getChildren().clear();

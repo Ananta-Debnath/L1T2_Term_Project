@@ -12,14 +12,14 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.OffersController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@../../../styles/offers.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.l1t2_term_project.Controller.OffersController">
    <children>
       <AnchorPane fx:id="tabAnchorPane" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
               <TabPane prefHeight="500.0" prefWidth="700.0">
                   <tabs>
                       <Tab text="Incoming Offers">
-                          <VBox spacing="10" style="-fx-padding: 15;">
+                          <VBox spacing="10" style="-fx-padding: 15; -fx-background-color: #273C41;">
                               <TableView fx:id="incomingOffersTable" prefHeight="265.0" prefWidth="870.0">
                                   <columns>
                                       <TableColumn prefWidth="150" text="Player">
@@ -37,11 +37,11 @@
                                     <PropertyValueFactory property="amount" />
                                  </cellValueFactory>
                                       </TableColumn>
-                              <TableColumn prefWidth="150.0" text="Swap Offer" />
+                              <TableColumn prefWidth="268.0" text="Swap Offer" />
                                   </columns>
                               </TableView>
       
-                                          <VBox fx:id="offerActions" prefHeight="152.0" prefWidth="870.0" spacing="10" style="-fx-padding: 10; -fx-background-color: #f5f5f5;" visible="false">
+                                          <VBox fx:id="offerActions" prefHeight="152.0" prefWidth="870.0" spacing="10" style="-fx-padding: 10;" styleClass="vbox" visible="false">
                                   <Label fx:id="selectedOfferLabel" style="-fx-font-weight: bold;" />
                                   <HBox prefHeight="66.0" prefWidth="850.0" spacing="50.0">
                                       <Button onAction="#acceptOffer" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Accept" />
@@ -70,7 +70,7 @@
                                  <PropertyValueFactory property="amount" />
                               </cellValueFactory>
                                   </TableColumn>
-                           <TableColumn prefWidth="150.0" text="Swap Offer" />
+                           <TableColumn prefWidth="239.0" text="Swap Offer" />
                               </columns>
                           </TableView>
                       </Tab>

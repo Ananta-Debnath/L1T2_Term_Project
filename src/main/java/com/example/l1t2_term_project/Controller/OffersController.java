@@ -132,6 +132,7 @@ public class OffersController {
         incomingOffersTable.getSelectionModel().selectedItemProperty().addListener(
 
                 (obs, oldSelection, newSelection)->{
+                    Utils.playSound("Default_Click.wav");
                     offerActions.setVisible(newSelection!=null);
 
                     if(newSelection!=null){
@@ -180,6 +181,7 @@ public class OffersController {
 
     @FXML
     public void showOfferScene(ActionEvent actionEvent) {
+        Utils.playSound("Default_Click.wav");
         Offer offer = incomingOffersTable.getSelectionModel().getSelectedItem().counter();
         System.out.println(offer.toCSVLine());
         try {
