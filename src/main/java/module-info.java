@@ -6,6 +6,7 @@ module com.example.l1t2_term_project {
     requires com.dlsc.formsfx;
     requires net.synedra.validatorfx;
     requires com.almasb.fxgl.all;
+    requires annotations;
     requires java.desktop;
     requires javafx.media;
 

@@ -2,6 +2,7 @@ package com.example.l1t2_term_project;
 
 import com.example.l1t2_term_project.Controller.SignInController;
 import com.example.l1t2_term_project.DTO.LoginDTO;
+import com.example.l1t2_term_project.Utils.ClientReadThread;
 import com.example.l1t2_term_project.Utils.SocketWrapper;
 import com.example.l1t2_term_project.Utils.Utils;
 import javafx.application.Application;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class Client extends Application {
+    private ClientReadThread readThread;
     private SocketWrapper socketWrapper;
     private String currentClub;
     private List<String> nationList;
@@ -74,6 +76,9 @@ public class Client extends Application {
 
         // Connect to Server
         socketWrapper = new SocketWrapper("127.0.0.1", 12913);
+        readThread = new ClientReadThread("Client Read Thread", socketWrapper);
+        readThread.start();
+
         // Get all nations
         Object obj = read();
         if (obj instanceof List<?> && ((List<?>) obj).get(0) instanceof String)
@@ -102,12 +107,7 @@ public class Client extends Application {
 
     public Object read()
     {
-        try{
-            return socketWrapper.read();
-        } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Client read error");
-            return null;
-        }
+        return readThread.read();
     }
 
     public void write(Object obj)
