@@ -129,7 +129,7 @@ public class MakeOfferController {
         long toClubAmount = toClubAmountField.getText().isEmpty() ? 0 : Long.parseLong(toClubAmountField.getText());
         offer.setAmount(fromClubAmount - toClubAmount);
 
-        boolean valid = Utils.showConfirmationAlert("Make Offer", "Confirm your offer", "");
+        boolean valid = Utils.showConfirmationAlert("Make Offer", "Confirm your offer", "Press yes to proceed");
         if (!valid) return;
 
         client.write(offer);

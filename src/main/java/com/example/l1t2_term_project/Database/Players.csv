@@ -1,16 +1,16 @@
 id,name,age,height,role,extraPositions,nationality,team,jerseyNumber,goals,assists,tackles,interceptions,saves,matchPlayed,attributes,form,salary,value,contractEnd,forSale
-1,Mohamed Salah,30,1.75,RW,LW-ST,Egypt,Liverpool,11,24,12,15,8,0,32,"Fast-Finisher-Dribbler",Excellent,350000,100000000,2025-06-30,true
-2,Virgil van Dijk,31,1.93,CB,,Netherlands,Liverpool,4,3,2,45,60,0,30,"Leader-Strong-Aerial",Good,280000,75000000,2025-06-30,true
-3,Alisson Becker,30,1.91,GK,,Brazil,Liverpool,1,0,0,0,0,85,28,,Excellent,250000,70000000,2027-06-30,true
+1,Mohamed Salah,30,1.75,RW,LW-ST,Egypt,Liverpool,11,24,12,15,8,0,32,"Fast-Finisher-Dribbler",Excellent,350000,100000000,2025-06-30,false
+2,Virgil van Dijk,31,1.93,CB,,Netherlands,Liverpool,4,3,2,45,60,0,30,"Leader-Strong-Aerial",Good,280000,75000000,2025-06-30,false
+3,Alisson Becker,30,1.91,GK,,Brazil,Liverpool,1,0,0,0,0,85,28,,Excellent,250000,70000000,2027-06-30,false
 5,Andrew Robertson,29,1.78,LB,,Scotland,Liverpool,26,1,8,40,30,0,28,,Good,150000,50000000,2026-06-30,false
-6,Jeremie Frimpong,22,1.78,RB,,Netherlands,Real Madrid,3,0,2,30,25,0,20,,Good,120000,30000000,2027-06-30,false
-7,Florian Wirtz,26,1.85,CM,CAM,Germany,Liverpool,12,4,5,20,15,0,22,,Good,150000,40000000,2027-06-30,true
+6,Jeremie Frimpong,22,1.78,RB,,Netherlands,Liverpool,3,0,2,30,25,0,20,,Good,120000,30000000,2027-06-30,false
+7,Florian Wirtz,26,1.85,CM,CAM,Germany,Liverpool,12,4,5,20,15,0,22,,Good,150000,40000000,2027-06-30,false
 8,Darwin Nunez,23,1.87,ST,LW,Uruguay,Liverpool,27,15,4,10,5,0,25,,Good,200000,80000000,2028-06-30,true
-9,Luis Diaz,26,1.78,LW,RW,Colombia,Liverpool,23,8,6,12,8,0,22,,Good,180000,70000000,2027-06-30,true
-10,Alexis Mac Allister,24,1.8,CM,CAM,Argentina,Liverpool,20,5,7,15,10,0,25,,Good,150000,60000000,2028-06-30,true
+9,Luis Diaz,26,1.78,LW,RW,Colombia,Liverpool,23,8,6,12,8,0,22,,Good,180000,70000000,2027-06-30,false
+10,Alexis Mac Allister,24,1.8,CM,CAM,Argentina,Liverpool,20,5,7,15,10,0,25,,Good,150000,60000000,2028-06-30,false
 11,Ibrahima Konate,23,1.94,CB,,France,Liverpool,5,1,0,35,40,0,20,,Good,120000,40000000,2026-06-30,false
-12,Cody Gakpo,23,1.89,CF,LW-RW,Netherlands,Liverpool,18,6,5,10,5,0,15,,Good,150000,50000000,2028-06-30,true
-13,Robert Lewandowski,34,1.85,ST,,Poland,Barcelona,9,28,7,5,3,0,30,"Finishing-Positioning",Excellent,400000,60000000,2026-06-30,true
+12,Cody Gakpo,23,1.89,CF,LW-RW,Netherlands,Liverpool,18,6,5,10,5,0,15,,Good,150000,50000000,2028-06-30,false
+13,Robert Lewandowski,34,1.85,ST,,Poland,Real Madrid,9,28,7,5,3,0,30,"Finishing-Positioning",Excellent,400000,60000000,2026-06-30,false
 14,Pedri,20,1.74,CM,CAM,Spain,Barcelona,8,5,12,15,10,0,25,,Excellent,120000,100000000,2026-06-30,false
 15,Gavi,18,1.73,CM,LW,Spain,Barcelona,6,3,8,20,15,0,22,,Excellent,80000,90000000,2026-06-30,false
 16,Marc-Andre ter Stegen,30,1.87,GK,,Germany,Barcelona,1,0,0,0,0,75,30,,Excellent,250000,50000000,2025-06-30,true
@@ -18,7 +18,7 @@ id,name,age,height,role,extraPositions,nationality,team,jerseyNumber,goals,assis
 18,Frenkie de Jong,25,1.8,CM,CDM,Netherlands,Barcelona,21,3,6,25,20,0,28,,Good,250000,80000000,2026-06-30,false
 19,Lamine Yamal,16,1.7,LW,RW,Spain,Barcelona,31,4,2,5,3,0,15,,Good,80000,300000000,2027-06-30,false
 20,Jules Kounde,24,1.8,CB,RB,France,Barcelona,23,1,2,30,35,0,25,,Good,150000,60000000,2027-06-30,false
-21,Ansu Fati,20,1.78,LW,ST,Spain,Liverpool,10,6,4,5,3,0,18,,Good,120000,7777777,2027-06-30,true
+21,Ansu Fati,20,1.78,LW,ST,Spain,Barcelona,10,6,4,5,3,0,18,,Good,120000,60000000,2027-06-30,false
 22,Pau Cubarsi,19,1.85,CB,,Spain,Barcelona,16,0,0,35,40,0,20,,Good,100000,20000000,2028-06-30,false
 23,Raphinha,26,1.76,RW,LW,Brazil,Barcelona,22,5,8,15,10,0,20,,Good,150000,50000000,2027-06-30,false
 24,Ferran Torres,23,1.8,RW,LW,Spain,Barcelona,7,4,3,10,5,0,18,,Good,120000,40000000,2026-06-30,false
@@ -28,8 +28,8 @@ id,name,age,height,role,extraPositions,nationality,team,jerseyNumber,goals,assis
 28,Jude Bellingham,20,1.86,CM,CAM,England,Real Madrid,13,8,6,20,15,0,25,"Leading",Excellent,200000,120000000,2029-06-30,false
 29,Trent Alexander-Arnold,24,1.8,RB,LB-CM,England,Real Madrid,66,2,10,35,25,0,30,"Crossing-Passing",Good,180000,80000000,2026-06-30,false
 30,Federico Valverde,24,1.82,CM,RW,Uruguay,Real Madrid,15,8,5,25,20,0,28,,Excellent,150000,100000000,2027-06-30,false
-31,Eder Militao,25,1.86,CB,,Brazil,Liverpool,3,2,1,40,45,0,28,,Good,150000,70000000,2025-06-30,true
-32,David Alaba,30,1.8,CB,LB,Austria,Real Madrid,4,1,3,25,30,0,25,,Good,200000,40000000,2026-06-30,false
+31,Eder Militao,25,1.86,CB,,Brazil,Real Madrid,3,2,1,40,45,0,28,,Good,150000,70000000,2025-06-30,false
+32,David Alaba,30,1.8,CB,LB,Austria,Real Madrid,4,1,3,25,30,0,25,,Good,200000,40000000,2026-06-30,true
 33,Rodrygo,22,1.74,RW,LW,Brazil,Real Madrid,21,10,7,10,5,0,26,,Good,120000,80000000,2028-06-30,false
 34,Aurelien Tchouameni,23,1.87,CDM,CM,France,Real Madrid,18,2,3,35,30,0,20,,Good,150000,90000000,2028-06-30,false
 35,Dani Carvajal,31,1.73,RB,,Spain,Real Madrid,2,1,4,30,25,0,24,,Good,120000,25000000,2025-06-30,false
@@ -49,8 +49,8 @@ id,name,age,height,role,extraPositions,nationality,team,jerseyNumber,goals,assis
 49,Enzo Fernandez,22,1.78,CM,CDM,Argentina,Chelsea,5,3,5,25,20,0,15,,Good,180000,80000000,2031-06-30,false
 50,Pedro Neto,23,1.75,RW,LW,Portugal,Chelsea,6,4,3,10,5,0,20,,Good,120000,50000000,2028-06-30,false
 51,Reece James,23,1.82,RB,,England,Chelsea,24,2,5,35,30,0,18,,Good,150000,65000000,2028-06-30,false
-52,Moises Caicedo,21,1.78,CDM,CM,Ecuador,Chelsea,13,2,3,20,15,0,22,"Tackling",Good,150000,80000000,2031-06-30,true
-53,Cole Palmer,21,1.8,RW,LW,England,Liverpool,17,4,2,10,5,0,20,"Dribbling-Pace",Good,120000,20,2028-06-30,true
+52,Moises Caicedo,21,1.78,CDM,CM,Ecuador,Chelsea,13,2,3,20,15,0,22,"Tackling",Good,150000,80000000,2031-06-30,false
+53,Cole Palmer,21,1.8,RW,LW,England,Chelsea,17,4,2,10,5,0,20,"Dribbling-Pace",Good,120000,40000000,2028-06-30,false
 54,Marc Cucurella,25,1.78,LB,LW,Spain,Chelsea,3,0,2,30,25,0,20,,Good,120000,40000000,2027-06-30,false
 55,Axel Disasi,25,1.9,CB,,France,Chelsea,2,1,0,35,40,0,20,,Good,120000,30000000,2028-06-30,false
 56,Benoit Badiashile,21,1.94,CB,,France,Chelsea,4,1,0,20,25,0,10,,Good,100000,40000000,2030-06-30,false
@@ -70,7 +70,7 @@ id,name,age,height,role,extraPositions,nationality,team,jerseyNumber,goals,assis
 70,Serge Gnabry,27,1.75,RW,LW,Germany,Bayern Munich,7,10,6,15,10,0,25,,Good,200000,55000000,2026-06-30,false
 71,Jonathan Tah,27,1.9,CB,,Germany,Bayern Munich,5,1,0,40,45,0,20,,Good,150000,40000000,2026-06-30,false
 72,Kingsley Coman,27,1.81,LW,RW,France,Bayern Munich,11,8,5,10,5,0,22,,Good,200000,60000000,2026-06-30,false
-73,Lionel Messi,36,1.7,RW,CF-LW,Argentina,Liverpool,10,25,30,0,0,0,25,"Dribbling-Speed-Vision",Good,500000,100000000,2025-06-30,true
+73,Lionel Messi,36,1.7,RW,CF-LW,Argentina,Inter Miami,10,25,30,0,0,0,25,"Dribbling-Speed-Vision",Good,500000,100000000,2025-06-30,true
 74,Kevin De Bruyne,32,1.81,CAM,CM,Belgium,Man City,17,12,18,8,3,0,22,"Vision-Passing-LongShots",Fair,400000,85000000,2026-05-30,false
 75,Ousmane Dembélé,26,1.78,RW,RW-LW,France,PSG,23,10,8,12,6,0,30,"speed-dribbling-vision",Good,300000,60000000,2027,false
 76,Bradley Barcola,21,1.8,RW,RW-LW,France,PSG,31,5,4,10,5,0,20,"speed-dribbling-vision",Average,150000,40000000,2028,false

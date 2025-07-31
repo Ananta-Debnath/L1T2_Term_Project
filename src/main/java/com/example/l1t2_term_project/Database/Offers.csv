@@ -1,5 +1,5 @@
 id,fromClub,fromClubPlayer,toClub,toClubPlayer,amount
-1,Liverpool,Florian Wirtz,Barcelona,Gavi,0
-2,Liverpool,Mohamed Salah,Barcelona,Lamine Yamal,0
-5,Liverpool,,Real Madrid,Jude Bellingham,80000000
-6,Liverpool,Virgil van Dijk,Barcelona,Marc-Andre ter Stegen,-2500000
+1,Liverpool,Alexis Mac Allister,Real Madrid,Jude Bellingham,10000000
+2,Liverpool,Darwin Nunez,Arsenal,Martin Zubimendi,0
+3,Real Madrid,Thibaut Courtois,Liverpool,Alisson Becker,0
+4,PSG,Ousmane Dembélé,Liverpool,Mohamed Salah,0

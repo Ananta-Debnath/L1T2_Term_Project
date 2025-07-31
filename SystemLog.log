@@ -1433,3 +1433,33 @@
 [2025-07-31 19:53:26] 'Liverpool' logged in
 [2025-07-31 19:53:59] 'Liverpool' logged out
 [2025-07-31 19:53:59] Client disconnected: Socket[addr=/127.0.0.1,port=56435,localport=12913]
+[2025-07-31 19:59:23] Server Started
+[2025-07-31 19:59:28] Client connected: Socket[addr=/127.0.0.1,port=59974,localport=12913]
+[2025-07-31 19:59:31] Failed login attempted - [username='Liverpool', password='liver']
+[2025-07-31 19:59:35] Failed login attempted - [username='Liverpool', password='liver']
+[2025-07-31 19:59:43] Failed login attempted - [username='Liverpool', password='liver']
+[2025-07-31 19:59:47] 'Liverpool' logged in
+[2025-07-31 20:00:20] 'Liverpool' logged out
+[2025-07-31 20:00:36] 'liverpool' logged in
+[2025-07-31 20:01:13] 'liverpool' logged out
+[2025-07-31 20:01:13] Client disconnected: Socket[addr=/127.0.0.1,port=59974,localport=12913]
+[2025-07-31 20:02:23] Server Started
+[2025-07-31 20:02:30] Client connected: Socket[addr=/127.0.0.1,port=60111,localport=12913]
+[2025-07-31 20:02:44] 'Liverpool' logged in
+[2025-07-31 20:04:15] 'Liverpool' made offer to 'Real Madrid'
+[2025-07-31 20:04:22] 'Liverpool' logged out
+[2025-07-31 20:04:22] Client disconnected: Socket[addr=/127.0.0.1,port=60111,localport=12913]
+[2025-07-31 20:05:01] Client connected: Socket[addr=/127.0.0.1,port=60225,localport=12913]
+[2025-07-31 20:05:04] 'Liverpool' logged in
+[2025-07-31 20:05:32] 'Liverpool' made offer to 'Arsenal'
+[2025-07-31 20:05:42] 'Liverpool' logged out
+[2025-07-31 20:05:48] 'Real Madrid' logged in
+[2025-07-31 20:05:59] Player (ID: 32) listed for sale
+[2025-07-31 20:06:17] 'Real Madrid' made offer to 'Liverpool'
+[2025-07-31 20:06:21] 'Real Madrid' logged out
+[2025-07-31 20:06:28] 'PSG' logged in
+[2025-07-31 20:06:49] 'PSG' made offer to 'Liverpool'
+[2025-07-31 20:06:53] 'PSG' logged out
+[2025-07-31 20:06:55] 'Liverpool' logged in
+[2025-07-31 20:07:23] 'Liverpool' logged out
+[2025-07-31 20:07:23] Client disconnected: Socket[addr=/127.0.0.1,port=60225,localport=12913]
