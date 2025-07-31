@@ -17,7 +17,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="184.0" prefWidth="858.0">
                <children>
-                  <Label alignment="CENTER_RIGHT" style="-fx-font-size: 35;" text="Welcome To Football League Management!" />
+                  <Label alignment="CENTER_RIGHT" style="-fx-font-size: 35;" text="Football Transfer Management" />
                </children>
             </HBox>
             <VBox prefHeight="218.0" prefWidth="750.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 10; -fx-spacing: 20;">

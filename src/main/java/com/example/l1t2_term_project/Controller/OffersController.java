@@ -173,7 +173,7 @@ public class OffersController {
         client.write(offer);
         valid = (boolean) client.read();
 
-        if (valid) Utils.showAlert("Successful", "Offer accepted");
+        if (valid) Utils.showAlert("Successful", "Offer rejected");
         else Utils.showAlert("Failure!", "Invalid Offer");
 
         refreshOffersList();

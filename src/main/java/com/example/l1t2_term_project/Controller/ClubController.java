@@ -77,8 +77,8 @@ public class ClubController {
         // Load club player list
         club.loadPlayers(client);
 
-        clubBudgetLabel.setText("Budget: "+"\n" +formatCurrency(club.getBudget()));
-        System.out.println(formatCurrency(club.getBudget()));
+//        clubBudgetLabel.setText("Budget: "+"\n" +formatCurrency(club.getBudget()));
+//        System.out.println(formatCurrency(club.getBudget()));
     }
 
     public void OpenPlayers(ActionEvent actionEvent) {

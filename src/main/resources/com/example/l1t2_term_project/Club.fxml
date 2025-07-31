@@ -80,7 +80,7 @@
                </graphic></Button>
             <VBox prefHeight="114.0" prefWidth="160.0">
                <children>
-                  <HBox prefHeight="52.0" prefWidth="160.0" spacing="10.0">
+                  <HBox prefHeight="52.0" prefWidth="160.0" spacing="10.0" visible="false">
                      <children>
                         <ImageView fitHeight="42.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                            <HBox.margin>
