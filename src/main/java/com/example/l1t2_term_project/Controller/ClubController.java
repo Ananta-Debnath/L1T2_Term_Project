@@ -19,9 +19,9 @@ import java.io.IOException;
 // TODO: add alert to close and use sign out then
 public class ClubController {
 
-
     private Client client;
-
+    private Refreshable currentController;
+    private boolean quit;
     private Club club;
 
     @FXML
@@ -67,9 +67,27 @@ public class ClubController {
         return String.format("€%,d", value);
     }
 
+    public void refresh()
+    {
+        while (!quit)
+        {
+            synchronized (client.getLock())
+            {
+                try {
+                    client.getLock().wait();
+                } catch (InterruptedException e) {
+                    System.err.println("Refresh Thread Interrupted");
+                }
+            }
+
+            if (currentController != null) currentController.refresh();
+        }
+    }
+
     public void initializeValues(Client client)
     {
         this.client = client;
+        quit = false;
 
         // Load club details
         club = Club.readFromServer(client);
@@ -77,20 +95,22 @@ public class ClubController {
         // Load club player list
         club.loadPlayers(client);
 
+        new Thread(this::refresh, "Refresh Thread").start();
+
 //        clubBudgetLabel.setText("Budget: "+"\n" +formatCurrency(club.getBudget()));
 //        System.out.println(formatCurrency(club.getBudget()));
     }
 
     public void OpenPlayers(ActionEvent actionEvent) {
         try {
-
             contentPane.getChildren().clear();
             FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/PlayersList.fxml"));
             Parent PlayersListView = loader.load();
 
             club.loadPlayers(client);
-            PlayersListController playerslistController=loader.getController();
+            PlayersListController playerslistController = loader.getController();
             playerslistController.initializeValues(client, club);
+            currentController = (Refreshable) playerslistController;
 
             contentPane.getChildren().setAll(PlayersListView);
 
@@ -111,8 +131,8 @@ public class ClubController {
 
             club = Club.readFromServer(client);
             ClubDetailsController controller = loader.getController();
-
             controller.initializeValues(client, this.club);
+            currentController = (Refreshable) controller;
 
             transferBox.setVisible(false);
             Utils.playSound("Default_Click.wav");
@@ -125,7 +145,6 @@ public class ClubController {
     public void OpenTransfer(ActionEvent actionEvent) {
         contentPane.getChildren().clear();
         transferBox.setVisible(true);
-
 
     }
 
@@ -156,7 +175,8 @@ public class ClubController {
             contentPane.getChildren().clear();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/Market.fxml"));
             Parent marketView = loader.load();
-            ((MarketController) loader.getController()).initializeValues(client, club);
+            currentController = loader.getController();
+            ((MarketController) currentController).initializeValues(client, club);
             contentPane.getChildren().setAll(marketView); // Load into StackPane
 
             // Clear other visible elements

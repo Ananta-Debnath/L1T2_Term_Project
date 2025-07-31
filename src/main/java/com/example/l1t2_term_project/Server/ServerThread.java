@@ -2,6 +2,7 @@ package com.example.l1t2_term_project.Server;
 
 import com.example.l1t2_term_project.DTO.BuyPlayerDTO;
 import com.example.l1t2_term_project.DTO.LoginDTO;
+import com.example.l1t2_term_project.DTO.NotificationDTO;
 import com.example.l1t2_term_project.DTO.SellPlayerDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
 import com.example.l1t2_term_project.Model.Offer;
@@ -150,6 +151,7 @@ public class ServerThread extends Thread {
                 server.writeClubsToFile();
                 ActivityLogger.log("Player (ID: " + player.getId() + ") transferred to '" + buyer.getName() + "'");
                 write(true);
+                server.notifyAllClient();
             } else {
                 ActivityLogger.log("Transfer failed: '" + buyer.getName() + "' cannot afford Player (ID: " + player.getId() + ")");
                 write(false);
@@ -169,6 +171,7 @@ public class ServerThread extends Thread {
                 PlayerCollection.writeToFile();
                 ActivityLogger.log("Player (ID: " + player.getId() + ") listed for sale");
                 write(true);
+                server.notifyAllClient();
             } else {
                 ActivityLogger.log("Player (ID: " + player.getId() + ") information mismatch");
                 write(false);
@@ -193,6 +196,8 @@ public class ServerThread extends Thread {
                 exportOffers();
                 break;
         }
+
+        if (offer.getStatus() != Offer.Status.GetList) server.notifyAllClient();
     }
 
     public void exportOffers()

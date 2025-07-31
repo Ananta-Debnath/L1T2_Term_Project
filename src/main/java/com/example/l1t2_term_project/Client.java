@@ -2,6 +2,7 @@ package com.example.l1t2_term_project;
 
 import com.example.l1t2_term_project.Controller.SignInController;
 import com.example.l1t2_term_project.DTO.LoginDTO;
+import com.example.l1t2_term_project.DTO.NotificationDTO;
 import com.example.l1t2_term_project.Utils.ClientReadThread;
 import com.example.l1t2_term_project.Utils.SocketWrapper;
 import com.example.l1t2_term_project.Utils.Utils;
@@ -19,6 +20,11 @@ public class Client extends Application {
     private String currentClub;
     private List<String> nationList;
     private List<String> clubList;
+    private NotificationDTO lock;
+
+    public SocketWrapper getSocketWrapper() {
+        return socketWrapper;
+    }
 
     public String getCurrentClub() {
         return currentClub;
@@ -42,6 +48,10 @@ public class Client extends Application {
 
     public void setClubList(List<String> clubList) {
         this.clubList = clubList;
+    }
+
+    public NotificationDTO getLock() {
+        return lock;
     }
 
     @Override
@@ -76,8 +86,9 @@ public class Client extends Application {
 
         // Connect to Server
         socketWrapper = new SocketWrapper("127.0.0.1", 12913);
-        readThread = new ClientReadThread("Client Read Thread", socketWrapper);
+        readThread = new ClientReadThread("Client Read Thread", this);
         readThread.start();
+        lock = new NotificationDTO("Lock");
 
         // Get all nations
         Object obj = read();

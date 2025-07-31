@@ -18,7 +18,7 @@ import java.util.Objects;
 import java.util.function.UnaryOperator;
 
 
-public class PlayersListController {
+public class PlayersListController implements Refreshable {
 
     @FXML
     public TableView<Player> playersTable;
@@ -92,10 +92,11 @@ public class PlayersListController {
 
         this.client = client;
         this.club=c;
-        refreshPlayersList();
+        refresh();
     }
 
-    private void refreshPlayersList(){
+    @Override
+    public void refresh(){
         club.loadPlayers(client);
         System.out.println("Refreshing player list");
         playersTable.getItems().clear();
@@ -225,7 +226,7 @@ public class PlayersListController {
                 }
                 else System.err.println("Object not Boolean");
 
-                refreshPlayersList();
+                refresh();
                 // TODO: update player value instantly
                 finalSellBox.setVisible(false);
                 fullListDetails.setVisible(true);

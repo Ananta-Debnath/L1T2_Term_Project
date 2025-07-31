@@ -29,7 +29,7 @@ TODO: quality improvements - mute, ...
  */
 
 
-public class MarketController
+public class MarketController implements Refreshable
 {
 
     // Non-FXML variables
@@ -219,6 +219,11 @@ public class MarketController
 
         clubField.getItems().add(null);
         clubField.getItems().addAll(client.getClubList());
+    }
+
+    @Override
+    public void refresh() {
+        searchPlayers();
     }
 
     @FXML

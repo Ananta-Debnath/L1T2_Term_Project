@@ -10,7 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class ClubDetailsController {
+public class ClubDetailsController implements Refreshable {
 
     @FXML
     public ImageView clubLogo;
@@ -52,13 +52,14 @@ public class ClubDetailsController {
     public void initializeValues(Client client, Club c){
         this.client = client;
         this.currentClub=c;
-        updateClubDetails();
+        refresh();
     }
 
-    private void updateClubDetails(){
+    @Override
+    public void refresh(){
 
         System.out.println("Updating club details for: " + (currentClub != null ? currentClub.getName() : "null"));
-
+        currentClub = Club.readFromServer(client);
 
         if(currentClub!=null){
 

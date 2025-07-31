@@ -2,6 +2,7 @@ package com.example.l1t2_term_project.Server;
 
 
 import com.example.l1t2_term_project.DTO.LoginDTO;
+import com.example.l1t2_term_project.DTO.NotificationDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
 import com.example.l1t2_term_project.Model.Offer;
 import com.example.l1t2_term_project.Model.Player.PlayerCollection;
@@ -62,6 +63,17 @@ public class Server {
     public synchronized void removeClient(String name)
     {
         clientMap.remove(name);
+    }
+
+    public void notifyAllClient()
+    {
+        for (SocketWrapper socket : clientMap.values()) {
+            try {
+                socket.write(new NotificationDTO("Refresh"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     public void readClubs() {
