@@ -12,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
@@ -103,7 +102,9 @@ public class MarketController
             TableRow<Player> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty() && event.getClickCount() == 2) { // double click
+
                     Player clickedPlayer = row.getItem();
+                    Utils.playSound("Default_Click.wav");
                     showPlayerDetails(clickedPlayer);
                 }
             });
@@ -230,8 +231,6 @@ public class MarketController
     @FXML
     public void searchPlayers()
     {
-        System.out.println(searchField.getText());
-
         filter.setName(searchField.getText());
 
         client.write(filter);
@@ -305,7 +304,7 @@ public class MarketController
                 }
                 else
                 {
-                    Utils.showAlert("Purchase Failure!", String.format("%s could not be bought", player.getName()));
+                    Utils.showErrorAlert("Purchase Failure!", String.format("%s could not be bought", player.getName()));
                 }
             }
             else System.err.println("Object not Boolean");
@@ -314,12 +313,13 @@ public class MarketController
             mainMenu.setDisable(false);
             searchPlayers();
         }else{
-            Utils.showAlert("Cancelled","Buy process terminated");
+            Utils.showCancelAlert("Cancelled","Buy process terminated");
         }
     }
 
     @FXML
     public void showOfferScene(ActionEvent actionEvent) {
+        Utils.playSound("Default_Click.wav");
         Player player = (Player) (((Button) actionEvent.getSource()).getUserData());
         try {
             makeOfferPane.getChildren().clear();
@@ -330,7 +330,7 @@ public class MarketController
             toClub.setName(player.getTeam());
             MakeOfferController makeOfferController = loader.getController();
             Offer offer = new Offer(0, Offer.Status.Make);
-            offer.setToClubPlayerID(player.getId());
+            offer.setToClubPlayer(player.getName());
 
             makeOfferController.initializeValues(client, club, toClub, offer);
             makeOfferController.toClubPlayerBox.setDisable(true);

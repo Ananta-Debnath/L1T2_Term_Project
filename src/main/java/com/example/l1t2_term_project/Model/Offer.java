@@ -12,19 +12,20 @@ public class Offer implements Serializable {
     private long amount; // fromClub to toClub - can be negative
 
     private String fromClub;
-    private Integer fromClubPlayerID;
+    private String fromClubPlayer;
 
     private String toClub;
-    private Integer toClubPlayerID;
+    private String toClubPlayer;
 
     public Offer(int id, Status status) {
         this.id = id;
         this.status = status;
 
         amount = 0;
-        fromClubPlayerID = null;
-        toClubPlayerID = null;
+        fromClubPlayer = "";
+        toClubPlayer = "";
     }
+
 
     public int getId() {
         return id;
@@ -58,12 +59,12 @@ public class Offer implements Serializable {
         this.fromClub = fromClub;
     }
 
-    public Integer getFromClubPlayerID() {
-        return fromClubPlayerID;
+    public String getFromClubPlayer() {
+        return fromClubPlayer;
     }
 
-    public void setFromClubPlayerID(Integer fromClubPlayerID) {
-        this.fromClubPlayerID = fromClubPlayerID;
+    public void setFromClubPlayer(String fromClubPlayer) {
+        this.fromClubPlayer = fromClubPlayer;
     }
 
     public String getToClub() {
@@ -74,12 +75,24 @@ public class Offer implements Serializable {
         this.toClub = toClub;
     }
 
-    public Integer getToClubPlayerID() {
-        return toClubPlayerID;
+    public String getToClubPlayer() {
+        return toClubPlayer;
     }
 
-    public void setToClubPlayerID(Integer toClubPlayerID) {
-        this.toClubPlayerID = toClubPlayerID;
+    public void setToClubPlayer(String toClubPlayer) {
+        this.toClubPlayer = toClubPlayer;
+    }
+
+    public Offer counter()
+    {
+        Offer offer = new Offer(id, Status.Make);
+        offer.amount = -amount;
+        offer.fromClub = toClub;
+        offer.fromClubPlayer = toClubPlayer;
+        offer.toClub = fromClub;
+        offer.toClubPlayer = fromClubPlayer;
+
+        return offer;
     }
 
     public String toCSVLine()
@@ -88,9 +101,9 @@ public class Offer implements Serializable {
 
         str.append(id).append(",");
         str.append(fromClub).append(",");
-        str.append(fromClubPlayerID).append(",");
+        str.append(fromClubPlayer).append(",");
         str.append(toClub).append(",");
-        str.append(toClubPlayerID).append(",");
+        str.append(toClubPlayer).append(",");
         str.append(amount);
 
         return str.toString();
@@ -100,11 +113,11 @@ public class Offer implements Serializable {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Offer offer = (Offer) o;
-        return id == offer.id && amount == offer.amount && Objects.equals(fromClub, offer.fromClub) && Objects.equals(fromClubPlayerID, offer.fromClubPlayerID) && Objects.equals(toClub, offer.toClub) && Objects.equals(toClubPlayerID, offer.toClubPlayerID);
+        return id == offer.id && amount == offer.amount && Objects.equals(fromClub, offer.fromClub) && Objects.equals(fromClubPlayer, offer.fromClubPlayer) && Objects.equals(toClub, offer.toClub) && Objects.equals(toClubPlayer, offer.toClubPlayer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, amount, fromClub, fromClubPlayerID, toClub, toClubPlayerID);
+        return Objects.hash(id, amount, fromClub, fromClubPlayer, toClub, toClubPlayer);
     }
 }

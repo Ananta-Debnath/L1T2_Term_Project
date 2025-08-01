@@ -19,6 +19,7 @@ import java.io.IOException;
 // TODO: add alert to close and use sign out then
 public class ClubController {
 
+
     private Client client;
 
     private Club club;
@@ -50,6 +51,22 @@ public class ClubController {
     @FXML
     public VBox transferSubMenu;
 
+    @FXML
+    public Label clubBudgetLabel;
+
+    private String formatCurrency(long value) {
+        if(value>=1_000_000){
+
+            return String.format("€%,dM", value / 1_000_000);
+        }else if(value>=1_000){
+
+            return String.format("€%,dK", value / 1_000);
+        }else if(value>=1_000_000_000){
+            return String.format("€%,dB", value/1_000_000_000);
+        }
+        return String.format("€%,d", value);
+    }
+
     public void initializeValues(Client client)
     {
         this.client = client;
@@ -59,10 +76,14 @@ public class ClubController {
 
         // Load club player list
         club.loadPlayers(client);
+
+//        clubBudgetLabel.setText("Budget: "+"\n" +formatCurrency(club.getBudget()));
+//        System.out.println(formatCurrency(club.getBudget()));
     }
 
     public void OpenPlayers(ActionEvent actionEvent) {
         try {
+
             contentPane.getChildren().clear();
             FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/PlayersList.fxml"));
             Parent PlayersListView = loader.load();
@@ -74,7 +95,7 @@ public class ClubController {
             contentPane.getChildren().setAll(PlayersListView);
 
             transferBox.setVisible(false);
-
+//            Utils.playSound("Default_Click.wav");
         } catch(IOException e){
             e.printStackTrace();
         }
@@ -94,6 +115,7 @@ public class ClubController {
             controller.initializeValues(client, this.club);
 
             transferBox.setVisible(false);
+            Utils.playSound("Default_Click.wav");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -103,6 +125,7 @@ public class ClubController {
     public void OpenTransfer(ActionEvent actionEvent) {
         contentPane.getChildren().clear();
         transferBox.setVisible(true);
+
 
     }
 
@@ -126,7 +149,9 @@ public class ClubController {
         */
 
     @FXML
-    public void OpenMarket(ActionEvent event) { 
+    public void OpenMarket(ActionEvent event) {
+
+        Utils.playSound("Default_Click.wav");
         try {
             contentPane.getChildren().clear();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/Market.fxml"));
@@ -165,12 +190,12 @@ public class ClubController {
 
 
     public void switchToPlayerOffers(ActionEvent actionEvent) {
-
+//        Utils.playSound("Default_Click.wav");
         try {
             contentPane.getChildren().clear();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/Offers.fxml"));
             Parent offerView = loader.load();
-            //((OffersController) loader.getController()).initializeValues(client);
+            ((OffersController) loader.getController()).initializeValues(client,club);
             contentPane.getChildren().setAll(offerView); // Load into StackPane
 
             // Clear other visible elements

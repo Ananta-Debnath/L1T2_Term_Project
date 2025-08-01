@@ -1,1 +1,5 @@
-id,fromClub,fromClubPlayerID,toClub,toClubPlayerID,amount
+id,fromClub,fromClubPlayer,toClub,toClubPlayer,amount
+1,Liverpool,Alexis Mac Allister,Real Madrid,Jude Bellingham,10000000
+2,Liverpool,Darwin Nunez,Arsenal,Martin Zubimendi,0
+3,Real Madrid,Thibaut Courtois,Liverpool,Alisson Becker,0
+4,PSG,Ousmane Dembélé,Liverpool,Mohamed Salah,0

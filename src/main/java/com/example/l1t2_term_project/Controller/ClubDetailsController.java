@@ -36,6 +36,19 @@ public class ClubDetailsController {
     private Client client;
     private Club currentClub;
 
+    private String formatCurrency(long value) {
+        if(value>=1_000_000){
+
+            return String.format("€%,dM", value / 1_000_000);
+        }else if(value>=1_000){
+
+            return String.format("€%,dK", value / 1_000);
+        }else if(value>=1_000_000_000){
+            return String.format("€%,dB", value/1_000_000_000);
+        }
+        return String.format("€%,d", value);
+    }
+
     public void initializeValues(Client client, Club c){
         this.client = client;
         this.currentClub=c;
@@ -52,7 +65,7 @@ public class ClubDetailsController {
             clubNameLabel.setText(currentClub.getName());
             managerLabel.setText(currentClub.getManagerName());
             stadiumLabel.setText(currentClub.getStadiumName());
-            budgetLabel.setText(String.valueOf(currentClub.getBudget()));
+            budgetLabel.setText(String.valueOf(formatCurrency(currentClub.getBudget())));
 
 
             //TODO: history
@@ -81,7 +94,7 @@ public class ClubDetailsController {
 
         if (newPassword.isEmpty() || !newPassword.equals(confirmPassword))
         {
-            Utils.showAlert("Failed", "Password change unsuccessful");
+            Utils.showErrorAlert("Failed", "Password change unsuccessful");
             return;
         }
 
@@ -93,7 +106,7 @@ public class ClubDetailsController {
             boolean valid = (boolean) obj;
             if (!valid)
             {
-                Utils.showAlert("Failed", "Password change unsuccessful");
+                Utils.showErrorAlert("Failed", "Password change unsuccessful");
                 return;
             }
         }
@@ -110,11 +123,17 @@ public class ClubDetailsController {
             boolean valid = (boolean) obj;
             if (valid)
             {
-                Utils.showAlert("Password Changed", "Password Changed successfully");
+                boolean valid2=Utils.showConfirmationAlert("Credential","Confirm Password Change","Proceed with password change?");
+
+                if(valid2) {
+                    Utils.showAlert("Password Changed", "Password Changed successfully");
+                }else{
+                    Utils.showCancelAlert("Process terminated","Password change cancelled");
+                }
             }
             else
             {
-                Utils.showAlert("Failed!", "User not found");
+                Utils.showErrorAlert("Failed!", "User not found");
             }
         }
         else {

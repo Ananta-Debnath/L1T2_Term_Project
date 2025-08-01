@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
+import java.util.Objects;
 import java.util.function.UnaryOperator;
 
 
@@ -59,7 +60,7 @@ public class PlayersListController {
         playersTable.getSelectionModel().selectedItemProperty().addListener(
             (obs, oldSelection, newSelection)->{
                 if(newSelection!=null){
-
+                    Utils.playSound("Default_Click.wav");
                     updatePlayerDetails(newSelection);
                 }
             });
@@ -142,12 +143,15 @@ public class PlayersListController {
         }else if(value>=1_000){
 
             return String.format("€%,dK", value / 1_000);
+        }else if(value>=1_000_000_000){
+            return String.format("€%,dB", value/1_000_000_000);
         }
         return String.format("€%,d", value);
     }
 
     @FXML
     public void setSellMoney(ActionEvent actionEvent) {
+        Utils.playSound("Default_Click.wav");
         fullListDetails.setVisible(false);
         finalSellBox.setVisible(true);
         sellAmountField.setPromptText(String.valueOf(playersTable.getSelectionModel().getSelectedItem().getValue()));
@@ -156,6 +160,7 @@ public class PlayersListController {
 
     @FXML
     public void returnToSquad(ActionEvent actionEvent) {
+        Utils.playSound("Default_Click.wav");
         finalSellBox.setVisible(false);
         fullListDetails.setVisible(true);
     }
@@ -173,6 +178,8 @@ public class PlayersListController {
         if (!sellAmountField.getText().isEmpty()) amount = Long.parseLong(sellAmountField.getText());
         SellPlayerDTO sellPlayerDTO = new SellPlayerDTO(selectedPlayer.getId(), amount, selectedPlayer.getTeam());
 
+
+        Utils.playSound("Confirmation.wav");
         Alert confirmation=new Alert(Alert.AlertType.CONFIRMATION);
         confirmation.setTitle("Confirm Sale");
         confirmation.setHeaderText("Confirm Player Sale");
@@ -181,6 +188,22 @@ public class PlayersListController {
         ButtonType yesButton=new ButtonType("YES", ButtonBar.ButtonData.YES);
         ButtonType noButton=new ButtonType("No", ButtonBar.ButtonData.NO);
         confirmation.getButtonTypes().setAll(yesButton,noButton);
+
+        DialogPane dialogPane = confirmation.getDialogPane();
+        dialogPane.getStyleClass().add("custom-alert");
+        try {
+            dialogPane.getStylesheets().add(
+                    Objects.requireNonNull(Utils.class.getResource("/styles/confirmation_alert.css")).toExternalForm()
+            );
+
+            String imagePath="/Images/confirmation_icon.png";
+
+            Image image=new Image(Objects.requireNonNull(Utils.class.getResource(imagePath).toExternalForm()));
+
+            dialogPane.setGraphic(new ImageView(image));
+        } catch (NullPointerException e) {
+            System.err.println("Failed to load alert stylesheet");
+        }
 
         long finalAmount = amount;
         confirmation.showAndWait().ifPresent(response->{
@@ -197,7 +220,7 @@ public class PlayersListController {
                     }
                     else
                     {
-                        Utils.showAlert("Failed", String.format("%s could not be listed for sale", selectedPlayer.getName()));
+                        Utils.showErrorAlert("Failed", String.format("%s could not be listed for sale", selectedPlayer.getName()));
                     }
                 }
                 else System.err.println("Object not Boolean");
@@ -209,7 +232,7 @@ public class PlayersListController {
                 sellAmountField.clear();
 
             }else{
-                Utils.showAlert("Cancelled","Sell process terminated");
+                Utils.showCancelAlert("Cancelled","Sell process terminated");
             }
         });
 

@@ -4,22 +4,20 @@ import com.example.l1t2_term_project.Client;
 import com.example.l1t2_term_project.Model.Club.Club;
 import com.example.l1t2_term_project.Model.Offer;
 import com.example.l1t2_term_project.Model.Player.Player;
-import com.example.l1t2_term_project.Model.Player.Position;
-import com.example.l1t2_term_project.Model.Player.Role;
 import com.example.l1t2_term_project.Utils.Utils;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 
 import java.util.List;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
 public class MakeOfferController {
     private Client client;
     private Club fromClub;
     private Club toClub;
+    private Offer offer;
 
     @FXML
     public Label budgetLabel;
@@ -28,14 +26,14 @@ public class MakeOfferController {
     @FXML
     public TextField fromClubAmountField;
     @FXML
-    public ComboBox<Player> fromClubPlayerBox;
+    public ComboBox<String> fromClubPlayerBox;
 
     @FXML
     public Label toClubNameLabel;
     @FXML
     public TextField toClubAmountField;
     @FXML
-    public ComboBox<Player> toClubPlayerBox;
+    public ComboBox<String> toClubPlayerBox;
 
     @FXML
     public Button cancelButton;
@@ -57,33 +55,33 @@ public class MakeOfferController {
 
         fromClubPlayerBox.setButtonCell(new ListCell<>() {
             @Override
-            protected void updateItem(Player player, boolean empty) {
-                super.updateItem(player, empty);
-                setText(player == null || empty ? "No Player" : player.getName());
+            protected void updateItem(String name, boolean empty) {
+                super.updateItem(name, empty);
+                setText(name == null || name.trim().isEmpty() ? "No Player" : name);
             }
         });
 
         fromClubPlayerBox.setCellFactory(listView -> new ListCell<>() {
             @Override
-            protected void updateItem(Player player, boolean empty) {
-                super.updateItem(player, empty);
-                setText(player == null || empty ? "No Player" : player.getName());
+            protected void updateItem(String name, boolean empty) {
+                super.updateItem(name, empty);
+                setText(name == null || name.trim().isEmpty() ? "No Player" : name);
             }
         });
 
         toClubPlayerBox.setButtonCell(new ListCell<>() {
             @Override
-            protected void updateItem(Player player, boolean empty) {
-                super.updateItem(player, empty);
-                setText(player == null || empty ? "No Player" : player.getName());
+            protected void updateItem(String name, boolean empty) {
+                super.updateItem(name, empty);
+                setText(name == null || name.trim().isEmpty() ? "No Player" : name);
             }
         });
 
         toClubPlayerBox.setCellFactory(listView -> new ListCell<>() {
             @Override
-            protected void updateItem(Player player, boolean empty) {
-                super.updateItem(player, empty);
-                setText(player == null || empty ? "No Player" : player.getName());
+            protected void updateItem(String name, boolean empty) {
+                super.updateItem(name, empty);
+                setText(name == null || name.trim().isEmpty() ? "No Player" : name);
             }
         });
     }
@@ -92,10 +90,11 @@ public class MakeOfferController {
         this.client = client;
         this.fromClub = from;
         this.toClub = to;
-        updateOfferDetails(offer);
+        this.offer = offer;
+        updateOfferDetails();
     }
 
-    public void updateOfferDetails(Offer offer) {
+    public void updateOfferDetails() {
         if (offer == null) offer = new Offer(0, Offer.Status.Make);
         fromClubNameLabel.setText(fromClub.getName());
         toClubNameLabel.setText(toClub.getName());
@@ -103,15 +102,15 @@ public class MakeOfferController {
 
         fromClub.loadPlayers(client);
         fromClubPlayerBox.getItems().clear();
-        fromClubPlayerBox.getItems().add(null);
-        fromClubPlayerBox.getItems().addAll(fromClub.getPlayersList());
-        if (offer.getFromClubPlayerID() != null) fromClubPlayerBox.setValue(fromClub.getPlayer(offer.getFromClubPlayerID()));
+        fromClubPlayerBox.getItems().add("");
+        fromClubPlayerBox.getItems().addAll(fromClub.getPlayersList().stream().map(Player::getName).collect(Collectors.toList()));
+        fromClubPlayerBox.setValue(offer.getFromClubPlayer());
 
         toClub.loadPlayers(client);
         toClubPlayerBox.getItems().clear();
-        toClubPlayerBox.getItems().add(null);
-        toClubPlayerBox.getItems().addAll(toClub.getPlayersList());
-        if (offer.getToClubPlayerID() != null) toClubPlayerBox.setValue(toClub.getPlayer(offer.getToClubPlayerID()));
+        toClubPlayerBox.getItems().add("");
+        toClubPlayerBox.getItems().addAll(toClub.getPlayersList().stream().map(Player::getName).collect(Collectors.toList()));
+        toClubPlayerBox.setValue(offer.getToClubPlayer());
 
         if (offer.getAmount() > 0) fromClubAmountField.setText(String.valueOf(offer.getAmount()));
         else if (offer.getAmount() < 0) toClubAmountField.setText(String.valueOf(-offer.getAmount()));
@@ -119,30 +118,32 @@ public class MakeOfferController {
 
     @FXML
     public void makeOffer() {
-        Offer offer = new Offer(0, Offer.Status.Make);
+
+        Utils.playSound("Default_Click.wav");
         offer.setFromClub(fromClub.getName());
         offer.setToClub(toClub.getName());
-        offer.setFromClubPlayerID(fromClubPlayerBox.getValue() == null ? null : fromClubPlayerBox.getValue().getId());
-        offer.setToClubPlayerID(toClubPlayerBox.getValue() == null ? null : toClubPlayerBox.getValue().getId());
+        offer.setFromClubPlayer(fromClubPlayerBox.getValue());
+        offer.setToClubPlayer(toClubPlayerBox.getValue());
 
         long fromClubAmount = fromClubAmountField.getText().isEmpty() ? 0 : Long.parseLong(fromClubAmountField.getText());
         long toClubAmount = toClubAmountField.getText().isEmpty() ? 0 : Long.parseLong(toClubAmountField.getText());
         offer.setAmount(fromClubAmount - toClubAmount);
 
-        boolean valid = Utils.showConfirmationAlert("Make Offer", "Confirm your offer", "");
+        boolean valid = Utils.showConfirmationAlert("Make Offer", "Confirm your offer", "Press yes to proceed");
         if (!valid) return;
 
         client.write(offer);
         valid = (boolean) client.read();
 
         if (valid) Utils.showAlert("Successful", "Offer made successfully");
-        else Utils.showAlert("Failure!", "Invalid Offer");
+        else Utils.showErrorAlert("Failure!", "Invalid Offer");
 
         cancelOffer();
     }
 
     @FXML
     public void cancelOffer() {
+        Utils.playSound("Default_Click.wav");
         // TODO: the cancel button will have the stackPane assigned to it
         @SuppressWarnings("unchecked")
         List<Pane> panes = (List<Pane>) cancelButton.getUserData();

@@ -207,20 +207,22 @@ public class ServerThread extends Thread {
     public boolean validateOffer(Offer offer)
     {
         boolean valid;
-        valid = (offer.getFromClubPlayerID() != null) || (offer.getToClubPlayerID() != null);
-        valid = valid && (offer.getFromClubPlayerID() != null || offer.getAmount() > 0);
-        valid = valid && (offer.getToClubPlayerID() != null || offer.getAmount() < 0);
+        valid = (offer.getFromClubPlayer() != null) || (offer.getToClubPlayer() != null);
+        valid = valid && (offer.getFromClubPlayer() != null || offer.getAmount() > 0);
+        valid = valid && (offer.getToClubPlayer() != null || offer.getAmount() < 0);
         valid = valid && server.getClub(offer.getFromClub()).getBudget() >= offer.getAmount();
 
-        if (offer.getFromClubPlayerID() != null)
+        System.out.println(offer.getFromClubPlayer());
+        if (!offer.getFromClubPlayer().isEmpty())
         {
-            Player player = PlayerCollection.getPlayer(offer.getFromClubPlayerID());
+            Player player = PlayerCollection.getPlayerByName(offer.getFromClubPlayer());
+            System.out.println(player);
             assert player != null;
             valid = valid && player.getTeam().equalsIgnoreCase(offer.getFromClub());
         }
-        if (offer.getToClubPlayerID() != null)
+        if (!offer.getToClubPlayer().isEmpty())
         {
-            Player player = PlayerCollection.getPlayer(offer.getToClubPlayerID());
+            Player player = PlayerCollection.getPlayerByName(offer.getToClubPlayer());
             assert player != null;
             valid = valid && (player.getTeam().equalsIgnoreCase(offer.getToClub()));
         }
@@ -237,6 +239,7 @@ public class ServerThread extends Thread {
             {
                 server.removeOffer(offer.getId());
                 server.addOffer(offer);
+                ActivityLogger.log("'" + offer.getFromClub() + "' made offer to '" + offer.getToClub() + "'");
             }
             write(valid);
         }
@@ -254,16 +257,16 @@ public class ServerThread extends Thread {
                 server.getClub(offer.getFromClub()).changeBudget(-offer.getAmount());
                 server.getClub(offer.getToClub()).changeBudget(offer.getAmount());
 
-                if (offer.getFromClubPlayerID() != null)
+                if (!offer.getFromClubPlayer().isEmpty())
                 {
-                    Player player = PlayerCollection.getPlayer(offer.getFromClubPlayerID());
+                    Player player = PlayerCollection.getPlayerByName(offer.getFromClubPlayer());
                     assert player != null;
                     player.setTeam(offer.getToClub());
                     player.setForSale(false);
                 }
-                if (offer.getToClubPlayerID() != null)
+                if (!offer.getToClubPlayer().isEmpty())
                 {
-                    Player player = PlayerCollection.getPlayer(offer.getToClubPlayerID());
+                    Player player = PlayerCollection.getPlayerByName(offer.getToClubPlayer());
                     assert player != null;
                     player.setTeam(offer.getFromClub());
                     player.setForSale(false);
@@ -271,6 +274,7 @@ public class ServerThread extends Thread {
                 server.removeOffer(offer.getId());
                 server.writeClubsToFile();
                 PlayerCollection.writeToFile();
+                ActivityLogger.log("'" + offer.getToClub() + "' accepted offer from '" + offer.getFromClub() + "'");
             }
             write(valid);
         }
@@ -284,6 +288,7 @@ public class ServerThread extends Thread {
             if (server.getOffers().contains(offer))
             {
                 server.removeOffer(offer.getId());
+                ActivityLogger.log("'" + offer.getToClub() + "' rejected offer from '" + offer.getFromClub() + "'");
                 write(true);
             }
             else write(false);
