@@ -10,8 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -108,7 +106,7 @@ public class ClubController implements Refreshable {
             club.loadPlayers(client);
             PlayersListController playerslistController = loader.getController();
             playerslistController.initializeValues(client, club);
-            currentController = (Refreshable) playerslistController;
+            currentController = playerslistController;
 
             contentPane.getChildren().setAll(PlayersListView);
 
@@ -130,7 +128,7 @@ public class ClubController implements Refreshable {
             club = Club.readFromServer(client);
             ClubDetailsController controller = loader.getController();
             controller.initializeValues(client, this.club);
-            currentController = (Refreshable) controller;
+            currentController = controller;
 
             transferBox.setVisible(false);
             Utils.playSound("Default_Click.wav");

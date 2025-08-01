@@ -2,7 +2,6 @@ package com.example.l1t2_term_project.Server;
 
 import com.example.l1t2_term_project.DTO.BuyPlayerDTO;
 import com.example.l1t2_term_project.DTO.LoginDTO;
-import com.example.l1t2_term_project.DTO.NotificationDTO;
 import com.example.l1t2_term_project.DTO.SellPlayerDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
 import com.example.l1t2_term_project.Model.Offer;

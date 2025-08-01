@@ -3,8 +3,6 @@ package com.example.l1t2_term_project.Controller;
 import com.example.l1t2_term_project.Client;
 import com.example.l1t2_term_project.Model.Club.Club;
 import com.example.l1t2_term_project.Model.Offer;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import com.example.l1t2_term_project.Utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
