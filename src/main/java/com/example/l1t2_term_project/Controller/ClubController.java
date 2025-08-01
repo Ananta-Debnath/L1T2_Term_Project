@@ -17,7 +17,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 
 // TODO: add alert to close and use sign out then
-public class ClubController {
+public class ClubController implements Refreshable {
 
     private Client client;
     private Refreshable currentController;
@@ -67,6 +67,7 @@ public class ClubController {
         return String.format("€%,d", value);
     }
 
+    @Override
     public void refresh()
     {
         while (!quit)
@@ -79,6 +80,9 @@ public class ClubController {
                     System.err.println("Refresh Thread Interrupted");
                 }
             }
+
+            clubBudgetLabel.setText("Budget: "+"\n" +formatCurrency(club.getBudget()));
+            System.out.println(formatCurrency(club.getBudget()));
 
             if (currentController != null) currentController.refresh();
         }
@@ -96,9 +100,6 @@ public class ClubController {
         club.loadPlayers(client);
 
         new Thread(this::refresh, "Refresh Thread").start();
-
-//        clubBudgetLabel.setText("Budget: "+"\n" +formatCurrency(club.getBudget()));
-//        System.out.println(formatCurrency(club.getBudget()));
     }
 
     public void OpenPlayers(ActionEvent actionEvent) {

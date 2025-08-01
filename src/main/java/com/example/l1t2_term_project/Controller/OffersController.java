@@ -19,7 +19,7 @@ import javafx.scene.layout.StackPane;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class OffersController {
+public class OffersController implements Refreshable {
 
     @FXML
     public TableView <Offer>incomingOffersTable;
@@ -49,7 +49,7 @@ public class OffersController {
         System.out.println("Setting club: " + (club != null ? club.getName() : "null"));
         this.client = client;
         this.userClub = club;
-        refreshOffersList();
+        refresh();
     }
 
     private void setTable(){
@@ -112,9 +112,8 @@ public class OffersController {
         });
     }
 
-    private void refreshOffersList(){
-        System.out.println("Refreshing offers list");
-
+    @Override
+    public void refresh(){
         userClub.loadOffers(client);
 
         incomingOffersTable.getItems().clear();
@@ -128,7 +127,6 @@ public class OffersController {
         }else {
         System.out.println("NULL CLUB - Cannot load offers");
         }
-
     }
 
     private void setSelectionListener(){
@@ -163,7 +161,7 @@ public class OffersController {
         if (valid) Utils.showAlert("Successful", "Offer accepted");
         else Utils.showAlert("Failure!", "Invalid Offer");
 
-        refreshOffersList();
+        refresh();
     }
 
     @FXML
@@ -179,7 +177,7 @@ public class OffersController {
         if (valid) Utils.showAlert("Successful", "Offer rejected");
         else Utils.showAlert("Failure!", "Invalid Offer");
 
-        refreshOffersList();
+        refresh();
     }
 
     @FXML
