@@ -320,7 +320,7 @@ public class Player implements Serializable
     {
         try {
             String imagePath= "/Images/Players/" + name.toLowerCase().replace(" ", "_")+ ".png";
-            System.out.println(getClass().getResource(imagePath));
+//            System.out.println(getClass().getResource(imagePath));
             return new Image(Objects.requireNonNull(getClass().getResource(imagePath)).toExternalForm());
 
         }catch(Exception e){

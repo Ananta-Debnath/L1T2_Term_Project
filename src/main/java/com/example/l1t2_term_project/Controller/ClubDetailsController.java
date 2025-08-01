@@ -25,8 +25,6 @@ public class ClubDetailsController implements Refreshable {
     @FXML
     public Label budgetLabel;
     @FXML
-    public TextArea historyText;
-    @FXML
     public PasswordField newPasswordField;
     @FXML
     public PasswordField confirmPasswordField;

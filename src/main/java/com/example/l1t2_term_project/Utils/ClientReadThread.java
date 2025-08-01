@@ -36,6 +36,7 @@ public class ClientReadThread extends Thread {
 
     @Override
     public void run() {
+        System.out.println(Thread.currentThread().getName() + " started");
         Object obj;
         while (true)
         {
@@ -59,7 +60,7 @@ public class ClientReadThread extends Thread {
                 synchronized (this)
                 {
                     currentObj = obj;
-                    System.out.println("Object stored");
+//                    System.out.println("Object stored");
                     this.notifyAll();
                     try {
                         this.wait();
@@ -67,9 +68,10 @@ public class ClientReadThread extends Thread {
                         System.err.println("Client Read Thread wait failure");
                         break;
                     }
-                    System.out.println("Object has been read");
+//                    System.out.println("Object has been read");
                 }
             }
         }
+        System.out.println(Thread.currentThread().getName() + " closed");
     }
 }

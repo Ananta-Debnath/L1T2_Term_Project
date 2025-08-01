@@ -43,7 +43,8 @@ public class SignInController {
                 try{
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/Club.fxml"));
                     Parent clubView = loader.load();
-                    ((ClubController) loader.getController()).initializeValues(client);
+                    client.setClubController(loader.getController());
+                    client.getClubController().initializeValues(client);
                     signInButton.getScene().setRoot(clubView);
                 } catch (IOException e) {
                     throw new RuntimeException(e);

@@ -87,8 +87,8 @@ public class PlayersListController implements Refreshable {
     
     public void initializeValues(Client client, Club c){
 
-        System.out.println("Setting club: " + (c != null ? c.getName() : "null"));
-        System.out.println("Players count: " + (c != null ? c.getPlayersList().size() : "0"));
+//        System.out.println("Setting club: " + (c != null ? c.getName() : "null"));
+//        System.out.println("Players count: " + (c != null ? c.getPlayersList().size() : "0"));
 
         this.client = client;
         this.club=c;
@@ -102,7 +102,7 @@ public class PlayersListController implements Refreshable {
         playersTable.getItems().clear();
 
         if(club!=null){
-            System.out.println("Adding "+club.getPlayersList().size() +" players....");
+//            System.out.println("Adding "+club.getPlayersList().size() +" players....");
             playersTable.getItems().addAll(club.getPlayersList());
 
             if(!club.getPlayersList().isEmpty()){
@@ -167,61 +167,33 @@ public class PlayersListController implements Refreshable {
 
 
         Utils.playSound("Confirmation.wav");
-        Alert confirmation=new Alert(Alert.AlertType.CONFIRMATION);
-        confirmation.setTitle("Confirm Sale");
-        confirmation.setHeaderText("Confirm Player Sale");
-        confirmation.setContentText(String.format("Do you really want to sell %s for €%s?", selectedPlayer.getName(),amount));
 
-        ButtonType yesButton=new ButtonType("YES", ButtonBar.ButtonData.YES);
-        ButtonType noButton=new ButtonType("No", ButtonBar.ButtonData.NO);
-        confirmation.getButtonTypes().setAll(yesButton,noButton);
-
-        DialogPane dialogPane = confirmation.getDialogPane();
-        dialogPane.getStyleClass().add("custom-alert");
-        try {
-            dialogPane.getStylesheets().add(
-                    Objects.requireNonNull(Utils.class.getResource("/styles/confirmation_alert.css")).toExternalForm()
-            );
-
-            String imagePath="/Images/confirmation_icon.png";
-
-            Image image=new Image(Objects.requireNonNull(Utils.class.getResource(imagePath).toExternalForm()));
-
-            dialogPane.setGraphic(new ImageView(image));
-        } catch (NullPointerException e) {
-            System.err.println("Failed to load alert stylesheet");
-        }
-
-        long finalAmount = amount;
-        confirmation.showAndWait().ifPresent(response->{
-
-            if(response==yesButton){
-
-                client.write(sellPlayerDTO);
-                Object obj = client.read();
-                if (obj instanceof Boolean)
+        boolean valid = Utils.showConfirmationAlert("Confirm Sale", "Confirm Player Sale", String.format("Do you really want to sell %s for %s?", selectedPlayer.getName(),Utils.formatCurrency(amount)));
+        if(valid) {
+            client.write(sellPlayerDTO);
+            Object obj = client.read();
+            if (obj instanceof Boolean)
+            {
+                if ((boolean) obj)
                 {
-                    if ((boolean) obj)
-                    {
-                        Utils.showAlert("Success", String.format("%s has been listed for sale for €%s", selectedPlayer.getName(), finalAmount));
-                    }
-                    else
-                    {
-                        Utils.showErrorAlert("Failed", String.format("%s could not be listed for sale", selectedPlayer.getName()));
-                    }
+                    Utils.showAlert("Success", String.format("%s has been listed for sale for €%s", selectedPlayer.getName(), amount));
                 }
-                else System.err.println("Object not Boolean");
-
-                refresh();
-                // TODO: update player value instantly
-                finalSellBox.setVisible(false);
-                fullListDetails.setVisible(true);
-                sellAmountField.clear();
-
-            }else{
-                Utils.showCancelAlert("Cancelled","Sell process terminated");
+                else
+                {
+                    Utils.showErrorAlert("Failed", String.format("%s could not be listed for sale", selectedPlayer.getName()));
+                }
             }
-        });
+            else System.err.println("Object not Boolean");
+
+            refresh();
+            // TODO: update player value instantly
+            finalSellBox.setVisible(false);
+            fullListDetails.setVisible(true);
+            sellAmountField.clear();
+
+        }else{
+            Utils.showCancelAlert("Cancelled","Sell process terminated");
+        }
 
     }
 }

@@ -15,6 +15,9 @@ module com.example.l1t2_term_project {
     opens com.example.l1t2_term_project.Model to javafx.base;
     opens com.example.l1t2_term_project.Controller to javafx.fxml;
     exports com.example.l1t2_term_project;
+    exports com.example.l1t2_term_project.Model.Player;
+    exports com.example.l1t2_term_project.Model.Club;
+    exports com.example.l1t2_term_project.Controller;
     exports com.example.l1t2_term_project.DTO;
     exports com.example.l1t2_term_project.Utils;
 }

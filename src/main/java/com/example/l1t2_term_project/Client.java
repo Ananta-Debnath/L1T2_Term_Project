@@ -1,5 +1,6 @@
 package com.example.l1t2_term_project;
 
+import com.example.l1t2_term_project.Controller.ClubController;
 import com.example.l1t2_term_project.Controller.SignInController;
 import com.example.l1t2_term_project.DTO.LoginDTO;
 import com.example.l1t2_term_project.DTO.NotificationDTO;
@@ -7,6 +8,7 @@ import com.example.l1t2_term_project.Utils.ClientReadThread;
 import com.example.l1t2_term_project.Utils.SocketWrapper;
 import com.example.l1t2_term_project.Utils.Utils;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -18,6 +20,7 @@ public class Client extends Application {
     private ClientReadThread readThread;
     private SocketWrapper socketWrapper;
     private String currentClub;
+    private ClubController clubController;
     private List<String> nationList;
     private List<String> clubList;
     private NotificationDTO lock;
@@ -28,6 +31,14 @@ public class Client extends Application {
 
     public String getCurrentClub() {
         return currentClub;
+    }
+
+    public ClubController getClubController() {
+        return clubController;
+    }
+
+    public void setClubController(ClubController clubController) {
+        this.clubController = clubController;
     }
 
     public void setCurrentClub(String currentClub) {
@@ -69,14 +80,18 @@ public class Client extends Application {
             {
                 event.consume();
             }
-            else if (currentClub != null)
-            {
-                write(new LoginDTO(currentClub, null, LoginDTO.Type.SignOut)); // Sign-Out
-            }
-            try {
-                socketWrapper.closeConnection();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            else {
+                if (currentClub != null)
+                {
+                    clubController.quitRefreshThread();
+                    write(new LoginDTO(currentClub, null, LoginDTO.Type.SignOut)); // Sign-Out
+                }
+
+                try {
+                    socketWrapper.closeConnection();
+                } catch (IOException e) {
+                    System.err.println("Client connection close error");
+                }
             }
         });
 

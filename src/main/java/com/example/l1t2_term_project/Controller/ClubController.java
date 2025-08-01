@@ -4,6 +4,7 @@ import com.example.l1t2_term_project.Client;
 import com.example.l1t2_term_project.DTO.LoginDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
 import com.example.l1t2_term_project.Utils.Utils;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,7 +55,8 @@ public class ClubController implements Refreshable {
     @Override
     public void refresh()
     {
-        while (!quit)
+        System.out.println(Thread.currentThread().getName() + " started");
+        while (true)
         {
             synchronized (client.getLock())
             {
@@ -64,11 +66,23 @@ public class ClubController implements Refreshable {
                     System.err.println("Refresh Thread Interrupted");
                 }
             }
+            if (quit) break;
 
-            clubBudgetLabel.setText("Budget: "+"\n" + club.getBudgetAsString());
-            System.out.println(club.getBudgetAsString());
+            Platform.runLater(() -> {
+                clubBudgetLabel.setText("Budget: "+"\n" + club.getBudgetAsString());
+                if (currentController != null) currentController.refresh();
+            });
+            System.out.println(Thread.currentThread().getName() + " refreshed");
+        }
+        System.out.println(Thread.currentThread().getName() + " closed");
+    }
 
-            if (currentController != null) currentController.refresh();
+    public void quitRefreshThread()
+    {
+        quit = true;
+        synchronized (client.getLock())
+        {
+            client.getLock().notifyAll();
         }
     }
 
@@ -181,6 +195,7 @@ public class ClubController implements Refreshable {
         if (valid) {
 
             try{
+                quitRefreshThread();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/SignIn.fxml"));
                 Parent clubView = loader.load();
                 ((SignInController) loader.getController()).setClient(client);
