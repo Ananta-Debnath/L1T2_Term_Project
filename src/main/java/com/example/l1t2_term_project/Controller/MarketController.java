@@ -231,8 +231,6 @@ public class MarketController
     @FXML
     public void searchPlayers()
     {
-        System.out.println(searchField.getText());
-
         filter.setName(searchField.getText());
 
         client.write(filter);

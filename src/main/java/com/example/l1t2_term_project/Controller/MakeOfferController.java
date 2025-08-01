@@ -57,7 +57,7 @@ public class MakeOfferController {
             @Override
             protected void updateItem(String name, boolean empty) {
                 super.updateItem(name, empty);
-                setText(name == null || empty ? "No Player" : name);
+                setText(name == null || name.trim().isEmpty() ? "No Player" : name);
             }
         });
 
@@ -65,7 +65,7 @@ public class MakeOfferController {
             @Override
             protected void updateItem(String name, boolean empty) {
                 super.updateItem(name, empty);
-                setText(name == null || empty ? "No Player" : name);
+                setText(name == null || name.trim().isEmpty() ? "No Player" : name);
             }
         });
 
@@ -73,7 +73,7 @@ public class MakeOfferController {
             @Override
             protected void updateItem(String name, boolean empty) {
                 super.updateItem(name, empty);
-                setText(name == null || empty ? "No Player" : name);
+                setText(name == null || name.trim().isEmpty() ? "No Player" : name);
             }
         });
 
@@ -81,7 +81,7 @@ public class MakeOfferController {
             @Override
             protected void updateItem(String name, boolean empty) {
                 super.updateItem(name, empty);
-                setText(name == null || empty ? "No Player" : name);
+                setText(name == null || name.trim().isEmpty() ? "No Player" : name);
             }
         });
     }
@@ -102,13 +102,13 @@ public class MakeOfferController {
 
         fromClub.loadPlayers(client);
         fromClubPlayerBox.getItems().clear();
-        fromClubPlayerBox.getItems().add(null);
+        fromClubPlayerBox.getItems().add("");
         fromClubPlayerBox.getItems().addAll(fromClub.getPlayersList().stream().map(Player::getName).collect(Collectors.toList()));
-        if (!offer.getFromClubPlayer().isEmpty()) fromClubPlayerBox.setValue(offer.getFromClubPlayer());
+        fromClubPlayerBox.setValue(offer.getFromClubPlayer());
 
         toClub.loadPlayers(client);
         toClubPlayerBox.getItems().clear();
-        toClubPlayerBox.getItems().add(null);
+        toClubPlayerBox.getItems().add("");
         toClubPlayerBox.getItems().addAll(toClub.getPlayersList().stream().map(Player::getName).collect(Collectors.toList()));
         toClubPlayerBox.setValue(offer.getToClubPlayer());
 
@@ -122,8 +122,8 @@ public class MakeOfferController {
         Utils.playSound("Default_Click.wav");
         offer.setFromClub(fromClub.getName());
         offer.setToClub(toClub.getName());
-        offer.setFromClubPlayer(fromClubPlayerBox.getValue() == null ? null : fromClubPlayerBox.getValue());
-        offer.setToClubPlayer(toClubPlayerBox.getValue() == null ? null : toClubPlayerBox.getValue());
+        offer.setFromClubPlayer(fromClubPlayerBox.getValue());
+        offer.setToClubPlayer(toClubPlayerBox.getValue());
 
         long fromClubAmount = fromClubAmountField.getText().isEmpty() ? 0 : Long.parseLong(fromClubAmountField.getText());
         long toClubAmount = toClubAmountField.getText().isEmpty() ? 0 : Long.parseLong(toClubAmountField.getText());

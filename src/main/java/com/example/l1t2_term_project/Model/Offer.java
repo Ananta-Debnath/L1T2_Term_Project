@@ -22,8 +22,8 @@ public class Offer implements Serializable {
         this.status = status;
 
         amount = 0;
-        fromClubPlayer = null;
-        toClubPlayer = null;
+        fromClubPlayer = "";
+        toClubPlayer = "";
     }
 
 
@@ -60,7 +60,7 @@ public class Offer implements Serializable {
     }
 
     public String getFromClubPlayer() {
-        return fromClubPlayer != null ? fromClubPlayer : "N/A";
+        return fromClubPlayer;
     }
 
     public void setFromClubPlayer(String fromClubPlayer) {
@@ -76,7 +76,7 @@ public class Offer implements Serializable {
     }
 
     public String getToClubPlayer() {
-        return toClubPlayer != null ? toClubPlayer : "N/A";
+        return toClubPlayer;
     }
 
     public void setToClubPlayer(String toClubPlayer) {
@@ -101,9 +101,9 @@ public class Offer implements Serializable {
 
         str.append(id).append(",");
         str.append(fromClub).append(",");
-        if (fromClubPlayer != null) str.append(fromClubPlayer).append(",");
+        str.append(fromClubPlayer).append(",");
         str.append(toClub).append(",");
-        if (toClubPlayer != null) str.append(toClubPlayer).append(",");
+        str.append(toClubPlayer).append(",");
         str.append(amount);
 
         return str.toString();

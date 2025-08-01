@@ -8,8 +8,7 @@ import javafx.collections.ObservableList;
 import com.example.l1t2_term_project.Utils.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.fxml.FXMLLoader;
@@ -36,19 +35,14 @@ public class OffersController {
     @FXML
     public StackPane makeOfferPane;
 
-    private ObservableList<Offer> incomingOffers = FXCollections.observableArrayList();
-    private  ObservableList<Offer> outgoingOffers = FXCollections.observableArrayList();
-
     private Club userClub;
     private Client client;
-
 
 
     @FXML
     public void initialize(){
         setTable();
         setSelectionListener();
-
     }
 
     public void initializeValues(Client client, Club club) {
@@ -71,7 +65,21 @@ public class OffersController {
             }else if(colName.equals("Offer Amount")){
                 offerTableColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
             }else if(colName.equals("Swap Offer")){
-                offerTableColumn.setCellValueFactory(new PropertyValueFactory<>("fromClubPlayer"));
+                @SuppressWarnings("unchecked")
+                TableColumn<Offer, String> swapOfferCol = (TableColumn<Offer, String>) offerTableColumn;
+                swapOfferCol.setCellValueFactory(new PropertyValueFactory<>("fromClubPlayer"));
+                swapOfferCol.setCellFactory(column -> new TableCell<>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (!empty && (item == null || item.trim().isEmpty())) {
+                            setText("N/A");  // your fallback text
+                        } else {
+                            setText(item);
+                        }
+                    }
+                });
+
             }
         });
 
@@ -86,41 +94,36 @@ public class OffersController {
             } else if (colName.equals("Offer Amount")) {
                 offerTableColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
             }else if(colName.equals("Swap Offer")){
-                offerTableColumn.setCellValueFactory(new PropertyValueFactory<>("fromClubPlayer"));
+                @SuppressWarnings("unchecked")
+                TableColumn<Offer, String> swapOfferCol = (TableColumn<Offer, String>) offerTableColumn;
+                swapOfferCol.setCellValueFactory(new PropertyValueFactory<>("fromClubPlayer"));
+                swapOfferCol.setCellFactory(column -> new TableCell<>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (!empty && (item == null || item.trim().isEmpty())) {
+                            setText("N/A");  // your fallback text
+                        } else {
+                            setText(item);
+                        }
+                    }
+                });
             }
         });
-
-        incomingOffersTable.setItems(incomingOffers);
-        outgoingOffersTable.setItems(outgoingOffers);
     }
 
     private void refreshOffersList(){
-
         System.out.println("Refreshing offers list");
 
-        incomingOffers.clear();
-        outgoingOffers.clear();
+        userClub.loadOffers(client);
 
-        if(userClub!=null){
-            userClub.loadOffers(client);
-        }
+        incomingOffersTable.getItems().clear();
+        incomingOffersTable.getItems().addAll(userClub.getIncomingOffersList());
 
-        String currentClubName=userClub.getName();
+        outgoingOffersTable.getItems().clear();
+        outgoingOffersTable.getItems().addAll(userClub.getOutgoingOffersList());
 
-        for(Offer offer: userClub.getIncomingOffersList()){
-
-           incomingOffers.add(offer);
-        }
-
-        for(Offer offer: userClub.getOutgoingOffersList() ){
-            outgoingOffers.add(offer);
-        }
-
-        System.out.println("Loaded " + incomingOffers.size() + " incoming and " +
-                outgoingOffers.size() + " outgoing offers");
-
-
-        if (!incomingOffers.isEmpty()) {
+        if (!incomingOffersTable.getItems().isEmpty()) {
             incomingOffersTable.getSelectionModel().selectFirst();
         }else {
         System.out.println("NULL CLUB - Cannot load offers");
