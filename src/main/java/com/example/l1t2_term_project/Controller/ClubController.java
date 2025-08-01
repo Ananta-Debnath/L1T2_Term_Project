@@ -17,7 +17,6 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-// TODO: add alert to close and use sign out then
 public class ClubController implements Refreshable {
 
     private Client client;
@@ -146,25 +145,6 @@ public class ClubController implements Refreshable {
         transferBox.setVisible(true);
 
     }
-
-        /* 
-
-        public void OpenMarket(ActionEvent actionEvent) throws IOException {
-
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Market.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-
-            Stage marketStage = new Stage();
-
-            marketStage.setTitle("Market");
-            marketStage.setScene(scene);
-            marketStage.show();
-
-            // ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
-
-        }
-
-        */
 
     @FXML
     public void OpenMarket(ActionEvent event) {

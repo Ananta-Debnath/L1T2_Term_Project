@@ -186,7 +186,6 @@ public class PlayersListController implements Refreshable {
             else System.err.println("Object not Boolean");
 
             refresh();
-            // TODO: update player value instantly
             finalSellBox.setVisible(false);
             fullListDetails.setVisible(true);
             sellAmountField.clear();

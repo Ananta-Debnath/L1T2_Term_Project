@@ -208,7 +208,6 @@ public class ServerThread extends Thread {
         write(offers); // Outgoing offers
     }
 
-    // TODO: Method not tested yet
     public boolean validateOffer(Offer offer)
     {
         boolean valid;
@@ -250,7 +249,6 @@ public class ServerThread extends Thread {
         }
     }
 
-    // TODO: Method not tested yet
     public void acceptOffer(Offer offer)
     {
         synchronized (server)
@@ -285,7 +283,6 @@ public class ServerThread extends Thread {
         }
     }
 
-    // TODO: Method not tested yet
     public void rejectOffer(Offer offer)
     {
         synchronized (server)
@@ -300,7 +297,6 @@ public class ServerThread extends Thread {
         }
     }
 
-    // TODO: Method not tested yet
     public void addNewPlayer(Player player)
     {
         synchronized (server) {

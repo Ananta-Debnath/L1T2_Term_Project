@@ -49,7 +49,7 @@ public class ClientReadThread extends Thread {
 
             if (obj instanceof NotificationDTO)
             {
-                // TODO: call refresh
+                // TODO: show notification
                 synchronized (client.getLock())
                 {
                     client.getLock().notifyAll();

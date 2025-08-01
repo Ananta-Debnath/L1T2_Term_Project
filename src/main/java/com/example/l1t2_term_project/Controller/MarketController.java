@@ -23,9 +23,8 @@ import java.util.stream.Collectors;
 
 
 /*
-TODO list
-TODO: enhance show player with details and buttons
-TODO: quality improvements - mute, ...
+* TODO list
+* TODO: quality improvements - mute, ...
  */
 
 
@@ -87,9 +86,6 @@ public class MarketController implements Refreshable
     @FXML
     private void initialize()
     {
-        // Need player collection class for this
-        // NOTE: the first element has to indicate null value
-
         positionField.getItems().add(null);
         positionField.getItems().addAll(Position.values());
 
@@ -291,7 +287,7 @@ public class MarketController implements Refreshable
     }
 
     @FXML
-    public void buyPlayer(ActionEvent actionEvent) //TODO:trigger on action
+    public void buyPlayer(ActionEvent actionEvent)
     {
         Player player = (Player) (((Button) actionEvent.getSource()).getUserData());
 

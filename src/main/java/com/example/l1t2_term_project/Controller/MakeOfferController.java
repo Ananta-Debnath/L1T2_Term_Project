@@ -144,7 +144,6 @@ public class MakeOfferController {
     @FXML
     public void cancelOffer() {
         Utils.playSound("Default_Click.wav");
-        // TODO: the cancel button will have the stackPane assigned to it
         @SuppressWarnings("unchecked")
         List<Pane> panes = (List<Pane>) cancelButton.getUserData();
 
