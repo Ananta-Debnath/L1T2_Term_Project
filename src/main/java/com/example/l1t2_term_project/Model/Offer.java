@@ -1,5 +1,7 @@
 package com.example.l1t2_term_project.Model;
 
+import com.example.l1t2_term_project.Utils.Utils;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -41,6 +43,10 @@ public class Offer implements Serializable {
 
     public long getAmount() {
         return amount;
+    }
+
+    public String getAmountAsString() {
+        return Utils.formatCurrency(amount);
     }
 
     public void setAmount(long amount) {

@@ -63,7 +63,7 @@ public class OffersController implements Refreshable {
             }else if(colName.equals("From Club")){
                 offerTableColumn.setCellValueFactory(new PropertyValueFactory<>("fromClub"));
             }else if(colName.equals("Offer Amount")){
-                offerTableColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+                offerTableColumn.setCellValueFactory(new PropertyValueFactory<>("amountAsString"));
             }else if(colName.equals("Swap Offer")){
                 @SuppressWarnings("unchecked")
                 TableColumn<Offer, String> swapOfferCol = (TableColumn<Offer, String>) offerTableColumn;
@@ -92,7 +92,7 @@ public class OffersController implements Refreshable {
             } else if (colName.equals("To Club")) {
                 offerTableColumn.setCellValueFactory(new PropertyValueFactory<>("toClub"));
             } else if (colName.equals("Offer Amount")) {
-                offerTableColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+                offerTableColumn.setCellValueFactory(new PropertyValueFactory<>("amountAsString"));
             }else if(colName.equals("Swap Offer")){
                 @SuppressWarnings("unchecked")
                 TableColumn<Offer, String> swapOfferCol = (TableColumn<Offer, String>) offerTableColumn;

@@ -295,7 +295,7 @@ public class MarketController implements Refreshable
     {
         Player player = (Player) (((Button) actionEvent.getSource()).getUserData());
 
-        boolean valid = Utils.showConfirmationAlert("Confirm Buy", "Confirm Player Buy", String.format("Do you want to buy %s for €%s?", player.getName(), player.getValue()));
+        boolean valid = Utils.showConfirmationAlert("Confirm Buy", "Confirm Player Buy", String.format("Do you want to buy %s for €%s?", player.getName(), player.getValueAsString()));
 
         if(valid)
         {
@@ -305,7 +305,7 @@ public class MarketController implements Refreshable
             {
                 if ((boolean) obj)
                 {
-                    Utils.showAlert("Purchase Successful!", String.format("%s has been bought for €%s", player.getName(), player.getValue()));
+                    Utils.showAlert("Purchase Successful!", String.format("%s has been bought for €%s", player.getName(), player.getValueAsString()));
                 }
                 else
                 {
@@ -404,7 +404,7 @@ public class MarketController implements Refreshable
     {
         nameLabel.setText(player.getName());
         clubLabel.setText("Club: " +player.getTeam());
-        valueLabel.setText("Value: " + player.getValue());
+        valueLabel.setText("Value: " + player.getValueAsString());
         positionLabel.setText("Position: " + player.getPosition()+ "\n");
         transferImage.setImage(player.getImage());
 

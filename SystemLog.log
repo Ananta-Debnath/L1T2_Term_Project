@@ -1566,3 +1566,26 @@
 [2025-08-01 21:11:40] 'real madrid' logged in
 [2025-08-01 21:11:50] 'real madrid' logged out
 [2025-08-01 21:11:50] Client disconnected: Socket[addr=/127.0.0.1,port=55302,localport=12913]
+[2025-08-01 21:20:47] Server Started
+[2025-08-01 21:21:02] Client connected: Socket[addr=/127.0.0.1,port=56803,localport=12913]
+[2025-08-01 21:21:10] 'Liverpool' logged in
+[2025-08-01 21:21:11] Client connected: Socket[addr=/127.0.0.1,port=56853,localport=12913]
+[2025-08-01 21:21:21] 'real madrid' logged in
+[2025-08-01 21:21:36] Player (ID: 8) transferred to 'Real Madrid'
+[2025-08-01 21:21:43] 'real madrid' logged out
+[2025-08-01 21:21:43] Client disconnected: Socket[addr=/127.0.0.1,port=56853,localport=12913]
+[2025-08-01 21:21:45] 'Liverpool' logged out
+[2025-08-01 21:21:45] Client disconnected: Socket[addr=/127.0.0.1,port=56803,localport=12913]
+[2025-08-01 21:40:10] Server Started
+[2025-08-01 21:40:15] Client connected: Socket[addr=/127.0.0.1,port=58344,localport=12913]
+[2025-08-01 21:40:17] 'Liverpool' logged in
+[2025-08-01 21:40:50] 'Liverpool' logged out
+[2025-08-01 21:40:50] Client disconnected: Socket[addr=/127.0.0.1,port=58344,localport=12913]
+[2025-08-01 21:41:29] Client connected: Socket[addr=/127.0.0.1,port=58449,localport=12913]
+[2025-08-01 21:41:32] 'Liverpool' logged in
+[2025-08-01 21:41:50] 'Liverpool' logged out
+[2025-08-01 21:41:50] Client disconnected: Socket[addr=/127.0.0.1,port=58449,localport=12913]
+[2025-08-01 21:43:41] Client connected: Socket[addr=/127.0.0.1,port=58634,localport=12913]
+[2025-08-01 21:43:44] 'Liverpool' logged in
+[2025-08-01 21:43:59] 'Liverpool' logged out
+[2025-08-01 21:44:01] Client disconnected: Socket[addr=/127.0.0.1,port=58634,localport=12913]

@@ -43,9 +43,6 @@ public class ClubController implements Refreshable {
     public VBox transferBox;
 
     @FXML
-    public Button clubPlayersbutton2;
-
-    @FXML
     public StackPane contentPane;
 
     @FXML
@@ -53,19 +50,6 @@ public class ClubController implements Refreshable {
 
     @FXML
     public Label clubBudgetLabel;
-
-    private String formatCurrency(long value) {
-        if(value>=1_000_000){
-
-            return String.format("€%,dM", value / 1_000_000);
-        }else if(value>=1_000){
-
-            return String.format("€%,dK", value / 1_000);
-        }else if(value>=1_000_000_000){
-            return String.format("€%,dB", value/1_000_000_000);
-        }
-        return String.format("€%,d", value);
-    }
 
     @Override
     public void refresh()
@@ -81,8 +65,8 @@ public class ClubController implements Refreshable {
                 }
             }
 
-            clubBudgetLabel.setText("Budget: "+"\n" +formatCurrency(club.getBudget()));
-            System.out.println(formatCurrency(club.getBudget()));
+            clubBudgetLabel.setText("Budget: "+"\n" + club.getBudgetAsString());
+            System.out.println(club.getBudgetAsString());
 
             if (currentController != null) currentController.refresh();
         }
@@ -216,7 +200,8 @@ public class ClubController implements Refreshable {
             contentPane.getChildren().clear();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/l1t2_term_project/Offers.fxml"));
             Parent offerView = loader.load();
-            ((OffersController) loader.getController()).initializeValues(client,club);
+            currentController = loader.getController();
+            ((OffersController) currentController).initializeValues(client,club);
             contentPane.getChildren().setAll(offerView); // Load into StackPane
 
             // Clear other visible elements
@@ -225,8 +210,6 @@ public class ClubController implements Refreshable {
             e.printStackTrace();
 
         }
-
-
     }
 
 

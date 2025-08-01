@@ -36,18 +36,7 @@ public class ClubDetailsController implements Refreshable {
     private Client client;
     private Club currentClub;
 
-    private String formatCurrency(long value) {
-        if(value>=1_000_000){
 
-            return String.format("€%,dM", value / 1_000_000);
-        }else if(value>=1_000){
-
-            return String.format("€%,dK", value / 1_000);
-        }else if(value>=1_000_000_000){
-            return String.format("€%,dB", value/1_000_000_000);
-        }
-        return String.format("€%,d", value);
-    }
 
     public void initializeValues(Client client, Club c){
         this.client = client;
@@ -61,24 +50,17 @@ public class ClubDetailsController implements Refreshable {
         System.out.println("Updating club details for: " + (currentClub != null ? currentClub.getName() : "null"));
         currentClub = Club.readFromServer(client);
 
-        if(currentClub!=null){
+        clubNameLabel.setText(currentClub.getName());
+        managerLabel.setText(currentClub.getManagerName());
+        stadiumLabel.setText(currentClub.getStadiumName());
+        budgetLabel.setText(currentClub.getBudgetAsString());
 
-            clubNameLabel.setText(currentClub.getName());
-            managerLabel.setText(currentClub.getManagerName());
-            stadiumLabel.setText(currentClub.getStadiumName());
-            budgetLabel.setText(String.valueOf(formatCurrency(currentClub.getBudget())));
-
-
-            //TODO: history
-
-            try{
-
-                String imagePath="/Images/Clubs/" + currentClub.getName().toLowerCase().replace(" ","_") + ".png";
-                Image img=new Image(getClass().getResource(imagePath).toExternalForm());
-                clubLogo.setImage(img);
-            }catch(Exception e){
-                System.out.println("club logo not found");
-            }
+        try{
+            String imagePath="/Images/Clubs/" + currentClub.getName().toLowerCase().replace(" ","_") + ".png";
+            Image img=new Image(getClass().getResource(imagePath).toExternalForm());
+            clubLogo.setImage(img);
+        }catch(Exception e){
+            System.out.println("club logo not found");
         }
     }
 

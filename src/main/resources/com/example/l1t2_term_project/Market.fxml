@@ -38,7 +38,7 @@
                 </children>
             </HBox>
 
-                  <TableView fx:id="playerTable" prefHeight="350.0" style="-fx-font-size: 14px;">
+                  <TableView fx:id="playerTable" prefHeight="350.0" prefWidth="660.0" style="-fx-font-size: 14px;">
                 <columns>
                     <TableColumn editable="false" prefWidth="180.0" resizable="false" style="-fx-font-weight: bold;" text="Name">
                         <cellValueFactory>
@@ -60,9 +60,9 @@
                             <PropertyValueFactory property="team" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn editable="false" prefWidth="120.0" resizable="false" style="-fx-font-weight: bold;" text="Value">
+                    <TableColumn editable="false" prefWidth="100.0" resizable="false" style="-fx-font-weight: bold;" text="Value">
                         <cellValueFactory>
-                            <PropertyValueFactory property="value" />
+                            <PropertyValueFactory property="valueAsString" />
                         </cellValueFactory>
                     </TableColumn>
                <TableColumn fx:id="forSaleCol" prefWidth="70.0" text="For Sale" />

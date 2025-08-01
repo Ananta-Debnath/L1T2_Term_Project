@@ -4,6 +4,7 @@ import com.example.l1t2_term_project.Client;
 import com.example.l1t2_term_project.Model.Offer;
 import com.example.l1t2_term_project.Model.Player.Player;
 import com.example.l1t2_term_project.Model.Player.PlayerFilter;
+import com.example.l1t2_term_project.Utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +78,10 @@ public class Club implements Serializable{
 
     public long getBudget() {
         return budget;
+    }
+
+    public String getBudgetAsString() {
+        return Utils.formatCurrency(budget);
     }
 
     public void setBudget(long budget) {

@@ -123,11 +123,10 @@ public class PlayersListController implements Refreshable {
         playerDetails.setText(
             "Position: "+player.getRole()+ "\n"+
             "Age: "+ player.getAge()+   " | Height: "+ String.format("%.2f", player.getHeight())+  "\n"+
-            "Nationality: "+player.getNationality()+ "\n" +
-            "Value: " +formatCurrency(player.getValue()) + "\n" +
+            "Nationality: "+ player.getNationality()+ "\n" +
+            "Value: " + player.getValueAsString() + "\n" +
             "Contract Validity: "+ player.getContractEnd()
         );
-
 
         playerStats.setText(
            "Goals: "+player.getGoals()+ " | Assists: "+player.getAssists() + "\n" +
@@ -135,19 +134,6 @@ public class PlayersListController implements Refreshable {
            "Matches played: "+ player.getMatchPlayed() + "\n" +
            "Form: " +player.getForm()
         );
-    }
-
-     private String formatCurrency(long value) {
-        if(value>=1_000_000){
-
-            return String.format("€%,dM", value / 1_000_000);
-        }else if(value>=1_000){
-
-            return String.format("€%,dK", value / 1_000);
-        }else if(value>=1_000_000_000){
-            return String.format("€%,dB", value/1_000_000_000);
-        }
-        return String.format("€%,d", value);
     }
 
     @FXML

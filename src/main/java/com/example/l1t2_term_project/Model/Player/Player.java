@@ -1,5 +1,6 @@
 package com.example.l1t2_term_project.Model.Player;
 
+import com.example.l1t2_term_project.Utils.Utils;
 import javafx.scene.image.Image;
 
 import java.io.IOException;
@@ -206,6 +207,11 @@ public class Player implements Serializable
 
     public long getValue() {
         return value;
+    }
+
+    public String getValueAsString()
+    {
+        return Utils.formatCurrency(value);
     }
 
     public void setValue(long value) {
