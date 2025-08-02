@@ -1689,3 +1689,14 @@
 [2025-08-02 00:12:15] Client disconnected: Socket[addr=/127.0.0.1,port=51042,localport=12913]
 [2025-08-02 00:12:20] 'Liverpool' logged out
 [2025-08-02 00:12:20] Client disconnected: Socket[addr=/127.0.0.1,port=50963,localport=12913]
+[2025-08-02 17:36:53] Server Started
+[2025-08-02 17:37:52] Server Started
+[2025-08-02 17:37:57] Client connected: Socket[addr=/127.0.0.1,port=64295,localport=12913]
+[2025-08-02 17:38:04] 'real madrid' logged in
+[2025-08-02 17:38:15] Failed attempt for password change
+[2025-08-02 17:38:28] Changed password for 'Real Madrid'
+[2025-08-02 17:38:36] 'Real Madrid' logged out
+[2025-08-02 17:38:44] 'real madrid' logged in
+[2025-08-02 17:39:13] Changed password for 'Real Madrid'
+[2025-08-02 17:39:32] 'real madrid' logged out
+[2025-08-02 17:39:32] Client disconnected: Socket[addr=/127.0.0.1,port=64295,localport=12913]

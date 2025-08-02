@@ -9,6 +9,7 @@ public class LoginDTO implements Serializable {
     }
     private String username;
     private String password;
+    private String newPassword;
     private Type type;
 
     public LoginDTO(String username, String password, Type type) {
@@ -16,6 +17,13 @@ public class LoginDTO implements Serializable {
         if (password != null && password.equalsIgnoreCase("a")) password = "liver"; // TODO: remove later
         this.username = username;
         this.password = password;
+        this.type = type;
+    }
+
+    public LoginDTO(String username, String password, String newPassword, Type type) {
+        this.username = username;
+        this.password = password;
+        this.newPassword = newPassword;
         this.type = type;
     }
 
@@ -33,6 +41,14 @@ public class LoginDTO implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
     }
 
     public Type getType() {

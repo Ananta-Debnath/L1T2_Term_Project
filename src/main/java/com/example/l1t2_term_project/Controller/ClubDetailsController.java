@@ -79,42 +79,23 @@ public class ClubDetailsController implements Refreshable {
             return;
         }
 
-        LoginDTO loginDTO = new LoginDTO(currentClub.getName(), currentPassword, LoginDTO.Type.SignIn);
+        boolean valid = Utils.showConfirmationAlert("Credential","Confirm Password Change","Proceed with password change?");
+        if(!valid) {
+            Utils.showCancelAlert("Process terminated","Password change cancelled");
+            return;
+        }
+
+        LoginDTO loginDTO = new LoginDTO(currentClub.getName(), currentPassword, newPassword, LoginDTO.Type.ChangePass);
         client.write(loginDTO);
         Object obj = client.read();
         if (obj instanceof Boolean)
         {
-            boolean valid = (boolean) obj;
-            if (!valid)
-            {
+            valid = (boolean) obj;
+            if (valid) {
+                Utils.showAlert("Password Changed", "Password Changed successfully");
+            }
+            else {
                 Utils.showErrorAlert("Failed", "Password change unsuccessful");
-                return;
-            }
-        }
-        else {
-            System.err.println("Wrong object type - " + obj.getClass());
-            return;
-        }
-
-        loginDTO = new LoginDTO(currentClub.getName(), newPassword, LoginDTO.Type.ChangePass);
-        client.write(loginDTO);
-        obj = client.read();
-        if (obj instanceof Boolean)
-        {
-            boolean valid = (boolean) obj;
-            if (valid)
-            {
-                boolean valid2=Utils.showConfirmationAlert("Credential","Confirm Password Change","Proceed with password change?");
-
-                if(valid2) {
-                    Utils.showAlert("Password Changed", "Password Changed successfully");
-                }else{
-                    Utils.showCancelAlert("Process terminated","Password change cancelled");
-                }
-            }
-            else
-            {
-                Utils.showErrorAlert("Failed!", "User not found");
             }
         }
         else {

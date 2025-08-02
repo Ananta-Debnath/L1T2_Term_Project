@@ -193,7 +193,7 @@ public class Server {
         return credentials.contains(loginDTO);
     }
 
-    public boolean changePass(LoginDTO loginDTO) {
+    public synchronized boolean changePass(LoginDTO loginDTO) {
         LoginDTO credential = null;
         for (LoginDTO dto : credentials)
         {
@@ -203,9 +203,9 @@ public class Server {
                 break;
             }
         }
-        if (credential != null && !loginDTO.getPassword().isEmpty())
+        if (validateCredentials(loginDTO) && credential != null && !loginDTO.getNewPassword().isEmpty())
         {
-            credential.setPassword(loginDTO.getPassword());
+            credential.setPassword(loginDTO.getNewPassword());
             ActivityLogger.log("Changed password for '" + credential.getUsername() + "'");
             writeCredentialsToFile();
             return true;
@@ -215,7 +215,6 @@ public class Server {
             ActivityLogger.log("Failed attempt for password change");
             return false;
         }
-
     }
 
     public Club getClub(String name) {
