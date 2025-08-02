@@ -18,14 +18,12 @@ public final class Utils {
     private Utils() {}
 
     public static String formatCurrency(long value) {
-        if(value>=1_000_000){
-
+        if(value>=1_000_000_000){
+            return String.format("€%,dB", value/1_000_000_000);
+        } else if(value>=1_000_000){
             return String.format("€%,dM", value / 1_000_000);
         }else if(value>=1_000){
-
             return String.format("€%,dK", value / 1_000);
-        }else if(value>=1_000_000_000){
-            return String.format("€%,dB", value/1_000_000_000);
         }
         return String.format("€%,d", value);
     }

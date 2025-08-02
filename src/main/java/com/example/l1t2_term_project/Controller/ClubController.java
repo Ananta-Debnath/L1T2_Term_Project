@@ -53,23 +53,22 @@ public class ClubController implements Refreshable {
     public void refresh()
     {
         System.out.println(Thread.currentThread().getName() + " started");
-        while (true)
-        {
-            synchronized (client.getLock())
-            {
+        while (!quit) {
+            // Load club details
+            club = Club.readFromServer(client);
+            Platform.runLater(() -> {
+                clubBudgetLabel.setText("Budget: " + "\n" + club.getBudgetAsString());
+                if (currentController != null) currentController.refresh();
+            });
+            System.out.println(Thread.currentThread().getName() + " refreshed");
+
+            synchronized (client.getLock()) {
                 try {
                     client.getLock().wait();
                 } catch (InterruptedException e) {
                     System.err.println("Refresh Thread Interrupted");
                 }
             }
-            if (quit) break;
-
-            Platform.runLater(() -> {
-                clubBudgetLabel.setText("Budget: "+"\n" + club.getBudgetAsString());
-                if (currentController != null) currentController.refresh();
-            });
-            System.out.println(Thread.currentThread().getName() + " refreshed");
         }
         System.out.println(Thread.currentThread().getName() + " closed");
     }
@@ -87,12 +86,6 @@ public class ClubController implements Refreshable {
     {
         this.client = client;
         quit = false;
-
-        // Load club details
-        club = Club.readFromServer(client);
-
-        // Load club player list
-        club.loadPlayers(client);
 
         new Thread(this::refresh, "Refresh Thread").start();
     }
