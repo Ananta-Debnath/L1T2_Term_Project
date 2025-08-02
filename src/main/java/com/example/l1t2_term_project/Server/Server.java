@@ -190,7 +190,7 @@ public class Server {
 
     public boolean validateCredentials(LoginDTO loginDTO)
     {
-        return credentials.contains(loginDTO);
+        return !clientMap.containsKey(loginDTO.getUsername()) && credentials.contains(loginDTO);
     }
 
     public synchronized boolean changePass(LoginDTO loginDTO) {
