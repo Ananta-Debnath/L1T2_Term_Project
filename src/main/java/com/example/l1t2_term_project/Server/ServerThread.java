@@ -131,7 +131,7 @@ public class ServerThread extends Thread {
             Player player = PlayerCollection.getPlayer(buyPlayerDTO.getPlayerId());
             assert player != null;
             if (!player.getTeam().equalsIgnoreCase(buyPlayerDTO.getCurrentClub()) || !player.isForSale()) {
-                ActivityLogger.log("Player (ID: " + player.getId() + ") information mismatch");
+                ActivityLogger.log("Player (Name: " + player.getName() + ") information mismatch");
                 write(false);
                 return;
             }
@@ -148,11 +148,11 @@ public class ServerThread extends Thread {
 
                 PlayerCollection.writeToFile();
                 server.writeClubsToFile();
-                ActivityLogger.log("Player (ID: " + player.getId() + ") transferred to '" + buyer.getName() + "'");
+                ActivityLogger.log("Player (Name: " + player.getName() + ") transferred to '" + buyer.getName() + "'");
                 write(true);
                 server.notifyAllClient();
             } else {
-                ActivityLogger.log("Transfer failed: '" + buyer.getName() + "' cannot afford Player (ID: " + player.getId() + ")");
+                ActivityLogger.log("Transfer failed: '" + buyer.getName() + "' cannot afford Player (Name: " + player.getName() + ")");
                 write(false);
             }
         }
@@ -168,11 +168,11 @@ public class ServerThread extends Thread {
                 player.setValue(sellPlayerDTO.getNewValue());
 
                 PlayerCollection.writeToFile();
-                ActivityLogger.log("Player (ID: " + player.getId() + ") listed for sale");
+                ActivityLogger.log("Player (Name: " + player.getName() + ") listed for sale");
                 write(true);
                 server.notifyAllClient();
             } else {
-                ActivityLogger.log("Player (ID: " + player.getId() + ") information mismatch");
+                ActivityLogger.log("Player (Name: " + player.getName() + ") information mismatch");
                 write(false);
             }
         }
