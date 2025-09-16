@@ -2,6 +2,7 @@ package com.example.l1t2_term_project.Server;
 
 import com.example.l1t2_term_project.DTO.BuyPlayerDTO;
 import com.example.l1t2_term_project.DTO.LoginDTO;
+import com.example.l1t2_term_project.DTO.NotificationDTO;
 import com.example.l1t2_term_project.DTO.SellPlayerDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
 import com.example.l1t2_term_project.Model.Offer;
@@ -109,6 +110,7 @@ public class ServerThread extends Thread {
                 ActivityLogger.log("'" + clubName + "' logged in");
                 server.addClient(clubName, socketWrapper);
                 write(true); // Confirm
+                write(new NotificationDTO("Welcome " + clubName));
             }
         }
         else
@@ -150,7 +152,7 @@ public class ServerThread extends Thread {
                 server.writeClubsToFile();
                 ActivityLogger.log("Player (Name: " + player.getName() + ") transferred to '" + buyer.getName() + "'");
                 write(true);
-                server.notifyAllClient();
+                server.notifyAllClient(seller != null ? seller.getName() : null, "Player (Name: " + player.getName() + ") transferred to '" + buyer.getName() + "'");
             } else {
                 ActivityLogger.log("Transfer failed: '" + buyer.getName() + "' cannot afford Player (Name: " + player.getName() + ")");
                 write(false);
@@ -170,7 +172,7 @@ public class ServerThread extends Thread {
                 PlayerCollection.writeToFile();
                 ActivityLogger.log("Player (Name: " + player.getName() + ") listed for sale");
                 write(true);
-                server.notifyAllClient();
+                server.notifyAllClient(null, null);
             } else {
                 ActivityLogger.log("Player (Name: " + player.getName() + ") information mismatch");
                 write(false);
@@ -195,8 +197,6 @@ public class ServerThread extends Thread {
                 exportOffers();
                 break;
         }
-
-        if (offer.getStatus() != Offer.Status.GetList) server.notifyAllClient();
     }
 
     public void exportOffers()
@@ -243,8 +243,10 @@ public class ServerThread extends Thread {
                 server.removeOffer(offer.getId());
                 server.addOffer(offer);
                 ActivityLogger.log("'" + offer.getFromClub() + "' made offer to '" + offer.getToClub() + "'");
+                write(true);
+                server.notifyAllClient(offer.getToClub(), "Received an offer from '" + offer.getFromClub() + "'");
             }
-            write(valid);
+            else write(false);
         }
     }
 
@@ -277,8 +279,10 @@ public class ServerThread extends Thread {
                 server.writeClubsToFile();
                 PlayerCollection.writeToFile();
                 ActivityLogger.log("'" + offer.getToClub() + "' accepted offer from '" + offer.getFromClub() + "'");
+                write(true);
+                server.notifyAllClient(offer.getFromClub(), "'" + offer.getToClub() + "' accepted your offer");
             }
-            write(valid);
+            else write(false);
         }
     }
 
@@ -291,6 +295,7 @@ public class ServerThread extends Thread {
                 server.removeOffer(offer.getId());
                 ActivityLogger.log("'" + offer.getToClub() + "' rejected offer from '" + offer.getFromClub() + "'");
                 write(true);
+                server.notifyAllClient(offer.getFromClub(), "'" + offer.getToClub() + "' rejected your offer");
             }
             else write(false);
         }

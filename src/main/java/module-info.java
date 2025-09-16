@@ -10,6 +10,7 @@ module com.example.l1t2_term_project {
     requires java.sql;
     requires java.desktop;
     requires javafx.media;
+    requires com.fasterxml.jackson.databind;
 
     opens com.example.l1t2_term_project.Model.Player to javafx.base;
     opens com.example.l1t2_term_project.Model to javafx.base;

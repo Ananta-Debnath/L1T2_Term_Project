@@ -2,8 +2,10 @@ package com.example.l1t2_term_project.Controller;
 
 import com.example.l1t2_term_project.Client;
 import com.example.l1t2_term_project.DTO.LoginDTO;
+import com.example.l1t2_term_project.DTO.NotificationDTO;
 import com.example.l1t2_term_project.Model.Club.Club;
 import com.example.l1t2_term_project.Utils.Utils;
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,8 +14,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class ClubController implements Refreshable {
 
@@ -49,6 +53,9 @@ public class ClubController implements Refreshable {
     @FXML
     public Label clubBudgetLabel;
 
+    @FXML
+    public VBox notificationBox;
+
     @Override
     public void refresh()
     {
@@ -58,6 +65,7 @@ public class ClubController implements Refreshable {
             club = Club.readFromServer(client);
             Platform.runLater(() -> {
                 clubBudgetLabel.setText("Budget: " + "\n" + club.getBudgetAsString());
+                addNotification();
                 if (currentController != null) currentController.refresh();
             });
             System.out.println(Thread.currentThread().getName() + " refreshed");
@@ -88,6 +96,28 @@ public class ClubController implements Refreshable {
         quit = false;
 
         new Thread(this::refresh, "Refresh Thread").start();
+    }
+
+    public void addNotification()
+    {
+        NotificationDTO notificationDTO = client.getNotificationDTO();
+        if (!notificationDTO.getNotification().isEmpty())
+        {
+            System.out.println("Showing notification: " + notificationDTO.getNotification());
+            Label notification = new Label(notificationDTO.getNotification());
+            // notification.getStyleClass().add("notification-label"); // style with CSS
+            // notification.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles/confirmation_alert.css")).toExternalForm());
+
+            if (notificationBox.getChildren().size() >= 3) {
+                notificationBox.getChildren().remove(0); // remove oldest
+            }
+            notificationBox.getChildren().add(notification);
+
+            // Automatically remove after a few seconds
+            PauseTransition pause = new PauseTransition(Duration.seconds(5));
+            pause.setOnFinished(e -> notificationBox.getChildren().remove(notification));
+            pause.play();
+        }
     }
 
     public void OpenPlayers(ActionEvent actionEvent) {

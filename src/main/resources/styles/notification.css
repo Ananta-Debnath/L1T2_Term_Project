@@ -1,0 +1,14 @@
+.label {
+    -fx-background-color: gray;
+    -fx-max-width: Infinity;
+    -fx-wrap-text: true;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 8px;
+    -fx-border-color: gold;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 5, 0.5, 0, 1);
+}

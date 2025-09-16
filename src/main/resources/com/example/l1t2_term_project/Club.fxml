@@ -113,5 +113,6 @@
             <Button fx:id="transferSell" layoutX="134.0" layoutY="147.0" mnemonicParsing="false" onAction="#switchToPlayerOffers" prefHeight="55.0" prefWidth="104.0" text="OFFERS" />
          </children>
       </VBox>
+      <VBox fx:id="notificationBox" alignment="TOP_CENTER" prefWidth="250.0" style="-fx-padding: 10; -fx-spacing: 10;" stylesheets="@../../../styles/notification.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

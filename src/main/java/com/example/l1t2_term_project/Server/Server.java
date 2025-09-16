@@ -8,6 +8,8 @@ import com.example.l1t2_term_project.Model.Offer;
 import com.example.l1t2_term_project.Model.Player.PlayerCollection;
 import com.example.l1t2_term_project.Utils.ActivityLogger;
 import com.example.l1t2_term_project.Utils.SocketWrapper;
+import com.example.l1t2_term_project.Utils.Utils;
+import com.fasterxml.jackson.databind.util.TypeKey;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -57,22 +59,35 @@ public class Server {
 
     public synchronized void addClient(String name, SocketWrapper socketWrapper)
     {
-        clientMap.put(name, socketWrapper);
+        clientMap.put(name.toLowerCase(), socketWrapper);
+
+        // clientMap.forEach((key, value) -> System.out.println(Utils.ANSI_GREEN + key + " - " + value + Utils.ANSI_RESET));
     }
 
     public synchronized void removeClient(String name)
     {
-        clientMap.remove(name);
+        clientMap.remove(name.toLowerCase());
     }
 
-    public void notifyAllClient()
-    {
-        for (SocketWrapper socket : clientMap.values()) {
-            try {
-                socket.write(new NotificationDTO("Refresh"));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+    public void notifyAllClient(String to, String message) {
+        SocketWrapper reciever = null;
+        if (message == null) message = "";
+        try {
+            if (to != null)
+            {
+                // System.out.println("Send request for: " + to);
+                reciever = clientMap.get(to.toLowerCase());
+                if (reciever != null)
+                {
+                    reciever.write(new NotificationDTO(message));
+                    // System.out.println("Sending notification to " + to + "(" + reciever + "): " + message);
+                }
             }
+            for (SocketWrapper socket : clientMap.values()) {
+                    if (socket != reciever) socket.write(new NotificationDTO(""));
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -190,7 +205,7 @@ public class Server {
 
     public boolean validateCredentials(LoginDTO loginDTO)
     {
-        return !clientMap.containsKey(loginDTO.getUsername()) && credentials.contains(loginDTO);
+        return !clientMap.containsKey(loginDTO.getUsername().toLowerCase()) && credentials.contains(loginDTO);
     }
 
     public synchronized boolean changePass(LoginDTO loginDTO) {

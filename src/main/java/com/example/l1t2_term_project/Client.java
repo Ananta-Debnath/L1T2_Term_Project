@@ -22,6 +22,7 @@ public class Client extends Application {
     private ClubController clubController;
     private List<String> nationList;
     private List<String> clubList;
+    private NotificationDTO notificationDTO;
     private NotificationDTO lock;
 
     public SocketWrapper getSocketWrapper() {
@@ -58,6 +59,14 @@ public class Client extends Application {
 
     public void setClubList(List<String> clubList) {
         this.clubList = clubList;
+    }
+
+    public NotificationDTO getNotificationDTO() {
+        return notificationDTO;
+    }
+
+    public void setNotificationDTO(NotificationDTO notificationDTO) {
+        this.notificationDTO = notificationDTO;
     }
 
     public NotificationDTO getLock() {
@@ -103,6 +112,7 @@ public class Client extends Application {
         readThread = new ClientReadThread("Client Read Thread", this);
         readThread.start();
         lock = new NotificationDTO("Lock");
+        notificationDTO = new NotificationDTO("");
 
         // Get all nations
         Object obj = read();
@@ -132,13 +142,16 @@ public class Client extends Application {
 
     public Object read()
     {
-        return readThread.read();
+        Object obj = readThread.read();
+        System.out.println(Utils.ANSI_GREEN + "Read from Thread: " + obj.getClass().getSimpleName() + Utils.ANSI_RESET);
+        return obj;
     }
 
     public void write(Object obj)
     {
         try{
             socketWrapper.write(obj);
+            System.out.println(Utils.ANSI_CYAN + "Wrote to server: " + obj.getClass().getSimpleName() + Utils.ANSI_RESET);
         } catch (IOException e) {
             System.err.println("Client write error");
         }

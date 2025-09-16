@@ -42,6 +42,7 @@ public class ClientReadThread extends Thread {
         {
             try{
                 obj = client.getSocketWrapper().read();
+                System.out.println(Utils.ANSI_YELLOW + "Read from server: " + obj.getClass().getSimpleName() + Utils.ANSI_RESET);
             } catch (IOException | ClassNotFoundException e) {
                 System.err.println("Client disconnected");
                 break;
@@ -50,6 +51,8 @@ public class ClientReadThread extends Thread {
             if (obj instanceof NotificationDTO)
             {
                 // TODO: show notification
+                client.setNotificationDTO((NotificationDTO) obj);
+                System.out.println("Received notification: " + client.getNotificationDTO().getNotification());
                 synchronized (client.getLock())
                 {
                     client.getLock().notifyAll();
